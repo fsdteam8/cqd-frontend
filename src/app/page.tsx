@@ -1,16 +1,19 @@
 import About from "@/components/About";
 import HighlightedLocations from "@/components/HighlightedLocations";
 import HowItWork from "@/components/HowItWork";
+import Navbar from "@/components/Navbar/Navbar";
 import PricingSection from "@/components/PricingSection";
+import TrustedPartners from "@/components/TrustedPartners";
 import WhyChooseUs from "@/components/WhyChooseUs";
 
 export default function Home() {
   return (
     <div className="w-full mx-auto">
-      <h1 className="text-3xl font-bold underline">C Q D</h1>
+      <Navbar />
       <About />
       <WhyChooseUs />
       <HowItWork />
+      <TrustedPartners />
       <PricingSection />
       <HighlightedLocations />
     </div>
