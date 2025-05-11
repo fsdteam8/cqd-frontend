@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import HighlightedLocations from "@/components/HighlightedLocations";
 import HowItWork from "@/components/HowItWork";
 import PricingSection from "@/components/PricingSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -11,6 +12,7 @@ export default function Home() {
       <WhyChooseUs />
       <HowItWork />
       <PricingSection />
+      <HighlightedLocations />
     </div>
   );
 }
