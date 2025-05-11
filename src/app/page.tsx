@@ -1,5 +1,6 @@
 import About from "@/components/About";
 import HowItWork from "@/components/HowItWork";
+import PricingSection from "@/components/PricingSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <About />
       <WhyChooseUs />
       <HowItWork />
+      <PricingSection />
     </div>
   );
 }
