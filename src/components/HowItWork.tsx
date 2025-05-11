@@ -40,22 +40,13 @@ const HowItWork = () => {
             </p>
 
             <div className="flex flex-wrap gap-2 pt-4">
-              <Badge
-                variant="outline"
-                className="bg-black text-white px-4 py-2 rounded-full"
-              >
+              <Badge className="bg-black text-white px-4 py-2 rounded-full">
                 Local Networking
               </Badge>
-              <Badge
-                variant="outline"
-                className="bg-black text-white px-4 py-2 rounded-full"
-              >
+              <Badge className="bg-black text-white px-4 py-2 rounded-full">
                 Business Connections
               </Badge>
-              <Badge
-                variant="outline"
-                className="bg-black text-white px-4 py-2 rounded-full"
-              >
+              <Badge className="bg-black text-white px-4 py-2 rounded-full">
                 Subscription Sharing
               </Badge>
             </div>
