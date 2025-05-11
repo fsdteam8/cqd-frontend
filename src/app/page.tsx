@@ -1,12 +1,14 @@
 import About from "@/components/About";
+import HowItWork from "@/components/HowItWork";
 import WhyChooseUs from "@/components/WhyChooseUs";
 
 export default function Home() {
   return (
-    <div>
+    <div className="w-full mx-auto">
       <h1 className="text-3xl font-bold underline">C Q D</h1>
       <About />
       <WhyChooseUs />
+      <HowItWork />
     </div>
   );
 }
