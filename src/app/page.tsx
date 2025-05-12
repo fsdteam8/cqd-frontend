@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import Footer from "@/components/Footer/Footer";
 import HeroVideo from "@/components/HeroVideo";
 import HighlightedLocations from "@/components/HighlightedLocations";
 import HowItWork from "@/components/HowItWork";
@@ -18,6 +19,7 @@ export default function Home() {
       <TrustedPartners />
       <PricingSection />
       <HighlightedLocations />
+      <Footer/>
     </div>
   );
 }

@@ -27,10 +27,15 @@ export default function Navbar() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full bg-transparent transition-all duration-300",
-        scrolled ? "py-0 w-full" : "py-6"
+        scrolled ? "py-0" : "py-6"
       )}
     >
-      <div className="max-w-6xl  mx-auto">
+      <div
+        className={cn(
+          "transition-all duration-700 ease-in-out mx-auto px-4",
+          scrolled ? "max-w-9xl container" : "max-w-6xl"
+        )}
+      >
         <div className="bg-white rounded-full shadow-lg px-6 py-4 transition-all duration-300">
           <div className="flex items-center justify-between">
             {/* Logo */}
