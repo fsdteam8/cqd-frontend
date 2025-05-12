@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -15,11 +15,42 @@ interface Testimonial {
   image: string
 }
 
+
+const testimonials: Testimonial[] = [
+  {
+    id: 1,
+    name: "Michael Thompson",
+    role: "Real Estate Agent",
+    quote:
+      "I recommend CQD Cleaning to all my clients for move-in cleaning. They make properties shine and help my listings look their absolute best.",
+    rating: 5,
+    image: "/images/user.png",
+  },
+  {
+    id: 2,
+    name: "Sarah Johnson",
+    role: "Homeowner",
+    quote:
+      "CQD Cleaning Services transformed my home. Their attention to detail is remarkable and their staff is professional and courteous.",
+    rating: 4,
+    image: "/images/user.png",
+  },
+  {
+    id: 3,
+    name: "David Wilson",
+    role: "Property Manager",
+    quote:
+      "We've been using CQD Cleaning for all our properties for over 3 years. Their reliability and quality of service is unmatched in the industry.",
+    rating: 2,
+    image: "/images/user.png",
+  },
+]
+
 export default function Review() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
-
+console.log(isMobile)
   // Check if we're on mobile for responsive adjustments
   useEffect(() => {
     const checkIfMobile = () => {
@@ -34,6 +65,10 @@ export default function Review() {
     }
   }, [])
 
+  const nextTestimonial = useCallback(() => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+  }, []);
+
   useEffect(() => {
     // Auto-scroll functionality
     const interval = setInterval(() => {
@@ -43,41 +78,13 @@ export default function Review() {
     }, 5000) // Change testimonial every 5 seconds
 
     return () => clearInterval(interval)
-  }, [isPaused])
+  }, [isPaused,nextTestimonial])
 
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      name: "Michael Thompson",
-      role: "Real Estate Agent",
-      quote:
-        "I recommend CQD Cleaning to all my clients for move-in cleaning. They make properties shine and help my listings look their absolute best.",
-      rating: 5,
-      image: "/images/user.png",
-    },
-    {
-      id: 2,
-      name: "Sarah Johnson",
-      role: "Homeowner",
-      quote:
-        "CQD Cleaning Services transformed my home. Their attention to detail is remarkable and their staff is professional and courteous.",
-      rating: 4,
-      image: "/images/user.png",
-    },
-    {
-      id: 3,
-      name: "David Wilson",
-      role: "Property Manager",
-      quote:
-        "We've been using CQD Cleaning for all our properties for over 3 years. Their reliability and quality of service is unmatched in the industry.",
-      rating: 2,
-      image: "/images/user.png",
-    },
-  ]
+  
 
-  const nextTestimonial = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length)
-  }
+  
+
+  
 
   const prevTestimonial = () => {
     setActiveIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length)
