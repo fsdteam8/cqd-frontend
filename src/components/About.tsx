@@ -6,17 +6,19 @@ const About = () => {
     <section id="about" className="w-full min-h-screen flex items-center justify-center px-4">
       <div className="container px-4 md:px-6">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+    
           {/* Image container - responsive and properly sized */}
-          <div className="relative w-full max-w-md mx-auto lg:max-w-none overflow-hidden rounded-lg">
-            <Image
-              src="/images/about.png"
-              alt="CQD Cleaning professional with cleaning equipment"
-              width={600}
-              height={700}
-              className="w-full h-auto object-cover"
-              priority
-            />
-          </div>
+          <div className="relative w-full max-w-md mx-auto lg:max-w-none lg:w-[536px] lg:h-[656px] overflow-hidden rounded-lg">
+  <Image
+    src="/images/about.png"
+    alt="CQD Cleaning professional with cleaning equipment"
+    width={536}
+    height={656}
+    className="w-full h-full object-cover"
+    priority
+  />
+</div>
+
 
           {/* Content container */}
           <div className="flex flex-col space-y-6">
