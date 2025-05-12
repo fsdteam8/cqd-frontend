@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 const About = () => {
   return (
@@ -69,9 +70,9 @@ const About = () => {
 
             {/* CTA Button - centered on mobile, left-aligned on larger screens */}
             <div className="flex justify-center sm:justify-start mt-6">
-              <Button className="px-8 py-6 text-base rounded-full bg-black text-white hover:bg-gray-800">
+              <Link href="#pricing" className="px-8 py-3 text-base rounded-full bg-black text-white hover:bg-gray-800">
                 Request a Quote
-              </Button>
+              </Link>
             </div>
           </div>
         </div>
