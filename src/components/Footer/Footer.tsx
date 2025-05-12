@@ -13,13 +13,13 @@ export default function Footer() {
   }, [])
 
   return (
-    <footer className="bg-black text-white w-full px-4 py-8 md:px-8 lg:px-12">
-      <div className="max-w-7xl mx-auto">
+    <footer className=" w-full px-4 py-8 md:px-8 lg:px-12">
+      <div className="w-full container mx-auto bg-black text-white p-8 rounded-3xl mb-8">
         {/* Top section with logo and navigation */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
           <div className="mb-6 md:mb-0">
             <Link href="/" className="inline-block">
-              <Image src="/generic-three-letter-logo.png" alt="CQD Logo" width={120} height={40} className="h-10 w-auto" />
+              <Image src="/images/flogo.png" alt="CQD Logo" width={120} height={40} className="h-10 w-auto" />
             </Link>
           </div>
 
