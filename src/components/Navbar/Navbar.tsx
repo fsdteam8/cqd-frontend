@@ -4,19 +4,34 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 w-full px-4 py-4 bg-transparent">
-      <div className="max-w-7xl mx-auto">
-        <div className="bg-white rounded-full shadow-lg px-6 py-4">
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full bg-transparent transition-all duration-300",
+        scrolled ? "py-0 w-full" : "py-6"
+      )}
+    >
+      <div className="max-w-6xl  mx-auto">
+        <div className="bg-white rounded-full shadow-lg px-6 py-4 transition-all duration-300">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center">
@@ -25,40 +40,22 @@ export default function Navbar() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <Link
-                href="/"
-                className="text-gray-900 hover:text-gray-600 transition-colors"
-              >
+              <Link href="/" className="text-gray-900 hover:text-gray-600 transition-colors">
                 Home
               </Link>
-              <Link
-                href="/about"
-                className="text-gray-900 hover:text-gray-600 transition-colors"
-              >
+              <Link href="/about" className="text-gray-900 hover:text-gray-600 transition-colors">
                 About Us
               </Link>
-              <Link
-                href="/pricing"
-                className="text-gray-900 hover:text-gray-600 transition-colors"
-              >
+              <Link href="/pricing" className="text-gray-900 hover:text-gray-600 transition-colors">
                 Pricing
               </Link>
-              <Link
-                href="/locations"
-                className="text-gray-900 hover:text-gray-600 transition-colors"
-              >
+              <Link href="/locations" className="text-gray-900 hover:text-gray-600 transition-colors">
                 Locations
               </Link>
-              <Link
-                href="/blog"
-                className="text-gray-900 hover:text-gray-600 transition-colors"
-              >
+              <Link href="/blog" className="text-gray-900 hover:text-gray-600 transition-colors">
                 Blog
               </Link>
-              <Link
-                href="/contact"
-                className="text-gray-900 hover:text-gray-600 transition-colors"
-              >
+              <Link href="/contact" className="text-gray-900 hover:text-gray-600 transition-colors">
                 Contact
               </Link>
             </nav>
@@ -89,46 +86,22 @@ export default function Navbar() {
           )}
         >
           <nav className="flex flex-col space-y-4 p-4">
-            <Link
-              href="/"
-              className="text-gray-900 hover:text-gray-600 py-2 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/" className="text-gray-900 hover:text-gray-600 py-2" onClick={() => setIsMenuOpen(false)}>
               Home
             </Link>
-            <Link
-              href="/about"
-              className="text-gray-900 hover:text-gray-600 py-2 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/about" className="text-gray-900 hover:text-gray-600 py-2" onClick={() => setIsMenuOpen(false)}>
               About Us
             </Link>
-            <Link
-              href="/pricing"
-              className="text-gray-900 hover:text-gray-600 py-2 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/pricing" className="text-gray-900 hover:text-gray-600 py-2" onClick={() => setIsMenuOpen(false)}>
               Pricing
             </Link>
-            <Link
-              href="/locations"
-              className="text-gray-900 hover:text-gray-600 py-2 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/locations" className="text-gray-900 hover:text-gray-600 py-2" onClick={() => setIsMenuOpen(false)}>
               Locations
             </Link>
-            <Link
-              href="/blog"
-              className="text-gray-900 hover:text-gray-600 py-2 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/blog" className="text-gray-900 hover:text-gray-600 py-2" onClick={() => setIsMenuOpen(false)}>
               Blog
             </Link>
-            <Link
-              href="/contact"
-              className="text-gray-900 hover:text-gray-600 py-2 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/contact" className="text-gray-900 hover:text-gray-600 py-2" onClick={() => setIsMenuOpen(false)}>
               Contact
             </Link>
             <Button className="bg-black text-white hover:bg-gray-800 w-full mt-2 rounded-full">
