@@ -1,87 +1,75 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
 
-export default function TrustedPartners() {
-  // Full array of all 12 partners
-  const allPartners = [
-    { name: "Partner 1", logo: "/images/otp1.png" },
-    { name: "Partner 2", logo: "/images/otp2.png" },
-    { name: "Partner 3", logo: "/images/otp3.png" },
-    { name: "Partner 4", logo: "/images/otp4.png" },
-    { name: "Partner 5", logo: "/images/otp5.png" },
-    { name: "Partner 6", logo: "/images/otp6.png" },
-    { name: "Partner 7", logo: "/images/otp7.png" },
-    { name: "Partner 8", logo: "/images/otp8.png" },
-    { name: "Partner 9", logo: "/images/otp9.png" },
-    { name: "Partner 10", logo: "/images/otp10.png" },
-    { name: "Partner 11", logo: "/images/otp11.png" },
-    { name: "Partner 12", logo: "/images/otp1.png" },
-  ]
+interface Partner {
+  name: string
+  logo: string
+}
 
-  // State to track the current 6 visible partners
-  const [visiblePartners, setVisiblePartners] = useState(allPartners.slice(0, 6))
-  // State to track which positions to change (true for odd, false for even)
+// Moved outside the component to ensure stable reference
+const allPartners: Partner[] = [
+  { name: "Partner 1", logo: "/images/otp1.png" },
+  { name: "Partner 2", logo: "/images/otp2.png" },
+  { name: "Partner 3", logo: "/images/otp3.png" },
+  { name: "Partner 4", logo: "/images/otp4.png" },
+  { name: "Partner 5", logo: "/images/otp5.png" },
+  { name: "Partner 6", logo: "/images/otp6.png" },
+  { name: "Partner 7", logo: "/images/otp7.png" },
+  { name: "Partner 8", logo: "/images/otp8.png" },
+  { name: "Partner 9", logo: "/images/otp9.png" },
+  { name: "Partner 10", logo: "/images/otp10.png" },
+  { name: "Partner 11", logo: "/images/otp11.png" },
+  { name: "Partner 12", logo: "/images/otp1.png" },
+]
+
+// Utility to get the next partner in the list
+const getNextPartner = (currentIndex: number): Partner => {
+  const nextIndex = (currentIndex + 6) % allPartners.length
+  return allPartners[nextIndex]
+}
+
+export default function TrustedPartners() {
+  const [visiblePartners, setVisiblePartners] = useState<Partner[]>(allPartners.slice(0, 6))
   const [changeOddPositions, setChangeOddPositions] = useState(true)
-  // State to track which partners are currently transitioning
   const [transitioning, setTransitioning] = useState([false, false, false, false, false, false])
 
-  // Function to get the next partner in the rotation
-  interface Partner {
-    name: string;
-    logo: string;
-  }
-
-  const getNextPartner = (currentIndex: number): Partner => {
-    const nextIndex = (currentIndex + 6) % allPartners.length;
-    return allPartners[nextIndex];
-  };
-
-  // Function to handle the staggered rotation
-  const rotatePartners = () => {
-    // Create a copy of the current visible partners
+  const rotatePartners = useCallback(() => {
     const newVisiblePartners = [...visiblePartners]
     const newTransitioning = [false, false, false, false, false, false]
-
-    // Determine which positions to change (0-indexed)
     const positionsToChange = changeOddPositions ? [0, 2, 4] : [1, 3, 5]
 
-    // Update the transitioning state for the positions that will change
     positionsToChange.forEach((pos) => {
       newTransitioning[pos] = true
     })
-
-    // Set the transitioning state first
     setTransitioning(newTransitioning)
 
-    // After a short delay, update the actual partners
     setTimeout(() => {
       positionsToChange.forEach((pos) => {
-        const currentPartnerIndex = allPartners.findIndex((p) => p.name === visiblePartners[pos].name)
+        const currentPartnerIndex = allPartners.findIndex(
+          (p) => p.name === visiblePartners[pos].name
+        )
         newVisiblePartners[pos] = getNextPartner(currentPartnerIndex)
       })
 
       setVisiblePartners(newVisiblePartners)
 
-      // Reset the transitioning state after the transition completes
       setTimeout(() => {
         setTransitioning([false, false, false, false, false, false])
-      }, 500) // Match this with the CSS transition duration
+      }, 500) // match CSS transition
     }, 100)
 
-    // Toggle which positions to change next time
-    setChangeOddPositions(!changeOddPositions)
-  }
+    setChangeOddPositions((prev) => !prev)
+  }, [visiblePartners, changeOddPositions])
 
-  // Auto-rotate partners every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       rotatePartners()
     }, 3000)
 
     return () => clearInterval(interval)
-  }, [changeOddPositions, visiblePartners])
+  }, [rotatePartners])
 
   return (
     <section className="w-full py-12 px-4 md:px-6 lg:px-8">
@@ -103,7 +91,12 @@ export default function TrustedPartners() {
                   transitioning[index] ? "opacity-0" : "opacity-100"
                 }`}
               >
-                <Image src={partner.logo || "/placeholder.svg"} alt={partner.name} fill className="object-contain" />
+                <Image
+                  src={partner.logo || "/placeholder.svg"}
+                  alt={partner.name}
+                  fill
+                  className="object-contain"
+                />
               </div>
             </div>
           ))}
