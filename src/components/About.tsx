@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 const About = () => {
   return (
-    <section className="w-full min-h-screen flex items-center justify-center px-4">
+    <section id="about" className="w-full min-h-screen flex items-center justify-center px-4">
       <div className="container px-4 md:px-6">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12 items-center">
           {/* Image container - responsive and properly sized */}

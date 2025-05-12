@@ -49,37 +49,77 @@ const WhyChooseUs = () => {
 
           {/* Right column - Images */}
           <div className="grid grid-cols-2 gap-4 max-w-[530px]">
-            <Image
+            {/* <Image
               src="/images/wcu1.png"
               alt="Cleaning professionals in masks"
               width={400}
               height={300}
               className="rounded-3xl object-cover w-[250px] h-[250px]"
-            />
+            /> */}
 
-            <Image
-              src="/images/wcu2.png"
-              alt="Person cleaning a surface"
-              width={400}
-              height={300}
-              className="rounded-3xl object-cover w-[250px] h-[250px]"
-            />
+<div className="relative w-[250px] h-[250px] group">
+  <Image
+    src="/images/wcu1.png"
+    alt="Cleaning professionals in masks"
+    fill
+    className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
+  />
+  <Image
+    src="/images/hover1.png"
+    alt="Cleaning professionals in masks hover"
+    fill
+    className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+  />
+</div>
+<div className="relative w-[250px] h-[250px] group">
+  <Image
+    src="/images/wcu2.png"
+    alt="Cleaning professionals in masks"
+    fill
+    className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
+  />
+  <Image
+    src="/images/hover2.png"
+    alt="Cleaning professionals in masks hover"
+    fill
+    className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+  />
+</div>
 
-            <Image
-              src="/images/wcu3.png"
-              alt="Cleaning professional with supplies"
-              width={400}
-              height={300}
-              className="rounded-3xl object-cover w-[250px] h-[250px]"
-            />
+<div className="relative w-[250px] h-[250px] group">
+  <Image
+    src="/images/wcu3.png"
+    alt="Cleaning professionals in masks"
+    fill
+    className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
+  />
+  <Image
+    src="/images/hover3.png"
+    alt="Cleaning professionals in masks hover"
+    fill
+    className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+  />
+</div>
 
-            <Image
-              src="/images/wcu4.png"
-              alt="Person with cleaning equipment"
-              width={400}
-              height={300}
-              className="rounded-3xl object-cover w-[250px] h-[250px]"
-            />
+<div className="relative w-[250px] h-[250px] group">
+  <Image
+    src="/images/wcu4.png"
+    alt="Cleaning professionals in masks"
+    fill
+    className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
+  />
+  <Image
+    src="/images/hover4.png"
+    alt="Cleaning professionals in masks hover"
+    fill
+    className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+  />
+</div>
+
+     
+
+
+
           </div>
         </div>
       </div>
