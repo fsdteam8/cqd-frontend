@@ -41,7 +41,10 @@ const WhyChooseUs = () => {
             </div>
 
             <div className="pt-4 ">
-              <Link href="/#pricing" className="rounded-full px-8 py-4 h-auto bg-black hover:bg-gray-800 text-white">
+              <Link
+                href="/#pricing"
+                className="rounded-full px-8 py-4 h-auto bg-black hover:bg-gray-800 text-white"
+              >
                 Get Start <ArrowRight className="ml-2 h-4 w-4 inline-block" />
               </Link>
             </div>
@@ -49,72 +52,68 @@ const WhyChooseUs = () => {
 
           {/* Right column - Images */}
           <div className="grid grid-cols-2 gap-4 max-w-[530px]">
+            <div className="relative  w-[150px] lg:w-[250px] h-[150px] lg:h-[250px] group">
+              <Image
+                src="/images/wcu1.png"
+                alt="Cleaning professionals in masks"
+                fill
+                className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
+              />
+              <Image
+                src="/images/hover1.png"
+                alt="Cleaning professionals in masks hover"
+                fill
+                className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              />
+            </div>
+            <div className="relative w-[150px] lg:w-[250px] h-[150px] lg:h-[250px] group">
+              <Image
+                src="/images/wcu2.png"
+                alt="Cleaning professionals in masks"
+                fill
+                className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
+              />
+              <Image
+                src="/images/hover2.png"
+                alt="Cleaning professionals in masks hover"
+                fill
+                className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              />
+            </div>
 
+            <div className="relative w-[150px] lg:w-[250px] h-[150px] lg:h-[250px] group">
+              <Image
+                src="/images/wcu3.png"
+                alt="Cleaning professionals in masks"
+                fill
+                className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
+              />
+              <Image
+                src="/images/hover3.png"
+                alt="Cleaning professionals in masks hover"
+                fill
+                className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              />
+            </div>
 
-<div className="relative  w-[250px]  h-[250px] group">
-  <Image
-    src="/images/wcu1.png"
-    alt="Cleaning professionals in masks"
-    fill
-    className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
-  />
-  <Image
-    src="/images/hover1.png"
-    alt="Cleaning professionals in masks hover"
-    fill
-    className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-  />
-</div>
-<div className="relative w-[250px]  h-[250px] group">
-  <Image
-    src="/images/wcu2.png"
-    alt="Cleaning professionals in masks"
-    fill
-    className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
-  />
-  <Image
-    src="/images/hover2.png"
-    alt="Cleaning professionals in masks hover"
-    fill
-    className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-  />
-</div>
-
-<div className="relative w-[250px]  h-[250px] group">
-  <Image
-    src="/images/wcu3.png"
-    alt="Cleaning professionals in masks"
-    fill
-    className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
-  />
-  <Image
-    src="/images/hover3.png"
-    alt="Cleaning professionals in masks hover"
-    fill
-    className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-  />
-</div>
-
-<div className="relative w-[250px] h-[250px] group">
-  <Image
-    src="/images/wcu4.png"
-    alt="Cleaning professionals in masks"
-    fill
-    className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
-  />
-  <Image
-    src="/images/hover4.png"
-    alt="Cleaning professionals in masks hover"
-    fill
-    className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-  />
-</div>
-
-     
-
-
-
+            <div className="relative w-[150px] lg:w-[250px] h-[150px] lg:h-[250px] group">
+              <Image
+                src="/images/wcu4.png"
+                alt="Cleaning professionals in masks"
+                fill
+                className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
+              />
+              <Image
+                src="/images/hover4.png"
+                alt="Cleaning professionals in masks hover"
+                fill
+                className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              />
+            </div>
           </div>
+
+
+          
         </div>
       </div>
     </section>
