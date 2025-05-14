@@ -14,7 +14,6 @@ export default async function Home() {
   const posts = await getBlogPosts();
   return (
     <div className="w-full mx-auto">
-      {/* <Navbar /> */}
       <HeroVideo />
       <About />
       <WhyChooseUs />
@@ -22,10 +21,10 @@ export default async function Home() {
       <TrustedPartners />
       <PricingSection />
       <HighlightedLocations />
-      {/* <SimpleBlogCarousel posts={posts} /> */}
       <BlogCarousel posts={posts} />
       <Review />
       <Contact />
+      
     </div>
   );
 }
