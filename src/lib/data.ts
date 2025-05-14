@@ -27,7 +27,7 @@ const blogPosts: BlogPost[] = [
     Moreover, professional cleaners can help to extend the life of your furniture, carpets, and other household items by keeping them properly maintained. This can save you money in the long run by reducing the need for replacements.
 
     Finally, hiring professional cleaners can give you more time to focus on the things that matter most to you, whether that's spending time with family, pursuing hobbies, or simply relaxing after a long day at work.`,
-    coverImage: "/placeholder.svg?key=ff4pu",
+    coverImage: "",
     date: "2023-05-15",
     readingTime: 5,
     tags: ["Cleaning", "Home Maintenance", "Professional Services"],
@@ -49,7 +49,7 @@ const blogPosts: BlogPost[] = [
     Extendable dusters, scrub brushes, and steam cleaners are also commonly used by professional cleaners to reach high areas, remove stubborn stains, and sanitize surfaces without harsh chemicals.
 
     By investing in quality cleaning tools and learning proper techniques, you can achieve professional-level cleanliness in your own home or business.`,
-    coverImage: "/placeholder.svg?key=scc8e",
+    coverImage: "",
     date: "2023-06-22",
     readingTime: 6,
     tags: ["Cleaning Tools", "Equipment", "Professional Cleaning"],
@@ -73,7 +73,7 @@ const blogPosts: BlogPost[] = [
     Finally, clean the floors thoroughly, making sure to move appliances if possible to clean underneath them. A steam mop can be particularly effective for sanitizing kitchen floors without harsh chemicals.
 
     By following these professional techniques, you can achieve a deep clean that not only makes your kitchen look great but also creates a healthier environment for food preparation.`,
-    coverImage: "/placeholder.svg?key=8gvx9",
+    coverImage: "",
     date: "2023-07-10",
     readingTime: 8,
     tags: ["Kitchen Cleaning", "Deep Cleaning", "Cleaning Tips"],
@@ -97,7 +97,7 @@ const blogPosts: BlogPost[] = [
     Finally, regular professional cleaning can help protect your investment in your home by properly maintaining surfaces, fixtures, and furnishings, potentially extending their lifespan and preserving their appearance.
 
     While there is a cost associated with hiring cleaning services, many people find that the benefits in terms of time saved, reduced stress, and improved home environment make it a worthwhile investment.`,
-    coverImage: "/placeholder.svg?key=44ke5",
+    coverImage: "",
     date: "2023-08-05",
     readingTime: 7,
     tags: ["Cleaning Service", "Home Maintenance", "Time Management"],
@@ -121,7 +121,7 @@ const blogPosts: BlogPost[] = [
     Finally, regular professional cleaning can help protect your investment in your home by properly maintaining surfaces, fixtures, and furnishings, potentially extending their lifespan and preserving their appearance.
 
     While there is a cost associated with hiring cleaning services, many people find that the benefits in terms of time saved, reduced stress, and improved home environment make it a worthwhile investment.`,
-    coverImage: "/placeholder.svg?key=44ke5",
+    coverImage: "",
     date: "2023-08-05",
     readingTime: 7,
     tags: ["Cleaning Service", "Home Maintenance", "Time Management"],
