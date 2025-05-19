@@ -69,7 +69,7 @@ const About = () => {
 
             {/* CTA Button - centered on mobile, left-aligned on larger screens */}
             <div className="flex justify-center sm:justify-start mt-6">
-              <Link href="#pricing" className="px-8 py-3 text-base rounded-full bg-black text-white hover:bg-gray-800">
+              <Link href="#pricing" className="px-8 py-3 text-base rounded-full bg-[#0F2A5C] !text-white hover:bg-[#0F2A5C]/90">
                 Request a Quote
               </Link>
             </div>
