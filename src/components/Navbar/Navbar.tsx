@@ -66,7 +66,7 @@ export default function Navbar() {
             </nav>
 
             {/* CTA Button */}
-            <Button className="hidden md:block bg-black text-white hover:bg-gray-800 rounded-full">
+            <Button className="hidden md:block bg-[#0F2A5C] !text-white hover:bg-[#0F2A5C/20 rounded-full">
               Request a Quote
             </Button>
 
