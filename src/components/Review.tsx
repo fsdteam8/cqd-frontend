@@ -95,11 +95,11 @@ console.log(isMobile)
   }
 
   return (
-    <section className="w-full py-12 md:py-16 lg:py-20 px-4 md:px-6 lg:px-8 bg-white">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4">What Our Clients Say</h2>
-          <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">
+    <section className="w-full py-12 md:py-16 lg:py-20 px-4  ">
+      <div className="container mx-auto max-w-9xl">
+        <div className="text-start mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold  tracking-tight mb-4">What Our Clients Say</h2>
+          <p className="text-base  md:text-lg text-gray-700 max-w-9xl mx-auto">
             Don&apos;t just take our word for it - hear from our satisfied customers about their experience with CQD
             Cleaning Services.
           </p>
@@ -107,14 +107,14 @@ console.log(isMobile)
 
         <div className="relative">
           {/* Desktop and Tablet View */}
-          <div className="hidden md:block">
+          <div className="hidden md:block ">
             <div className="grid grid-cols-1 gap-8">
               <Card
-                className="overflow-hidden border rounded-xl shadow-sm"
+                className="overflow-hidden "
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
               >
-                <CardContent className="p-0">
+                <CardContent className="p-0 border-none">
                   <div className="flex flex-col md:flex-row items-center">
                     <div className="md:w-1/3 p-6 flex flex-col items-center">
                       <div className="relative w-40 h-40 rounded-full overflow-hidden mb-4">
@@ -134,11 +134,11 @@ console.log(isMobile)
                       </div>
                     </div>
                     <div className="md:w-2/3 p-6 md:p-8 bg-white">
-                      <blockquote className="text-lg md:text-xl italic mb-4">
+                      <blockquote className="text-lg md:text-xl italic mb-4 text-[#0F2A5C]">
                         &ldquo;{testimonials[activeIndex].quote}&rdquo;
                       </blockquote>
-                      <div className="font-bold text-xl">{testimonials[activeIndex].name}</div>
-                      <div className="text-gray-600">{testimonials[activeIndex].role}</div>
+                      <div className="font-bold text-xl text-[#0F2A5C]">{testimonials[activeIndex].name}</div>
+                      <div className=" text-[#0F2A5C]">{testimonials[activeIndex].role}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -149,7 +149,7 @@ console.log(isMobile)
           {/* Mobile View */}
           <div className="md:hidden">
             <Card
-              className="overflow-hidden border rounded-xl shadow-lg"
+              className="overflow-hidden "
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >
@@ -173,7 +173,7 @@ console.log(isMobile)
                   <blockquote className="text-base italic mb-4">
                     &ldquo;{testimonials[activeIndex].quote}&rdquo;
                   </blockquote>
-                  <div className="font-bold text-lg">{testimonials[activeIndex].name}</div>
+                  <div className="font-bold text-lg ">{testimonials[activeIndex].name}</div>
                   <div className="text-gray-600">{testimonials[activeIndex].role}</div>
                 </div>
               </CardContent>
@@ -209,14 +209,14 @@ console.log(isMobile)
             <button
               key={index}
               onClick={() => goToTestimonial(index)}
-              className={`mx-1 w-2.5 h-2.5 rounded-full ${activeIndex === index ? "bg-black" : "bg-gray-300"}`}
+              className={`mx-1 w-2.5 h-2.5 rounded-full ${activeIndex === index ? "bg-[#0F2A5C]" : "bg-gray-300"}`}
               aria-label={`Go to testimonial ${index + 1}`}
             />
           ))}
         </div>
-        <div className="mt-2 text-sm text-gray-500 text-center">
+        {/* <div className="mt-2 text-sm text-gray-500 text-center">
           {isPaused ? "Auto-scroll paused" : "Auto-scrolling enabled"} - Hover to pause
-        </div>
+        </div> */}
       </div>
     </section>
   )
