@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const About = () => {
   return (
-    <section id="about" className="w-full min-h-screen flex items-center justify-center px-4">
-      <div className="container px-4 md:px-6">
+    <section id="about" className="w-full   flex items-center justify-center px-4 py-8">
+      <div className="container  px-4 md:px-6">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12 items-center">
     
           {/* Image container - responsive and properly sized */}
