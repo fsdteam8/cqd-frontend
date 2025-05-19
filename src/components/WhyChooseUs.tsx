@@ -5,7 +5,7 @@ import Link from "next/link";
 const WhyChooseUs = () => {
   return (
     <section>
-      <div className="container w-full mx-auto px-4 py-16 md:py-24 ">
+      <div className="container w-full mx-auto px-4 py-8 ">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 min-h-[80vh]">
           {/* Left column - Text content */}
           <div className="space-y-6 max-w-4xl">
