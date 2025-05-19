@@ -40,12 +40,14 @@ const WhyChooseUs = () => {
               </div>
             </div>
 
-            <div className="pt-4 ">
+            <div className="pt-4 flex justify-center lg:justify-end">
               <Link
                 href="/#pricing"
-                className="rounded-full px-8 py-4 h-auto bg-black hover:bg-gray-800 text-white"
+                className="rounded-full px-8 py-4 h-auto bg-[#0F2A5C] hover:bg-[#0F2A5C]/90 !text-white"
               >
-                Get Start <ArrowRight className="ml-2 h-4 w-4 inline-block" />
+                Get Start 
+                <ArrowRight className="ml-2 h-4 w-4  inline-block" stroke="currentColor" fill="none" />
+
               </Link>
             </div>
           </div>
