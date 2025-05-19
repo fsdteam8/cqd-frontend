@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { ChevronDown, Menu, X } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
@@ -60,7 +61,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold">CQD</span>
+              {/* <span className="text-2xl font-bold">CQD</span> */}
+               <Image src="/images/logo.png" alt="CQD Logo" width={120} height={40} className="h-10 w-auto" />
             </Link>
 
             {/* Desktop Navigation */}
