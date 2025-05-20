@@ -105,7 +105,7 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
                 <Link href={`/blog/${post.slug}`} className="w-full">
                   <Button
                     variant="secondary"
-                    className="w-full bg-gray-900 text-white hover:bg-gray-800"
+                    className="w-full bg-[#0F2A5C] text-white hover:bg-[#0F2A5C]/90"
                   >
                     Read Now
                   </Button>

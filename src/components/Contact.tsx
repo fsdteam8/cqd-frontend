@@ -68,7 +68,7 @@ export default function ContactSection() {
               className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4"
             >
               <div className="space-y-2">
-                <Label htmlFor="firstName">First Name</Label>
+                <Label className="" htmlFor="firstName">First Name</Label>
                 <Input
                   id="firstName"
                   placeholder="First Name"
@@ -149,7 +149,7 @@ export default function ContactSection() {
               <div className="md:col-span-2 mt-4">
                 <Button
                   type="submit"
-                  className="w-full bg-black text-white hover:bg-black/90"
+                  className="w-full bg-[#0F2A5C] text-white hover:bg-[#0F2A5C]/90"
                 >
                   Send message
                 </Button>
