@@ -1,22 +1,20 @@
-import React from 'react'
-import { Button } from './ui/button'
-import Image from 'next/image'
+import { Button } from "./ui/button"
+import Image from "next/image"
 
 const WwoWindow = () => {
   return (
-    <div>
-          <section className="w-full py-12 md:py-16 lg:py-20 overflow-hidden">
-      <div className="container px-4 md:px-6">
+    <section className="w-full py-12 md:py-16 lg:py-20 overflow-hidden">
+      <div className="container max-w-9xl mx-auto px-4 md:px-6">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
           {/* Left side - Image */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
-            <div className="relative w-full max-w-[596px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[656px] rounded-3xl overflow-hidden">
+            <div className="relative w-full aspect-[536/656] max-w-[536px] rounded-3xl overflow-hidden">
               <Image
                 src="/images/wc1.png"
                 alt="Carpet cleaning with steam"
                 fill
                 style={{ objectFit: "cover" }}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 596px"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
                 priority
                 className="rounded-3xl"
               />
@@ -67,7 +65,6 @@ const WwoWindow = () => {
         </div>
       </div>
     </section>
-    </div>
   )
 }
 
