@@ -2,7 +2,7 @@ import ContactSection from '@/components/Contact'
 import { HeroImage } from '@/components/HeroImage'
 import HighlightedLocations from '@/components/HighlightedLocations'
 import Review from '@/components/Review'
-import WwoWindow from '@/components/WwoWindow'
+import WwoCarpet from '@/components/WwoCarpet'
 import React from 'react'
 
 const page = () => {
@@ -15,7 +15,7 @@ const page = () => {
        imageAlt="Professional Carpet Cleaning"
       
       />
-      <WwoWindow/>
+      <WwoCarpet/>
        <HighlightedLocations />
 
             <Review />
