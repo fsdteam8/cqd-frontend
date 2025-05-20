@@ -19,26 +19,26 @@ export function Sidebar() {
       <Logo />
 
       <nav className="flex-1 px-3 py-4">
-        <Link href="/dashboard/bookings" className={`sidebar-link ${isActive("/dashboard/bookings") ? "active" : ""}`}>
+        <Link href="/admin/dashboard/bookings" className={`sidebar-link ${isActive("/dashboard/bookings") ? "active" : ""}`}>
           <BookOpen className="h-5 w-5" />
           <span className="ml-3">Bookings</span>
         </Link>
         <Link
-          href="/dashboard/notification"
-          className={`sidebar-link ${isActive("/dashboard/notification") ? "active" : ""}`}
+          href="/admin/dashboard/notification"
+          className={`sidebar-link ${isActive("/admin/dashboard/notification") ? "active" : ""}`}
         >
           <Bell className="h-5 w-5" />
           <span className="ml-3">Notification</span>
         </Link>
-        <Link href="/dashboard/settings" className={`sidebar-link ${isActive("/dashboard/settings") ? "active" : ""}`}>
+        <Link href="/admin/dashboard/settings" className={`sidebar-link ${isActive("/admin/dashboard/settings") ? "active" : ""}`}>
           <Settings className="h-5 w-5" />
           <span className="ml-3">Settings</span>
         </Link>
-        <Link href="/dashboard/blogs" className={`sidebar-link ${isActive("/dashboard/blogs") ? "active" : ""}`}>
+        <Link href="/admin/dashboard/blogs" className={`sidebar-link ${isActive("/admin/dashboard/blogs") ? "active" : ""}`}>
           <FileText className="h-5 w-5" />
           <span className="ml-3">Blogs</span>
         </Link>
-        <Link href="/dashboard/packages" className={`sidebar-link ${isActive("/dashboard/packages") ? "active" : ""}`}>
+        <Link href="/admin/dashboard/packages" className={`sidebar-link ${isActive("/admin/dashboard/packages") ? "active" : ""}`}>
           <Package className="h-5 w-5" />
           <span className="ml-3">Packages</span>
         </Link>

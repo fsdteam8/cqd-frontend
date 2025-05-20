@@ -32,7 +32,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsLoading(false)
   }, [])
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string,) => {
     setIsLoading(true)
     try {
       // In a real app, you would make an API call here
@@ -48,7 +48,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       setUser(userData)
       localStorage.setItem("user", JSON.stringify(userData))
-      router.push("/dashboard")
+      router.push("/admin/dashboard")
     } catch (error) {
       console.error("Login failed:", error)
       throw error
@@ -60,7 +60,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = () => {
     setUser(null)
     localStorage.removeItem("user")
-    router.push("/login")
+    router.push("/admin/login")
   }
 
   return <AuthContext.Provider value={{ user, login, logout, isLoading }}>{children}</AuthContext.Provider>
