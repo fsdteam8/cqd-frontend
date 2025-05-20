@@ -51,7 +51,7 @@ const WwoWindow = () => {
               <div className="bg-gray-100 rounded-full py-3 px-6 text-center text-[#14213d] font-medium">
                 Eco-friendly cleaning solutions
               </div>
-              <div className="bg-gray-100 rounded-full py-3 px-6 text-center text-[#14213d] font-medium md:col-span-2">
+              <div className="bg-gray-100 rounded-full py-3 px-6 text-center text-[#14213d] font-medium">
                 Odor neutralization
               </div>
             </div>
