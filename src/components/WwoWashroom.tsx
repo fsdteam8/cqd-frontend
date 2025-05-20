@@ -8,7 +8,7 @@ const WwoWashroom = () => {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
           {/* Left side - Image */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
-            <div className="relative w-full aspect-[536/656] max-w-[536px] rounded-3xl overflow-hidden">
+            <div className="relative w-full aspect-[536/656] max-w-[536px]  overflow-hidden">
               <Image
                 src="/images/wsh1.png"
                 alt="Carpet cleaning with steam"
@@ -17,7 +17,7 @@ const WwoWashroom = () => {
                 style={{ objectFit: "cover" }}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
                 priority
-                className="rounded-3xl"
+                className=""
               />
             </div>
           </div>
