@@ -10,7 +10,7 @@ const WwoCarpet = () => {
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
             <div className="relative w-full aspect-[536/656] max-w-[536px] rounded-3xl overflow-hidden">
               <Image
-                src="/images/wc1.png"
+                src="/images/cc1.png"
                 alt="Carpet cleaning with steam"
                 fill
                 style={{ objectFit: "cover" }}
