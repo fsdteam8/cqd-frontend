@@ -14,7 +14,7 @@ export default function Footer() {
 
   return (
     <footer className=" w-full px-4 py-8 md:px-8 lg:px-12">
-      <div className="w-full container mx-auto bg-black text-white p-8 rounded-3xl mb-8">
+      <div className="w-full container mx-auto bg-[#0F2A5C] !text-white p-8 rounded-3xl mb-8">
         {/* Top section with logo and navigation */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
           <div className="mb-6 md:mb-0">
@@ -23,36 +23,44 @@ export default function Footer() {
             </Link>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-4 md:gap-8">
-            <Link href="/reviews" className="text-white hover:text-gray-300 transition-colors">
-              Reviews
-            </Link>
-            <Link href="#pricing" className="text-white hover:text-gray-300 transition-colors">
-              Pricing
-            </Link>
-            <Link href="/blog" className="text-white hover:text-gray-300 transition-colors">
-              Blog
-            </Link>
-            <Link href="/contact" className="text-white hover:text-gray-300 transition-colors">
-              Contact
-            </Link>
-            <Link
-              href="/quote"
-              className="bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200 transition-colors md:ml-4"
-            >
-              Request a Quote
-            </Link>
-          </div>
+          <div className="grid grid-cols-2 md:flex flex-col md:flex-row gap-4 md:gap-8">
+  <Link href="/reviews" className="text-white hover:text-gray-300 transition-colors">
+    Reviews
+  </Link>
+  <Link href="#pricing" className="text-white hover:text-gray-300 transition-colors">
+    Pricing
+  </Link>
+  <Link href="/blog" className="text-white hover:text-gray-300 transition-colors">
+    Blog
+  </Link>
+  <Link href="/contact" className="text-white hover:text-gray-300 transition-colors">
+    Contact
+  </Link>
+  <Link
+    href="/quote"
+    className="col-span-2 bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200 transition-colors md:ml-4"
+  >
+    Request a Quote
+  </Link>
+</div>
+
         </div>
 
         {/* Address and contact info */}
         <div className="mb-8">
-          <p className="text-sm mb-1">#### Dummy Avenue, Suite ###</p>
-          <p className="text-sm mb-6">Location, CA #####, UK</p>
+          <p className="text-sm mb-1 !text-white">#### Dummy Avenue, Suite ###</p>
+          <p className="text-sm mb-6 !text-white">Location, CA #####, UK</p>
 
-          <a
+     
+        </div>
+
+        {/* Bottom section with policies and social */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+       
+          <div>
+       <a
             href="mailto:example.email@gmail.com"
-            className="text-2xl md:text-3xl font-bold hover:text-gray-300 transition-colors"
+            className="text-lg md:text-3xl font-bold hover:text-gray-300 transition-colors"
           >
             example.email@gmail.com
           </a>
@@ -62,24 +70,10 @@ export default function Footer() {
               Book Now
             </Link>
           </div>
-        </div>
-
-        {/* Bottom section with policies and social */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 mb-6 md:mb-0">
-            <Link href="/cookie-policy" className="text-white hover:text-gray-300 transition-colors text-sm">
-              Cookie Policy
-            </Link>
-            <Link href="/privacy-policy" className="text-white hover:text-gray-300 transition-colors text-sm">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-white hover:text-gray-300 transition-colors text-sm">
-              Terms & Conditions
-            </Link>
-          </div>
+       </div>
 
           <div>
-            <p className="text-sm mb-2">Find Us On:</p>
+            <p className="text-xl mb-2 !text-white">Find Us On:</p>
             <div className="flex gap-4">
               <a
                 href="https://instagram.com"
@@ -114,8 +108,8 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 text-center text-xs text-gray-400">
-          <p>
+        <div className="mt-8 text-center text-xs ">
+          <p className="!text-white">
             {currentYear} - CQD Cleaning Services. All rights reserved. Website Design and SEO by Smoking Rocket{" "}
             <Link href="/privacy-policy" className="underline hover:text-white">
               View our Privacy Policy

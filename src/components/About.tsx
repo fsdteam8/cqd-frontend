@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const About = () => {
   return (
-    <section id="about" className="w-full min-h-screen flex items-center justify-center px-4">
-      <div className="container px-4 md:px-6">
+    <section id="about" className="w-full   flex items-center justify-center px-4 py-8">
+      <div className="container  px-4 md:px-6">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12 items-center">
     
           {/* Image container - responsive and properly sized */}
@@ -69,7 +69,7 @@ const About = () => {
 
             {/* CTA Button - centered on mobile, left-aligned on larger screens */}
             <div className="flex justify-center sm:justify-start mt-6">
-              <Link href="#pricing" className="px-8 py-3 text-base rounded-full bg-black text-white hover:bg-gray-800">
+              <Link href="#pricing" className="px-8 py-3 text-base rounded-full bg-[#0F2A5C] !text-white hover:bg-[#0F2A5C]/90">
                 Request a Quote
               </Link>
             </div>
