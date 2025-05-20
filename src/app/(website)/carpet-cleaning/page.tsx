@@ -2,6 +2,7 @@ import ContactSection from '@/components/Contact'
 import { HeroImage } from '@/components/HeroImage'
 import HighlightedLocations from '@/components/HighlightedLocations'
 import Review from '@/components/Review'
+import WwoCarpet from '@/components/WwoCarpet'
 import React from 'react'
 
 const page = () => {
@@ -14,7 +15,9 @@ const page = () => {
        imageAlt="Professional Carpet Cleaning"
       
       />
+      <WwoCarpet/>
        <HighlightedLocations />
+
             <Review />
             <ContactSection />
     </div>
