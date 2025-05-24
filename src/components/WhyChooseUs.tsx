@@ -5,15 +5,16 @@ import Link from "next/link";
 const WhyChooseUs = () => {
   return (
     <section>
-      <div className="container w-full mx-auto px-4 py-8 ">
+      <div className="container w-full mx-auto px-4 mt-10 lg:mt-0">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 min-h-[80vh]">
           {/* Left column - Text content */}
           <div className="space-y-6 max-w-4xl">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Why choose us
+            <h2 className="text-2xl md:text-5xl font-semibold tracking-wider">
+              <span className="block lg:mb-4 mb-2">Why You Should Choose</span>
+              <span className="block">CQD for Flexible Cleaning</span>
             </h2>
 
-            <p className="text-base md:text-lg text-gray-700">
+            <p className="text-base md:text-lg font-normal text-[#0F2A5C] text-justify">
               Lorem ipsum dolor sit amet consectetur. Turpis dignissim tortor
               tellus eget pulvinar risus tempor congue. Gravida tortor molestie
               cursus in elementum. Ultricies non est tincidunt quisque leo id
@@ -43,11 +44,14 @@ const WhyChooseUs = () => {
             <div className="pt-4 flex justify-center lg:justify-end">
               <Link
                 href="/#pricing"
-                className="rounded-full px-8 py-4 h-auto bg-[#0F2A5C] hover:bg-[#0F2A5C]/90 !text-white"
+                className="rounded-full px-8 py-4 h-auto text-base font-medium bg-[#0F2A5C] hover:bg-[#0F2A5C]/90 !text-white"
               >
-                Get Start 
-                <ArrowRight className="ml-2 h-4 w-4  inline-block" stroke="currentColor" fill="none" />
-
+                Get Start
+                <ArrowRight
+                  className="ml-2 h-4 w-4  inline-block"
+                  stroke="currentColor"
+                  fill="none"
+                />
               </Link>
             </div>
           </div>
@@ -113,9 +117,6 @@ const WhyChooseUs = () => {
               />
             </div>
           </div>
-
-
-          
         </div>
       </div>
     </section>
