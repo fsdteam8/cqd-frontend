@@ -37,9 +37,9 @@ export default function LoginPage() {
       <div className="w-1/2 bg-gray-200">
         <Image
           height={500}
+          alt="login background"
           width={500}
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/aleesa56_FO520E9548305_Work_on_progress_.png-GD8nzLsmymgWgVq6Dgb4rvohvZOAFU.jpeg"
-          alt="Cleaning Service"
+          src=""
           className="w-full h-full object-cover"
         />
       </div>
