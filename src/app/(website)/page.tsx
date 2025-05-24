@@ -4,6 +4,7 @@ import Contact from "@/components/Contact";
 import HeroVideo from "@/components/HeroVideo";
 import HighlightedLocations from "@/components/HighlightedLocations";
 import HowItWork from "@/components/HowItWork";
+import PricingSection from "@/components/Pricing/PricingSection";
 import Review from "@/components/Review";
 import TrustedPartners from "@/components/TrustedPartners";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -18,6 +19,7 @@ export default async function Home() {
       <WhyChooseUs />
       <HowItWork />
       <TrustedPartners />
+      <PricingSection/>
       <HighlightedLocations />
       <BlogCarousel posts={posts} />
       <Review />
