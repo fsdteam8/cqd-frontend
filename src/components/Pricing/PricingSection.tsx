@@ -69,25 +69,25 @@ export default function PricingSection() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div className="min-h-screen  py-8 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="flex justify-center mb-8">
+          {/* <div className="flex justify-center mb-8">
             <Image src="/logo.png" alt="CQD Logo" width={120} height={60} className="h-12 w-auto" />
-          </div>
+          </div> */}
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Subscription Plan</h1>
           <p className="text-lg text-gray-600">Choose the Package that Fits Your Needs</p>
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 ">
           {pricingPlans.map((plan) => (
             <Card
               key={plan.id}
-              className={`relative ${
+              className={`relative rounded-none rounded-tr-3xl rounded-bl-3xl ${
                 plan.highlighted
-                  ? "bg-blue-900 text-white border-blue-900 transform scale-105"
+                  ? "bg-[#0F2A5C] text-white border-blue-900 transform scale-105"
                   : "bg-white border-gray-200"
               } transition-all duration-300 hover:shadow-lg`}
             >
@@ -101,11 +101,11 @@ export default function PricingSection() {
                   >
                     {plan.price}
                   </span>
-                  <span className={`text-sm ml-2 ${plan.highlighted ? "text-blue-200" : "text-gray-500"}`}>
+                  <span className={`text-sm ml-2 ${plan.highlighted ? "!text-white" : "text-gray-500"}`}>
                     (EX VAT)
                   </span>
                 </div>
-                <p className={`text-sm mt-2 ${plan.highlighted ? "text-blue-200" : "text-gray-600"}`}>
+                <p className={`text-sm mt-2 ${plan.highlighted ? "!text-white" : "text-gray-600"}`}>
                   {plan.subtitle}
                 </p>
               </CardHeader>
@@ -114,8 +114,8 @@ export default function PricingSection() {
                 <Button
                   onClick={() => handleSelectPlan(plan.id)}
                   variant={plan.highlighted ? "secondary" : "outline"}
-                  className={`w-full py-3 ${
-                    plan.highlighted ? "bg-white text-blue-900 hover:bg-gray-100" : "border-gray-300 hover:bg-gray-50"
+                  className={`w-full py-5 text-xl ${
+                    plan.highlighted ? "bg-white text-blue-900 hover:bg-gray-100" : "border-[#0F2A5C] border-2 hover:bg-gray-50"
                   }`}
                 >
                   Continue
