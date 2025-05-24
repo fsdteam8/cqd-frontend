@@ -19,7 +19,7 @@ export default async function Home() {
       <HowItWork />
       <TrustedPartners />
       <HighlightedLocations />
-      <BlogCarousel posts={posts} />
+      <BlogCarousel posts={posts}  />
       <Review />
       <Contact />
       

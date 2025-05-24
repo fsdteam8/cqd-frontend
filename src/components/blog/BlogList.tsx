@@ -111,3 +111,4 @@ export default function BlogList({ initialPosts }: BlogListProps) {
     </div>
   );
 }
+
