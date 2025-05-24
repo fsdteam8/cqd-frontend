@@ -21,7 +21,7 @@ export default async function Home() {
       <TrustedPartners />
       <PricingSection/>
       <HighlightedLocations />
-      <BlogCarousel posts={posts} />
+      <BlogCarousel posts={posts}  />
       <Review />
       <Contact />
       

@@ -128,6 +128,8 @@ const blogPosts: BlogPost[] = [
   },
 ];
 
+
+
 export async function getBlogPosts(): Promise<BlogPost[]> {
   // In a real application, this would fetch from an API or database
   return blogPosts;

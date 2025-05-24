@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -17,6 +18,8 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visiblePosts, setVisiblePosts] = useState(4);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+
 
   // Determine how many posts to show based on screen size
   useEffect(() => {
@@ -144,3 +147,4 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
     </div>
   );
 }
+
