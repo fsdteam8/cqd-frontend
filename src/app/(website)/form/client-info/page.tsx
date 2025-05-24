@@ -92,16 +92,16 @@ export default function ClientInfoPage() {
           {/* Progress Steps */}
           <div className="flex items-center justify-center mb-8">
             <div className="flex items-center space-x-4">
-              <div className="flex flex-col items-center">
-                <div className="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center">
+              <div className="flex flex-col  items-center">
+                <div className="w-12 h-12 bg-gray-500 rounded-full flex items-center justify-center">
                   <FileText className="w-5 h-5 text-white" />
                 </div>
-                <span className="ml-2 text-sm font-medium text-blue-900">Client Info</span>
+                <span className="ml-2 text-sm font-medium text-gray-500">Client Info</span>
               </div>
 
               <div className="w-[200px] h-1 bg-gray-300"></div>
 
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col  items-center">
                 <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
                   <MapPin className="w-5 h-5 text-gray-500" />
                 </div>
