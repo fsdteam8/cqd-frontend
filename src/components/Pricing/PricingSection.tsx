@@ -1,6 +1,5 @@
 "use client"
 import { useRouter } from "next/navigation"
-import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Check } from "lucide-react"
