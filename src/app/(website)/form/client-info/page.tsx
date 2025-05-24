@@ -87,21 +87,21 @@ export default function ClientInfoPage() {
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <Image src="/logo.png" alt="CQD Logo" width={120} height={60} className="h-12 w-auto mx-auto mb-8" />
+          <Image src="/images/logo.png" alt="CQD Logo" width={120} height={60} className="h-12 w-auto mx-auto mb-8" />
 
           {/* Progress Steps */}
           <div className="flex items-center justify-center mb-8">
             <div className="flex items-center space-x-4">
-              <div className="flex items-center">
+              <div className="flex flex-col items-center">
                 <div className="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center">
                   <FileText className="w-5 h-5 text-white" />
                 </div>
                 <span className="ml-2 text-sm font-medium text-blue-900">Client Info</span>
               </div>
 
-              <div className="w-16 h-1 bg-gray-300"></div>
+              <div className="w-[200px] h-1 bg-gray-300"></div>
 
-              <div className="flex items-center">
+              <div className="flex flex-col items-center">
                 <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
                   <MapPin className="w-5 h-5 text-gray-500" />
                 </div>
