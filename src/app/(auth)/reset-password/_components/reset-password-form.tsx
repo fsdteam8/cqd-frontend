@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -30,11 +30,11 @@ const passwordSchema = z
         message: "Password must contain at least one lowercase letter",
       })
       .regex(/[0-9]/, { message: "Password must contain at least one number" }),
-    confirmPassword: z.string(),
+    password_confirmation: z.string(),
   })
-  .refine((data) => data.password === data.confirmPassword, {
+  .refine((data) => data.password === data.password_confirmation, {
     message: "Passwords do not match",
-    path: ["confirmPassword"],
+    path: ["password_confirmation"],
   });
 
 type PasswordFormValues = z.infer<typeof passwordSchema>;
@@ -45,30 +45,41 @@ export default function ResetPasswordForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get("email");
+  const token = searchParams.get("token");
   const decodedEmail = decodeURIComponent(email || "");
+  const decodedToken = decodeURIComponent(token || "");
+
+  useEffect(() => {
+    if (!decodedEmail || !decodedToken) {
+      toast.error("Invalid or expired link. Please try again.");
+      router.push(`/forgot-password`);
+    }
+  }, [decodedEmail, decodedToken, router]);
 
   // Initialize form with React Hook Form and Zod validation
   const form = useForm<PasswordFormValues>({
     resolver: zodResolver(passwordSchema),
     defaultValues: {
       password: "",
-      confirmPassword: "",
+      password_confirmation: "",
     },
   });
 
   const { mutate, isPending } = useMutation({
     mutationKey: ["reset-password"],
-    mutationFn: (values: { newPassword: string; email: string }) =>
-      fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/reset-password`,
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(values),
-        }
-      ).then((res) => res.json()),
+    mutationFn: (values: {
+      password: string;
+      password_confirmation: string;
+      token: string;
+      email: string;
+    }) =>
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/password/reset`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(values),
+      }).then((res) => res.json()),
     onSuccess: (data) => {
       if (!data?.status) {
         toast.error(data?.message || "Something went wrong");
@@ -83,11 +94,12 @@ export default function ResetPasswordForm() {
   // Form submission handler
   async function onSubmit(values: PasswordFormValues) {
     console.log(values);
-    if (!decodedEmail) {
-      toast.error("email is required");
-      return;
-    }
-    mutate({ newPassword: values.password, email: decodedEmail });
+    mutate({
+      password: values.password,
+      password_confirmation: values.password_confirmation,
+      token: decodedToken,
+      email: decodedEmail,
+    });
   }
 
   return (
@@ -134,7 +146,7 @@ export default function ResetPasswordForm() {
           {/* Confirm Password Field */}
           <FormField
             control={form.control}
-            name="confirmPassword"
+            name="password_confirmation"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
@@ -169,7 +181,7 @@ export default function ResetPasswordForm() {
           {/* Continue Button */}
           <button
             type="submit"
-            className="w-full h-[52px] bg-[#0E2A5C] rounded-[8px] py-[15px] px-[181px] text-lg font-semibold font-poppins leading-[120%] tracking-[0%] text-[#F4F4F4]"
+            className="w-full h-[52px] bg-[#0E2A5C] rounded-[8px] py-[15px] px-[161px] text-lg font-semibold font-poppins leading-[120%] tracking-[0%] text-[#F4F4F4]"
             disabled={isPending}
           >
             {isPending ? "Loading..." : "Continue"}
