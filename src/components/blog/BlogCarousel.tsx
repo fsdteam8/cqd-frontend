@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { BlogPost } from "@/lib/types";
+import {  Blog } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
@@ -11,13 +11,18 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 interface BlogCarouselProps {
-  posts: BlogPost[];
+  posts: Blog[];
 }
+
+
+
 
 export default function BlogCarousel({ posts }: BlogCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visiblePosts, setVisiblePosts] = useState(4);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  console.log(posts)
 
 
 
@@ -72,7 +77,7 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
         className="flex overflow-x-auto gap-4 pb-6 snap-x snap-mandatory scrollbar-hide"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        {posts.map((post) => (
+        {posts?.map((post) => (
           <div
             key={post.id}
             className={`flex-shrink-0 snap-start transition-all duration-300`}
@@ -86,8 +91,8 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
               <Link href={`/blog/${post.slug}`} className="overflow-hidden">
                 <div className="relative h-[200px] w-full">
                   <Image
-                    src={post.coverImage || "/placeholder.svg"}
-                    alt={post.title}
+                    src={post?.image || "/placeholder.svg"}
+                    alt={post?.title}
                     fill
                     className="object-cover transition-transform hover:scale-105 duration-300"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -95,14 +100,14 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
                 </div>
               </Link>
               <CardContent className="flex-grow pt-4">
-                <Link href={`/blog/${post.slug}`} className="hover:underline">
+                <Link href={`/blog/${post?.slug}`} className="hover:underline">
                   <h3 className="font-semibold text-lg mb-2 line-clamp-2">
                     {post.title}
                   </h3>
                 </Link>
-                <p className="text-sm text-gray-500 line-clamp-3">
+                {/* <p className="text-sm text-gray-500 line-clamp-3">
                   {post.excerpt}
-                </p>
+                </p> */}
               </CardContent>
               <CardFooter className="pt-0">
                 <Link href={`/blog/${post.slug}`} className="w-full">

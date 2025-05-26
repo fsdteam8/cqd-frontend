@@ -78,7 +78,7 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
         setPreviewImage(blog.image)
         setIsLoading(false)
       } else {
-        router.push("/dashboard/blogs")
+        router.push("/admin/dashboard/blogs")
       }
     }, 800)
 
