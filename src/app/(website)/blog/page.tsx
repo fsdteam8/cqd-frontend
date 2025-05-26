@@ -1,9 +1,9 @@
 // import BlogList from "@/components/blog-list";
 // import BlogSearch from "@/components/blog-search";
-import BlogList from "@/components/blog/BlogList";
+// import BlogList from "@/components/blog/BlogList";
 import BlogSearch from "@/components/blog/BlogSearch";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getBlogPosts } from "@/lib/data";
+// import { getBlogPosts } from "@/lib/data";
 import { Suspense } from "react";
 
 export const metadata = {
@@ -12,8 +12,11 @@ export const metadata = {
     "Browse our collection of articles, tips, and news about cleaning services and home maintenance.",
 };
 
+
+
+
 export default async function BlogPage() {
-  const posts = await getBlogPosts();
+  // const posts = await getBlogPosts();
 
   return (
     <main className="min-h-screen py-12">
@@ -31,10 +34,10 @@ export default async function BlogPage() {
             <BlogSearch />
           </Suspense>
         </div>
-
+{/* 
         <Suspense fallback={<div>Loading blog posts...</div>}>
           <BlogList initialPosts={posts} />
-        </Suspense>
+        </Suspense> */}
       </div>
     </main>
   );
