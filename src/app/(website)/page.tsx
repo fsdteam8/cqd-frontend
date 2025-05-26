@@ -1,5 +1,5 @@
 import About from "@/components/About";
-import BlogCarousel from "@/components/blog/BlogCarousel";
+// import BlogCarousel from "@/components/blog/BlogCarousel";
 import Contact from "@/components/Contact";
 import HeroVideo from "@/components/HeroVideo";
 import HighlightedLocations from "@/components/HighlightedLocations";
@@ -8,10 +8,11 @@ import PricingSection from "@/components/Pricing/PricingSection";
 import Review from "@/components/Review";
 import TrustedPartners from "@/components/TrustedPartners";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import { getBlogPosts } from "@/lib/data";
+import BlogPage from "./blog/page";
+// import { getBlogPosts } from "@/lib/data";
 
 export default async function Home() {
-  const posts = await getBlogPosts();
+  // const posts = await getBlogPosts();
   return (
     <div className="w-full mx-auto">
       <HeroVideo />
@@ -19,12 +20,12 @@ export default async function Home() {
       <WhyChooseUs />
       <HowItWork />
       <TrustedPartners />
-      <PricingSection/>
+      <PricingSection />
       <HighlightedLocations />
-      <BlogCarousel posts={posts}  />
+      {/* <BlogCarousel posts={posts}  /> */}
+      <BlogPage />
       <Review />
       <Contact />
-      
     </div>
   );
 }
