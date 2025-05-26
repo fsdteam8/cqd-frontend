@@ -3,9 +3,9 @@
 import type { ReactNode } from "react"
 import { Sidebar } from "./sidebar"
 import { Header } from "./header"
-import { useAuth } from "@/contexts/auth-context"
-import { useRouter } from "next/navigation"
-import { useEffect } from "react"
+// import { useAuth } from "@/contexts/auth-context"
+// import { useRouter } from "next/navigation"
+// import { useEffect } from "react"
 
 export function DashboardLayout({
   children,
@@ -14,22 +14,22 @@ export function DashboardLayout({
   children: ReactNode
   title: string
 }) {
-  const { user, isLoading } = useAuth()
-  const router = useRouter()
+  // const { user, isLoading } = useAuth()
+  // const router = useRouter()
 
-  useEffect(() => {
-    if (!isLoading && !user) {
-      router.push("/admin/login")
-    }
-  }, [user, isLoading, router])
+  // useEffect(() => {
+  //   if (!isLoading && !user) {
+  //     router.push("/admin/login")
+  //   }
+  // }, [user, isLoading, router])
 
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>
+  // }
 
-  if (!user) {
-    return null
-  }
+  // if (!user) {
+  //   return null
+  // }
 
   return (
     <div className="flex h-screen overflow-hidden">
