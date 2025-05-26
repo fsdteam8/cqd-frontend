@@ -1,5 +1,7 @@
 "use client";
 
+import type React from "react";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
@@ -7,27 +9,25 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DashboardLayout } from "@/components/dashboard-layout";
 import { RichTextEditor } from "@/components/rich-text-editor";
-import {  Plus, X } from "lucide-react";
+import { Plus, X, Upload, ImagePlus } from "lucide-react";
 import Image from "next/image";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 
 const formSchema = z.object({
   title: z.string().min(1, "Title is required"),
   content: z.string().min(1, "Content is required"),
   metaTitle: z.string().optional(),
   metaDescription: z.string().optional(),
-  keywords: z.string().optional(),
-  tags: z.array(z.string()).optional(),
+  tags: z.array(z.string()).min(1, "At least one tag is required"),
+  keywords: z.array(z.string()).min(1, "At least one keyword is required"),
   image: z.any().optional(),
 });
 
@@ -36,9 +36,13 @@ type BlogFormValues = z.infer<typeof formSchema>;
 export default function AddBlogPage() {
   const router = useRouter();
   const [tags, setTags] = useState<string[]>([]);
+  const [keywords, setKeywords] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState("");
+  const [keywordsInput, setKeywordsInput] = useState("");
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDragOver, setIsDragOver] = useState(false);
+
   const form = useForm<BlogFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -46,8 +50,8 @@ export default function AddBlogPage() {
       content: "",
       metaTitle: "",
       metaDescription: "",
-      keywords: "",
       tags: [],
+      keywords: [],
       image: undefined,
     },
   });
@@ -60,8 +64,8 @@ export default function AddBlogPage() {
     formData.append("content", data.content);
     formData.append("metaTitle", data.metaTitle || "");
     formData.append("metaDescription", data.metaDescription || "");
-    formData.append("keywords", data.keywords || "");
     formData.append("tags", JSON.stringify(tags));
+    formData.append("keywords", JSON.stringify(keywords));
 
     if (data.image && data.image[0]) {
       formData.append("image", data.image[0]);
@@ -71,6 +75,7 @@ export default function AddBlogPage() {
     console.log({
       ...data,
       tags,
+      keywords,
       image: data.image?.[0]?.name || "No image selected",
     });
 
@@ -80,11 +85,14 @@ export default function AddBlogPage() {
     }, 1000);
   };
 
+  // tags
   const handleAddTag = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && tagInput.trim()) {
       e.preventDefault();
       if (!tags.includes(tagInput.trim())) {
-        setTags([...tags, tagInput.trim()]);
+        const newTags = [...tags, tagInput.trim()];
+        setTags(newTags);
+        form.setValue("tags", newTags);
       }
       setTagInput("");
     }
@@ -94,35 +102,76 @@ export default function AddBlogPage() {
     setTags(tags.filter((tag) => tag !== tagToRemove));
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      // const reader = new FileReader();
-      // reader.onload = () => {
-      //   setPreviewImage(reader.result as string);
-      // };
-      // reader.readAsDataURL(file);
+  // keywords
+  const handleAddKeyword = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && keywordsInput.trim()) {
+      e.preventDefault();
+      if (!keywords.includes(keywordsInput.trim())) {
+        const newKeywords = [...keywords, keywordsInput.trim()];
+        setKeywords(newKeywords);
+        form.setValue("keywords", newKeywords);
+      }
+      setKeywordsInput("");
     }
+  };
+
+  const handleRemoveKeyword = (keywordToRemove: string) => {
+    setKeywords(keywords.filter((keyword) => keyword !== keywordToRemove));
+  };
+
+  const handleImageChange = (file: File) => {
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setPreviewImage(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+      form.setValue("image", [file]);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(false);
+    const files = e.dataTransfer.files;
+    if (files.length > 0 && files[0].type.startsWith("image/")) {
+      handleImageChange(files[0]);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(false);
   };
 
   return (
     <DashboardLayout title="Add New Blog">
       <div className="">
-        <h2 className="text-[#0E2A5C] text-2xl font-medium leading-[120%] tracking-[0%] pb-[33px]">Add New Blogs</h2>
+        <h2 className="text-[#0E2A5C] text-2xl font-medium leading-[120%] tracking-[0%] pb-[33px]">
+          Add New Blogs
+        </h2>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <div className="lg:col-span-2 space-y-6">
-                <div className="dashboard-card p-6">
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-[30px]">
+              <div className="lg:col-span-2">
+                <div className="pb-[30px] ">
                   <FormField
                     control={form.control}
                     name="title"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Blog Title</FormLabel>
+                        <FormLabel className="text-sm text-[#0E2A5C] font-medium leading-[120%] tracking-[0%]">
+                          Add Title
+                        </FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="Enter a descriptive title..."
+                            className="h-[50px] w-full text-sm font-medium leading-[120%] tracking-[0%] text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none p-4 mt-2"
+                            placeholder="Add your title..."
                             {...field}
                           />
                         </FormControl>
@@ -132,127 +181,136 @@ export default function AddBlogPage() {
                   />
                 </div>
 
-                <div className="dashboard-card p-6">
+                <div className=" ">
                   <FormField
                     control={form.control}
                     name="content"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Content</FormLabel>
+                        <FormLabel className="text-sm text-[#0E2A5C] font-medium leading-[120%] tracking-[0%]">
+                          Content
+                        </FormLabel>
                         <FormControl>
                           <RichTextEditor
                             content={field.value}
                             onChange={field.onChange}
-                            placeholder="Start writing your blog content here..."
+                            placeholder="Description...."
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                </div>
-
-                <div className="dashboard-card p-6">
-                  <h3 className="text-lg font-medium mb-4">SEO Settings</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="metaTitle"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Meta Title</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Meta Title" {...field} />
-                          </FormControl>
-                          <FormDescription>
-                            {field.value?.length || 0}/60 characters recommended
-                          </FormDescription>
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="metaDescription"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Meta Description</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Meta Description" {...field} />
-                          </FormControl>
-                          <FormDescription>
-                            {field.value?.length || 0}/160 characters
-                            recommended
-                          </FormDescription>
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="keywords"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Keywords</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Keywords (comma separated)"
-                              {...field}
-                            />
-                          </FormControl>
-                        </FormItem>
-                      )}
-                    />
-                  </div>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <div className="dashboard-card p-6">
+              <div className="">
+                <div className="border border-[#B6B6B6] rounded-[8px] p-[15px]">
                   <FormField
                     control={form.control}
                     name="image"
-                    render={({ field }) => (
+                    render={() => (
                       <FormItem>
-                        <FormLabel>Featured Image</FormLabel>
+                        <FormLabel className="text-sm text-[#0E2A5C] font-medium leading-[120%] tracking-[0%] mb-3 block">
+                          Thumbnail
+                        </FormLabel>
                         <FormControl>
-                          <Input
-                            type="file"
-                            accept="image/*"
-                            onChange={(e) => {
-                              field.onChange(e.target.files);
-                              handleImageChange(e);
-                            }}
-                          />
+                          <div className="relative">
+                            {!previewImage ? (
+                              <div
+                                className={`
+                                  h-[300px] border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors
+                                  ${
+                                    isDragOver
+                                      ? "border-blue-400 bg-blue-50"
+                                      : "border-gray-300 hover:border-gray-400"
+                                  }
+                                `}
+                                onDrop={handleDrop}
+                                onDragOver={handleDragOver}
+                                onDragLeave={handleDragLeave}
+                                onClick={() =>
+                                  document
+                                    .getElementById("image-upload")
+                                    ?.click()
+                                }
+                              >
+                                <div className="h-full flex flex-col items-center justify-center space-y-3">
+                                  <div className="">
+                                    <ImagePlus className="w-[38px] h-[38px] text-gray-400 " />
+                                  </div>
+                                </div>
+                                <input
+                                  id="image-upload"
+                                  type="file"
+                                  accept="image/*"
+                                  className="hidden"
+                                  onChange={(e) => {
+                                    const file = e.target.files?.[0];
+                                    if (file) {
+                                      handleImageChange(file);
+                                    }
+                                  }}
+                                />
+                              </div>
+                            ) : (
+                              <div className="relative">
+                                <Image
+                                  width={292}
+                                  height={277}
+                                  src={previewImage || "/placeholder.svg"}
+                                  alt="Preview"
+                                  className="w-full h-[300px] object-cover rounded-lg border-2 border-dashed border-gray-300"
+                                />
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setPreviewImage(null);
+                                    form.setValue("image", undefined);
+                                  }}
+                                  className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md hover:bg-gray-50"
+                                >
+                                  <X className="h-4 w-4 text-gray-600" />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    document
+                                      .getElementById("image-upload")
+                                      ?.click()
+                                  }
+                                  className="absolute bottom-2 right-2 bg-white rounded-full p-2 shadow-md hover:bg-gray-50"
+                                >
+                                  <Upload className="h-4 w-4 text-gray-600" />
+                                </button>
+                                <input
+                                  id="image-upload"
+                                  type="file"
+                                  accept="image/*"
+                                  className="hidden"
+                                  onChange={(e) => {
+                                    const file = e.target.files?.[0];
+                                    if (file) {
+                                      handleImageChange(file);
+                                    }
+                                  }}
+                                />
+                              </div>
+                            )}
+                          </div>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  {previewImage && (
-                    <div className="mt-4 relative">
-                      <Image
-                        width={300}
-                        height={200}
-                        src={previewImage}
-                        alt="Preview"
-                        className="w-full h-48 object-cover rounded-md"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setPreviewImage(null);
-                          form.setValue("image", undefined);
-                        }}
-                        className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md"
-                      >
-                        <X className="h-4 w-4" />
-                      </button>
-                    </div>
-                  )}
                 </div>
 
-                <div className="dashboard-card p-6">
-                  <FormLabel>Tags</FormLabel>
-                  <div className="flex flex-wrap gap-2 mb-3">
+                <div className="pt-[30px]">
+                  <FormLabel className="text-sm text-[#0E2A5C] font-medium leading-[120%] tracking-[0%]">
+                    Add Tags
+                  </FormLabel>
+
+                  <div className="flex flex-wrap gap-2 my-2">
                     {tags.map((tag) => (
                       <div
                         key={tag}
@@ -271,8 +329,9 @@ export default function AddBlogPage() {
                   </div>
                   <div className="relative">
                     <Input
+                      className="h-[50px] w-full text-sm font-medium leading-[120%] tracking-[0%] text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none p-4"
                       type="text"
-                      placeholder="Add a tag and press Enter"
+                      placeholder="Add your tags..."
                       value={tagInput}
                       onChange={(e) => setTagInput(e.target.value)}
                       onKeyDown={handleAddTag}
@@ -293,22 +352,108 @@ export default function AddBlogPage() {
                       <Plus className="h-5 w-5" />
                     </button>
                   </div>
-                  <FormDescription>Press Enter to add a tag</FormDescription>
                 </div>
               </div>
             </div>
 
-            <div className="flex justify-end gap-3">
-              <Button
-                type="button"
-                variant="secondary"
-                onClick={() => router.push("/admin/dashboard/blogs")}
+            <div className="pt-[30px]">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px]">
+                <FormField
+                  control={form.control}
+                  name="metaTitle"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm text-[#0E2A5C] font-medium leading-[120%] tracking-[0%]">
+                        Meta Title
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Meta Title"
+                          {...field}
+                          className="h-[45px] w-full text-sm font-medium leading-[120%] tracking-[0%] text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none px-4 py-[14px] mt-2"
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="metaDescription"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm text-[#0E2A5C] font-medium leading-[120%] tracking-[0%]">
+                        Meta Description
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Meta Description"
+                          {...field}
+                          className="h-[45px] w-full text-sm font-medium leading-[120%] tracking-[0%] text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none px-4 py-[14px] mt-2"
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+
+                <div className=" -mt-[10px]">
+                  <FormLabel className="text-sm text-[#0E2A5C] font-medium leading-[120%] tracking-[0%]">
+                    Keywords
+                  </FormLabel>
+
+                  <div className="flex flex-wrap gap-2 my-2">
+                    {keywords.map((keyword) => (
+                      <div
+                        key={keyword}
+                        className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm flex items-center"
+                      >
+                        {keyword}
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveKeyword(keyword)}
+                          className="ml-2 text-gray-500 hover:text-gray-700"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="relative">
+                    <Input
+                      className="h-[45px] w-full text-sm font-medium leading-[120%] tracking-[0%] text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none px-4 py-[14px]"
+                      type="text"
+                      placeholder="Keywords"
+                      value={keywordsInput}
+                      onChange={(e) => setKeywordsInput(e.target.value)}
+                      onKeyDown={handleAddKeyword}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (
+                          keywordsInput.trim() &&
+                          !keywords.includes(keywordsInput.trim())
+                        ) {
+                          setKeywords([...keywords, keywordsInput.trim()]);
+                          setKeywordsInput("");
+                        }
+                      }}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    >
+                      <Plus className="h-5 w-5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-end mt-[30px] mb-[208px]">
+              <button
+                className="text-xl font-medium leading-[120%] tracking-[0%] text-[#F4F4F4] py-[13px] px-[26px] rounded-[8px] bg-[#0E2A5C]"
+                type="submit"
+                disabled={isSubmitting}
               >
-                Cancel
-              </Button>
-              <Button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? "Publishing..." : "Publish Blog"}
-              </Button>
+              </button>
             </div>
           </form>
         </Form>
