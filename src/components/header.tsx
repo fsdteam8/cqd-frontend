@@ -1,12 +1,15 @@
 "use client"
 
-import { useAuth } from "@/contexts/auth-context"
 import { ChevronRight } from "lucide-react"
 import { usePathname } from "next/navigation"
 
 export function Header({ title }: { title: string }) {
-  const { user } = useAuth()
   const pathname = usePathname()
+
+  const user = {
+    name: "John Doe",
+    role: "Admin",
+  }
 
   // Generate breadcrumbs
   const generateBreadcrumbs = () => {

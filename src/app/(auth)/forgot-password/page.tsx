@@ -1,0 +1,46 @@
+import Image from "next/image";
+import { ForgotPasswordForm } from "./_components/forgot-password-form";
+
+export default function ForgotPasswordPage() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 ">
+      {/* Left side - Image */}
+      <div className="hidden md:block md:col-span-1">
+        <Image
+          src="/images/auth_sidebar.jpg"
+          alt="auth sidebar"
+          width={720}
+          height={1024}
+          className="w-full h-screen object-cover"
+        />
+      </div>
+
+      {/* Right side - form */}
+      <div className="md:col-span-1 h-full flex flex-col items-center justify-center">
+        <Image
+          src="/images/auth__logo.png"
+          width={115}
+          height={40}
+          alt="Logo"
+          className="w-[115px] h-[40px] rounded-full"
+        />
+        <div className="mx-auto w-full max-w-md mt-[60px]">
+          {/* Logo */}
+
+          {/* form text */}
+          <div className="text-center pb-[56px]">
+            <h1 className="text-[#0E2A5C] font-poppins font-semibold text-[32px] leading-[120%] tracking-[0%] pb-2">
+              Reset password
+            </h1>
+            <p className="text-base font-poppins font-normal leading-[150%] tracking-[0%] text-black">
+              Enter your email to receive the OTP
+            </p>
+          </div>
+
+          {/* forgot password form component */}
+          <ForgotPasswordForm />
+        </div>
+      </div>
+    </div>
+  );
+}
