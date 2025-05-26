@@ -5,8 +5,14 @@ import React from "react";
 import { BlogApiResponse } from "./BlogDataType";
 import BlogCart from "./BlogCart";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 const BlogContainer = () => {
+
+  const sesstion = useSession();
+  const token = (sesstion?.data?.user as { token: string })?.token;
+  console.log("Session Token:", token);
+  
   const { data, isLoading, isError } = useQuery<BlogApiResponse>({
     queryKey: ["blog-data"],
     queryFn: () =>
