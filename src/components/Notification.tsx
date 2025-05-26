@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { AlertTriangle, Loader2, Check, ChevronLeft, ChevronRight } from "lucide-react"
+import { useSession } from "next-auth/react"
 
 interface NotificationData {
   id: number
@@ -36,8 +37,11 @@ interface MarkAsReadResponse {
 }
 
 const Notification = () => {
-  const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2NvcS5zY2FsZXVwZGV2YWdlbmN5LmNvbS9hcGkvbG9naW4iLCJpYXQiOjE3NDgyNTQ0NDgsImV4cCI6MTc0ODI1ODA0OCwibmJmIjoxNzQ4MjU0NDQ4LCJqdGkiOiJGRUlIWHV5M3lwM1JtdTdtIiwic3ViIjoiMTYiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.cwgnh3pk4B0ip7i0HQ7FoKDrtkSkvA5QTylrEMutY4A"
+
+    const session = useSession();
+    const token = (session?.data?.user as { token: string })?.token;
+    console.log(token)
+
 
   const queryClient = useQueryClient()
 
@@ -70,6 +74,8 @@ const Notification = () => {
     staleTime: 30 * 1000, // 30 seconds
     refetchInterval: 60 * 1000, // Refetch every minute
   })
+
+  console.log("API Response:", apiResponse?.data)
 
   // Mark as read mutation
   const markAsReadMutation = useMutation({
