@@ -5,14 +5,14 @@ import type React from "react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { DashboardLayout } from "@/components/dashboard-layout"
-import { RichTextEditor } from "@/components/rich-text-editor"
+// import { RichTextEditor } from "@/components/rich-text-editor"
 import { ImageIcon, Plus, X } from "lucide-react"
 import Image from "next/image"
 
 export default function AddBlogPage() {
   const router = useRouter()
   const [title, setTitle] = useState("")
-  const [content, setContent] = useState("")
+  // const [content, setContent] = useState("")
   const [metaTitle, setMetaTitle] = useState("")
   const [metaDescription, setMetaDescription] = useState("")
   const [keywords, setKeywords] = useState("")
@@ -29,14 +29,14 @@ export default function AddBlogPage() {
       // In a real app, you would submit the form data to your API
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      console.log({
-        title,
-        content,
-        metaTitle,
-        metaDescription,
-        keywords,
-        tags,
-      })
+      // console.log({
+      //   title,
+      //   content,
+      //   metaTitle,
+      //   metaDescription,
+      //   keywords,
+      //   tags,
+      // })
 
       // Redirect back to blogs page
       router.push("/admin/dashboard/blogs")
@@ -92,11 +92,11 @@ export default function AddBlogPage() {
 
               <div className="dashboard-card p-6">
                 <label className="form-label">Content</label>
-                <RichTextEditor
+                {/* <RichTextEditor
                   content={content}
                   onChange={setContent}
                   placeholder="Start writing your blog content here..."
-                />
+                /> */}
               </div>
 
               <div className="dashboard-card p-6">
