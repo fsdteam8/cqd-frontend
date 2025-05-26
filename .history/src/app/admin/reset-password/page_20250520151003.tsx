@@ -34,17 +34,19 @@ export default function ResetPasswordPage() {
 
     setIsLoading(false)
     // Redirect to login page
-    window.location.href = "/login"
+    
   }
 
   return (
     <div className="flex h-screen">
       <div className="w-1/2 bg-gray-200">
-        <IMage
+        {/* <Image
           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/aleesa56_FO520E9548305_Work_on_progress_.png-M7x4dTHp8fVIPWu8cH9yk0QRlW0xIi.jpeg"
           alt="Cleaning Service"
           className="w-full h-full object-cover"
-        />
+          width={500}
+          height={500}
+        /> */}
       </div>
       <div className="w-1/2 flex flex-col items-center justify-center p-12">
         <div className="w-full max-w-md">
