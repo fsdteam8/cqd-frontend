@@ -20,7 +20,7 @@ const HowItWork = () => {
       title: "Find Local Clients",
       subtitle: "Easily connect with nearby businesses to share subscriptions.",
       description:
-        "Lorem ipsum dolor sit amet consectetur. Turpis dignissim tortor tellus eget pulvinar risus tempor congue. Gravida tortor molestie cursus in elementum. Ultricies non est tincidunt quisque leo id suspendisse ut eget.",
+        "Partner with local offices, retailers, and property managers. Offer reliable, efficient CQD cleaning services. Grow your network and share recurring service subscriptions with ease.",
       badges: [
         "Local Networking",
         "Business Connections",
@@ -28,17 +28,31 @@ const HowItWork = () => {
       ],
     },
     {
-      title: "Share Subscriptions",
+      title: " Matching Radius",
       subtitle: "Split costs and maximize value with subscription sharing.",
       description:
-        "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua.",
+        "CQD Cleaning Services ensures prompt, professional cleaning within your local radius. Our team is strategically dispatched for fast, efficient service—keeping your space spotless, wherever you are.",
       badges: ["Cost Splitting", "Value Maximization", "Shared Access"],
     },
     {
-      title: "Manage Payments",
+      title: "Instant Notifications",
       subtitle: "Hassle-free payment tracking and management.",
       description:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Stay updated in real time with CQD Cleaning Services. From appointment confirmations to service completion alerts, we keep you informed every step of the way—fast, reliable, and hassle-free.",
+      badges: ["Payment Tracking", "Automated Billing", "Secure Transactions"],
+    },
+    {
+      title: "Streamlined Coordination",
+      subtitle: "Hassle-free payment tracking and management.",
+      description:
+        " Effortless scheduling with CQD Cleaning Services. Our streamlined system ensures your cleaning teams, timelines, and updates align smoothly—saving you time while delivering spotless, professional results every visit.",
+      badges: ["Payment Tracking", "Automated Billing", "Secure Transactions"],
+    },
+    {
+      title: "Automatic Detection",
+      subtitle: "Hassle-free payment tracking and management.",
+      description:
+        " Automatic detection technology identifies potential clients seeking cleaning solutions and instantly connects them with our expert CQD Cleaning Services team, ensuring prompt, personalized service tailored to every customer’s unique needs.",
       badges: ["Payment Tracking", "Automated Billing", "Secure Transactions"],
     },
   ];
