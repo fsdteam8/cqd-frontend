@@ -10,6 +10,7 @@ import { PencilLine, Trash } from "lucide-react";
 import moment from "moment";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -172,13 +173,16 @@ const BlogContainer = () => {
                 </td>
                 <td className="">
                   <div className="w-full flex items-center justify-center gap-[10px]">
-                    <button
-                      type="button"
-                      className="p-1 hover:bg-gray-100 rounded transition-colors"
-                      aria-label={`Edit ${blog.title}`}
-                    >
-                      <PencilLine className="text-[#0E2A5C]" size={18} />
-                    </button>
+                    <Link href={`/admin/dashboard/blogs/edit/${blog.id}`}>
+                      <button
+                        type="button"
+                        className="p-1 hover:bg-gray-100 rounded transition-colors"
+                        aria-label={`Edit ${blog.title}`}
+                      >
+                        <PencilLine className="text-[#0E2A5C]" size={18} />
+                      </button>
+                    </Link>
+
                     <button
                       type="button"
                       onClick={() => {
