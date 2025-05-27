@@ -1,4 +1,3 @@
-
 "use client";
 
 import type React from "react";
@@ -69,7 +68,7 @@ export default function AddBlogPage() {
       fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
         body: formData,
       }).then((res) => res.json()),
@@ -234,7 +233,7 @@ export default function AddBlogPage() {
                             {!previewImage ? (
                               <div
                                 className={`
-                                  h-[300px] border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors
+                                  h-[310px] border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors
                                   ${
                                     isDragOver
                                       ? "border-blue-400 bg-blue-50"
@@ -275,7 +274,7 @@ export default function AddBlogPage() {
                                   height={277}
                                   src={previewImage || "/placeholder.svg"}
                                   alt="Preview"
-                                  className="w-full h-[300px] object-cover rounded-lg border-2 border-dashed border-gray-300"
+                                  className="w-full h-[310px] object-cover rounded-lg border-2 border-dashed border-gray-300"
                                 />
                                 <button
                                   type="button"
@@ -325,26 +324,9 @@ export default function AddBlogPage() {
                     Add Tags
                   </FormLabel>
 
-                  <div className="flex flex-wrap gap-2 my-2">
-                    {tags.map((tag) => (
-                      <div
-                        key={tag}
-                        className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm flex items-center"
-                      >
-                        {tag}
-                        <button
-                          type="button"
-                          onClick={() => handleRemoveTag(tag)}
-                          className="ml-2 text-gray-500 hover:text-gray-700"
-                        >
-                          <X className="h-3 w-3" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
                   <div className="relative">
                     <Input
-                      className="h-[50px] w-full text-sm font-medium leading-[120%] tracking-[0%] text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none p-4"
+                      className="h-[50px] w-full text-sm font-medium leading-[120%] tracking-[0%] mt-2 text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none p-4"
                       type="text"
                       placeholder="Add your tags..."
                       value={tagInput}
@@ -366,6 +348,24 @@ export default function AddBlogPage() {
                     >
                       <Plus className="h-5 w-5" />
                     </button>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 my-2">
+                    {tags.map((tag) => (
+                      <div
+                        key={tag}
+                        className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm flex items-center"
+                      >
+                        {tag}
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveTag(tag)}
+                          className="ml-2 text-gray-500 hover:text-gray-700"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -410,31 +410,15 @@ export default function AddBlogPage() {
                   )}
                 />
 
-                <div className=" -mt-[10px]">
+                <div className="">
                   <FormLabel className="text-sm text-[#0E2A5C] font-medium leading-[120%] tracking-[0%]">
                     Keywords
                   </FormLabel>
 
-                  <div className="flex flex-wrap gap-2 my-2">
-                    {keywords.map((keyword) => (
-                      <div
-                        key={keyword}
-                        className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm flex items-center"
-                      >
-                        {keyword}
-                        <button
-                          type="button"
-                          onClick={() => handleRemoveKeyword(keyword)}
-                          className="ml-2 text-gray-500 hover:text-gray-700"
-                        >
-                          <X className="h-3 w-3" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
+                  
                   <div className="relative">
                     <Input
-                      className="h-[45px] w-full text-sm font-medium leading-[120%] tracking-[0%] text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none px-4 py-[14px]"
+                      className="h-[45px] w-full text-sm font-medium leading-[120%] mt-2 tracking-[0%] text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none px-4 py-[14px]"
                       type="text"
                       placeholder="Keywords"
                       value={keywordsInput}
@@ -456,6 +440,23 @@ export default function AddBlogPage() {
                     >
                       <Plus className="h-5 w-5" />
                     </button>
+                  </div>
+                  <div className="flex flex-wrap gap-2 my-2">
+                    {keywords.map((keyword) => (
+                      <div
+                        key={keyword}
+                        className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm flex items-center"
+                      >
+                        {keyword}
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveKeyword(keyword)}
+                          className="ml-2 text-gray-500 hover:text-gray-700"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
