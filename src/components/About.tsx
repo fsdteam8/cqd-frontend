@@ -13,7 +13,7 @@ const About = () => {
           <div className="relative w-full max-w-md mx-auto lg:max-w-none lg:w-[536px] lg:h-[656px] overflow-hidden rounded-lg">
             <Image
               src="/images/about.png"
-              alt="CQD Cleaning professional with cleaning equipment"
+              alt="Commercial Cleaning Services"
               width={536}
               height={656}
               className="w-full h-full object-cover"
@@ -24,21 +24,17 @@ const About = () => {
           {/* Content container */}
           <div className="flex flex-col space-y-6">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-medium tracking-wider mb-2">
-              About CQD Cleaning
+              Professional CQD Cleaning Company
             </h2>
 
             <p className="text-base font-medium sm:text-base leading-[120%]">
-              Since 2012, CQD Cleaning Services has been providing top-quality
-              cleaning solutions to homes and businesses. Our mission is to
-              deliver exceptional cleaning services that exceed our
-              clients&lsquo; expectations
+              Since 2012, CQD Cleaning Company has offered trusted, top-quality cleaning for homes and businesses. We’re committed to excellence and exceeding every client’s expectations—every time.
+
             </p>
 
             <p className="text-base font-medium sm:text-base leading-[120%] mt-2">
-              With a team of trained professionals and state-of-the-art
-              equipment, we&lsquo;re committed to maintaining the highest
-              standards of cleanliness, health, and safety in every space we
-              clean.
+              At CQD Cleaning Company, our expert team and advanced tools ensure top-tier cleanliness, health, and safety—delivering spotless results you can trust every time.
+
             </p>
 
             {/* Features grid - responsive with 1 column on mobile, 2 on larger screens */}

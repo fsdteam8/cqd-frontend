@@ -50,7 +50,7 @@ export default function ContactSection() {
           <div className="relative hidden lg:block  mx-auto lg:mx-0 w-full max-w-[400px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[592px]">
             <Image
               src="/images/callimg.png"
-              alt="Contact support"
+              alt="Commercial Carpet Vacuuming Services"
               fill
               className="object-cover rounded-lg"
               style={{
