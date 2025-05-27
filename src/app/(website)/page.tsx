@@ -11,6 +11,15 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import BlogPage from "./blog/page";
 // import { getBlogPosts } from "@/lib/data";
 
+
+export const metadata = {
+  title: "CQD Cleaning Services: Excellence Since 2012",
+  description: "CQD Cleaning Services has proudly provided top-tier cleaning since 2012, delivering spotless results with a commitment to excellence.",
+
+};
+
+
+
 export default async function Home() {
   // const posts = await getBlogPosts();
   return (

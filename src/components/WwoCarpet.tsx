@@ -13,7 +13,7 @@ const WwoCarpet = () => {
             <div className="relative w-full aspect-[536/656] max-w-[536px]  overflow-hidden">
               <Image
                 src="/images/cc1.png"
-                alt="Carpet cleaning with steam"
+                alt=" Professional Carpet Cleaning"
                 fill
                 style={{ objectFit: "cover" }}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
@@ -29,14 +29,11 @@ const WwoCarpet = () => {
 
             <div className="space-y-4">
               <p className="text-base md:text-lg text-gray-700">
-                Lorem ipsum dolor sit amet consectetur. Consequat ac arcu sem est. Cursus ut adipiscing enim eu enim.
-                Eget enim luctus nec cras. Consectetur gravida sapien nisi phasellus erat. Etiam mauris leo non ipsum
-                quis platea. Id egestas ut in enim pellentesque fermentum. Faucibus vestibulum.
+                At CQD Cleaning Services, we provide expert carpet cleaning solutions using advanced techniques and eco-friendly products. Our thorough process removes dirt, stains, and allergens, restoring your carpets’ freshness and extending their lifespan with reliable, professional care you can trust.
               </p>
 
               <p className="text-base md:text-lg text-gray-700">
-                Lorem ipsum dolor sit amet consectetur. Rutrum at vivamus volutpat erat. Mattis malesuada cras
-                suspendisse tempus mattis. Aliquam odio vestibulum eu venenatis laoreet eu. Massa fermentum.
+                At CQD Cleaning Services, we provide expert carpet cleaning using advanced techniques to remove dirt, stains, and allergens, restoring freshness and extending carpet life for a healthier home.
               </p>
             </div>
 
@@ -79,14 +76,11 @@ const WwoCarpet = () => {
 
             <div className="space-y-4">
               <p className="text-base md:text-lg text-gray-700">
-                Lorem ipsum dolor sit amet consectetur. Consequat ac arcu sem est. Cursus ut adipiscing enim eu enim.
-                Eget enim luctus nec cras. Consectetur gravida sapien nisi phasellus erat. Etiam mauris leo non ipsum
-                quis platea. Id egestas ut in enim pellentesque fermentum. Faucibus vestibulum.
+                At CQD Cleaning Services, we deliver expert carpet cleaning with advanced techniques and eco-friendly products. Our skilled team ensures deep, thorough cleaning that restores freshness, removes stubborn stains, and extends carpet life—providing exceptional results every time.
               </p>
 
               <p className="text-base md:text-lg text-gray-700">
-                Lorem ipsum dolor sit amet consectetur. Rutrum at vivamus volutpat erat. Mattis malesuada cras
-                suspendisse tempus mattis. Aliquam odio vestibulum eu venenatis laoreet eu. Massa fermentum.
+                CQD Cleaning Services delivers expert carpet cleaning with advanced techniques, reliable results, and exceptional care to restore freshness and extend your carpet’s life.
               </p>
             </div>
 
@@ -120,7 +114,7 @@ const WwoCarpet = () => {
             <div className="relative w-full aspect-[536/656] max-w-[536px] rounded-tr-[100px] rounded-bl-[100px] overflow-hidden">
               <Image
                 src="/images/cc2.png"
-                alt="Carpet cleaning with steam"
+                alt="Professional Carpet Cleaning"
                 fill
                 style={{ objectFit: "cover" }}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"

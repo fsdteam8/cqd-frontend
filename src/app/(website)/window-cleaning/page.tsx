@@ -5,6 +5,16 @@ import Review from '@/components/Review'
 import WwoWindow from '@/components/WwoWindow'
 import React from 'react'
 
+
+
+export const metadata = {
+  title: "Professional Window Cleaning by CQD Cleaning Services",
+  description: "Let your windows shine with CQD’s expert window cleaning. Reliable, affordable, and eco-friendly service tailored to your schedule and needs.",
+
+};
+
+
+
 const page = () => {
   return (
     <div>
