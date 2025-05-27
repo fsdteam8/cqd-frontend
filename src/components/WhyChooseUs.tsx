@@ -15,13 +15,12 @@ const WhyChooseUs = () => {
             </h2>
 
             <p className="text-base md:text-lg font-normal text-[#0F2A5C] text-justify">
-              Lorem ipsum dolor sit amet consectetur. Turpis dignissim tortor
-              tellus eget pulvinar risus tempor congue. Gravida tortor molestie
-              cursus in elementum. Ultricies non est tincidunt quisque leo id
-              suspendisse ut eget. Porttitor amet non dictum dolor. Mauris
-              consequat facilisi faucibus venenatis nunc sit. Mi elementum metus
-              ipsum rutrum. Varius porttitor nunc vestibulum tristique
-              sollicitudin pretium amet turpis eget.
+              At CQD Cleaning Service, we offer affordable, top-tier cleaning
+              solutions without compromising quality. Choose flexible packages
+              tailored to your needs and enjoy efficient service with our
+              10-mile radius system that reduces cost and saves time. Our fully
+              trained professionals are committed to delivering spotless results
+              with care, precision, and unmatched dedication.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 py-6 ">
@@ -61,7 +60,7 @@ const WhyChooseUs = () => {
             <div className="relative  w-[150px] lg:w-[250px] h-[150px] lg:h-[250px] group">
               <Image
                 src="/images/wcu1.png"
-                alt="Cleaning professionals in masks"
+                alt="Commercial Cleaning Services"
                 fill
                 className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
               />
@@ -75,13 +74,13 @@ const WhyChooseUs = () => {
             <div className="relative w-[150px] lg:w-[250px] h-[150px] lg:h-[250px] group">
               <Image
                 src="/images/wcu2.png"
-                alt="Cleaning professionals in masks"
+                alt="Commercial Cleaning Services"
                 fill
                 className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
               />
               <Image
                 src="/images/hover2.png"
-                alt="Cleaning professionals in masks hover"
+                alt="Commercial Cleaning Services"
                 fill
                 className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               />
@@ -90,13 +89,13 @@ const WhyChooseUs = () => {
             <div className="relative w-[150px] lg:w-[250px] h-[150px] lg:h-[250px] group">
               <Image
                 src="/images/wcu3.png"
-                alt="Cleaning professionals in masks"
+                alt="Maintaining a clean and healthy environment"
                 fill
                 className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
               />
               <Image
                 src="/images/hover3.png"
-                alt="Cleaning professionals in masks hover"
+                alt="Maintaining a clean and healthy environment"
                 fill
                 className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               />
@@ -105,13 +104,13 @@ const WhyChooseUs = () => {
             <div className="relative w-[150px] lg:w-[250px] h-[150px] lg:h-[250px] group">
               <Image
                 src="/images/wcu4.png"
-                alt="Cleaning professionals in masks"
+                alt="Tools for a perfect window cleaning"
                 fill
                 className="rounded-3xl object-cover transition-opacity duration-300 group-hover:opacity-0"
               />
               <Image
                 src="/images/hover4.png"
-                alt="Cleaning professionals in masks hover"
+                alt="Tools for a perfect window cleaning"
                 fill
                 className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               />
