@@ -20,12 +20,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
+import { useSession } from "next-auth/react";
 
 const formSchema = z.object({
   title: z.string().min(1, "Title is required"),
-  content: z.string().min(1, "Content is required"),
-  metaTitle: z.string().optional(),
-  metaDescription: z.string().optional(),
+  details: z.string().min(1, "Content is required"),
+  meta_title: z.string().optional(),
+  meta_description: z.string().optional(),
   tags: z.array(z.string()).min(1, "At least one tag is required"),
   keywords: z.array(z.string()).min(1, "At least one keyword is required"),
   image: z.any().optional(),
@@ -40,30 +43,52 @@ export default function AddBlogPage() {
   const [tagInput, setTagInput] = useState("");
   const [keywordsInput, setKeywordsInput] = useState("");
   const [previewImage, setPreviewImage] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDragOver, setIsDragOver] = useState(false);
+
+  const session = useSession();
+  const token = (session.data?.user as { token: string })?.token;
 
   const form = useForm<BlogFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
-      content: "",
-      metaTitle: "",
-      metaDescription: "",
+      details: "",
+      meta_title: "",
+      meta_description: "",
       tags: [],
       keywords: [],
       image: undefined,
     },
   });
 
-  const onSubmit = async (data: BlogFormValues) => {
-    setIsSubmitting(true);
+  // add new blog api
+  const { mutate, isPending } = useMutation({
+    mutationKey: ["addBlog"],
+    mutationFn: (formData: FormData) =>
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      }).then((res) => res.json()),
+    onSuccess: (data) => {
+      if (!data.success) {
+        toast.error(data.message || "Failed to add blog");
+        return;
+      } else {
+        toast.success(data.message || "Blog added successfully");
+        router.push("/admin/dashboard/blogs");
+      }
+    },
+  });
 
+  const onSubmit = async (data: BlogFormValues) => {
     const formData = new FormData();
     formData.append("title", data.title);
-    formData.append("content", data.content);
-    formData.append("metaTitle", data.metaTitle || "");
-    formData.append("metaDescription", data.metaDescription || "");
+    formData.append("details", data.details);
+    formData.append("meta_title", data.meta_title || "");
+    formData.append("meta_description", data.meta_description || "");
     formData.append("tags", JSON.stringify(tags));
     formData.append("keywords", JSON.stringify(keywords));
 
@@ -71,18 +96,7 @@ export default function AddBlogPage() {
       formData.append("image", data.image[0]);
     }
 
-    // Simulate console output
-    console.log({
-      ...data,
-      tags,
-      keywords,
-      image: data.image?.[0]?.name || "No image selected",
-    });
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      router.push("/admin/dashboard/blogs");
-    }, 1000);
+    mutate(formData);
   };
 
   // tags
@@ -184,7 +198,7 @@ export default function AddBlogPage() {
                 <div className=" ">
                   <FormField
                     control={form.control}
-                    name="content"
+                    name="details"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-sm text-[#0E2A5C] font-medium leading-[120%] tracking-[0%]">
@@ -219,7 +233,7 @@ export default function AddBlogPage() {
                             {!previewImage ? (
                               <div
                                 className={`
-                                  h-[300px] border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors
+                                  h-[310px] border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors
                                   ${
                                     isDragOver
                                       ? "border-blue-400 bg-blue-50"
@@ -260,7 +274,7 @@ export default function AddBlogPage() {
                                   height={277}
                                   src={previewImage || "/placeholder.svg"}
                                   alt="Preview"
-                                  className="w-full h-[300px] object-cover rounded-lg border-2 border-dashed border-gray-300"
+                                  className="w-full h-[310px] object-cover rounded-lg border-2 border-dashed border-gray-300"
                                 />
                                 <button
                                   type="button"
@@ -310,26 +324,9 @@ export default function AddBlogPage() {
                     Add Tags
                   </FormLabel>
 
-                  <div className="flex flex-wrap gap-2 my-2">
-                    {tags.map((tag) => (
-                      <div
-                        key={tag}
-                        className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm flex items-center"
-                      >
-                        {tag}
-                        <button
-                          type="button"
-                          onClick={() => handleRemoveTag(tag)}
-                          className="ml-2 text-gray-500 hover:text-gray-700"
-                        >
-                          <X className="h-3 w-3" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
                   <div className="relative">
                     <Input
-                      className="h-[50px] w-full text-sm font-medium leading-[120%] tracking-[0%] text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none p-4"
+                      className="h-[50px] w-full text-sm font-medium leading-[120%] tracking-[0%] mt-2 text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none p-4"
                       type="text"
                       placeholder="Add your tags..."
                       value={tagInput}
@@ -352,6 +349,24 @@ export default function AddBlogPage() {
                       <Plus className="h-5 w-5" />
                     </button>
                   </div>
+
+                  <div className="flex flex-wrap gap-2 my-2">
+                    {tags.map((tag) => (
+                      <div
+                        key={tag}
+                        className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm flex items-center"
+                      >
+                        {tag}
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveTag(tag)}
+                          className="ml-2 text-gray-500 hover:text-gray-700"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -360,7 +375,7 @@ export default function AddBlogPage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px]">
                 <FormField
                   control={form.control}
-                  name="metaTitle"
+                  name="meta_title"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-sm text-[#0E2A5C] font-medium leading-[120%] tracking-[0%]">
@@ -378,7 +393,7 @@ export default function AddBlogPage() {
                 />
                 <FormField
                   control={form.control}
-                  name="metaDescription"
+                  name="meta_description"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-sm text-[#0E2A5C] font-medium leading-[120%] tracking-[0%]">
@@ -395,31 +410,15 @@ export default function AddBlogPage() {
                   )}
                 />
 
-                <div className=" -mt-[10px]">
+                <div className="">
                   <FormLabel className="text-sm text-[#0E2A5C] font-medium leading-[120%] tracking-[0%]">
                     Keywords
                   </FormLabel>
 
-                  <div className="flex flex-wrap gap-2 my-2">
-                    {keywords.map((keyword) => (
-                      <div
-                        key={keyword}
-                        className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm flex items-center"
-                      >
-                        {keyword}
-                        <button
-                          type="button"
-                          onClick={() => handleRemoveKeyword(keyword)}
-                          className="ml-2 text-gray-500 hover:text-gray-700"
-                        >
-                          <X className="h-3 w-3" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
+                  
                   <div className="relative">
                     <Input
-                      className="h-[45px] w-full text-sm font-medium leading-[120%] tracking-[0%] text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none px-4 py-[14px]"
+                      className="h-[45px] w-full text-sm font-medium leading-[120%] mt-2 tracking-[0%] text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none px-4 py-[14px]"
                       type="text"
                       placeholder="Keywords"
                       value={keywordsInput}
@@ -442,6 +441,23 @@ export default function AddBlogPage() {
                       <Plus className="h-5 w-5" />
                     </button>
                   </div>
+                  <div className="flex flex-wrap gap-2 my-2">
+                    {keywords.map((keyword) => (
+                      <div
+                        key={keyword}
+                        className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm flex items-center"
+                      >
+                        {keyword}
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveKeyword(keyword)}
+                          className="ml-2 text-gray-500 hover:text-gray-700"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -450,9 +466,9 @@ export default function AddBlogPage() {
               <button
                 className="text-xl font-medium leading-[120%] tracking-[0%] text-[#F4F4F4] py-[13px] px-[26px] rounded-[8px] bg-[#0E2A5C]"
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isPending}
               >
-                {isSubmitting ? "Publishing..." : "Publish Blog"}
+                {isPending ? "Publishing..." : "Publish Blog"}
               </button>
             </div>
           </form>

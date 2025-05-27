@@ -1,8 +1,8 @@
-"use client"
-import { useRouter } from "next/navigation"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Check } from "lucide-react"
+"use client";
+import { useRouter } from "next/navigation";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Check } from "lucide-react";
 
 const pricingPlans = [
   {
@@ -56,16 +56,16 @@ const pricingPlans = [
     ],
     highlighted: false,
   },
-]
+];
 
 export default function PricingSection() {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSelectPlan = (planId: string) => {
     // Store selected plan in localStorage for the form
-    localStorage.setItem("selectedPlan", planId)
-    router.push("/form/client-info")
-  }
+    localStorage.setItem("selectedPlan", planId);
+    router.push("/form/client-info");
+  };
 
   return (
     <div id="pricing" className="min-h-screen  py-8 px-4">
@@ -75,8 +75,12 @@ export default function PricingSection() {
           {/* <div className="flex justify-center mb-8">
             <Image src="/logo.png" alt="CQD Logo" width={120} height={60} className="h-12 w-auto" />
           </div> */}
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Subscription Plan</h1>
-          <p className="text-lg text-gray-600">Choose the Package that Fits Your Needs</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Subscription Plan
+          </h1>
+          <p className="text-lg text-gray-600">
+            Choose the Package that Fits Your Needs
+          </p>
         </div>
 
         {/* Pricing Cards */}
@@ -91,20 +95,34 @@ export default function PricingSection() {
               } transition-all duration-300 hover:shadow-lg`}
             >
               <CardHeader className="text-center pb-4">
-                <CardTitle className={`text-xl font-semibold ${plan.highlighted ? "text-white" : "text-gray-900"}`}>
+                <CardTitle
+                  className={`text-xl font-semibold ${
+                    plan.highlighted ? "text-white" : "text-gray-900"
+                  }`}
+                >
                   {plan.name}
                 </CardTitle>
                 <div className="mt-4">
                   <span
-                    className={`text-4xl md:text-5xl font-bold ${plan.highlighted ? "text-white" : "text-gray-900"}`}
+                    className={`text-4xl md:text-5xl font-bold ${
+                      plan.highlighted ? "text-white" : "text-gray-900"
+                    }`}
                   >
                     {plan.price}
                   </span>
-                  <span className={`text-sm ml-2 ${plan.highlighted ? "!text-white" : "text-gray-500"}`}>
+                  <span
+                    className={`text-sm ml-2 ${
+                      plan.highlighted ? "!text-white" : "text-gray-500"
+                    }`}
+                  >
                     (EX VAT)
                   </span>
                 </div>
-                <p className={`text-sm mt-2 ${plan.highlighted ? "!text-white" : "text-gray-600"}`}>
+                <p
+                  className={`text-sm mt-2 ${
+                    plan.highlighted ? "!text-white" : "text-gray-600"
+                  }`}
+                >
                   {plan.subtitle}
                 </p>
               </CardHeader>
@@ -114,7 +132,9 @@ export default function PricingSection() {
                   onClick={() => handleSelectPlan(plan.id)}
                   variant={plan.highlighted ? "secondary" : "outline"}
                   className={`w-full py-5 text-xl ${
-                    plan.highlighted ? "bg-white text-blue-900 hover:bg-gray-100" : "border-[#0F2A5C] border-2 hover:bg-gray-50"
+                    plan.highlighted
+                      ? "bg-white text-blue-900 hover:bg-gray-100"
+                      : "border-[#0F2A5C] border-2 hover:bg-gray-50"
                   }`}
                 >
                   Continue
@@ -123,10 +143,26 @@ export default function PricingSection() {
                 <div className="space-y-3 pt-4">
                   {plan.features.map((feature, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <div className={`rounded-full p-1 mt-0.5 ${plan.highlighted ? "bg-white" : "bg-green-100"}`}>
-                        <Check className={`h-3 w-3 ${plan.highlighted ? "text-blue-900" : "text-green-600"}`} />
+                      <div
+                        className={`rounded-full p-1 mt-0.5 ${
+                          plan.highlighted ? "bg-white" : "bg-green-100"
+                        }`}
+                      >
+                        <Check
+                          className={`h-3 w-3 ${
+                            plan.highlighted
+                              ? "text-blue-900"
+                              : "text-green-600"
+                          }`}
+                        />
                       </div>
-                      <span className={`text-sm ${plan.highlighted ? "text-white" : "text-gray-700"}`}>{feature}</span>
+                      <span
+                        className={`text-sm ${
+                          plan.highlighted ? "text-white" : "text-gray-700"
+                        }`}
+                      >
+                        {feature}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -136,5 +172,5 @@ export default function PricingSection() {
         </div>
       </div>
     </div>
-  )
+  );
 }
