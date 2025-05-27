@@ -4,6 +4,7 @@ import React from "react";
 import { BlogApiResponse } from "../_components/BlogDataType";
 import Image from "next/image";
 import moment from "moment";
+import BlogPage from "../page";
 
 const BlogDetails = ({ params }: { params: { slug: string } }) => {
   const { data, isLoading, isError } = useQuery<BlogApiResponse>({
@@ -43,6 +44,9 @@ const BlogDetails = ({ params }: { params: { slug: string } }) => {
           {blogDetails?.details}
         </p>
       </div>
+
+      {/* blog cart  */}
+      <BlogPage />
     </div>
   );
 };
