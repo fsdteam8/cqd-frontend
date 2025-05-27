@@ -1,0 +1,190 @@
+"use client";
+
+
+import { BlogApiResponse } from "@/components/types/BlogDataType";
+import { CQDPagination } from "@/components/ui/cqd-pagination";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { PencilLine, Trash } from "lucide-react";
+import moment from "moment";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+import { useState } from "react";
+import { toast } from "sonner";
+
+const BlogContainer = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+  const session = useSession();
+  const token = (session?.data?.user as { token?: string })?.token;
+  const queryClient = useQueryClient();
+
+  // Fetch all blogs
+  const { data, isLoading, error, isError } =
+    useQuery<BlogApiResponse>({
+      queryKey: ["all-blogs", currentPage],
+      queryFn: () =>
+        fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?page=${currentPage}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        ).then((res) => res.json()),
+    });
+
+  console.log(data?.data);
+
+  // Mutation to toggle publish status
+  const updatePublishStatus = useMutation({
+    mutationFn: ({ id, publish }: { id: number; publish: number }) => {
+      return fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${id}?_method=PUT`,
+        {
+          method: "POST", // or PATCH depending on your backend
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ publish }),
+        }
+      ).then((res) => res.json());
+    },
+    onSuccess: (data) => {
+      if (!data?.success) {
+        toast.error(data?.message || "Failed to update publish status");
+        return;
+      } else {
+        toast.success(data?.message || "Publish status updated successfully");
+      }
+      queryClient.invalidateQueries({ queryKey: ["all-blogs"] });
+    },
+    onError: (error) => {
+      toast.error("Failed to update publish status");
+      console.error("Update publish status error:", error);
+    },
+  });
+
+  if (isLoading) {
+    return (
+      <div className="h-full w-full flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="h-full w-full flex items-center justify-center">
+        Error: {error.message}
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div className="overflow-hidden rounded-[16px] shadow-[0_4px_10px_0_#0000001A] border border-[#E5E7EB] mt-[30px] mb-[305px]">
+        <table className="w-full ">
+          <thead className="bg-[#0E2A5C] text-white">
+            <tr>
+              <th className="text-lg font-semibold py-[19px] px-[45px]">
+                Image
+              </th>
+              <th className="text-lg font-semibold py-[19px] px-[205px]">
+                Title
+              </th>
+              <th className="text-lg font-semibold py-[19px] px-[53px]">
+                Date
+              </th>
+              <th className="text-lg font-semibold py-[19px] px-[30px]">
+                Published
+              </th>
+              <th className="text-lg font-semibold py-[19px] px-[45px]">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody className="">
+            {data?.data?.map((blog) => (
+              <tr key={blog.id} className="py-[10px]">
+                <td className="w-full flex items-center justify-center py-[10px]">
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/Blogs/${blog.image}`}
+                    alt={blog.title}
+                    width={56}
+                    height={70}
+                    className="w-[56px] h-[70px] object-cover"
+                  />
+                </td>
+                <td className="text-base font-light text-[#0E2A5C] text-center">
+                  {blog.title}
+                </td>
+                <td className="text-base font-light text-[#0E2A5C] text-center">
+                  {moment(blog.created_at).format("DD MMMM YYYY")}
+                </td>
+                <td>
+                  <div className="flex items-center justify-center space-x-2">
+                    <Switch
+                      id={`${blog.id}`}
+                      checked={Boolean(blog.publish)}
+                      onCheckedChange={(value) =>
+                        updatePublishStatus.mutate({
+                          id: blog.id,
+                          publish: value ? 1 : 0,
+                        })
+                      }
+                      disabled={updatePublishStatus.isPending}
+                    />
+                    <Label htmlFor={`${blog.id}`} className="sr-only">
+                      {/* Toggle publish status for {blog.title} */}
+                    </Label>
+                  </div>
+                </td>
+                <td className="">
+                  <div className="w-full flex items-center justify-center gap-[10px]">
+                    <button
+                      type="button"
+                      className="p-1 hover:bg-gray-100 rounded transition-colors"
+                      aria-label={`Edit ${blog.title}`}
+                    >
+                      <PencilLine className="text-[#0E2A5C]" size={18} />
+                    </button>
+                    <button
+                      type="button"
+                      className="p-1 hover:bg-gray-100 rounded transition-colors"
+                      aria-label={`Delete ${blog.title}`}
+                    >
+                      <Trash className="text-[#0E2A5C]" size={18} />
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className="">
+          {data && data?.total_blogs > 1 && (
+            <div className="flex justify-between items-center">
+              <p className="font-normal text-base leading-[120%] text-[#0E2A5C] pl-[26px]">
+                Showing {data?.current_page} from {data?.total_pages} pages
+              </p>
+              <div>
+                <CQDPagination
+                  currentPage={currentPage}
+                  totalResults={data?.total_blogs}
+                  resultsPerPage={itemsPerPage}
+                  onPageChange={setCurrentPage}
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BlogContainer;
