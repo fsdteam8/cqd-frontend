@@ -9,17 +9,16 @@ import { useQuery } from "@tanstack/react-query";
 export default function Footer() {
   const [currentYear, setCurrentYear] = useState(2023);
 
-
-  const {data} = useQuery({
-    queryKey: ['email'],
+  const { data } = useQuery({
+    queryKey: ["email"],
     queryFn: async () => {
-      const res = await fetch('https://coq.scaleupdevagency.com/api/email',{
-        method : "GET",
-      })
+      const res = await fetch("https://coq.scaleupdevagency.com/api/email", {
+        method: "GET",
+      });
 
       return res.json();
-    }
-  })
+    },
+  });
 
   console.log("Email Data: ", data?.email);
 
@@ -46,7 +45,7 @@ export default function Footer() {
 
           <div className="grid grid-cols-2 md:flex flex-col md:flex-row gap-4 md:gap-8">
             <Link
-              href="/reviews"
+              href="#review"
               className="text-white hover:text-gray-300 transition-colors"
             >
               Reviews
@@ -70,7 +69,7 @@ export default function Footer() {
               Contact
             </Link>
             <Link
-              href="/quote"
+              href="/#pricing"
               className="col-span-2 bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200 transition-colors md:ml-4"
             >
               Request a Quote
@@ -98,7 +97,7 @@ export default function Footer() {
 
             <div className="mt-4">
               <Link
-                href="/booking"
+                href="#pricing"
                 className="inline-block text-xl font-medium hover:text-gray-300 transition-colors"
               >
                 Book Now

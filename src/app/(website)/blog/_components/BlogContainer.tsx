@@ -15,6 +15,7 @@ import "swiper/css/virtual";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperCore } from "swiper/types";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const breakpoints = {
   0: {
@@ -50,7 +51,23 @@ const BlogContainer = () => {
       ),
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <div>
+        {" "}
+        <div className="hover:bg-white hover:shadow-lg hover:rounded-tr-[16px] hover:rounded-bl-[16px] transition-all duration-300 ease-in-out">
+          <div>
+            <Skeleton className="w-full h-[200px] rounded-t-[16px]" />
+          </div>
+          <div className="px-[15px] pb-[17px]">
+            <Skeleton className="mt-[15px] h-6 w-3/4" />
+            <div className="pt-[15px] w-full flex items-center justify-end">
+              <Skeleton className="h-[26px] w-[83px] rounded-full" />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   if (isError) return <p>Error loading blogs.</p>;
 
   return (

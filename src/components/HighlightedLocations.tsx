@@ -38,7 +38,7 @@ export default function HighlightedLocations() {
           {locations.map((location, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 w-[300px] bg-gray-100 rounded-none rounded-tl-3xl rounded-br-3xl p-3 md:p-4 transition-all hover:bg-gray-200"
+              className="flex items-center w-full gap-2 lg:w-[300px] bg-gray-100 rounded-none rounded-tl-3xl rounded-br-3xl p-3 md:p-4 transition-all hover:bg-gray-200"
             >
               <MapPinned className="h-5 w-5 flex-shrink-0 text-[#0F2A5C]" />
               <span className="font-medium text-xl text-[#0F2A5C]">{location}</span>
