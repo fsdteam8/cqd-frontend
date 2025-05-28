@@ -77,7 +77,6 @@ export default function ReviewPage() {
   const handleSubmit = () => {
     if (formData) {
       const finalData = {
-        location: "bangladesh",
         ...formData,
         submittedAt: new Date().toISOString(),
       };
@@ -150,7 +149,6 @@ export default function ReviewPage() {
                 <span className="font-medium text-gray-700">Zip Code:</span>
                 <span className="text-gray-900">{formData.postal_code}</span>
               </div>
-
               <div className="flex justify-between items-center py-3 border-b border-gray-200">
                 <span className="font-medium text-gray-700">Name:</span>
                 <span className="text-gray-900">{formData.company_name}</span>

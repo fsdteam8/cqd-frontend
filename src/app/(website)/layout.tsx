@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/app/globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+import 'leaflet/dist/leaflet.css'
 
 export const metadata: Metadata = {
   title: "CQD",
