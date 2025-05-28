@@ -13,6 +13,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
+import BlogHeader from "./BlogHeader";
+import { useSearchStore } from "@/components/zustand/features/BlogSearch";
+import { useDebounce } from "@/hooks/useDebounce";
+import { useStatusStore } from "@/components/zustand/features/BlogStatus";
 
 const BlogContainer = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,16 +24,20 @@ const BlogContainer = () => {
   const session = useSession();
   const token = (session?.data?.user as { token?: string })?.token;
   const queryClient = useQueryClient();
+  const { search, setSearch } = useSearchStore();
+  const { status, setStatus } = useStatusStore();
 
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedBlogId, setSelectedBlogId] = useState<number | null>(null);
 
+  const debounceValue = useDebounce(search, 500);
+
   // Fetch all blogs
   const { data, isLoading, error, isError } = useQuery<BlogApiResponse>({
-    queryKey: ["all-blogs", currentPage],
+    queryKey: ["all-blogs", currentPage, debounceValue, status],
     queryFn: () =>
       fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?page=${currentPage}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?page=${currentPage}&search=${debounceValue}&publish=${status}`,
         {
           method: "GET",
           headers: {
@@ -114,6 +122,13 @@ const BlogContainer = () => {
 
   return (
     <div>
+      {/* blog header */}
+      <BlogHeader
+        search={search}
+        setSearch={setSearch}
+        status={status}
+        setStatus={setStatus}
+      />
       <div className="overflow-hidden rounded-[16px] shadow-[0_4px_10px_0_#0000001A] border border-[#E5E7EB] mt-[30px] mb-[305px]">
         <table className="w-full ">
           <thead className="bg-[#0E2A5C] text-white">
