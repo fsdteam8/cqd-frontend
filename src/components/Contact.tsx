@@ -8,17 +8,21 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import { toast } from "sonner";
+import { useMutation } from "@tanstack/react-query";
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+  const initialFormData = {
+    first_name: "",
+    last_name: "",
     email: "",
     phone: "",
     organization: "",
     city: "",
-    message: "",
-  });
+    help: "",
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -29,10 +33,35 @@ export default function ContactSection() {
       [id]: value,
     }));
   };
+  const { mutate, isPending } = useMutation({
+    mutationKey: ["contact-message"],
+    mutationFn: (formData: typeof initialFormData) =>
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/contactMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }).then((res) => res.json()),
+
+    onSuccess: (data) => {
+      if (!data?.success) {
+        toast.error(data?.message || "Something went wrong");
+        return;
+      }
+
+      toast.success(data?.message || "Message sent successfully!");
+    },
+
+    onError: (error) => {
+      toast.error("Something went wrong. Please try again.");
+      console.error("Contact message error:", error);
+    },
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+    mutate(formData);
   };
 
   return (
@@ -68,23 +97,25 @@ export default function ContactSection() {
               className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4"
             >
               <div className="space-y-2">
-                <Label className="" htmlFor="firstName">First Name</Label>
+                <Label className="" htmlFor="first_name">
+                  First Name
+                </Label>
                 <Input
-                  id="firstName"
+                  id="first_name"
                   placeholder="First Name"
                   className="w-full"
-                  value={formData.firstName}
+                  value={formData.first_name}
                   onChange={handleChange}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="lastName">Last Name</Label>
+                <Label htmlFor="last_name">Last Name</Label>
                 <Input
-                  id="lastName"
+                  id="last_name"
                   placeholder="Last Name"
                   className="w-full"
-                  value={formData.lastName}
+                  value={formData.last_name}
                   onChange={handleChange}
                 />
               </div>
@@ -136,23 +167,32 @@ export default function ContactSection() {
               </div>
 
               <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="message">Message</Label>
+                <Label htmlFor="help">Message</Label>
                 <Textarea
-                  id="message"
+                  id="help"
                   placeholder="Your message"
                   className="w-full min-h-[150px]"
-                  value={formData.message}
+                  value={formData.help}
                   onChange={handleChange}
                 />
               </div>
 
               <div className="md:col-span-2 mt-4">
-                <Button
-                  type="submit"
-                  className="w-full bg-[#0F2A5C] text-white hover:bg-[#0F2A5C]/90"
-                >
-                  Send message
-                </Button>
+                {isPending ? (
+                  <Button
+                    type="submit"
+                    className="w-full bg-[#0F2A5C] text-white hover:bg-[#0F2A5C]/90"
+                  >
+                    Sending message
+                  </Button>
+                ) : (
+                  <Button
+                    type="submit"
+                    className="w-full bg-[#0F2A5C] text-white hover:bg-[#0F2A5C]/90"
+                  >
+                    Send message
+                  </Button>
+                )}
               </div>
             </form>
           </div>
