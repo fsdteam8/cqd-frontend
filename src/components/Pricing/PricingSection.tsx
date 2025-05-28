@@ -110,7 +110,7 @@ export default function PricingSection() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-8">
           {/* Bronze Card */}
           {isLoading ? (
             <Card className="rounded-none rounded-tr-3xl rounded-bl-3xl">
@@ -185,7 +185,7 @@ export default function PricingSection() {
               </CardContent>
             </Card>
           ) : (
-            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#0F2A5C] text-white border-blue-900 transform scale-110 transition-all duration-300 hover:shadow-lg">
+            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#0F2A5C] text-white border-blue-900 transform lg:scale-110  transition-all duration-300 hover:shadow-lg">
               <CardHeader className="text-center pb-4">
                 <CardTitle className="text-xl font-semibold text-white">
                   {silver?.data?.title}
