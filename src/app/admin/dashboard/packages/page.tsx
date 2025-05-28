@@ -1,7 +1,15 @@
 
 import React from 'react'
-import PricinPackage from './_components/PricinPackage'
+// import PricinPackage from './_components/PricinPackage'
 import { DashboardLayout } from '@/components/dashboard-layout'
+
+
+import dynamic from 'next/dynamic'
+const PricinPackage = dynamic(() => import('./_components/PricinPackage'), {
+  ssr: false,
+})
+
+
 
 const page = () => {
   return (
@@ -9,8 +17,7 @@ const page = () => {
       <DashboardLayout title="Packages">
 
      
-      {/* <ManagePackages />
-      <h1>package</h1> */}
+   
       <PricinPackage/>
       </DashboardLayout>
     </div>
