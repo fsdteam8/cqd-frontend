@@ -1,5 +1,4 @@
 import About from "@/components/About";
-// import BlogCarousel from "@/components/blog/BlogCarousel";
 import Contact from "@/components/Contact";
 import HeroVideo from "@/components/HeroVideo";
 import HighlightedLocations from "@/components/HighlightedLocations";
@@ -8,8 +7,7 @@ import PricingSection from "@/components/Pricing/PricingSection";
 import Review from "@/components/Review";
 import TrustedPartners from "@/components/TrustedPartners";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import BlogPage from "./blog/page";
-// import { getBlogPosts } from "@/lib/data";
+import BlogContainer from "./blog/_components/BlogContainer";
 
 
 export const metadata = {
@@ -21,7 +19,6 @@ export const metadata = {
 
 
 export default async function Home() {
-  // const posts = await getBlogPosts();
   return (
     <div className="w-full mx-auto">
       <HeroVideo />
@@ -31,8 +28,7 @@ export default async function Home() {
       <TrustedPartners />
       <PricingSection />
       <HighlightedLocations />
-      {/* <BlogCarousel posts={posts}  /> */}
-      <BlogPage />
+      <BlogContainer />
       <Review />
       <Contact />
     </div>
