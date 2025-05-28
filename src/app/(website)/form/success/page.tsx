@@ -67,7 +67,7 @@ export default function SuccessPage() {
         {/* Header */}
         <div className="text-center mb-8">
           <Image
-            src="/logo.png"
+            src="/images/logo.png"
             alt="CQD Logo"
             width={120}
             height={60}

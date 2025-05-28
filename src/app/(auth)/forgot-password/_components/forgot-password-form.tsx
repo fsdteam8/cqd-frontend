@@ -33,7 +33,7 @@ export function ForgotPasswordForm() {
   });
 
   const { mutate, isPending } = useMutation({
-    mutationKey: ["forgot-password"], // ✅ Fixed typo
+    mutationKey: ["forgot-password"], 
     mutationFn: (email: string) =>
       fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/password/email`,

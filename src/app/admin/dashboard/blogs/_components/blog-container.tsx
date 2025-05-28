@@ -47,7 +47,7 @@ const BlogContainer = () => {
       ).then((res) => res.json()),
   });
 
-  console.log(data?.data);
+
 
   // Mutation to toggle publish status
   const updatePublishStatus = useMutation({
