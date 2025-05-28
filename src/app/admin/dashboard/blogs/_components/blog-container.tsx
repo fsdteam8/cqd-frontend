@@ -115,20 +115,17 @@ const BlogContainer = () => {
   let content;
   if (isLoading) {
     content = (
- 
-        <TableSkeletonWrapper
-          count={6}
-          width="900"
-          height="100px"
-          className="  bg-[#b4b3b3]"
-        />
-       
+      <TableSkeletonWrapper
+        rows={6}
+        columns={5}
+        width="900"
+        height="100px"
+        className="  bg-[#b4b3b3]"
+      />
     );
   } else if (isError) {
     content = (
-      <>
-        <ErrorContainer message={error?.message || "something went wrong"} />
-      </>
+      <ErrorContainer message={error?.message || "something went wrong"} />
     );
   } else if (data && data?.data && data?.data?.length === 0) {
     content = (
