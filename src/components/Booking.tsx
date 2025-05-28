@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { DashboardLayout } from "@/components/dashboard-layout"
 import {
   Search,
@@ -12,95 +12,130 @@ import {
   MapPin,
   Phone,
   Mail,
+  ChevronsLeft,
+  ChevronsRight,
 } from "lucide-react"
 import { Input } from "@/components/ui/input"
+import { useQuery } from "@tanstack/react-query"
+import type { PackageOrder } from "@/types/package-order"
+import { useSession } from "next-auth/react"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Button } from "@/components/ui/button"
+import { useDebounce } from "@/hooks/use-debounce"
 
-// Mock data
-const bookingsData = [
-  {
-    id: 1,
-    package: "Gold",
-    name: "Flores, Juanita",
-    email: "michael.mitc@example.com",
-    phone: "(+33)6 55 53 38 10",
-    location: "Coppell, Virginia",
-    date: "15 May 2020",
-    status: "Confirmed",
-  },
-  {
-    id: 2,
-    package: "Silver",
-    name: "Henry, Arthur",
-    email: "sara.cruz@example.com",
-    phone: "(+33)7 35 55 45 43",
-    location: "Syracuse, Connecticut",
-    date: "15 May 2020",
-    status: "Pending",
-  },
-  {
-    id: 3,
-    package: "Bronze",
-    name: "Cooper, Kristin",
-    email: "tim.jennings@example.com",
-    phone: "(+33)7 65 55 72 67",
-    location: "Corona, Michigan",
-    date: "15 May 2020",
-    status: "Completed",
-  },
-  {
-    id: 4,
-    package: "Gold",
-    name: "Johnson, Michael",
-    email: "michael.johnson@example.com",
-    phone: "(+33)6 12 34 56 78",
-    location: "Austin, Texas",
-    date: "16 May 2020",
-    status: "Confirmed",
-  },
-  {
-    id: 5,
-    package: "Silver",
-    name: "Williams, Emma",
-    email: "emma.williams@example.com",
-    phone: "(+33)7 98 76 54 32",
-    location: "Portland, Oregon",
-    date: "16 May 2020",
-    status: "Pending",
-  },
-  {
-    id: 6,
-    package: "Bronze",
-    name: "Davis, Sarah",
-    email: "sarah.davis@example.com",
-    phone: "(+33)6 45 67 89 10",
-    location: "Denver, Colorado",
-    date: "17 May 2020",
-    status: "Completed",
-  },
-]
+export async function fetchPackageOrders({
+  token,
+  page = 1,
+  perPage = 10,
+  search = "",
+  packageFilter = "",
+  dateFilter = "",
+  sortField = "",
+  sortDirection = "asc",
+}: {
+  token: string
+  page?: number
+  perPage?: number
+  search?: string
+  packageFilter?: string
+  dateFilter?: string
+  sortField?: string
+  sortDirection?: "asc" | "desc"
+}): Promise<{
+  success: boolean
+  current_page: number
+  per_page: number
+  data: PackageOrder[]
+  total_blogs: number
+  total_pages: number
+}> {
+  try {
+    const params = new URLSearchParams({
+      page: page.toString(),
+      per_page: perPage.toString(),
+      ...(search && { search }),
+      ...(packageFilter && { package: packageFilter }),
+      ...(dateFilter && { date: dateFilter }),
+      ...(sortField && { sort_field: sortField }),
+      ...(sortDirection && { sort_direction: sortDirection }),
+    })
 
-export default function Booking() {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/package-order-shows?${params}`, {
+      method: "GET",
+      headers: {
+        // "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`)
+    }
+
+    return await response.json()
+  } catch (error) {
+    console.error("Error fetching package orders:", error)
+    throw error
+  }
+}
+
+export default function BookingsPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedPackage, setSelectedPackage] = useState("")
   const [selectedDate, setSelectedDate] = useState("")
-  const [selectedStatus, setSelectedStatus] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage] = useState(10)
-  const [isLoading, setIsLoading] = useState(true)
   const [showFilters, setShowFilters] = useState(false)
-  const [sortField, setSortField] = useState<string | null>(null)
+  const [sortField, setSortField] = useState<keyof PackageOrder | "">("")
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc")
 
+  const session = useSession()
+  const token = (session.data?.user as { token: string })?.token
+
+  console.log("Session Token:", token);
+
+  // Debounce search query to avoid too many API calls
+  const debouncedSearchQuery = useDebounce(searchQuery, 500)
+
+  // Reset page when filters change
   useEffect(() => {
-    // Simulate loading data
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 200)
+    setCurrentPage(1)
+  }, [debouncedSearchQuery, selectedPackage, selectedDate, sortField, sortDirection])
 
-    return () => clearTimeout(timer)
-  }, [])
+  // Fetch package orders using TanStack Query with all parameters
+  const { data, isLoading, error, isFetching } = useQuery({
+    queryKey: [
+      "packageOrders",
+      currentPage,
+      itemsPerPage,
+      debouncedSearchQuery,
+      selectedPackage,
+      selectedDate,
+      sortField,
+      sortDirection,
+    ],
+    queryFn: () =>
+      fetchPackageOrders({
+        token,
+        page: currentPage,
+        perPage: itemsPerPage,
+        search: debouncedSearchQuery,
+        packageFilter: selectedPackage,
+        dateFilter: selectedDate,
+        sortField: sortField as string,
+        sortDirection,
+      }),
+    enabled: !!token,
+    // keepPreviousData: true, // Keep previous data while fetching new data
+  })
 
-  const handleSort = (field: string) => {
+  const packageOrders = data?.data || []
+  const totalPages = data?.total_pages || 0
+  const totalItems = data?.total_blogs || 0
+  const currentPageFromAPI = data?.current_page || 1
+
+  const handleSort = (field: keyof PackageOrder) => {
     if (sortField === field) {
       setSortDirection(sortDirection === "asc" ? "desc" : "asc")
     } else {
@@ -109,293 +144,348 @@ export default function Booking() {
     }
   }
 
-  // Filter and sort bookings
-  const filteredAndSortedBookings = [...bookingsData]
-    .filter((booking) => {
-      const matchesSearch =
-        booking.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        booking.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        booking.location.toLowerCase().includes(searchQuery.toLowerCase())
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page)
+    }
+  }
 
-      const matchesPackage = selectedPackage ? booking.package === selectedPackage : true
-      const matchesDate = selectedDate ? booking.date === selectedDate : true
-      const matchesStatus = selectedStatus ? booking.status === selectedStatus : true
+  // const handleItemsPerPageChange = (value: string) => {
+  //   setItemsPerPage(Number(value))
+  //   setCurrentPage(1) // Reset to first page when changing items per page
+  // }
 
-      return matchesSearch && matchesPackage && matchesDate && matchesStatus
-    })
-    .sort((a, b) => {
-      if (!sortField) return 0
+  const clearFilters = () => {
+    setSearchQuery("")
+    setSelectedPackage("")
+    setSelectedDate("")
+    setSortField("")
+    setSortDirection("asc")
+    setCurrentPage(1)
+  }
 
-      const fieldA = a[sortField as keyof typeof a]
-      const fieldB = b[sortField as keyof typeof b]
+  // Generate pagination numbers with smart ellipsis
+  const paginationNumbers = useMemo(() => {
+    const delta = 2 // Number of pages to show on each side of current page
+    const range = []
+    const rangeWithDots = []
 
-      if (typeof fieldA === "string" && typeof fieldB === "string") {
-        return sortDirection === "asc" ? fieldA.localeCompare(fieldB) : fieldB.localeCompare(fieldA)
-      }
+    for (let i = Math.max(2, currentPage - delta); i <= Math.min(totalPages - 1, currentPage + delta); i++) {
+      range.push(i)
+    }
 
-      return 0
-    })
+    if (currentPage - delta > 2) {
+      rangeWithDots.push(1, "...")
+    } else {
+      rangeWithDots.push(1)
+    }
 
-  // Pagination
-  const totalPages = Math.ceil(filteredAndSortedBookings.length / itemsPerPage)
-  const indexOfLastItem = currentPage * itemsPerPage
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage
-  const currentItems = filteredAndSortedBookings.slice(indexOfFirstItem, indexOfLastItem)
+    rangeWithDots.push(...range)
 
-  const getSortIcon = (field: string) => {
+    if (currentPage + delta < totalPages - 1) {
+      rangeWithDots.push("...", totalPages)
+    } else if (totalPages > 1) {
+      rangeWithDots.push(totalPages)
+    }
+
+    return rangeWithDots.filter((item, index, arr) => arr.indexOf(item) === index)
+  }, [currentPage, totalPages])
+
+  const getSortIcon = (field: keyof PackageOrder) => {
     if (sortField !== field) return null
     return sortDirection === "asc" ? "↑" : "↓"
   }
 
-  const getStatusBadgeClass = (status: string) => {
-    switch (status) {
-      case "Confirmed":
-        return "badge badge-success"
-      case "Pending":
-        return "badge badge-warning"
-      case "Completed":
-        return "badge badge-info"
-      default:
-        return "badge"
-    }
+  if (error) {
+    return (
+      <DashboardLayout title="Bookings">
+        <div className="p-6">
+          <div className="dashboard-card p-8 text-center">
+            <h2 className="text-xl font-medium text-red-600 mb-2">Error loading bookings</h2>
+            <p className="text-gray-500">Please try again later or contact support.</p>
+            <Button onClick={() => window.location.reload()} className="mt-4">
+              Retry
+            </Button>
+          </div>
+        </div>
+      </DashboardLayout>
+    )
   }
 
   return (
-    <DashboardLayout title="Bookings">
-      <div className="p-6">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-medium">Bookings</h1>
-          {/* <div className="flex gap-2">
-            <button className="btn btn-secondary flex items-center gap-2">
-              <Printer className="h-4 w-4" />
-              Print
-            </button>
-            <button className="btn btn-secondary flex items-center gap-2">
-              <Download className="h-4 w-4" />
-              Export
-            </button>
-          </div> */}
-        </div>
-
-        <div className="dashboard-card p-6 mb-6">
-          <div className="flex flex-wrap items-center gap-4">
-            <div className="flex-1 min-w-[300px]">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 input-icon" />
-                <Input
-                  type="text"
-                  placeholder="Search bookings..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="form-input pl-12"
-                />
-              </div>
-            </div>
-
-            <button onClick={() => setShowFilters(!showFilters)} className="btn btn-secondary flex items-center gap-2">
-              <Filter className="h-4 w-4" />
-              Filters
-            </button>
+    <TooltipProvider>
+      <DashboardLayout title="Bookings">
+        <div className="p-6">
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-2xl font-medium">Bookings</h1>
+            {/* <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-500">Items per page:</span>
+              <Select value={itemsPerPage.toString()} onValueChange={handleItemsPerPageChange}>
+                <SelectTrigger className="w-20">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="5">5</SelectItem>
+                  <SelectItem value="10">10</SelectItem>
+                  <SelectItem value="25">25</SelectItem>
+                  <SelectItem value="50">50</SelectItem>
+                  <SelectItem value="100">100</SelectItem>
+                </SelectContent>
+              </Select>
+            </div> */}
           </div>
 
-          {showFilters && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 pt-4 border-t animate-fade-in">
-              <div>
-                <label className="form-label">Package</label>
-                <select
-                  value={selectedPackage}
-                  onChange={(e) => setSelectedPackage(e.target.value)}
-                  className="form-select"
-                >
-                  <option value="">All Packages</option>
-                  <option value="Gold">Gold</option>
-                  <option value="Silver">Silver</option>
-                  <option value="Bronze">Bronze</option>
-                </select>
+          <div className="dashboard-card p-6 mb-6">
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="flex-1 min-w-[300px]">
+                <div className="relative">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 input-icon" />
+                  <Input
+                    type="text"
+                    placeholder="Search bookings..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="form-input pl-12"
+                  />
+                  {isFetching && (
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2">
+                      <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+                    </div>
+                  )}
+                </div>
               </div>
 
-              <div>
-                <label className="form-label">Date</label>
-                <select value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} className="form-select">
-                  <option value="">All Dates</option>
-                  <option value="15 May 2020">15 May 2020</option>
-                  <option value="16 May 2020">16 May 2020</option>
-                  <option value="17 May 2020">17 May 2020</option>
-                </select>
-              </div>
+              <Button
+                variant="outline"
+                onClick={() => setShowFilters(!showFilters)}
+                className="flex items-center gap-2"
+              >
+                <Filter className="h-4 w-4" />
+                Filters
+                {(selectedPackage || selectedDate) && (
+                  <span className="ml-1 bg-primary text-primary-foreground rounded-full w-5 h-5 text-xs flex items-center justify-center">
+                    {(selectedPackage ? 1 : 0) + (selectedDate ? 1 : 0)}
+                  </span>
+                )}
+              </Button>
 
-              <div>
-                <label className="form-label">Status</label>
-                <select
-                  value={selectedStatus}
-                  onChange={(e) => setSelectedStatus(e.target.value)}
-                  className="form-select"
-                >
-                  <option value="">All Status</option>
-                  <option value="Confirmed">Confirmed</option>
-                  <option value="Pending">Pending</option>
-                  <option value="Completed">Completed</option>
-                </select>
-              </div>
+              {(searchQuery || selectedPackage || selectedDate || sortField) && (
+                <Button variant="ghost" onClick={clearFilters} className="text-gray-500">
+                  Clear All
+                </Button>
+              )}
             </div>
-          )}
-        </div>
 
-        <div className="dashboard-card overflow-hidden">
-          {isLoading ? (
-            <div className="p-8 flex justify-center">
-              <div className="flex flex-col items-center">
-                <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-                <p className="mt-3 text-gray-500">Loading bookings...</p>
+            {showFilters && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 pt-4 border-t animate-fade-in">
+                <div>
+                  <label className="form-label">Package</label>
+                  <Select value={selectedPackage} onValueChange={setSelectedPackage}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="All Packages" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Packages</SelectItem>
+                      <SelectItem value="gold">Gold</SelectItem>
+                      <SelectItem value="silver">Silver</SelectItem>
+                      <SelectItem value="bronze">Bronze</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <label className="form-label">Date Range</label>
+                  <Input
+                    type="date"
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                    className="form-input"
+                  />
+                </div>
               </div>
-            </div>
-          ) : (
-            <>
-              <div className="responsive-container">
-                <table className="w-full">
-                  <thead>
-                    <tr>
-                      <th
-                        className="table-header text-left cursor-pointer hover:bg-primary/90"
-                        onClick={() => handleSort("package")}
-                      >
-                        <div className="flex items-center gap-1">
-                          <Package2 className="h-4 w-4" />
-                          Package {getSortIcon("package")}
-                        </div>
-                      </th>
-                      <th
-                        className="table-header text-left cursor-pointer hover:bg-primary/90"
-                        onClick={() => handleSort("name")}
-                      >
-                        <div className="flex items-center gap-1">Name {getSortIcon("name")}</div>
-                      </th>
-                      <th
-                        className="table-header text-left cursor-pointer hover:bg-primary/90"
-                        onClick={() => handleSort("email")}
-                      >
-                        <div className="flex items-center gap-1">
-                          <Mail className="h-4 w-4" />
-                          Email {getSortIcon("email")}
-                        </div>
-                      </th>
-                      <th className="table-header text-left">
-                        <div className="flex items-center gap-1">
-                          <Phone className="h-4 w-4" />
-                          Phone
-                        </div>
-                      </th>
-                      <th
-                        className="table-header text-left cursor-pointer hover:bg-primary/90"
-                        onClick={() => handleSort("location")}
-                      >
-                        <div className="flex items-center gap-1">
-                          <MapPin className="h-4 w-4" />
-                          Location {getSortIcon("location")}
-                        </div>
-                      </th>
-                      <th
-                        className="table-header text-left cursor-pointer hover:bg-primary/90"
-                        onClick={() => handleSort("date")}
-                      >
-                        <div className="flex items-center gap-1">
-                          <Calendar className="h-4 w-4" />
-                          Date {getSortIcon("date")}
-                        </div>
-                      </th>
-                      <th
-                        className="table-header text-left cursor-pointer hover:bg-primary/90"
-                        onClick={() => handleSort("status")}
-                      >
-                        <div className="flex items-center gap-1">Status {getSortIcon("status")}</div>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {currentItems.length > 0 ? (
-                      currentItems.map((booking) => (
-                        <tr key={booking.id} className="hover:bg-gray-50 transition-colors">
-                          <td className="table-cell font-medium">
-                            <span
-                              className={`inline-block px-3 py-1 rounded-full text-xs font-medium
-                              ${
-                                booking.package === "Gold"
-                                  ? "bg-yellow-100 text-yellow-800"
-                                  : booking.package === "Silver"
-                                    ? "bg-gray-100 text-gray-800"
-                                    : "bg-amber-100 text-amber-800"
-                              }`}
-                            >
-                              {booking.package}
-                            </span>
-                          </td>
-                          <td className="table-cell">{booking.name}</td>
-                          <td className="table-cell text-blue-600 hover:underline">
-                            <a href={`mailto:${booking.email}`}>{booking.email}</a>
-                          </td>
-                          <td className="table-cell">{booking.phone}</td>
-                          <td className="table-cell">{booking.location}</td>
-                          <td className="table-cell">{booking.date}</td>
-                          <td className="table-cell">
-                            <span className={getStatusBadgeClass(booking.status)}>{booking.status}</span>
+            )}
+          </div>
+
+          <div className="dashboard-card overflow-hidden">
+            {isLoading && !data ? (
+              <div className="p-8 flex justify-center">
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+                  <p className="mt-3 text-gray-500">Loading bookings...</p>
+                </div>
+              </div>
+            ) : (
+              <>
+                <div className="responsive-container">
+                  <table className="w-full">
+                    <thead>
+                      <tr>
+                        <th
+                          className="table-header text-left cursor-pointer hover:bg-primary/90 transition-colors"
+                          onClick={() => handleSort("package_name")}
+                        >
+                          <div className="flex items-center gap-1">
+                            <Package2 className="h-4 w-4" />
+                            Package {getSortIcon("package_name")}
+                          </div>
+                        </th>
+                        <th
+                          className="table-header text-left cursor-pointer hover:bg-primary/90 transition-colors"
+                          onClick={() => handleSort("company_name")}
+                        >
+                          <div className="flex items-center gap-1">Company {getSortIcon("company_name")}</div>
+                        </th>
+                        <th
+                          className="table-header text-left cursor-pointer hover:bg-primary/90 transition-colors"
+                          onClick={() => handleSort("email")}
+                        >
+                          <div className="flex items-center gap-1">
+                            <Mail className="h-4 w-4" />
+                            Email {getSortIcon("email")}
+                          </div>
+                        </th>
+                        <th className="table-header text-left">
+                          <div className="flex items-center gap-1">
+                            <Phone className="h-4 w-4" />
+                            Phone
+                          </div>
+                        </th>
+                        <th
+                          className="table-header text-left cursor-pointer hover:bg-primary/90 transition-colors"
+                          onClick={() => handleSort("location")}
+                        >
+                          <div className="flex items-center gap-1">
+                            <MapPin className="h-4 w-4" />
+                            Location {getSortIcon("location")}
+                          </div>
+                        </th>
+                        <th
+                          className="table-header text-left cursor-pointer hover:bg-primary/90 transition-colors"
+                          onClick={() => handleSort("created_at")}
+                        >
+                          <div className="flex items-center gap-1">
+                            <Calendar className="h-4 w-4" />
+                            Date {getSortIcon("created_at")}
+                          </div>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {packageOrders.length > 0 ? (
+                        packageOrders.map((order, index) => (
+                          <tr key={`${order.created_at || index}`} className="hover:bg-gray-50 transition-colors">
+                            <td className="table-cell font-medium">
+                              <span
+                                className={`inline-block px-3 py-1 rounded-full text-xs font-medium
+                                ${
+                                  order.package_name.toLowerCase() === "gold"
+                                    ? "bg-yellow-100 text-yellow-800"
+                                    : order.package_name.toLowerCase() === "silver"
+                                      ? "bg-gray-100 text-gray-800"
+                                      : "bg-amber-100 text-amber-800"
+                                }`}
+                              >
+                                {order.package_name.charAt(0).toUpperCase() + order.package_name.slice(1)}
+                              </span>
+                            </td>
+                            <td className="table-cell">{order.company_name}</td>
+                            <td className="table-cell text-blue-600 hover:underline">
+                              <a href={`mailto:${order.email}`}>{order.email}</a>
+                            </td>
+                            <td className="table-cell">{order.phone}</td>
+                            <td className="table-cell">
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <span className="block max-w-[200px] truncate cursor-help">{order.location}</span>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p className="max-w-[300px]">{order.location}</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </td>
+                            <td className="table-cell">{order.created_at}</td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan={6} className="table-cell text-center py-8 text-gray-500">
+                            {isFetching ? "Searching..." : "No bookings found matching your criteria"}
                           </td>
                         </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan={7} className="table-cell text-center py-8 text-gray-500">
-                          No bookings found matching your criteria
-                        </td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
-              </div>
-
-              {filteredAndSortedBookings.length > 0 && (
-                <div className="p-4 flex flex-col sm:flex-row sm:items-center justify-between border-t gap-4">
-                  <div className="text-sm text-gray-500">
-                    Showing {indexOfFirstItem + 1} to {Math.min(indexOfLastItem, filteredAndSortedBookings.length)} of{" "}
-                    {filteredAndSortedBookings.length} results
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                      disabled={currentPage === 1}
-                      className="pagination-button"
-                      aria-label="Previous page"
-                    >
-                      <ChevronLeft className="h-4 w-4" />
-                    </button>
-
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                      <button
-                        key={page}
-                        onClick={() => setCurrentPage(page)}
-                        className={`pagination-button ${currentPage === page ? "active" : ""}`}
-                        aria-label={`Page ${page}`}
-                        aria-current={currentPage === page ? "page" : undefined}
-                      >
-                        {page}
-                      </button>
-                    ))}
-
-                    <button
-                      onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                      disabled={currentPage === totalPages}
-                      className="pagination-button"
-                      aria-label="Next page"
-                    >
-                      <ChevronRight className="h-4 w-4" />
-                    </button>
-                  </div>
+                      )}
+                    </tbody>
+                  </table>
                 </div>
-              )}
-            </>
-          )}
+
+                {totalItems > 0 && (
+                  <div className="p-4 flex flex-col sm:flex-row sm:items-center justify-between border-t gap-4">
+                    <div className="text-sm text-gray-500">
+                      Showing {(currentPageFromAPI - 1) * itemsPerPage + 1} to{" "}
+                      {Math.min(currentPageFromAPI * itemsPerPage, totalItems)} of {totalItems} results
+                      {(debouncedSearchQuery || selectedPackage || selectedDate) && " (filtered)"}
+                    </div>
+
+                    <div className="flex items-center gap-1">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handlePageChange(1)}
+                        disabled={currentPage === 1 || isFetching}
+                        className="h-8 w-8 p-0"
+                      >
+                        <ChevronsLeft className="h-4 w-4" />
+                      </Button>
+
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1 || isFetching}
+                        className="h-8 w-8 p-0"
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </Button>
+
+                      {paginationNumbers.map((page, index) => (
+                        <Button
+                          key={index}
+                          variant={page === currentPage ? "default" : "outline"}
+                          size="sm"
+                          onClick={() => typeof page === "number" && handlePageChange(page)}
+                          disabled={page === "..." || isFetching}
+                          className="h-8 min-w-8 px-2"
+                        >
+                          {page}
+                        </Button>
+                      ))}
+
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages || isFetching}
+                        className="h-8 w-8 p-0"
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </Button>
+
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handlePageChange(totalPages)}
+                        disabled={currentPage === totalPages || isFetching}
+                        className="h-8 w-8 p-0"
+                      >
+                        <ChevronsRight className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+          </div>
         </div>
-      </div>
-    </DashboardLayout>
+      </DashboardLayout>
+    </TooltipProvider>
   )
 }

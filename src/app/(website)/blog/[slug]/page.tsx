@@ -4,7 +4,7 @@ import React from "react";
 import { BlogApiResponse } from "../_components/BlogDataType";
 import Image from "next/image";
 import moment from "moment";
-import BlogPage from "../page";
+import BlogContainer from "../_components/BlogContainer";
 
 const BlogDetails = ({ params }: { params: { slug: string } }) => {
   const { data, isLoading, isError } = useQuery<BlogApiResponse>({
@@ -40,12 +40,14 @@ const BlogDetails = ({ params }: { params: { slug: string } }) => {
         <h3 className="text-xl md:text-[22px] lg:text-2xl text-[#0F2A5C] font-semibold leading-[120%] tracking-[0%]">
           {blogDetails?.title}
         </h3>
-        <p dangerouslySetInnerHTML={{ __html: blogDetails?.details ?? "" }} className="text-base text-[#0F2A5C] leading-[150%] tracking-[0%] font-normal pt-3 md:pt-4"/>
-          
+        <p
+          dangerouslySetInnerHTML={{ __html: blogDetails?.details ?? "" }}
+          className="text-base text-[#0F2A5C] leading-[150%] tracking-[0%] font-normal pt-3 md:pt-4"
+        />
       </div>
 
       {/* blog cart  */}
-      <BlogPage />
+      <BlogContainer />
     </div>
   );
 };
