@@ -1,49 +1,55 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect } from "react"
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { Loader2 } from "lucide-react"
+import { useSession } from "next-auth/react"
 
 // Types
 interface PackageData {
   title: string
   price: string
-  numberOfClients: string
-  vatType: string
+  no_of_client: string
+  vat_type: string
 }
 
-// API Functions
+interface APIResponse {
+  data: PackageData
+}
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL
 
-const getPackageData = async (packageType: string): Promise<PackageData> => {
+// API Functions
+const getPackageData = async (packageType: string): Promise<APIResponse> => {
   const response = await fetch(`${API_BASE_URL}/api/packageinfo/${packageType}`)
-
   if (!response.ok) {
     throw new Error(`Failed to fetch ${packageType} package data`)
   }
-
   return response.json()
 }
 
-const updatePackageData = async (packageType: string, data: PackageData): Promise<void> => {
-  const accessToken = localStorage.getItem("accessToken")
-
-  if (!accessToken) {
-    throw new Error("Access token not found")
-  }
-
+const updatePackageData = async (
+  packageType: string,
+  data: PackageData,
+  token: string
+): Promise<void> => {
   const response = await fetch(`${API_BASE_URL}/api/packageinfo/${packageType}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   })
@@ -53,26 +59,27 @@ const updatePackageData = async (packageType: string, data: PackageData): Promis
   }
 }
 
-// Custom Hooks
+// Hooks
 const usePackageData = (packageType: string) => {
   return useQuery({
     queryKey: ["package", packageType],
     queryFn: () => getPackageData(packageType),
     enabled: !!packageType,
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 5 * 60 * 1000,
   })
 }
 
-const useUpdatePackage = () => {
+const useUpdatePackage = (token: string) => {
   const queryClient = useQueryClient()
 
   return useMutation({
     mutationFn: ({ packageType, data }: { packageType: string; data: PackageData }) =>
-      updatePackageData(packageType, data),
+      updatePackageData(packageType, data, token),
     onSuccess: (_, { packageType }) => {
-      // Invalidate and refetch package data
       queryClient.invalidateQueries({ queryKey: ["package", packageType] })
-      toast.success(`${packageType.charAt(0).toUpperCase() + packageType.slice(1)} package updated successfully!`)
+      toast.success(
+        `${packageType.charAt(0).toUpperCase() + packageType.slice(1)} package updated successfully!`
+      )
     },
     onError: (error: Error) => {
       toast.error(`Failed to update package: ${error.message}`)
@@ -80,26 +87,30 @@ const useUpdatePackage = () => {
   })
 }
 
-// Main Component
-export default function PricinPackage() {
+// Component
+export default function PricingPackage() {
   const [selectedPackage, setSelectedPackage] = useState("gold")
+  const { data: session } = useSession()
+  const token = (session?.user as { token?: string })?.token || ""
+
+  const { data: packageData, isLoading, error } = usePackageData(selectedPackage)
+  const updatePackageMutation = useUpdatePackage(token)
+
   const [formData, setFormData] = useState<PackageData>({
     title: "",
     price: "",
-    numberOfClients: "",
-    vatType: "",
+    no_of_client: "",
+    vat_type: "",
   })
 
-  // Fetch package data when package selection changes
-  const { data: packageData, isLoading, error } = usePackageData(selectedPackage)
-
-  // Update package mutation
-  const updatePackageMutation = useUpdatePackage()
-
-  // Update form data when API data is fetched
   useEffect(() => {
-    if (packageData) {
-      setFormData(packageData)
+    if (packageData?.data) {
+      setFormData({
+        title: packageData.data.title || "",
+        price: packageData.data.price || "",
+        no_of_client: packageData.data.no_of_client || "",
+        vat_type: packageData.data.vat_type || "",
+      })
     }
   }, [packageData])
 
@@ -116,6 +127,10 @@ export default function PricinPackage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    if (!token) {
+      toast.error("User token not found. Please log in again.")
+      return
+    }
 
     updatePackageMutation.mutate({
       packageType: selectedPackage,
@@ -138,7 +153,7 @@ export default function PricinPackage() {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <Label htmlFor="package-select" className="text-sm font-medium text-gray-700 mb-2 block">
-            Select Packages
+            Select Package
           </Label>
           <Select value={selectedPackage} onValueChange={handlePackageChange}>
             <SelectTrigger className="w-full">
@@ -159,72 +174,32 @@ export default function PricinPackage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <Label htmlFor="title" className="text-sm font-medium text-gray-700 mb-2 block">
-                Title
-              </Label>
-              <Input
-                id="title"
-                type="text"
-                value={formData.title}
-                onChange={(e) => handleInputChange("title", e.target.value)}
-                className="w-full"
-                disabled={isLoading}
-              />
-            </div>
-
-            <div>
-              <Label htmlFor="price" className="text-sm font-medium text-gray-700 mb-2 block">
-                Price
-              </Label>
-              <Input
-                id="price"
-                type="text"
-                value={formData.price}
-                onChange={(e) => handleInputChange("price", e.target.value)}
-                className="w-full"
-                disabled={isLoading}
-              />
-            </div>
-
-            <div>
-              <Label htmlFor="numberOfClients" className="text-sm font-medium text-gray-700 mb-2 block">
-                Number Of Clients
-              </Label>
-              <Input
-                id="numberOfClients"
-                type="text"
-                value={formData.numberOfClients}
-                onChange={(e) => handleInputChange("numberOfClients", e.target.value)}
-                className="w-full"
-                disabled={isLoading}
-              />
-            </div>
-
-            <div>
-              <Label htmlFor="vatType" className="text-sm font-medium text-gray-700 mb-2 block">
-                Vat Type
-              </Label>
-              <Input
-                id="vatType"
-                type="text"
-                value={formData.vatType}
-                onChange={(e) => handleInputChange("vatType", e.target.value)}
-                className="w-full"
-                disabled={isLoading}
-              />
-            </div>
+            {["title", "price", "no_of_client", "vat_type"].map((field) => (
+              <div key={field}>
+                <Label htmlFor={field} className="text-sm font-medium text-gray-700 mb-2 block">
+                  {field.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}
+                </Label>
+                <Input
+                  id={field}
+                  type="text"
+                  value={formData[field as keyof PackageData]}
+                  onChange={(e) => handleInputChange(field as keyof PackageData, e.target.value)}
+                  className="w-full"
+                />
+              </div>
+            ))}
           </div>
         )}
 
         <Button
           type="submit"
           className="bg-slate-800 hover:bg-slate-700 text-white px-8 py-2 rounded-md font-medium"
-          disabled={isLoading || updatePackageMutation.isPending}
+          disabled={updatePackageMutation.isPending}
         >
           {updatePackageMutation.isPending ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              
               Updating...
             </>
           ) : (
