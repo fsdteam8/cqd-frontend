@@ -1,186 +1,175 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useCallback } from "react"
-import Image from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { useState, useEffect, useCallback, useMemo } from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { useQuery } from "@tanstack/react-query";
+import { Skeleton } from "./ui/skeleton";
 
-interface Testimonial {
-  id: number
-  name: string
-  role: string
-  quote: string
-  rating: number
-  image: string
+interface GoogleReview {
+  author_name: string;
+  author_url: string;
+  language: string;
+  original_language: string;
+  profile_photo_url: string;
+  rating: number;
+  relative_time_description: string;
+  text: string;
+  time: number;
+  translated: boolean;
 }
 
-
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    name: "Michael Thompson",
-    role: "Real Estate Agent",
-    quote:
-      "I recommend CQD Cleaning to all my clients for move-in cleaning. They make properties shine and help my listings look their absolute best.",
-    rating: 5,
-    image: "/images/user.png",
-  },
-  {
-    id: 2,
-    name: "Sarah Johnson",
-    role: "Homeowner",
-    quote:
-      "CQD Cleaning Services transformed my home. Their attention to detail is remarkable and their staff is professional and courteous.",
-    rating: 4,
-    image: "/images/user.png",
-  },
-  {
-    id: 3,
-    name: "David Wilson",
-    role: "Property Manager",
-    quote:
-      "We've been using CQD Cleaning for all our properties for over 3 years. Their reliability and quality of service is unmatched in the industry.",
-    rating: 2,
-    image: "/images/user.png",
-  },
-]
-
 export default function Review() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [isMobile, setIsMobile] = useState(false)
-  const [isPaused, setIsPaused] = useState(false)
-console.log(isMobile)
-  // Check if we're on mobile for responsive adjustments
+  const [activeIndex, setActiveIndex] = useState(0);
+  // const [isMobile, setIsMobile] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["reviews"],
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/google-reviews`
+      );
+      if (!res.ok) throw new Error("Failed to fetch reviews");
+      return res.json();
+    },
+  });
+
+  // const reviews: GoogleReview[] = data?.result?.reviews || [];
+  const reviews = useMemo<GoogleReview[]>(() => {
+  return data?.result?.reviews || [];
+}, [data]);
+
   useEffect(() => {
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    checkIfMobile()
-    window.addEventListener("resize", checkIfMobile)
-
-    return () => {
-      window.removeEventListener("resize", checkIfMobile)
-    }
-  }, [])
-
-  const nextTestimonial = useCallback(() => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+      // setIsMobile(window.innerWidth < 768);
+    };
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+    return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
 
-  useEffect(() => {
-    // Auto-scroll functionality
-    const interval = setInterval(() => {
-      if (!isPaused) {
-        nextTestimonial()
-      }
-    }, 5000) // Change testimonial every 5 seconds
-
-    return () => clearInterval(interval)
-  }, [isPaused,nextTestimonial])
-
-  
-
-  
-
-  
+  const nextTestimonial = useCallback(() => {
+    if (reviews.length) {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+    }
+  }, [reviews]);
 
   const prevTestimonial = () => {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length)
-  }
+    if (reviews.length) {
+      setActiveIndex(
+        (prevIndex) => (prevIndex - 1 + reviews.length) % reviews.length
+      );
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isPaused) {
+        nextTestimonial();
+      }
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused, nextTestimonial]);
 
   const goToTestimonial = (index: number) => {
-    setActiveIndex(index)
-  }
+    setActiveIndex(index);
+  };
+
+  const activeReview = reviews[activeIndex];
+
+  if (isLoading )
+    return (
+      <div>
+        <section className="w-full py-12 md:py-16 lg:py-20 px-4">
+          <div className="container mx-auto max-w-9xl">
+            <div className="text-start mb-8 md:mb-12">
+              <Skeleton className="h-10 w-72 mb-4" />
+              <Skeleton className="h-5 w-96" />
+            </div>
+
+            <Card className="overflow-hidden">
+              <CardContent className="p-6 md:p-8 flex flex-col md:flex-row items-center">
+                <div className="md:w-1/3 flex justify-center mb-6 md:mb-0">
+                  <Skeleton className="w-32 h-32 md:w-40 md:h-40 rounded-full" />
+                </div>
+                <div className="md:w-2/3 text-center md:text-left space-y-4">
+                  <div className="flex justify-center md:justify-start space-x-1">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Skeleton key={i} className="w-5 h-5 rounded" />
+                    ))}
+                  </div>
+                  <Skeleton className="h-6 w-full md:w-3/4" />
+                  <Skeleton className="h-6 w-1/2" />
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="flex justify-center mt-6 space-x-2">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Skeleton key={i} className="w-2.5 h-2.5 rounded-full" />
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+    );
 
   return (
-    <section className="w-full py-12 md:py-16 lg:py-20 px-4  ">
+    <section className="w-full py-12 md:py-16 lg:py-20 px-4">
       <div className="container mx-auto max-w-9xl">
         <div className="text-start mb-8 md:mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold  tracking-tight mb-4">What Our Clients Say</h2>
-          <p className="text-base  md:text-lg text-gray-700 max-w-9xl mx-auto">
-            Don&apos;t just take our word for it - hear from our satisfied customers about their experience with CQD
-            Cleaning Services.
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+            What Our Clients Say
+          </h2>
+          <p className="text-base md:text-lg text-gray-700">
+            Don&apos;t just take our word for it - hear from our satisfied
+            customers about their experience with CQD Cleaning Services.
           </p>
         </div>
 
         <div className="relative">
-          {/* Desktop and Tablet View */}
-          <div className="hidden md:block ">
-            <div className="grid grid-cols-1 gap-8">
-              <Card
-                className="overflow-hidden "
-                onMouseEnter={() => setIsPaused(true)}
-                onMouseLeave={() => setIsPaused(false)}
-              >
-                <CardContent className="p-0 border-none">
-                  <div className="flex flex-col md:flex-row items-center">
-                    <div className="md:w-1/3 p-6 flex flex-col items-center">
-                      <div className="relative w-40 h-40 rounded-full overflow-hidden mb-4">
-                        <Image
-                          src={testimonials[activeIndex].image || "/placeholder.svg"}
-                          alt={testimonials[activeIndex].name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div className="flex items-center justify-center mb-2">
-                        {[...Array(testimonials[activeIndex].rating)].map((_, i) => (
-                          <svg key={i} className="w-5 h-5 text-yellow-500 fill-current" viewBox="0 0 24 24">
-                            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                          </svg>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="md:w-2/3 p-6 md:p-8 bg-white">
-                      <blockquote className="text-lg md:text-xl italic mb-4 text-[#0F2A5C]">
-                        &ldquo;{testimonials[activeIndex].quote}&rdquo;
-                      </blockquote>
-                      <div className="font-bold text-xl text-[#0F2A5C]">{testimonials[activeIndex].name}</div>
-                      <div className=" text-[#0F2A5C]">{testimonials[activeIndex].role}</div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* Mobile View */}
-          <div className="md:hidden">
-            <Card
-              className="overflow-hidden "
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-            >
-              <CardContent className="p-6">
-                <div className="flex flex-col items-center text-center">
-                  <div className="relative w-32 h-32 rounded-full overflow-hidden mb-4">
-                    <Image
-                      src={testimonials[activeIndex].image || "/placeholder.svg"}
-                      alt={testimonials[activeIndex].name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="flex items-center justify-center mb-4">
-                    {[...Array(testimonials[activeIndex].rating)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5 text-yellow-500 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <blockquote className="text-base italic mb-4">
-                    &ldquo;{testimonials[activeIndex].quote}&rdquo;
-                  </blockquote>
-                  <div className="font-bold text-lg ">{testimonials[activeIndex].name}</div>
-                  <div className="text-gray-600">{testimonials[activeIndex].role}</div>
+          <Card
+            className="overflow-hidden"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <CardContent className="p-6 md:p-8 flex flex-col md:flex-row items-center">
+              <div className="md:w-1/3 flex justify-center mb-6 md:mb-0">
+                <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
+                  <Image
+                    src={activeReview.profile_photo_url || "/placeholder.svg"}
+                    alt={activeReview.author_name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-              </CardContent>
-            </Card>
-          </div>
+              </div>
+              <div className="md:w-2/3 text-center md:text-left">
+                <div className="flex items-center justify-center md:justify-start mb-4">
+                  {[...Array(activeReview.rating)].map((_, i) => (
+                    <svg
+                      key={i}
+                      className="w-5 h-5 text-yellow-500 fill-current"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                    </svg>
+                  ))}
+                </div>
+                <blockquote className="text-lg md:text-xl italic text-[#0F2A5C] mb-4">
+                  &ldquo;{activeReview.text}&rdquo;
+                </blockquote>
+                <div className="font-bold text-xl text-[#0F2A5C]">
+                  {activeReview.author_name}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
-          {/* Navigation Buttons */}
+          {/* Arrows */}
           <div className="flex justify-between absolute top-1/2 left-0 right-0 -mt-4 px-2">
             <Button
               variant="outline"
@@ -189,7 +178,6 @@ console.log(isMobile)
               onClick={prevTestimonial}
             >
               <ChevronLeft className="h-5 w-5" />
-              <span className="sr-only">Previous</span>
             </Button>
             <Button
               variant="outline"
@@ -198,26 +186,24 @@ console.log(isMobile)
               onClick={nextTestimonial}
             >
               <ChevronRight className="h-5 w-5" />
-              <span className="sr-only">Next</span>
             </Button>
           </div>
         </div>
 
-        {/* Dots Navigation */}
+        {/* Dots */}
         <div className="flex justify-center mt-6">
-          {testimonials.map((_, index) => (
+          {reviews.map((_, index) => (
             <button
               key={index}
               onClick={() => goToTestimonial(index)}
-              className={`mx-1 w-2.5 h-2.5 rounded-full ${activeIndex === index ? "bg-[#0F2A5C]" : "bg-gray-300"}`}
+              className={`mx-1 w-2.5 h-2.5 rounded-full ${
+                activeIndex === index ? "bg-[#0F2A5C]" : "bg-gray-300"
+              }`}
               aria-label={`Go to testimonial ${index + 1}`}
             />
           ))}
         </div>
-        {/* <div className="mt-2 text-sm text-gray-500 text-center">
-          {isPaused ? "Auto-scroll paused" : "Auto-scrolling enabled"} - Hover to pause
-        </div> */}
       </div>
     </section>
-  )
+  );
 }
