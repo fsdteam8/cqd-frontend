@@ -1,4 +1,4 @@
-import ManagePackages from '@/components/ManagePackages'
+
 import React from 'react'
 import PricinPackage from './_components/PricinPackage'
 import { DashboardLayout } from '@/components/dashboard-layout'
