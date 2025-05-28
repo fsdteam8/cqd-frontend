@@ -1,6 +1,10 @@
 import React from "react";
-import BlogContainer from "./_components/BlogContainer";
 import AllBlog from "./_components/AllBlog";
+
+import dynamic from 'next/dynamic'
+const BlogContainer = dynamic(() => import('./_components/BlogContainer'), {
+  ssr: false,
+})
 
 const BlogPage = () => {
   return (
