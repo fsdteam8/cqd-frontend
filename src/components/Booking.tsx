@@ -91,7 +91,7 @@ export default function BookingsPage() {
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc")
 
   const session = useSession()
-  const token = (session.data?.user as { token: string })?.token
+  const token = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2NvcS5zY2FsZXVwZGV2YWdlbmN5LmNvbS9hcGkvbG9naW4iLCJpYXQiOjE3NDg0MzE3NzksImV4cCI6MTc0ODQzNTM3OSwibmJmIjoxNzQ4NDMxNzc5LCJqdGkiOiI4RFU4bzJaS0tGNUpWeklNIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.wIYjliSsnutT5Dc9h8LBkPXBl_LYTXP9vG0GFU5UPRk'
 
   // Debounce search query to avoid too many API calls
   const debouncedSearchQuery = useDebounce(searchQuery, 500)
@@ -113,7 +113,7 @@ export default function BookingsPage() {
       sortField,
       sortDirection,
     ],
-    queryFn: () =>
+    queryFn: async () =>
       fetchPackageOrders({
         token,
         page: currentPage,
@@ -214,7 +214,7 @@ export default function BookingsPage() {
     <TooltipProvider>
       <DashboardLayout title="Bookings">
         <div className="p-6">
-          <div className="flex justify-between  mb-6 gap-10">
+          <div className="flex justify-between  mb-6 gap-10">``
             <h1 className="text-2xl font-medium">Bookings</h1>
             {/* <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Items per page:</span>
