@@ -151,7 +151,7 @@ export default function Navbar() {
               Home
             </Link>
             
-            <Link href="/about" className="text-gray-900 hover:text-gray-600 py-2" onClick={() => setIsMenuOpen(false)}>
+            <Link href="/#about" className="text-gray-900 hover:text-gray-600 py-2" onClick={() => setIsMenuOpen(false)}>
               About Us
             </Link>
             <div>
@@ -197,14 +197,14 @@ export default function Navbar() {
               </div>
             </div>
             <Link
-              href="/pricing"
+              href="/#pricing"
               className="text-gray-900 hover:text-gray-600 py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Pricing
             </Link>
             <Link
-              href="/locations"
+              href="/#locations"
               className="text-gray-900 hover:text-gray-600 py-2"
               onClick={() => setIsMenuOpen(false)}
             >
