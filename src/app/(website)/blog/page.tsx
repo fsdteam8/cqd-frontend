@@ -20,7 +20,6 @@ const BlogPage = () => {
         <p className="text-center text-xl md:text-[22px] lg:text-2xl font-normal leading-[120%] tracking-[0%] text-[#0F2A5C] pt-[15px]">
           Blog and News
         </p>
-
       </div> */}
       <div className="pt-8 md:pt-10 lg:mt-12">
         <AllBlog />
