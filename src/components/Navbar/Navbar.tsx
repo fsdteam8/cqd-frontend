@@ -113,10 +113,10 @@ export default function Navbar() {
                   </div>
                 )}
               </div>
-              <Link href="#pricing" className="text-gray-900 hover:text-gray-600 transition-colors">
+              <Link href="/#pricing" className="text-gray-900 hover:text-gray-600 transition-colors">
                 Pricing
               </Link>
-              <Link href="#location" className="text-gray-900 hover:text-gray-600 transition-colors">
+              <Link href="/#location" className="text-gray-900 hover:text-gray-600 transition-colors">
                 Locations
               </Link>
               <Link href="/blog" className="text-gray-900 hover:text-gray-600 transition-colors">
