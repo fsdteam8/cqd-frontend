@@ -188,7 +188,7 @@ export function RichTextEditor({ content, onChange, placeholder = "Start writing
   }
 
   return (
-    <div className="border rounded-md overflow-hidden">
+    <div className="border border-[#B6B6B6] focus:border-none focus:ring-0 focus-visible:border-none rounded-md overflow-hidden h-[341px]">
       <div className="rich-text-toolbar overflow-x-auto">
         <div className="rich-text-toolbar-group">
           <select

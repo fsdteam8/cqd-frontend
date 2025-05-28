@@ -12,7 +12,7 @@ const WwoWindow = () => {
             <div className="relative w-full aspect-[536/656] max-w-[536px]  overflow-hidden">
               <Image
                 src="/images/wc1.png"
-                alt="Carpet cleaning with steam"
+                alt="Window Cleaning"
                 fill
                 style={{ objectFit: "cover" }}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
@@ -24,18 +24,15 @@ const WwoWindow = () => {
 
           {/* Right side - Content */}
           <div className="w-full lg:w-1/2 flex flex-col gap-6">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#14213d]">What We Offer</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#14213d]"> What We Offer</h2>
 
             <div className="space-y-4">
               <p className="text-base md:text-lg text-gray-700">
-                Lorem ipsum dolor sit amet consectetur. Consequat ac arcu sem est. Cursus ut adipiscing enim eu enim.
-                Eget enim luctus nec cras. Consectetur gravida sapien nisi phasellus erat. Etiam mauris leo non ipsum
-                quis platea. Id egestas ut in enim pellentesque fermentum. Faucibus vestibulum.
+                At CQD Cleaning Company, we deliver expert cleaning services tailored to homes and businesses. From office and industrial cleaning to deep and eco-friendly residential solutions, our trained team ensures spotless, affordable, and reliable results—every time.
               </p>
 
               <p className="text-base md:text-lg text-gray-700">
-                Lorem ipsum dolor sit amet consectetur. Rutrum at vivamus volutpat erat. Mattis malesuada cras
-                suspendisse tempus mattis. Aliquam odio vestibulum eu venenatis laoreet eu. Massa fermentum.
+                CQD Cleaning Company delivers expert commercial, office, deep, and residential cleaning using eco-friendly products. Trust our team for reliable, affordable, and spotless results.
               </p>
             </div>
 
@@ -74,18 +71,15 @@ const WwoWindow = () => {
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
               {/* Left side - Content */}
               <div className="w-full lg:w-1/2 flex flex-col gap-6">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#14213d]">Why Choose Us</h2>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#14213d]"> Why Choose Us</h2>
     
                 <div className="space-y-4">
                   <p className="text-base md:text-lg text-gray-700">
-                    Lorem ipsum dolor sit amet consectetur. Consequat ac arcu sem est. Cursus ut adipiscing enim eu enim.
-                    Eget enim luctus nec cras. Consectetur gravida sapien nisi phasellus erat. Etiam mauris leo non ipsum
-                    quis platea. Id egestas ut in enim pellentesque fermentum. Faucibus vestibulum.
+                    At CQD Cleaning Services, we combine reliability, professionalism, and value to deliver spotless results every time. Our trained team is committed to providing flexible, efficient, and high-quality cleaning tailored to your schedule and budget.
                   </p>
     
                   <p className="text-base md:text-lg text-gray-700">
-                    Lorem ipsum dolor sit amet consectetur. Rutrum at vivamus volutpat erat. Mattis malesuada cras
-                    suspendisse tempus mattis. Aliquam odio vestibulum eu venenatis laoreet eu. Massa fermentum.
+                    At CQD Cleaning Service, we deliver trusted, thorough cleaning solutions tailored to your needs. Our expert team ensures spotless results with care, reliability, and efficiency every time.
                   </p>
                 </div>
     
@@ -119,7 +113,7 @@ const WwoWindow = () => {
                 <div className="relative w-full aspect-[536/656] max-w-[536px] rounded-tr-[100px] rounded-bl-[100px] overflow-hidden">
                   <Image
                     src="/images/wc2.png"
-                    alt="Carpet cleaning with steam"
+                    alt="Window Cleaning Services"
                     fill
                     style={{ objectFit: "cover" }}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"

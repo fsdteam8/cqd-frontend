@@ -1,16 +1,31 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { Instagram, Linkedin, Twitter, MessageCircle } from "lucide-react"
-import { useState, useEffect } from "react"
+import Link from "next/link";
+import Image from "next/image";
+import { Instagram, Linkedin, Twitter, MessageCircle } from "lucide-react";
+import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Footer() {
-  const [currentYear, setCurrentYear] = useState(2023)
+  const [currentYear, setCurrentYear] = useState(2023);
+
+
+  const {data} = useQuery({
+    queryKey: ['email'],
+    queryFn: async () => {
+      const res = await fetch('https://coq.scaleupdevagency.com/api/email',{
+        method : "GET",
+      })
+
+      return res.json();
+    }
+  })
+
+  console.log("Email Data: ", data?.email);
 
   useEffect(() => {
-    setCurrentYear(new Date().getFullYear())
-  }, [])
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
     <footer className=" w-full px-4 py-8 md:px-8 lg:px-12">
@@ -19,58 +34,77 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
           <div className="mb-6 md:mb-0">
             <Link href="/" className="inline-block">
-              <Image src="/images/flogo.png" alt="CQD Logo" width={120} height={40} className="h-10 w-auto" />
+              <Image
+                src="/images/flogo.png"
+                alt="CQD Logo"
+                width={120}
+                height={40}
+                className="h-10 w-auto"
+              />
             </Link>
           </div>
 
           <div className="grid grid-cols-2 md:flex flex-col md:flex-row gap-4 md:gap-8">
-  <Link href="/reviews" className="text-white hover:text-gray-300 transition-colors">
-    Reviews
-  </Link>
-  <Link href="#pricing" className="text-white hover:text-gray-300 transition-colors">
-    Pricing
-  </Link>
-  <Link href="/blog" className="text-white hover:text-gray-300 transition-colors">
-    Blog
-  </Link>
-  <Link href="/contact" className="text-white hover:text-gray-300 transition-colors">
-    Contact
-  </Link>
-  <Link
-    href="/quote"
-    className="col-span-2 bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200 transition-colors md:ml-4"
-  >
-    Request a Quote
-  </Link>
-</div>
-
+            <Link
+              href="/reviews"
+              className="text-white hover:text-gray-300 transition-colors"
+            >
+              Reviews
+            </Link>
+            <Link
+              href="#pricing"
+              className="text-white hover:text-gray-300 transition-colors"
+            >
+              Pricing
+            </Link>
+            <Link
+              href="/blog"
+              className="text-white hover:text-gray-300 transition-colors"
+            >
+              Blog
+            </Link>
+            <Link
+              href="/contact"
+              className="text-white hover:text-gray-300 transition-colors"
+            >
+              Contact
+            </Link>
+            <Link
+              href="/quote"
+              className="col-span-2 bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200 transition-colors md:ml-4"
+            >
+              Request a Quote
+            </Link>
+          </div>
         </div>
 
         {/* Address and contact info */}
         <div className="mb-8">
-          <p className="text-sm mb-1 !text-white">#### Dummy Avenue, Suite ###</p>
+          <p className="text-sm mb-1 !text-white">
+            #### Dummy Avenue, Suite ###
+          </p>
           <p className="text-sm mb-6 !text-white">Location, CA #####, UK</p>
-
-     
         </div>
 
         {/* Bottom section with policies and social */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-       
           <div>
-       <a
-            href="mailto:example.email@gmail.com"
-            className="text-lg md:text-3xl font-bold hover:text-gray-300 transition-colors"
-          >
-            example.email@gmail.com
-          </a>
+            <a
+              href="mailto:example.email@gmail.com"
+              className="text-lg md:text-3xl font-bold hover:text-gray-300 transition-colors"
+            >
+              {data?.email || "example.email@gmail.com"}
+            </a>
 
-          <div className="mt-4">
-            <Link href="/booking" className="inline-block text-xl font-medium hover:text-gray-300 transition-colors">
-              Book Now
-            </Link>
+            <div className="mt-4">
+              <Link
+                href="/booking"
+                className="inline-block text-xl font-medium hover:text-gray-300 transition-colors"
+              >
+                Book Now
+              </Link>
+            </div>
           </div>
-       </div>
 
           <div>
             <p className="text-xl mb-2 !text-white">Find Us On:</p>
@@ -110,7 +144,8 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-8 text-center text-xs ">
           <p className="!text-white">
-            {currentYear} - CQD Cleaning Services. All rights reserved. Website Design and SEO by Smoking Rocket{" "}
+            {currentYear} - CQD Cleaning Services. All rights reserved. Website
+            Design and SEO by Smoking Rocket{" "}
             <Link href="/privacy-policy" className="underline hover:text-white">
               View our Privacy Policy
             </Link>
@@ -118,5 +153,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
