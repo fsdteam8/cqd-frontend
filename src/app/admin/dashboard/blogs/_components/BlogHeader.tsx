@@ -1,9 +1,23 @@
+"use client";
+
+import * as React from "react";
+import { format } from "date-fns";
+import { ChevronDown } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import CQDDropdownSelector from "@/components/ui/CQDDropdownSelector";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 
 const statusList = [
-  { id: 1, name: "Status", value: "all" },
+  { id: 1, name: "All Status", value: "all" },
   { id: 2, name: "Published", value: "1" },
   { id: 3, name: "UnPublished", value: "0" },
 ];
@@ -11,12 +25,20 @@ const statusList = [
 interface BlogHeaderProps {
   search: string;
   setSearch: (value: string) => void;
-  status: string | number ;
-  setStatus: (value: string | number ) => void;
+  status: string | number;
+  setStatus: (value: string | number) => void;
+  date: Date | null;
+  setDate: (date: Date | null) => void;
 }
 
-const BlogHeader = ({ search, setSearch, status, setStatus }: BlogHeaderProps) => {
-    
+const BlogHeader = ({
+  search,
+  setSearch,
+  status,
+  setStatus,
+  date,
+  setDate,
+}: BlogHeaderProps) => {
   return (
     <div className="py-[25px] px-[30px] bg-white shadow-[0_4px_10px_0_#0000001A] rounded-[15px] mt-[30px]">
       <div className="w-full flex items-center justify-between">
@@ -30,13 +52,41 @@ const BlogHeader = ({ search, setSearch, status, setStatus }: BlogHeaderProps) =
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        <div className="w-full md:max-w-[200px] ">
-          <CQDDropdownSelector
-            list={statusList}
-            selectedValue={status}
-            onValueChange={setStatus}
-            placeholderText="Status"
-          />
+
+        <div className="flex items-center gap-[30px]">
+          <div className="w-full md:max-w-[200px] ">
+            <CQDDropdownSelector
+              list={statusList}
+              selectedValue={status}
+              onValueChange={setStatus}
+              placeholderText="Status"
+            />
+          </div>
+          <div >
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant={"outline"}
+                  className={cn(
+                    "h-[49px] w-[200px] justify-between text-base text-[#0E2A5C]  text-left font-normal",
+                    !date && "text-muted-foreground"
+                  )}
+                >
+                  {date ? format(date, "PPP") : <span>Select Date</span>}
+                  {/* <CalendarIcon /> */}
+                  <ChevronDown className="text-[#595959] !w-[30px] !h-[30px]" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto mr-14" align="start">
+                <Calendar
+                  mode="single"
+                  selected={date || new Date()}
+                  onSelect={(date) => date !== undefined && setDate(date)}
+                  initialFocus
+                />
+              </PopoverContent>
+            </Popover>
+          </div>
         </div>
       </div>
     </div>

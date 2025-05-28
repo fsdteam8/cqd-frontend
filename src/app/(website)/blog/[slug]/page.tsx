@@ -22,7 +22,7 @@ const BlogDetails = ({ params }: { params: { slug: string } }) => {
   console.log("Blog Details", blogDetails);
   return (
     <div className="container mx-auto">
-      <div className="pt-[36px]">
+      <div className="pt-[36px] pb-[40px] md:pb-[100px] lg:pb-[160px]">
         <div>
           <Image
             src={blogDetails?.image || ""}

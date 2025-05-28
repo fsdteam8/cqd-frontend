@@ -29,7 +29,7 @@ const CQDDropdownSelector = ({
       value={typeof selectedValue === "string" ? selectedValue : ""}
       onValueChange={(val) => onValueChange(val)} // Update the state on selection
     >
-      <SelectTrigger className="h-[49px] bg-white border border-[#E6E6E6] rounded-[8px] text-[#0E2A5C] text-base focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0">
+      <SelectTrigger className="h-[49px] w-[200px]  bg-white border border-[#E6E6E6] rounded-[8px] text-[#0E2A5C] text-base focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0">
         <SelectValue placeholder={placeholderText ?? selectedValue} />
       </SelectTrigger>
       <SelectContent className="w-fit *:p-0">

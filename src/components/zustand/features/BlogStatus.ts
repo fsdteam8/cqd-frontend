@@ -7,6 +7,6 @@ interface StatusState {
 }
 
 export const useStatusStore = create<StatusState>((set) => ({
-  status: "status",
+  status: 'all',
   setStatus: (value) => set({ status: value }),
 }));
