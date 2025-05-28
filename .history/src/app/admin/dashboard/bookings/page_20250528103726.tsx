@@ -92,30 +92,19 @@ export default function BookingsPage() {
   }
 
   if (error) {
-    const isAuthError = error instanceof Error && error.message.includes("Authentication failed")
-
     return (
       <DashboardLayout title="Bookings">
         <div className="p-6">
           <div className="dashboard-card p-8 text-center">
             <div className="text-red-600 mb-4">
               <Package2 className="h-12 w-12 mx-auto mb-2" />
-              <h3 className="text-lg font-medium">
-                {isAuthError ? "Authentication Required" : "Failed to load bookings"}
-              </h3>
+              <h3 className="text-lg font-medium">Failed to load bookings</h3>
               <p className="text-sm text-gray-500 mt-1">
-                {isAuthError
-                  ? "Your session has expired. Please log in again."
-                  : error instanceof Error
-                    ? error.message
-                    : "An error occurred while fetching data"}
+                {error instanceof Error ? error.message : "An error occurred while fetching data"}
               </p>
             </div>
-            <button
-              onClick={() => (isAuthError ? (window.location.href = "/login") : window.location.reload())}
-              className="btn btn-primary"
-            >
-              {isAuthError ? "Go to Login" : "Try Again"}
+            <button onClick={() => window.location.reload()} className="btn btn-primary">
+              Try Again
             </button>
           </div>
         </div>

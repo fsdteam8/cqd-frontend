@@ -1,23 +1,96 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useEffect } from "react"
 import { DashboardLayout } from "@/components/dashboard-layout"
-import { Search, ChevronLeft, ChevronRight, Filter, Calendar, Package2, MapPin, Phone, Mail } from "lucide-react"
+import {
+  Search,
+  ChevronLeft,
+  ChevronRight,
+  Filter,
+  Calendar,
+  Package2,
+  MapPin,
+  Phone,
+  Mail,
+  Building,
+} from "lucide-react"
 import { Input } from "@/components/ui/input"
-import { useBookings } from "@/hooks/use-bookings"
-import type { BookingOrder } from "@/types/booking"
+import { format } from "date-fns"
+
+// Define the booking data type based on API response
+interface BookingData {
+  id: number
+  company_name: string
+  email: string
+  phone: string
+  postal_code: string
+  address: string
+  location: string
+  package_name: string
+  created_at: string
+  updated_at: string
+}
 
 export default function BookingsPage() {
+  const [bookings, setBookings] = useState<BookingData[]>([])
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedPackage, setSelectedPackage] = useState("")
   const [selectedDate, setSelectedDate] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage] = useState(10)
+  const [isLoading, setIsLoading] = useState(true)
   const [showFilters, setShowFilters] = useState(false)
   const [sortField, setSortField] = useState<string | null>(null)
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc")
+  const [error, setError] = useState<string | null>(null)
+  const [totalBookings, setTotalBookings] = useState(0)
+  const [availableDates, setAvailableDates] = useState<string[]>([])
+  const [availablePackages, setAvailablePackages] = useState<string[]>([])
 
-  const { data: bookingsData = [], isLoading, error } = useBookings()
+  // Fetch bookings from API
+  useEffect(() => {
+    const fetchBookings = async () => {
+      try {
+        setIsLoading(true)
+        const response = await fetch("/api/package-order-shows")
+
+        if (!response.ok) {
+          throw new Error(`API request failed with status: ${response.status}`)
+        }
+
+        const result = await response.json()
+
+        // Check if result has a data property that's an array
+        const bookingsData = Array.isArray(result.data) ? result.data : [result.data]
+        setBookings(bookingsData)
+
+        // Extract unique dates and packages for filters
+        const dates = [
+          ...new Set(bookingsData.map((booking: BookingData) => format(new Date(booking.created_at), "dd MMM yyyy"))),
+        ].sort()
+        setAvailableDates(dates)
+
+        const packages = [
+          ...new Set(
+            bookingsData.map(
+              (booking: BookingData) => booking.package_name.charAt(0).toUpperCase() + booking.package_name.slice(1),
+            ),
+          ),
+        ].sort()
+        setAvailablePackages(packages)
+
+        setTotalBookings(bookingsData.length)
+        setError(null)
+      } catch (err) {
+        console.error("Error fetching bookings:", err)
+        setError("Failed to load bookings. Please try again later.")
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchBookings()
+  }, [])
 
   const handleSort = (field: string) => {
     if (sortField === field) {
@@ -28,44 +101,74 @@ export default function BookingsPage() {
     }
   }
 
-  // Get unique values for filters
-  const uniquePackages = useMemo(() => {
-    const packages = new Set(bookingsData.map((booking) => booking.package))
-    return Array.from(packages).sort()
-  }, [bookingsData])
+  // Format date for display
+  const formatDate = (dateString: string) => {
+    try {
+      return format(new Date(dateString), "dd MMM yyyy")
+    } catch (error) {
+      return "Invalid Date"
+    }
+  }
 
-  const uniqueDates = useMemo(() => {
-    const dates = new Set(bookingsData.map((booking) => booking.date))
-    return Array.from(dates).sort()
-  }, [bookingsData])
+  // Format package name to capitalize first letter
+  const formatPackage = (packageName: string) => {
+    return packageName.charAt(0).toUpperCase() + packageName.slice(1)
+  }
 
   // Filter and sort bookings
-  const filteredAndSortedBookings = useMemo(() => {
-    return [...bookingsData]
-      .filter((booking) => {
-        const matchesSearch =
-          booking.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          booking.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          booking.location.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredAndSortedBookings = [...bookings]
+    .filter((booking) => {
+      const matchesSearch =
+        booking.company_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        booking.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        booking.location.toLowerCase().includes(searchQuery.toLowerCase())
 
-        const matchesPackage = selectedPackage ? booking.package === selectedPackage : true
-        const matchesDate = selectedDate ? booking.date === selectedDate : true
+      const formattedPackageName = formatPackage(booking.package_name)
+      const formattedDate = formatDate(booking.created_at)
 
-        return matchesSearch && matchesPackage && matchesDate
-      })
-      .sort((a, b) => {
-        if (!sortField) return 0
+      const matchesPackage = selectedPackage ? formattedPackageName === selectedPackage : true
+      const matchesDate = selectedDate ? formattedDate === selectedDate : true
 
-        const fieldA = a[sortField as keyof BookingOrder]
-        const fieldB = b[sortField as keyof BookingOrder]
+      return matchesSearch && matchesPackage && matchesDate
+    })
+    .sort((a, b) => {
+      if (!sortField) return 0
 
-        if (typeof fieldA === "string" && typeof fieldB === "string") {
-          return sortDirection === "asc" ? fieldA.localeCompare(fieldB) : fieldB.localeCompare(fieldA)
-        }
+      let fieldA: any
+      let fieldB: any
 
-        return 0
-      })
-  }, [bookingsData, searchQuery, selectedPackage, selectedDate, sortField, sortDirection])
+      switch (sortField) {
+        case "package":
+          fieldA = formatPackage(a.package_name)
+          fieldB = formatPackage(b.package_name)
+          break
+        case "company":
+          fieldA = a.company_name
+          fieldB = b.company_name
+          break
+        case "email":
+          fieldA = a.email
+          fieldB = b.email
+          break
+        case "location":
+          fieldA = a.location
+          fieldB = b.location
+          break
+        case "date":
+          fieldA = new Date(a.created_at).getTime()
+          fieldB = new Date(b.created_at).getTime()
+          return sortDirection === "asc" ? fieldA - fieldB : fieldB - fieldA
+        default:
+          fieldA = a[sortField as keyof BookingData]
+          fieldB = b[sortField as keyof BookingData]
+      }
+
+      if (typeof fieldA === "string" && typeof fieldB === "string") {
+        return sortDirection === "asc" ? fieldA.localeCompare(fieldB) : fieldB.localeCompare(fieldA)
+      }
+
+      return 0
+    })
 
   // Pagination
   const totalPages = Math.ceil(filteredAndSortedBookings.length / itemsPerPage)
@@ -78,7 +181,7 @@ export default function BookingsPage() {
     return sortDirection === "asc" ? "↑" : "↓"
   }
 
-  const getPackageBadgeClass = (packageName: string) => {
+  const getPackageClass = (packageName: string) => {
     switch (packageName.toLowerCase()) {
       case "gold":
         return "bg-yellow-100 text-yellow-800"
@@ -91,44 +194,11 @@ export default function BookingsPage() {
     }
   }
 
-  if (error) {
-    const isAuthError = error instanceof Error && error.message.includes("Authentication failed")
-
-    return (
-      <DashboardLayout title="Bookings">
-        <div className="p-6">
-          <div className="dashboard-card p-8 text-center">
-            <div className="text-red-600 mb-4">
-              <Package2 className="h-12 w-12 mx-auto mb-2" />
-              <h3 className="text-lg font-medium">
-                {isAuthError ? "Authentication Required" : "Failed to load bookings"}
-              </h3>
-              <p className="text-sm text-gray-500 mt-1">
-                {isAuthError
-                  ? "Your session has expired. Please log in again."
-                  : error instanceof Error
-                    ? error.message
-                    : "An error occurred while fetching data"}
-              </p>
-            </div>
-            <button
-              onClick={() => (isAuthError ? (window.location.href = "/login") : window.location.reload())}
-              className="btn btn-primary"
-            >
-              {isAuthError ? "Go to Login" : "Try Again"}
-            </button>
-          </div>
-        </div>
-      </DashboardLayout>
-    )
-  }
-
   return (
     <DashboardLayout title="Bookings">
       <div className="p-6">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-medium">Package Orders</h1>
-          <div className="text-sm text-gray-500">Total: {bookingsData.length} orders</div>
+          <h1 className="text-2xl font-medium">Bookings</h1>
         </div>
 
         <div className="dashboard-card p-6 mb-6">
@@ -138,7 +208,7 @@ export default function BookingsPage() {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 input-icon" />
                 <Input
                   type="text"
-                  placeholder="Search by company name, email, or location..."
+                  placeholder="Search bookings..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="form-input pl-12"
@@ -149,16 +219,11 @@ export default function BookingsPage() {
             <button onClick={() => setShowFilters(!showFilters)} className="btn btn-secondary flex items-center gap-2">
               <Filter className="h-4 w-4" />
               Filters
-              {(selectedPackage || selectedDate) && (
-                <span className="bg-primary text-white text-xs rounded-full px-2 py-0.5 ml-1">
-                  {[selectedPackage, selectedDate].filter(Boolean).length}
-                </span>
-              )}
             </button>
           </div>
 
           {showFilters && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 pt-4 border-t animate-fade-in">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 pt-4 border-t animate-fade-in">
               <div>
                 <label className="form-label">Package</label>
                 <select
@@ -167,9 +232,9 @@ export default function BookingsPage() {
                   className="form-select"
                 >
                   <option value="">All Packages</option>
-                  {uniquePackages.map((pkg) => (
-                    <option key={pkg} value={pkg}>
-                      {pkg}
+                  {availablePackages.map((packageName, index) => (
+                    <option key={index} value={packageName}>
+                      {packageName}
                     </option>
                   ))}
                 </select>
@@ -179,8 +244,8 @@ export default function BookingsPage() {
                 <label className="form-label">Date</label>
                 <select value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} className="form-select">
                   <option value="">All Dates</option>
-                  {uniqueDates.map((date) => (
-                    <option key={date} value={date}>
+                  {availableDates.map((date, index) => (
+                    <option key={index} value={date}>
                       {date}
                     </option>
                   ))}
@@ -195,8 +260,12 @@ export default function BookingsPage() {
             <div className="p-8 flex justify-center">
               <div className="flex flex-col items-center">
                 <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-                <p className="mt-3 text-gray-500">Loading package orders...</p>
+                <p className="mt-3 text-gray-500">Loading bookings...</p>
               </div>
+            </div>
+          ) : error ? (
+            <div className="p-8 text-center text-red-500">
+              <p>{error}</p>
             </div>
           ) : (
             <>
@@ -215,9 +284,12 @@ export default function BookingsPage() {
                       </th>
                       <th
                         className="table-header text-left cursor-pointer hover:bg-primary/90"
-                        onClick={() => handleSort("name")}
+                        onClick={() => handleSort("company")}
                       >
-                        <div className="flex items-center gap-1">Company {getSortIcon("name")}</div>
+                        <div className="flex items-center gap-1">
+                          <Building className="h-4 w-4" />
+                          Company {getSortIcon("company")}
+                        </div>
                       </th>
                       <th
                         className="table-header text-left cursor-pointer hover:bg-primary/90"
@@ -260,26 +332,25 @@ export default function BookingsPage() {
                         <tr key={booking.id} className="hover:bg-gray-50 transition-colors">
                           <td className="table-cell font-medium">
                             <span
-                              className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${getPackageBadgeClass(booking.package)}`}
+                              className={`inline-block px-3 py-1 rounded-full text-xs font-medium
+                              ${getPackageClass(booking.package_name)}`}
                             >
-                              {booking.package}
+                              {formatPackage(booking.package_name)}
                             </span>
                           </td>
-                          <td className="table-cell font-medium">{booking.name}</td>
+                          <td className="table-cell">{booking.company_name}</td>
                           <td className="table-cell text-blue-600 hover:underline">
                             <a href={`mailto:${booking.email}`}>{booking.email}</a>
                           </td>
                           <td className="table-cell">{booking.phone}</td>
                           <td className="table-cell">{booking.location}</td>
-                          <td className="table-cell">{booking.date}</td>
+                          <td className="table-cell">{formatDate(booking.created_at)}</td>
                         </tr>
                       ))
                     ) : (
                       <tr>
                         <td colSpan={6} className="table-cell text-center py-8 text-gray-500">
-                          {searchQuery || selectedPackage || selectedDate
-                            ? "No orders found matching your criteria"
-                            : "No package orders available"}
+                          No bookings found matching your criteria
                         </td>
                       </tr>
                     )}

@@ -1,11 +1,24 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useEffect } from "react"
 import { DashboardLayout } from "@/components/dashboard-layout"
 import { Search, ChevronLeft, ChevronRight, Filter, Calendar, Package2, MapPin, Phone, Mail } from "lucide-react"
 import { Input } from "@/components/ui/input"
-import { useBookings } from "@/hooks/use-bookings"
-import type { BookingOrder } from "@/types/booking"
+
+// Type definition for the API response
+interface PackageOrder {
+  package_name: string
+  company_name: string
+  email: string
+  location: string
+  phone: string
+  created_at: string
+}
+
+interface ApiResponse {
+  success: boolean
+  orders: PackageOrder[]
+}
 
 export default function BookingsPage() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -13,11 +26,44 @@ export default function BookingsPage() {
   const [selectedDate, setSelectedDate] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage] = useState(10)
+  const [isLoading, setIsLoading] = useState(true)
   const [showFilters, setShowFilters] = useState(false)
   const [sortField, setSortField] = useState<string | null>(null)
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc")
+  const [orders, setOrders] = useState<PackageOrder[]>([])
+  const [error, setError] = useState<string | null>(null)
 
-  const { data: bookingsData = [], isLoading, error } = useBookings()
+  // Fetch data from API
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        setIsLoading(true)
+        setError(null)
+
+        // Replace {{url}} with your actual API base URL
+        const response = await fetch("https://coq.scaleupdevagency.com/api/package-order-shows")
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+
+        const data: ApiResponse = await response.json()
+
+        if (data.success) {
+          setOrders(data.orders)
+        } else {
+          throw new Error("API returned success: false")
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to fetch orders")
+        console.error("Error fetching orders:", err)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchOrders()
+  }, [])
 
   const handleSort = (field: string) => {
     if (sortField === field) {
@@ -28,50 +74,42 @@ export default function BookingsPage() {
     }
   }
 
-  // Get unique values for filters
-  const uniquePackages = useMemo(() => {
-    const packages = new Set(bookingsData.map((booking) => booking.package))
-    return Array.from(packages).sort()
-  }, [bookingsData])
+  // Get unique values for filter options
+  const uniquePackages = [...new Set(orders.map((order) => order.package_name))]
+  const uniqueDates = [...new Set(orders.map((order) => order.created_at))]
 
-  const uniqueDates = useMemo(() => {
-    const dates = new Set(bookingsData.map((booking) => booking.date))
-    return Array.from(dates).sort()
-  }, [bookingsData])
+  // Filter and sort orders
+  const filteredAndSortedOrders = [...orders]
+    .filter((order) => {
+      const matchesSearch =
+        order.company_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        order.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        order.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        order.package_name.toLowerCase().includes(searchQuery.toLowerCase())
 
-  // Filter and sort bookings
-  const filteredAndSortedBookings = useMemo(() => {
-    return [...bookingsData]
-      .filter((booking) => {
-        const matchesSearch =
-          booking.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          booking.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          booking.location.toLowerCase().includes(searchQuery.toLowerCase())
+      const matchesPackage = selectedPackage ? order.package_name === selectedPackage : true
+      const matchesDate = selectedDate ? order.created_at === selectedDate : true
 
-        const matchesPackage = selectedPackage ? booking.package === selectedPackage : true
-        const matchesDate = selectedDate ? booking.date === selectedDate : true
+      return matchesSearch && matchesPackage && matchesDate
+    })
+    .sort((a, b) => {
+      if (!sortField) return 0
 
-        return matchesSearch && matchesPackage && matchesDate
-      })
-      .sort((a, b) => {
-        if (!sortField) return 0
+      const fieldA = a[sortField as keyof PackageOrder]
+      const fieldB = b[sortField as keyof PackageOrder]
 
-        const fieldA = a[sortField as keyof BookingOrder]
-        const fieldB = b[sortField as keyof BookingOrder]
+      if (typeof fieldA === "string" && typeof fieldB === "string") {
+        return sortDirection === "asc" ? fieldA.localeCompare(fieldB) : fieldB.localeCompare(fieldA)
+      }
 
-        if (typeof fieldA === "string" && typeof fieldB === "string") {
-          return sortDirection === "asc" ? fieldA.localeCompare(fieldB) : fieldB.localeCompare(fieldA)
-        }
-
-        return 0
-      })
-  }, [bookingsData, searchQuery, selectedPackage, selectedDate, sortField, sortDirection])
+      return 0
+    })
 
   // Pagination
-  const totalPages = Math.ceil(filteredAndSortedBookings.length / itemsPerPage)
+  const totalPages = Math.ceil(filteredAndSortedOrders.length / itemsPerPage)
   const indexOfLastItem = currentPage * itemsPerPage
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
-  const currentItems = filteredAndSortedBookings.slice(indexOfFirstItem, indexOfLastItem)
+  const currentItems = filteredAndSortedOrders.slice(indexOfFirstItem, indexOfLastItem)
 
   const getSortIcon = (field: string) => {
     if (sortField !== field) return null
@@ -91,44 +129,16 @@ export default function BookingsPage() {
     }
   }
 
-  if (error) {
-    const isAuthError = error instanceof Error && error.message.includes("Authentication failed")
-
-    return (
-      <DashboardLayout title="Bookings">
-        <div className="p-6">
-          <div className="dashboard-card p-8 text-center">
-            <div className="text-red-600 mb-4">
-              <Package2 className="h-12 w-12 mx-auto mb-2" />
-              <h3 className="text-lg font-medium">
-                {isAuthError ? "Authentication Required" : "Failed to load bookings"}
-              </h3>
-              <p className="text-sm text-gray-500 mt-1">
-                {isAuthError
-                  ? "Your session has expired. Please log in again."
-                  : error instanceof Error
-                    ? error.message
-                    : "An error occurred while fetching data"}
-              </p>
-            </div>
-            <button
-              onClick={() => (isAuthError ? (window.location.href = "/login") : window.location.reload())}
-              className="btn btn-primary"
-            >
-              {isAuthError ? "Go to Login" : "Try Again"}
-            </button>
-          </div>
-        </div>
-      </DashboardLayout>
-    )
-  }
+  // Reset pagination when filters change
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [searchQuery, selectedPackage, selectedDate])
 
   return (
     <DashboardLayout title="Bookings">
       <div className="p-6">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-medium">Package Orders</h1>
-          <div className="text-sm text-gray-500">Total: {bookingsData.length} orders</div>
         </div>
 
         <div className="dashboard-card p-6 mb-6">
@@ -138,7 +148,7 @@ export default function BookingsPage() {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 input-icon" />
                 <Input
                   type="text"
-                  placeholder="Search by company name, email, or location..."
+                  placeholder="Search by company, email, location, or package..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="form-input pl-12"
@@ -149,11 +159,6 @@ export default function BookingsPage() {
             <button onClick={() => setShowFilters(!showFilters)} className="btn btn-secondary flex items-center gap-2">
               <Filter className="h-4 w-4" />
               Filters
-              {(selectedPackage || selectedDate) && (
-                <span className="bg-primary text-white text-xs rounded-full px-2 py-0.5 ml-1">
-                  {[selectedPackage, selectedDate].filter(Boolean).length}
-                </span>
-              )}
             </button>
           </div>
 
@@ -167,9 +172,9 @@ export default function BookingsPage() {
                   className="form-select"
                 >
                   <option value="">All Packages</option>
-                  {uniquePackages.map((pkg) => (
-                    <option key={pkg} value={pkg}>
-                      {pkg}
+                  {uniquePackages.map((packageName) => (
+                    <option key={packageName} value={packageName}>
+                      {packageName.charAt(0).toUpperCase() + packageName.slice(1)}
                     </option>
                   ))}
                 </select>
@@ -198,6 +203,19 @@ export default function BookingsPage() {
                 <p className="mt-3 text-gray-500">Loading package orders...</p>
               </div>
             </div>
+          ) : error ? (
+            <div className="p-8 flex justify-center">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-3">
+                  <span className="text-red-600 text-xl">⚠</span>
+                </div>
+                <p className="text-red-600 font-medium">Error loading orders</p>
+                <p className="text-gray-500 text-sm mt-1">{error}</p>
+                <button onClick={() => window.location.reload()} className="mt-3 btn btn-primary">
+                  Retry
+                </button>
+              </div>
+            </div>
           ) : (
             <>
               <div className="responsive-container">
@@ -206,18 +224,18 @@ export default function BookingsPage() {
                     <tr>
                       <th
                         className="table-header text-left cursor-pointer hover:bg-primary/90"
-                        onClick={() => handleSort("package")}
+                        onClick={() => handleSort("package_name")}
                       >
                         <div className="flex items-center gap-1">
                           <Package2 className="h-4 w-4" />
-                          Package {getSortIcon("package")}
+                          Package {getSortIcon("package_name")}
                         </div>
                       </th>
                       <th
                         className="table-header text-left cursor-pointer hover:bg-primary/90"
-                        onClick={() => handleSort("name")}
+                        onClick={() => handleSort("company_name")}
                       >
-                        <div className="flex items-center gap-1">Company {getSortIcon("name")}</div>
+                        <div className="flex items-center gap-1">Company {getSortIcon("company_name")}</div>
                       </th>
                       <th
                         className="table-header text-left cursor-pointer hover:bg-primary/90"
@@ -245,41 +263,42 @@ export default function BookingsPage() {
                       </th>
                       <th
                         className="table-header text-left cursor-pointer hover:bg-primary/90"
-                        onClick={() => handleSort("date")}
+                        onClick={() => handleSort("created_at")}
                       >
                         <div className="flex items-center gap-1">
                           <Calendar className="h-4 w-4" />
-                          Date {getSortIcon("date")}
+                          Date {getSortIcon("created_at")}
                         </div>
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     {currentItems.length > 0 ? (
-                      currentItems.map((booking) => (
-                        <tr key={booking.id} className="hover:bg-gray-50 transition-colors">
+                      currentItems.map((order, index) => (
+                        <tr
+                          key={`${order.company_name}-${order.email}-${index}`}
+                          className="hover:bg-gray-50 transition-colors"
+                        >
                           <td className="table-cell font-medium">
                             <span
-                              className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${getPackageBadgeClass(booking.package)}`}
+                              className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${getPackageBadgeClass(order.package_name)}`}
                             >
-                              {booking.package}
+                              {order.package_name.charAt(0).toUpperCase() + order.package_name.slice(1)}
                             </span>
                           </td>
-                          <td className="table-cell font-medium">{booking.name}</td>
+                          <td className="table-cell">{order.company_name}</td>
                           <td className="table-cell text-blue-600 hover:underline">
-                            <a href={`mailto:${booking.email}`}>{booking.email}</a>
+                            <a href={`mailto:${order.email}`}>{order.email}</a>
                           </td>
-                          <td className="table-cell">{booking.phone}</td>
-                          <td className="table-cell">{booking.location}</td>
-                          <td className="table-cell">{booking.date}</td>
+                          <td className="table-cell">{order.phone}</td>
+                          <td className="table-cell">{order.location}</td>
+                          <td className="table-cell">{order.created_at}</td>
                         </tr>
                       ))
                     ) : (
                       <tr>
                         <td colSpan={6} className="table-cell text-center py-8 text-gray-500">
-                          {searchQuery || selectedPackage || selectedDate
-                            ? "No orders found matching your criteria"
-                            : "No package orders available"}
+                          No package orders found matching your criteria
                         </td>
                       </tr>
                     )}
@@ -287,11 +306,11 @@ export default function BookingsPage() {
                 </table>
               </div>
 
-              {filteredAndSortedBookings.length > 0 && (
+              {filteredAndSortedOrders.length > 0 && (
                 <div className="p-4 flex flex-col sm:flex-row sm:items-center justify-between border-t gap-4">
                   <div className="text-sm text-gray-500">
-                    Showing {indexOfFirstItem + 1} to {Math.min(indexOfLastItem, filteredAndSortedBookings.length)} of{" "}
-                    {filteredAndSortedBookings.length} results
+                    Showing {indexOfFirstItem + 1} to {Math.min(indexOfLastItem, filteredAndSortedOrders.length)} of{" "}
+                    {filteredAndSortedOrders.length} results
                   </div>
 
                   <div className="flex items-center gap-2">
