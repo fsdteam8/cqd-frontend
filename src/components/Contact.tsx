@@ -101,6 +101,7 @@ export default function ContactSection() {
                   First Name
                 </Label>
                 <Input
+                  required
                   id="first_name"
                   placeholder="First Name"
                   className="w-full"
@@ -123,6 +124,7 @@ export default function ContactSection() {
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
+                  required
                   id="email"
                   type="email"
                   placeholder="Email"
@@ -135,6 +137,7 @@ export default function ContactSection() {
               <div className="space-y-2">
                 <Label htmlFor="phone">Phone</Label>
                 <Input
+
                   id="phone"
                   type="tel"
                   placeholder="Phone"
@@ -158,6 +161,7 @@ export default function ContactSection() {
               <div className="space-y-2">
                 <Label htmlFor="city">City</Label>
                 <Input
+                  required
                   id="city"
                   placeholder="City"
                   className="w-full"
@@ -169,6 +173,7 @@ export default function ContactSection() {
               <div className="space-y-2 md:col-span-2">
                 <Label htmlFor="help">Message</Label>
                 <Textarea
+                  required
                   id="help"
                   placeholder="Your message"
                   className="w-full min-h-[150px]"

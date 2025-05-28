@@ -21,7 +21,7 @@ const BlogDetails = ({ params }: { params: { slug: string } }) => {
   const blogDetails = data?.data.find((blog) => blog.slug === params.slug);
   console.log("Blog Details", blogDetails);
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto p-2 md:p-0">
       <div className="pt-[36px]">
         <div>
           <Image
