@@ -6,7 +6,6 @@ import { Search, ChevronLeft, ChevronRight, Filter, Calendar, Package2, MapPin, 
 import { Input } from "@/components/ui/input"
 import { useBookings } from "@/hooks/use-bookings"
 import type { BookingOrder } from "@/types/booking"
-import { useSession } from "next-auth/react"
 
 export default function BookingsPage() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -17,9 +16,8 @@ export default function BookingsPage() {
   const [showFilters, setShowFilters] = useState(false)
   const [sortField, setSortField] = useState<string | null>(null)
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc")
-  const session = useSession()
-  const token = (session.data?.user as {token:string})?.token || ""
-console.log(token);
+  const session = useSeesion
+
   const { data: bookingsData = [], isLoading, error } = useBookings()
 
   const handleSort = (field: string) => {

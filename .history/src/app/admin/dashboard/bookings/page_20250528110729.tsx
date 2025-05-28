@@ -17,9 +17,8 @@ export default function BookingsPage() {
   const [showFilters, setShowFilters] = useState(false)
   const [sortField, setSortField] = useState<string | null>(null)
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc")
-  const session = useSession()
-  const token = (session.data?.user as {token:string})?.token || ""
-console.log(token);
+  const session = useSession
+
   const { data: bookingsData = [], isLoading, error } = useBookings()
 
   const handleSort = (field: string) => {

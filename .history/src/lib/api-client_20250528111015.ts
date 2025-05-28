@@ -8,7 +8,7 @@ class ApiClient {
   }
 
   private async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
-    const accessToken = getAccessToken()
+    const accessToken = 
 
     const config: RequestInit = {
       headers: {

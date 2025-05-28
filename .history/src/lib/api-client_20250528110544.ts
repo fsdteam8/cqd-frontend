@@ -1,4 +1,5 @@
 import { getAccessToken, removeAccessToken } from "./auth"
+import { useSession } from "next-auth/react"
 
 class ApiClient {
   private baseUrl: string
@@ -7,8 +8,11 @@ class ApiClient {
     this.baseUrl = baseUrl
   }
 
+
   private async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
-    const accessToken = getAccessToken()
+    const session = useSession();
+
+    // const accessToken = 
 
     const config: RequestInit = {
       headers: {
