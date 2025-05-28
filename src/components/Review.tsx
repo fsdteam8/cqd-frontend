@@ -118,7 +118,7 @@ export default function Review() {
     );
 
   return (
-    <section className="w-full py-12 md:py-16 lg:py-20 px-4">
+    <section id="review" className="w-full py-12 md:py-16 lg:py-20 px-4">
       <div className="container mx-auto max-w-9xl">
         <div className="text-start mb-8 md:mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4">

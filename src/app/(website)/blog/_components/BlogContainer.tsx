@@ -71,7 +71,7 @@ const BlogContainer = () => {
   if (isError) return <p>Error loading blogs.</p>;
 
   return (
-    <div className="w-full flex items-center gap-[30px] md:gap-[45px] lg:gap-[66px]">
+    <div className="w-full  flex items-center gap-[30px] md:gap-[45px] lg:gap-[66px]">
       <button onClick={() => swiperRef.current?.slidePrev()}>
         <Image
           src="/images/left-arrow.svg"

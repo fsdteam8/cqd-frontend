@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "./ui/button";
 import Image from "next/image";
 
@@ -60,9 +61,11 @@ const WwoWashroom = () => {
               </div>
 
               <div className="mt-4">
+                 <Link href={"/#pricing"}>
                 <Button className="bg-[#14213d] hover:bg-[#233862] text-white rounded-full px-8 py-6 text-lg font-medium">
                   Request a Quote
                 </Button>
+                 </Link>
               </div>
             </div>
           </div>
@@ -109,9 +112,11 @@ const WwoWashroom = () => {
               </div>
 
               <div className="mt-4">
+                 <Link href={"/#pricing"}>
                 <Button className="bg-[#14213d] hover:bg-[#233862] text-white rounded-full px-8 py-6 text-lg font-medium">
                   Request a Quote
                 </Button>
+                 </Link>
               </div>
             </div>
 
