@@ -64,7 +64,7 @@ export async function fetchPackageOrders({
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/package-order-shows?${params}`, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
@@ -85,13 +85,15 @@ export default function BookingsPage() {
   const [selectedPackage, setSelectedPackage] = useState("")
   const [selectedDate, setSelectedDate] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
-  // const [itemsPerPage, setItemsPerPage] = useState(10)
+  const [itemsPerPage] = useState(10)
   const [showFilters, setShowFilters] = useState(false)
   const [sortField, setSortField] = useState<keyof PackageOrder | "">("")
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc")
 
   const session = useSession()
-  const token = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2NvcS5zY2FsZXVwZGV2YWdlbmN5LmNvbS9hcGkvbG9naW4iLCJpYXQiOjE3NDg0MzE3NzksImV4cCI6MTc0ODQzNTM3OSwibmJmIjoxNzQ4NDMxNzc5LCJqdGkiOiI4RFU4bzJaS0tGNUpWeklNIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.wIYjliSsnutT5Dc9h8LBkPXBl_LYTXP9vG0GFU5UPRk'
+  const token = (session.data?.user as { token: string })?.token
+
+  console.log("Session Token:", token);
 
   // Debounce search query to avoid too many API calls
   const debouncedSearchQuery = useDebounce(searchQuery, 500)
@@ -106,18 +108,18 @@ export default function BookingsPage() {
     queryKey: [
       "packageOrders",
       currentPage,
-      // itemsPerPage,
+      itemsPerPage,
       debouncedSearchQuery,
       selectedPackage,
       selectedDate,
       sortField,
       sortDirection,
     ],
-    queryFn: async () =>
+    queryFn: () =>
       fetchPackageOrders({
         token,
         page: currentPage,
-        // perPage: itemsPerPage,
+        perPage: itemsPerPage,
         search: debouncedSearchQuery,
         packageFilter: selectedPackage,
         dateFilter: selectedDate,
@@ -214,7 +216,7 @@ export default function BookingsPage() {
     <TooltipProvider>
       <DashboardLayout title="Bookings">
         <div className="p-6">
-          <div className="flex justify-between  mb-6 gap-10">``
+          <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-medium">Bookings</h1>
             {/* <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Items per page:</span>
@@ -231,7 +233,9 @@ export default function BookingsPage() {
                 </SelectContent>
               </Select>
             </div> */}
-          <div className="dashboard-card p-4 mb-6 flex-2 w-full">
+          </div>
+
+          <div className="dashboard-card p-6 mb-6">
             <div className="flex flex-wrap items-center gap-4">
               <div className="flex-1 min-w-[300px]">
                 <div className="relative">
@@ -301,10 +305,6 @@ export default function BookingsPage() {
               </div>
             )}
           </div>
-          
-          </div>
-
-          
 
           <div className="dashboard-card overflow-hidden">
             {isLoading && !data ? (
@@ -420,8 +420,8 @@ export default function BookingsPage() {
                 {totalItems > 0 && (
                   <div className="p-4 flex flex-col sm:flex-row sm:items-center justify-between border-t gap-4">
                     <div className="text-sm text-gray-500">
-                      Showing {(currentPageFromAPI - 1) + 1} to{" "}
-                      {Math.min(currentPageFromAPI , totalItems)} of {totalItems} results
+                      Showing {(currentPageFromAPI - 1) * itemsPerPage + 1} to{" "}
+                      {Math.min(currentPageFromAPI * itemsPerPage, totalItems)} of {totalItems} results
                       {(debouncedSearchQuery || selectedPackage || selectedDate) && " (filtered)"}
                     </div>
 
