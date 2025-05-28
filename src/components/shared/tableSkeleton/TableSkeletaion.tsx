@@ -15,11 +15,11 @@ const TableSkeletonWrapper: React.FC<TableSkeletonWrapperProps> = ({
     count = 1
 }) => {
     return (
-        <div className="!w-full flex flex-col gap-4">
+        <div className="w-full flex flex-col gap-4">
             {[...Array(count)].map((_, index) => (
                 <Skeleton
                     key={index}
-                    className={` rounded-lg ${className}`}
+                    className={`rounded-lg ${className}`}
                     style={{ width, height }}
                 />
             ))}
