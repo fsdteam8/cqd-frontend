@@ -39,8 +39,8 @@ export default function Review() {
 
   // const reviews: GoogleReview[] = data?.result?.reviews || [];
   const reviews = useMemo<GoogleReview[]>(() => {
-  return data?.result?.reviews || [];
-}, [data]);
+    return data?.result?.reviews || [];
+  }, [data]);
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -80,7 +80,7 @@ export default function Review() {
 
   const activeReview = reviews[activeIndex];
 
-  if (isLoading )
+  if (isLoading)
     return (
       <div>
         <section className="w-full py-12 md:py-16 lg:py-20 px-4">
@@ -140,8 +140,8 @@ export default function Review() {
               <div className="md:w-1/3 flex justify-center mb-6 md:mb-0">
                 <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
                   <Image
-                    src={activeReview.profile_photo_url || "/placeholder.svg"}
-                    alt={activeReview.author_name}
+                    src={activeReview?.profile_photo_url || "/placeholder.svg"}
+                    alt={activeReview?.author_name}
                     fill
                     className="object-cover"
                   />
@@ -149,7 +149,7 @@ export default function Review() {
               </div>
               <div className="md:w-2/3 text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start mb-4">
-                  {[...Array(activeReview.rating)].map((_, i) => (
+                  {[...Array(activeReview?.rating)].map((_, i) => (
                     <svg
                       key={i}
                       className="w-5 h-5 text-yellow-500 fill-current"
@@ -160,10 +160,10 @@ export default function Review() {
                   ))}
                 </div>
                 <blockquote className="text-lg md:text-xl italic text-[#0F2A5C] mb-4">
-                  &ldquo;{activeReview.text}&rdquo;
+                  &ldquo;{activeReview?.text}&rdquo;
                 </blockquote>
                 <div className="font-bold text-xl text-[#0F2A5C]">
-                  {activeReview.author_name}
+                  {activeReview?.author_name}
                 </div>
               </div>
             </CardContent>
