@@ -1,6 +1,6 @@
 "use client";
 
-
+import DeleteModal from "@/components/shared/modals/DeleteModal";
 import { BlogApiResponse } from "@/components/types/BlogDataType";
 import { CQDPagination } from "@/components/ui/cqd-pagination";
 import { Label } from "@/components/ui/label";
@@ -10,6 +10,7 @@ import { PencilLine, Trash } from "lucide-react";
 import moment from "moment";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -20,21 +21,23 @@ const BlogContainer = () => {
   const token = (session?.data?.user as { token?: string })?.token;
   const queryClient = useQueryClient();
 
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [selectedBlogId, setSelectedBlogId] = useState<number | null>(null);
+
   // Fetch all blogs
-  const { data, isLoading, error, isError } =
-    useQuery<BlogApiResponse>({
-      queryKey: ["all-blogs", currentPage],
-      queryFn: () =>
-        fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?page=${currentPage}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        ).then((res) => res.json()),
-    });
+  const { data, isLoading, error, isError } = useQuery<BlogApiResponse>({
+    queryKey: ["all-blogs", currentPage],
+    queryFn: () =>
+      fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?page=${currentPage}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      ).then((res) => res.json()),
+  });
 
   console.log(data?.data);
 
@@ -62,11 +65,36 @@ const BlogContainer = () => {
       }
       queryClient.invalidateQueries({ queryKey: ["all-blogs"] });
     },
-    onError: (error) => {
-      toast.error("Failed to update publish status");
-      console.error("Update publish status error:", error);
+  });
+
+  // delete api logic
+  const { mutate: deleteBlog } = useMutation({
+    mutationKey: ["delete-blog"],
+    mutationFn: (id: number) =>
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((res) => res.json()),
+    onSuccess: (data) => {
+      if (!data?.success) {
+        toast.error(data?.message || "Failed to delete blog");
+        return;
+      } else {
+        toast.success(data?.message || "Blog deleted successfully");
+      }
+      queryClient.invalidateQueries({ queryKey: ["all-blogs"] });
     },
   });
+
+  // delete modal logic
+  const handleDelete = () => {
+    if (selectedBlogId) {
+      deleteBlog(selectedBlogId);
+    }
+    setDeleteModalOpen(false);
+  };
 
   if (isLoading) {
     return (
@@ -107,7 +135,7 @@ const BlogContainer = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="">
+          <tbody className="border-b border-[#E5E7EB]">
             {data?.data?.map((blog) => (
               <tr key={blog.id} className="py-[10px]">
                 <td className="w-full flex items-center justify-center py-[10px]">
@@ -145,15 +173,22 @@ const BlogContainer = () => {
                 </td>
                 <td className="">
                   <div className="w-full flex items-center justify-center gap-[10px]">
+                    <Link href={`/admin/dashboard/blogs/edit/${blog.id}`}>
+                      <button
+                        type="button"
+                        className="p-1 hover:bg-gray-100 rounded transition-colors"
+                        aria-label={`Edit ${blog.title}`}
+                      >
+                        <PencilLine className="text-[#0E2A5C]" size={18} />
+                      </button>
+                    </Link>
+
                     <button
                       type="button"
-                      className="p-1 hover:bg-gray-100 rounded transition-colors"
-                      aria-label={`Edit ${blog.title}`}
-                    >
-                      <PencilLine className="text-[#0E2A5C]" size={18} />
-                    </button>
-                    <button
-                      type="button"
+                      onClick={() => {
+                        setDeleteModalOpen(true);
+                        setSelectedBlogId(blog?.id);
+                      }}
                       className="p-1 hover:bg-gray-100 rounded transition-colors"
                       aria-label={`Delete ${blog.title}`}
                     >
@@ -166,7 +201,7 @@ const BlogContainer = () => {
           </tbody>
         </table>
         <div className="">
-          {data && data?.total_blogs > 1 && (
+          {data && data?.total_pages > 1 && (
             <div className="flex justify-between items-center">
               <p className="font-normal text-base leading-[120%] text-[#0E2A5C] pl-[26px]">
                 Showing {data?.current_page} from {data?.total_pages} pages
@@ -182,6 +217,15 @@ const BlogContainer = () => {
             </div>
           )}
         </div>
+
+        {/* delete modal  */}
+        {deleteModalOpen && (
+          <DeleteModal
+            isOpen={deleteModalOpen}
+            onClose={() => setDeleteModalOpen(false)}
+            onConfirm={handleDelete}
+          />
+        )}
       </div>
     </div>
   );
