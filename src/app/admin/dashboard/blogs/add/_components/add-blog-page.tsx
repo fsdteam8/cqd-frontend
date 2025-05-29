@@ -1,28 +1,22 @@
-"use client";
 
-import type React from "react";
+"use client"
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { DashboardLayout } from "@/components/dashboard-layout";
-import { RichTextEditor } from "@/components/rich-text-editor";
-import { Plus, X, Upload, ImagePlus } from "lucide-react";
-import Image from "next/image";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { useMutation } from "@tanstack/react-query";
-import { toast } from "sonner";
-import { useSession } from "next-auth/react";
+import type React from "react"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { z } from "zod"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { DashboardLayout } from "@/components/dashboard-layout"
+import { RichTextEditor } from "@/components/rich-text-editor"
+import { Plus, X, Upload, ImagePlus } from "lucide-react"
+import Image from "next/image"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { useMutation } from "@tanstack/react-query"
+import { toast } from "sonner"
+import { useSession } from "next-auth/react"
 
 const formSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -32,21 +26,21 @@ const formSchema = z.object({
   tags: z.array(z.string()).min(1, "At least one tag is required"),
   keywords: z.array(z.string()).min(1, "At least one keyword is required"),
   image: z.any().optional(),
-});
+})
 
-type BlogFormValues = z.infer<typeof formSchema>;
+type BlogFormValues = z.infer<typeof formSchema>
 
 export default function AddBlogPage() {
-  const router = useRouter();
-  const [tags, setTags] = useState<string[]>([]);
-  const [keywords, setKeywords] = useState<string[]>([]);
-  const [tagInput, setTagInput] = useState("");
-  const [keywordsInput, setKeywordsInput] = useState("");
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
-  const [isDragOver, setIsDragOver] = useState(false);
+  const router = useRouter()
+  const [tags, setTags] = useState<string[]>([])
+  const [keywords, setKeywords] = useState<string[]>([])
+  const [tagInput, setTagInput] = useState("")
+  const [keywordsInput, setKeywordsInput] = useState("")
+  const [previewImage, setPreviewImage] = useState<string | null>(null)
+  const [isDragOver, setIsDragOver] = useState(false)
 
-  const session = useSession();
-  const token = (session.data?.user as { token: string })?.token;
+  const session = useSession()
+  const token = (session.data?.user as { token: string })?.token
 
   const form = useForm<BlogFormValues>({
     resolver: zodResolver(formSchema),
@@ -59,7 +53,7 @@ export default function AddBlogPage() {
       keywords: [],
       image: undefined,
     },
-  });
+  })
 
   // add new blog api
   const { mutate, isPending } = useMutation({
@@ -74,101 +68,114 @@ export default function AddBlogPage() {
       }).then((res) => res.json()),
     onSuccess: (data) => {
       if (!data.success) {
-        toast.error(data.message || "Failed to add blog");
-        return;
+        toast.error(data.message || "Failed to add blog")
+        return
       } else {
-        toast.success(data.message || "Blog added successfully");
-        router.push("/admin/dashboard/blogs");
+        toast.success(data.message || "Blog added successfully")
+        router.push("/admin/dashboard/blogs")
       }
     },
-  });
+  })
 
   const onSubmit = async (data: BlogFormValues) => {
-    const formData = new FormData();
-    formData.append("title", data.title);
-    formData.append("details", data.details);
-    formData.append("meta_title", data.meta_title || "");
-    formData.append("meta_description", data.meta_description || "");
-    formData.append("tags", JSON.stringify(tags));
-    formData.append("keywords", JSON.stringify(keywords));
-     console.log(formData)
+
+    const formData = new FormData()
+    formData.append("title", data.title)
+    formData.append("details", data.details)
+    formData.append("meta_title", data.meta_title || "")
+    formData.append("meta_description", data.meta_description || "")
+    formData.append("tags", JSON.stringify(tags))
+    formData.append("keywords", JSON.stringify(keywords))
+
     if (data.image && data.image[0]) {
-      formData.append("image", data.image[0]);
+      formData.append("image", data.image[0])
     }
 
-    mutate(formData);
-  };
+    mutate(formData)
+  }
+
+  // Helper function to add tag
+  const addTag = () => {
+    if (tagInput.trim() && !tags.includes(tagInput.trim())) {
+      const newTags = [...tags, tagInput.trim()]
+      setTags(newTags)
+      form.setValue("tags", newTags)
+      setTagInput("")
+    }
+  }
+
+  // Helper function to add keyword
+  const addKeyword = () => {
+    if (keywordsInput.trim() && !keywords.includes(keywordsInput.trim())) {
+      const newKeywords = [...keywords, keywordsInput.trim()]
+      setKeywords(newKeywords)
+      form.setValue("keywords", newKeywords)
+      setKeywordsInput("")
+    }
+  }
 
   // tags
   const handleAddTag = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && tagInput.trim()) {
-      e.preventDefault();
-      if (!tags.includes(tagInput.trim())) {
-        const newTags = [...tags, tagInput.trim()];
-        setTags(newTags);
-        form.setValue("tags", newTags);
-      }
-      setTagInput("");
+    if (e.key === "Enter") {
+      e.preventDefault()
+      addTag()
     }
-  };
+  }
 
   const handleRemoveTag = (tagToRemove: string) => {
-    setTags(tags.filter((tag) => tag !== tagToRemove));
-  };
+    const newTags = tags.filter((tag) => tag !== tagToRemove)
+    setTags(newTags)
+    form.setValue("tags", newTags)
+  }
 
   // keywords
   const handleAddKeyword = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && keywordsInput.trim()) {
-      e.preventDefault();
-      if (!keywords.includes(keywordsInput.trim())) {
-        const newKeywords = [...keywords, keywordsInput.trim()];
-        setKeywords(newKeywords);
-        form.setValue("keywords", newKeywords);
-      }
-      setKeywordsInput("");
+    if (e.key === "Enter") {
+      e.preventDefault()
+      addKeyword()
     }
-  };
+  }
 
   const handleRemoveKeyword = (keywordToRemove: string) => {
-    setKeywords(keywords.filter((keyword) => keyword !== keywordToRemove));
-  };
+    const newKeywords = keywords.filter((keyword) => keyword !== keywordToRemove)
+    setKeywords(newKeywords)
+    form.setValue("keywords", newKeywords)
+  }
 
   const handleImageChange = (file: File) => {
     if (file) {
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.onload = () => {
-        setPreviewImage(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-      form.setValue("image", [file]);
+        setPreviewImage(reader.result as string)
+      }
+      reader.readAsDataURL(file)
+      form.setValue("image", [file])
     }
-  };
+  }
 
   const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragOver(false);
-    const files = e.dataTransfer.files;
+    e.preventDefault()
+    setIsDragOver(false)
+    const files = e.dataTransfer.files
     if (files.length > 0 && files[0].type.startsWith("image/")) {
-      handleImageChange(files[0]);
+      handleImageChange(files[0])
     }
-  };
+  }
 
   const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragOver(true);
-  };
+    e.preventDefault()
+    setIsDragOver(true)
+  }
 
   const handleDragLeave = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragOver(false);
-  };
+    e.preventDefault()
+    setIsDragOver(false)
+  }
 
   return (
     <DashboardLayout title="Add New Blog">
       <div className="">
-        <h2 className="text-[#0E2A5C] text-2xl font-medium leading-[120%] tracking-[0%] pb-[33px]">
-          Add New Blogs
-        </h2>
+        <h2 className="text-[#0E2A5C] text-2xl font-medium leading-[120%] tracking-[0%] pb-[33px]">Add New Blogs</h2>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-[30px]">
@@ -234,20 +241,12 @@ export default function AddBlogPage() {
                               <div
                                 className={`
                                   h-[310px] border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors
-                                  ${
-                                    isDragOver
-                                      ? "border-blue-400 bg-blue-50"
-                                      : "border-gray-300 hover:border-gray-400"
-                                  }
+                                  ${isDragOver ? "border-blue-400 bg-blue-50" : "border-gray-300 hover:border-gray-400"}
                                 `}
                                 onDrop={handleDrop}
                                 onDragOver={handleDragOver}
                                 onDragLeave={handleDragLeave}
-                                onClick={() =>
-                                  document
-                                    .getElementById("image-upload")
-                                    ?.click()
-                                }
+                                onClick={() => document.getElementById("image-upload")?.click()}
                               >
                                 <div className="h-full flex flex-col items-center justify-center space-y-3">
                                   <div className="">
@@ -260,9 +259,9 @@ export default function AddBlogPage() {
                                   accept="image/*"
                                   className="hidden"
                                   onChange={(e) => {
-                                    const file = e.target.files?.[0];
+                                    const file = e.target.files?.[0]
                                     if (file) {
-                                      handleImageChange(file);
+                                      handleImageChange(file)
                                     }
                                   }}
                                 />
@@ -279,8 +278,8 @@ export default function AddBlogPage() {
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    setPreviewImage(null);
-                                    form.setValue("image", undefined);
+                                    setPreviewImage(null)
+                                    form.setValue("image", undefined)
                                   }}
                                   className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md hover:bg-gray-50"
                                 >
@@ -288,11 +287,7 @@ export default function AddBlogPage() {
                                 </button>
                                 <button
                                   type="button"
-                                  onClick={() =>
-                                    document
-                                      .getElementById("image-upload")
-                                      ?.click()
-                                  }
+                                  onClick={() => document.getElementById("image-upload")?.click()}
                                   className="absolute bottom-2 right-2 bg-white rounded-full p-2 shadow-md hover:bg-gray-50"
                                 >
                                   <Upload className="h-4 w-4 text-gray-600" />
@@ -303,9 +298,9 @@ export default function AddBlogPage() {
                                   accept="image/*"
                                   className="hidden"
                                   onChange={(e) => {
-                                    const file = e.target.files?.[0];
+                                    const file = e.target.files?.[0]
                                     if (file) {
-                                      handleImageChange(file);
+                                      handleImageChange(file)
                                     }
                                   }}
                                 />
@@ -326,7 +321,7 @@ export default function AddBlogPage() {
 
                   <div className="relative">
                     <Input
-                      className="h-[50px] w-full text-sm font-medium leading-[120%] tracking-[0%] mt-2 text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none p-4"
+                      className="h-[50px] w-full text-sm font-medium leading-[120%] tracking-[0%] mt-2 text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none p-4 pr-12"
                       type="text"
                       placeholder="Add your tags..."
                       value={tagInput}
@@ -335,16 +330,8 @@ export default function AddBlogPage() {
                     />
                     <button
                       type="button"
-                      onClick={() => {
-                        if (
-                          tagInput.trim() &&
-                          !tags.includes(tagInput.trim())
-                        ) {
-                          setTags([...tags, tagInput.trim()]);
-                          setTagInput("");
-                        }
-                      }}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      onClick={addTag}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
                     >
                       <Plus className="h-5 w-5" />
                     </button>
@@ -367,6 +354,9 @@ export default function AddBlogPage() {
                       </div>
                     ))}
                   </div>
+                  {form.formState.errors.tags && (
+                    <p className="text-sm text-red-500 mt-1">{form.formState.errors.tags.message}</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -415,10 +405,9 @@ export default function AddBlogPage() {
                     Keywords
                   </FormLabel>
 
-                  
                   <div className="relative">
                     <Input
-                      className="h-[45px] w-full text-sm font-medium leading-[120%] mt-2 tracking-[0%] text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none px-4 py-[14px]"
+                      className="h-[45px] w-full text-sm font-medium leading-[120%] mt-2 tracking-[0%] text-[#0E2A5C] placeholder:text-[#B6B6B6] border border-[#B6B6B6] rounded-[4px] focus:border-none focus:ring-0 focus-visible:border-none px-4 py-[14px] pr-12"
                       type="text"
                       placeholder="Keywords"
                       value={keywordsInput}
@@ -427,16 +416,8 @@ export default function AddBlogPage() {
                     />
                     <button
                       type="button"
-                      onClick={() => {
-                        if (
-                          keywordsInput.trim() &&
-                          !keywords.includes(keywordsInput.trim())
-                        ) {
-                          setKeywords([...keywords, keywordsInput.trim()]);
-                          setKeywordsInput("");
-                        }
-                      }}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      onClick={addKeyword}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
                     >
                       <Plus className="h-5 w-5" />
                     </button>
@@ -458,13 +439,16 @@ export default function AddBlogPage() {
                       </div>
                     ))}
                   </div>
+                  {form.formState.errors.keywords && (
+                    <p className="text-sm text-red-500 mt-1">{form.formState.errors.keywords.message}</p>
+                  )}
                 </div>
               </div>
             </div>
 
             <div className="flex justify-end mt-[30px] mb-[208px]">
               <button
-                className="text-xl font-medium leading-[120%] tracking-[0%] text-[#F4F4F4] py-[13px] px-[26px] rounded-[8px] bg-[#0E2A5C]"
+                className="text-xl font-medium leading-[120%] tracking-[0%] text-[#F4F4F4] py-[13px] px-[26px] rounded-[8px] bg-[#0E2A5C] disabled:opacity-50 disabled:cursor-not-allowed"
                 type="submit"
                 disabled={isPending}
               >
@@ -475,5 +459,5 @@ export default function AddBlogPage() {
         </Form>
       </div>
     </DashboardLayout>
-  );
+  )
 }
