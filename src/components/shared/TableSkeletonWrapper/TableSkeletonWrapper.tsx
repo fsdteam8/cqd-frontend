@@ -10,7 +10,7 @@ interface TableSkeletonWrapperProps {
 
 const TableSkeletonWrapper: React.FC<TableSkeletonWrapperProps> = ({
   width = "100%",
-  height = "120px",
+  height = "250px",
   className = "",
   count = 1,
 }) => {
