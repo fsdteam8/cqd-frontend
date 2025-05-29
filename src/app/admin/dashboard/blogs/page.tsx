@@ -1,8 +1,12 @@
 import React from "react";
-import BlogContainer from "./_components/blog-container";
+// import BlogContainer from "./_components/blog-container";
 import { DashboardLayout } from "@/components/dashboard-layout";
 import { Plus } from "lucide-react";
 import Link from "next/link";
+// import dynamic from "next/dynamic";
+import dynamic from "next/dynamic";
+const BlogContainer = dynamic(() => import("./_components/blog-container"), { ssr: false });
+
 
 const Page = () => {
   return (

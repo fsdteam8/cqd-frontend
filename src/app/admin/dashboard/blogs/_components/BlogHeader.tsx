@@ -19,7 +19,7 @@ import { Search } from "lucide-react";
 const statusList = [
   { id: 1, name: "All Status", value: "all" },
   { id: 2, name: "Published", value: "1" },
-  { id: 3, name: "UnPublished", value: "0" },
+  { id: 3, name: "Unpublished", value: "0" },
 ];
 
 interface BlogHeaderProps {
@@ -41,7 +41,7 @@ const BlogHeader = ({
 }: BlogHeaderProps) => {
   return (
     <div className="py-[25px] px-[30px] bg-white shadow-[0_4px_10px_0_#0000001A] rounded-[15px] mt-[30px]">
-      <div className="w-full flex items-center justify-between">
+      <div className="w-full flex items-center justify-between gap-2">
         <div className="w-full md:max-[388px]">
           <Input
             type="search"
@@ -62,7 +62,7 @@ const BlogHeader = ({
               placeholderText="Status"
             />
           </div>
-          <div >
+          <div>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
