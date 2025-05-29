@@ -55,7 +55,7 @@ const BlogContainer = () => {
     return (
       <div>
         {" "}
-        <div className="hover:bg-white hover:shadow-lg hover:rounded-tr-[16px] hover:rounded-bl-[16px] transition-all duration-300 ease-in-out">
+        <div className="hover:bg-white mx-auto hover:shadow-lg hover:rounded-tr-[16px] hover:rounded-bl-[16px] transition-all duration-300 ease-in-out">
           <div>
             <Skeleton className="w-full h-[200px] rounded-t-[16px]" />
           </div>
