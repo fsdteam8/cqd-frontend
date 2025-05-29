@@ -8,9 +8,12 @@ import Image from "next/image";
 import moment from "moment";
 import { BlogApiResponse } from "../_components/BlogDataType";
 import BlogContainer from "../_components/BlogContainer";
+import TableSkeletonWrapper from "@/components/shared/TableSkeletonWrapper/TableSkeletonWrapper";
+import FrontendErrorContainer from "@/components/shared/FrontendErrorContainer/FrontendErrorContainer";
+import FrontedNotFound from "@/components/shared/NotFound/NotFoundData";
 
 const BlogDetails = ({ params }: { params: { slug: string } }) => {
-  const { data, isLoading, isError } = useQuery<BlogApiResponse>({
+  const { data, error, isLoading, isError } = useQuery<BlogApiResponse>({
     queryKey: ["blog-data"],
     queryFn: () =>
       fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog-data-front`).then(
@@ -18,15 +21,31 @@ const BlogDetails = ({ params }: { params: { slug: string } }) => {
       ),
   });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error loading blogs.</p>;
-
   const blogDetails = data?.data.find((blog) => blog.slug === params.slug);
 
-  if (!blogDetails) return <p>Blog not found.</p>;
+  if (isLoading)
+    return (
+      <div className="container mx-auto">
+        <TableSkeletonWrapper count={8} />
+      </div>
+    );
+  if (isError)
+    return (
+      <div className=" container mx-auto">
+        <FrontendErrorContainer
+          message={error?.message || "something went wrong"}
+        />
+      </div>
+    );
+  if (!blogDetails)
+    return (
+      <div>
+        <FrontedNotFound message="Oops! No data available. Modify your filters or check your internet connection." />
+      </div>
+    );
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-4 md:px-0">
       <div className="pt-[36px] pb-[40px] md:pb-[100px] lg:pb-[160px]">
         <div>
           <Image
@@ -49,6 +68,13 @@ const BlogDetails = ({ params }: { params: { slug: string } }) => {
           dangerouslySetInnerHTML={{ __html: blogDetails.details ?? "" }}
           className="text-base text-[#0F2A5C] leading-[150%] tracking-[0%] font-normal pt-3 md:pt-4"
         />
+
+        <div className=" flex items-center gap-5 mt-10">
+          <h4 className="text-2xl font-semibold text-[#0F2A5C] leading-normal ">
+            Related Tags:
+          </h4>
+          <div>{blogDetails?.tags}</div>
+        </div>
       </div>
 
       <BlogContainer />

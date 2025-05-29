@@ -19,7 +19,7 @@ export interface BlogPost {
   slug: string;
   image: string;
   details: string;
-  tags: string | string[]; // Depending on actual usage (some are JSON strings)
+  tags: string | string[] | null; // Depending on actual usage (some are JSON strings)
   keywords: string | string[] | null;
   meta_description: string;
   meta_title: string;

@@ -77,7 +77,7 @@ const BlogContainer = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="pb-[35px] md:pb-[60px] lg:pb-[100px]">
+      <div className="mb-[35px] md:mb-[60px] lg:mb-[120px]">
         <h2 className="text-center text-[35px] md:text-[48px] lg:text-[60px] font-medium leadig-[120%] tracking-[0%] text-[#0F2A5C]">
           Blog Post
         </h2>
@@ -110,7 +110,7 @@ const BlogContainer = () => {
           allowTouchMove={true}
           breakpoints={breakpoints}
           spaceBetween={12}
-          className="w-full"
+          className="w-full h-full"
         >
           {publishedBlogs?.map((blog, index) => (
             <SwiperSlide key={index} className="!h-auto !md:h-full">
