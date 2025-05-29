@@ -1,3 +1,26 @@
+export function getAccessToken(): string | null {
+    if (typeof window === "undefined") {
+      return null // Server-side rendering
+    }
+    return localStorage.getItem("accessToken")
+  }
+  
+  export function setAccessToken(token: string): void {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("accessToken", token)
+    }
+  }
+  
+  export function removeAccessToken(): void {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("accessToken")
+    }
+  }
+  
+  export function isAuthenticated(): boolean {
+    return getAccessToken() !== null
+  }
+  
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { JWT } from "next-auth/jwt";
@@ -6,8 +29,8 @@ export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
-    maxAge: 2 * 60 * 60, // 2 hours in seconds
-    updateAge: 24 * 60 * 60, // 24 hours in seconds
+    maxAge: 24 * 60 * 60, // 24 hours in seconds
+    updateAge: 36 * 60 * 60, // 36 hours in seconds
   },
   providers: [
     CredentialsProvider({

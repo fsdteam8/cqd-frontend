@@ -71,49 +71,59 @@ const BlogContainer = () => {
   if (isError) return <p>Error loading blogs.</p>;
 
   return (
-    <div className="w-full  flex items-center gap-[30px] md:gap-[45px] lg:gap-[66px]">
-      <button onClick={() => swiperRef.current?.slidePrev()}>
-        <Image
-          src="/images/left-arrow.svg"
-          alt="left-arrow"
-          width={50}
-          height={50}
-          className="w-[50px] h-[50px]"
-        />
-      </button>
+    <div className="container mx-auto">
+      <div className="pb-[35px] md:pb-[60px] lg:pb-[100px]">
+        <h2 className="text-center text-[35px] md:text-[48px] lg:text-[60px] font-medium leadig-[120%] tracking-[0%] text-[#0F2A5C]">
+          Blog Post
+        </h2>
+        <p className="text-center text-xl md:text-[22px] lg:text-2xl font-normal leading-[120%] tracking-[0%] text-[#0F2A5C] pt-[15px]">
+          Blog and News
+        </p>
+      </div>
+      <div className="w-full flex items-center gap-[30px] md:gap-[45px] lg:gap-[66px]">
+        <button onClick={() => swiperRef.current?.slideNext()}>
+          <Image
+            src="/images/left-arrow.svg"
+            alt="left-arrow"
+            width={50}
+            height={50}
+            className="w-[50px] h-[50px]"
+          />
+        </button>
 
-      <Swiper
-        modules={[Autoplay]}
-        loop={true}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
-        autoplay={{
-          delay: 3000,
-          pauseOnMouseEnter: false,
-          disableOnInteraction: false,
-          stopOnLastSlide: false,
-        }}
-        speed={3000}
-        allowTouchMove={true}
-        breakpoints={breakpoints}
-        spaceBetween={12}
-        className="w-full"
-      >
-        {data?.data?.map((blog, index) => (
-          <SwiperSlide key={index} className="!h-auto !md:h-full">
-            <BlogCart blog={blog} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        <Swiper
+          modules={[Autoplay]}
+          loop={true}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          autoplay={{
+            delay: 3000,
+            pauseOnMouseEnter: false,
+            disableOnInteraction: false,
+            stopOnLastSlide: false,
+          }}
+          speed={3000}
+          allowTouchMove={true}
+          breakpoints={breakpoints}
+          spaceBetween={12}
+          className="w-full"
+        >
+          {data?.data?.map((blog, index) => (
+            <SwiperSlide key={index} className="!h-auto !md:h-full">
+              <BlogCart blog={blog} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-      <button onClick={() => swiperRef.current?.slideNext()}>
-        <Image
-          src="/images/right-arrow.svg"
-          alt="right-arrow"
-          width={50}
-          height={50}
-          className="w-[50px] h-[50px]"
-        />
-      </button>
+        <button onClick={() => swiperRef.current?.slidePrev()}>
+          <Image
+            src="/images/right-arrow.svg"
+            alt="right-arrow"
+            width={50}
+            height={50}
+            className="w-[50px] h-[50px]"
+          />
+        </button>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,6 @@
 
 import DeleteModal from "@/components/shared/modals/DeleteModal";
 import { BlogApiResponse } from "@/components/types/BlogDataType";
-import { CQDPagination } from "@/components/ui/cqd-pagination";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -13,23 +12,42 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
+import BlogHeader from "./BlogHeader";
+import { useSearchStore } from "@/components/zustand/features/BlogSearch";
+import { useDebounce } from "@/hooks/useDebounce";
+import { useStatusStore } from "@/components/zustand/features/BlogStatus";
+import { useDateStore } from "../../../../../components/zustand/features/BlogDatePicker";
+import { CQDPagination } from "@/components/ui/cqd-pagination";
+import TableSkeletonWrapper from "@/components/shared/tableSkeleton/TableSkeletaion";
+import ErrorContainer from "@/components/shared/ErrorContainer/ErrorContainer";
+import NotFound from "@/components/shared/NotFound/NotFound";
 
 const BlogContainer = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
   const session = useSession();
   const token = (session?.data?.user as { token?: string })?.token;
   const queryClient = useQueryClient();
+  const { search, setSearch } = useSearchStore();
+  const { status, setStatus } = useStatusStore();
+  const { date, setDate } = useDateStore();
 
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedBlogId, setSelectedBlogId] = useState<number | null>(null);
 
+  // searching
+  const debounceValue = useDebounce(search, 500);
+  console.log(debounceValue);
+
+  // date picker
+  const blogDate = date ? moment(date).format("YYYY-MM-DD") : "";
+  console.log(blogDate);
+
   // Fetch all blogs
   const { data, isLoading, error, isError } = useQuery<BlogApiResponse>({
-    queryKey: ["all-blogs", currentPage],
+    queryKey: ["all-blogs", currentPage, debounceValue, status, blogDate],
     queryFn: () =>
       fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?page=${currentPage}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs?publish=${status}&search=${debounceValue}&date=${blogDate}&page=${currentPage}`,
         {
           method: "GET",
           headers: {
@@ -38,8 +56,6 @@ const BlogContainer = () => {
         }
       ).then((res) => res.json()),
   });
-
-
 
   // Mutation to toggle publish status
   const updatePublishStatus = useMutation({
@@ -96,24 +112,107 @@ const BlogContainer = () => {
     setDeleteModalOpen(false);
   };
 
+  let content;
   if (isLoading) {
-    return (
-      <div className="h-full w-full flex items-center justify-center">
-        Loading...
-      </div>
+    content = (
+      <TableSkeletonWrapper
+        rows={6}
+        columns={5}
+        width="900"
+        height="100px"
+        className="  bg-[#b4b3b3]"
+      />
     );
-  }
+  } else if (isError) {
+    content = (
+      <ErrorContainer message={error?.message || "something went wrong"} />
+    );
+  } else if (data && data?.data && data?.data?.length === 0) {
+    content = (
+      <>
+        <NotFound message="Oops! No data available. Modify your filters or check your internet connection." />
+      </>
+    );
+  } else if (data && data?.data && data?.data?.length > 0) {
+    content = (
+      <>
+        {data?.data?.map((blog) => (
+          <tr key={blog.id} className="py-[10px]">
+            <td className="w-full flex items-center justify-center py-[10px]">
+              <Image
+                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/Blogs/${blog.image}`}
+                alt={blog.title}
+                width={56}
+                height={70}
+                className="w-[56px] h-[70px] object-cover"
+              />
+            </td>
+            <td className="text-base font-light text-[#0E2A5C] text-center">
+              {blog.title}
+            </td>
+            <td className="text-base font-light text-[#0E2A5C] text-center">
+              {moment(blog.created_at).format("DD MMMM YYYY")}
+            </td>
+            <td>
+              <div className="flex items-center justify-center space-x-2">
+                <Switch
+                  id={`${blog.id}`}
+                  checked={Boolean(blog.publish)}
+                  onCheckedChange={(value) =>
+                    updatePublishStatus.mutate({
+                      id: blog.id,
+                      publish: value ? 1 : 0,
+                    })
+                  }
+                  disabled={updatePublishStatus?.isPending}
+                />
+                <Label htmlFor={`${blog.id}`} className="sr-only">
+                  {/* Toggle publish status for {blog.title} */}
+                </Label>
+              </div>
+            </td>
+            <td className="">
+              <div className="w-full flex items-center justify-center gap-[10px]">
+                <Link href={`/admin/dashboard/blogs/edit/${blog.id}`}>
+                  <button
+                    type="button"
+                    className="p-1 hover:bg-gray-100 rounded transition-colors"
+                    aria-label={`Edit ${blog.title}`}
+                  >
+                    <PencilLine className="text-[#0E2A5C]" size={18} />
+                  </button>
+                </Link>
 
-  if (isError) {
-    return (
-      <div className="h-full w-full flex items-center justify-center">
-        Error: {error.message}
-      </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setDeleteModalOpen(true);
+                    setSelectedBlogId(blog?.id);
+                  }}
+                  className="p-1 hover:bg-gray-100 rounded transition-colors"
+                  aria-label={`Delete ${blog.title}`}
+                >
+                  <Trash className="text-[#0E2A5C]" size={18} />
+                </button>
+              </div>
+            </td>
+          </tr>
+        ))}
+      </>
     );
   }
 
   return (
     <div>
+      {/* blog header */}
+      <BlogHeader
+        search={search}
+        setSearch={setSearch}
+        status={status}
+        setStatus={setStatus}
+        date={date}
+        setDate={setDate}
+      />
       <div className="overflow-hidden rounded-[16px] shadow-[0_4px_10px_0_#0000001A] border border-[#E5E7EB] mt-[30px] mb-[305px]">
         <table className="w-full ">
           <thead className="bg-[#0E2A5C] text-white">
@@ -135,71 +234,9 @@ const BlogContainer = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="border-b border-[#E5E7EB]">
-            {data?.data?.map((blog) => (
-              <tr key={blog.id} className="py-[10px]">
-                <td className="w-full flex items-center justify-center py-[10px]">
-                  <Image
-                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/Blogs/${blog.image}`}
-                    alt={blog.title}
-                    width={56}
-                    height={70}
-                    className="w-[56px] h-[70px] object-cover"
-                  />
-                </td>
-                <td className="text-base font-light text-[#0E2A5C] text-center">
-                  {blog.title}
-                </td>
-                <td className="text-base font-light text-[#0E2A5C] text-center">
-                  {moment(blog.created_at).format("DD MMMM YYYY")}
-                </td>
-                <td>
-                  <div className="flex items-center justify-center space-x-2">
-                    <Switch
-                      id={`${blog.id}`}
-                      checked={Boolean(blog.publish)}
-                      onCheckedChange={(value) =>
-                        updatePublishStatus.mutate({
-                          id: blog.id,
-                          publish: value ? 1 : 0,
-                        })
-                      }
-                      disabled={updatePublishStatus.isPending}
-                    />
-                    <Label htmlFor={`${blog.id}`} className="sr-only">
-                      {/* Toggle publish status for {blog.title} */}
-                    </Label>
-                  </div>
-                </td>
-                <td className="">
-                  <div className="w-full flex items-center justify-center gap-[10px]">
-                    <Link href={`/admin/dashboard/blogs/edit/${blog.id}`}>
-                      <button
-                        type="button"
-                        className="p-1 hover:bg-gray-100 rounded transition-colors"
-                        aria-label={`Edit ${blog.title}`}
-                      >
-                        <PencilLine className="text-[#0E2A5C]" size={18} />
-                      </button>
-                    </Link>
-
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setDeleteModalOpen(true);
-                        setSelectedBlogId(blog?.id);
-                      }}
-                      className="p-1 hover:bg-gray-100 rounded transition-colors"
-                      aria-label={`Delete ${blog.title}`}
-                    >
-                      <Trash className="text-[#0E2A5C]" size={18} />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+          <tbody className="border-b border-[#E5E7EB] !w-full">{content}</tbody>
         </table>
+
         <div className="">
           {data && data?.total_pages > 1 && (
             <div className="flex justify-between items-center">
@@ -210,7 +247,7 @@ const BlogContainer = () => {
                 <CQDPagination
                   currentPage={currentPage}
                   totalResults={data?.total_blogs}
-                  resultsPerPage={itemsPerPage}
+                  resultsPerPage={data?.per_page}
                   onPageChange={setCurrentPage}
                 />
               </div>
