@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { format } from "date-fns";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -39,6 +39,10 @@ const BlogHeader = ({
   date,
   setDate,
 }: BlogHeaderProps) => {
+  const clearDate = (e: React.MouseEvent) => {
+    e.stopPropagation(); 
+    setDate(null);
+  };
   return (
     <div className="py-[25px] px-[30px] bg-white shadow-[0_4px_10px_0_#0000001A] rounded-[15px] mt-[30px]">
       <div className="w-full flex items-center justify-between gap-2">
@@ -74,7 +78,18 @@ const BlogHeader = ({
                 >
                   {date ? format(date, "PPP") : <span>Select Date</span>}
                   {/* <CalendarIcon /> */}
-                  <ChevronDown className="text-[#595959] !w-[30px] !h-[30px]" />
+                  <ChevronDown className="text-[#595959] !w-[24px] !h-[24px]" />
+                  {date && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="ml-auto h-4 w-4 p-0 hover:bg-muted pr-2"
+                      onClick={clearDate}
+                    >
+                      <X className="h-3 w-3" />
+                      <span className="sr-only">Clear date</span>
+                    </Button>
+                  )}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto mr-14" align="start">
