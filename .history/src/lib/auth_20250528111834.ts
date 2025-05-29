@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export function getAccessToken(): string | null {
     if (typeof window === "undefined") {
       return null // Server-side rendering
@@ -21,6 +22,7 @@ export function getAccessToken(): string | null {
     return getAccessToken() !== null
   }
   
+=======
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { JWT } from "next-auth/jwt";
@@ -29,8 +31,8 @@ export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
-    maxAge: 24 * 60 * 60, // 24 hours in seconds
-    updateAge: 36 * 60 * 60, // 36 hours in seconds
+    maxAge: 2 * 60 * 60, // 2 hours in seconds
+    updateAge: 24 * 60 * 60, // 24 hours in seconds
   },
   providers: [
     CredentialsProvider({
@@ -97,3 +99,4 @@ export const authOptions: NextAuthOptions = {
     },
   },
 };
+>>>>>>> 581ab19d9f40943eacda28e4e1da1fa149b04436
