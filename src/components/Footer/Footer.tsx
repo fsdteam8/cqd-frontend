@@ -20,7 +20,7 @@ export default function Footer() {
     },
   });
 
-  console.log("Email Data: ", data?.email);
+
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
