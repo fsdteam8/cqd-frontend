@@ -145,9 +145,9 @@ export default function Footer() {
           <p className="!text-white">
             {currentYear} - CQD Cleaning Services. All rights reserved. Website
             Design and SEO by Smoking Rocket{" "}
-            <Link href="/privacy-policy" className="underline hover:text-white">
-              View our Privacy Policy
-            </Link>
+            {/* <Link href="/privacy-policy" className="underline hover:text-white"> */}
+            <>View our Privacy Policy</>
+            {/* </Link> */}
           </p>
         </div>
       </div>
