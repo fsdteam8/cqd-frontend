@@ -91,7 +91,7 @@ export default function AddBlogPage() {
     formData.append("meta_description", data.meta_description || "");
     formData.append("tags", JSON.stringify(tags));
     formData.append("keywords", JSON.stringify(keywords));
-
+     console.log(formData)
     if (data.image && data.image[0]) {
       formData.append("image", data.image[0]);
     }
