@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const BlogCart = ({ blog }: { blog: BlogPost }) => {
-  console.log("BlogCart", blog);
   return (
     <div className=" hover:bg-white hover:shadow-lg hover:rounded-tr-[16px] hover:rounded-bl-[16px] transition-all duration-300 ease-in-out">
       <div>

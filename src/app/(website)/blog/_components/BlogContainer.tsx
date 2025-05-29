@@ -2,10 +2,9 @@
 
 import { useQuery } from "@tanstack/react-query";
 import React, { useRef } from "react";
-import { BlogApiResponse } from "./BlogDataType";
+import { BlogApiResponse, BlogPost } from "./BlogDataType";
 import BlogCart from "./BlogCart";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
 
 // Swiper
 import "swiper/css";
@@ -15,7 +14,9 @@ import "swiper/css/virtual";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperCore } from "swiper/types";
-import { Skeleton } from "@/components/ui/skeleton";
+import TableSkeletonWrapper from "@/components/shared/TableSkeletonWrapper/TableSkeletonWrapper";
+import FrontendErrorContainer from "@/components/shared/FrontendErrorContainer/FrontendErrorContainer";
+import FrontedNotFound from "@/components/shared/NotFound/NotFoundData";
 
 const breakpoints = {
   0: {
@@ -37,13 +38,9 @@ const breakpoints = {
 };
 
 const BlogContainer = () => {
-  const session = useSession();
-  const token = (session?.data?.user as { token: string })?.token;
-  console.log("Session Token:", token);
-
   const swiperRef = useRef<SwiperCore | null>(null);
 
-  const { data, isLoading, isError } = useQuery<BlogApiResponse>({
+  const { data, error, isLoading, isError } = useQuery<BlogApiResponse>({
     queryKey: ["blog-data"],
     queryFn: () =>
       fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog-data-front`).then(
@@ -51,24 +48,32 @@ const BlogContainer = () => {
       ),
   });
 
+  // console.log(data?.data);
+  const publishedBlogs = data?.data?.filter(
+    (blog: BlogPost) => blog.publish === true
+  );
+  // console.log(publishedBlogs);
+
   if (isLoading)
     return (
-      <div>
-        {" "}
-        <div className="hover:bg-white mx-auto hover:shadow-lg hover:rounded-tr-[16px] hover:rounded-bl-[16px] transition-all duration-300 ease-in-out">
-          <div>
-            <Skeleton className="w-full h-[200px] rounded-t-[16px]" />
-          </div>
-          <div className="px-[15px] pb-[17px]">
-            <Skeleton className="mt-[15px] h-6 w-3/4" />
-            <div className="pt-[15px] w-full flex items-center justify-end">
-              <Skeleton className="h-[26px] w-[83px] rounded-full" />
-            </div>
-          </div>
-        </div>
+      <div className="container mx-auto">
+        <TableSkeletonWrapper count={4} />
       </div>
     );
-  if (isError) return <p>Error loading blogs.</p>;
+  if (isError)
+    return (
+      <div className=" container mx-auto">
+        <FrontendErrorContainer
+          message={error?.message || "something went wrong"}
+        />
+      </div>
+    );
+  if (!publishedBlogs)
+    return (
+      <div>
+        <FrontedNotFound message="Oops! No data available. Modify your filters or check your internet connection." />
+      </div>
+    );
 
   return (
     <div className="container mx-auto">
@@ -107,7 +112,7 @@ const BlogContainer = () => {
           spaceBetween={12}
           className="w-full"
         >
-          {data?.data?.map((blog, index) => (
+          {publishedBlogs?.map((blog, index) => (
             <SwiperSlide key={index} className="!h-auto !md:h-full">
               <BlogCart blog={blog} />
             </SwiperSlide>

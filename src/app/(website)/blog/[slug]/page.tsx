@@ -23,7 +23,8 @@ export async function generateMetadata({
     if (!blog) return notFound();
 
     return {
-      title: blog.title,
+      title: blog.meta_title || blog.title,
+
       description:
         blog.meta_description ||
         blog.details?.slice(0, 150).replace(/<[^>]+>/g, ""),
@@ -33,7 +34,7 @@ export async function generateMetadata({
           : blog.keywords
         : blog.title.split(" "),
       openGraph: {
-        title: blog.title,
+        title: blog.meta_title || blog.title,
         description:
           blog.meta_description ||
           blog.details?.slice(0, 150).replace(/<[^>]+>/g, ""),
@@ -42,7 +43,7 @@ export async function generateMetadata({
       },
       twitter: {
         card: "summary_large_image",
-        title: blog.title,
+        title: blog.meta_title || blog.title,
         description:
           blog.meta_description ||
           blog.details?.slice(0, 150).replace(/<[^>]+>/g, ""),
