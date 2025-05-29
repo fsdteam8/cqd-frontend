@@ -101,7 +101,7 @@ export default function PricingSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-medium text-gray-900 mb-4">
             Subscription Plan
           </h1>
           <p className="text-lg text-gray-600">
@@ -130,7 +130,7 @@ export default function PricingSection() {
             </Card>
           ) : (
             <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-white border-gray-200 transition-all duration-300 hover:shadow-lg">
-              <CardHeader className="text-center pb-4">
+              <CardHeader className="text-left pb-4">
                 <CardTitle className="text-xl font-semibold text-gray-900">
                   {data?.data.title}
                 </CardTitle>
@@ -149,15 +149,15 @@ export default function PricingSection() {
                 <Button
                   onClick={() => handleSelectPlan("bronze")}
                   variant="outline"
-                  className="w-full py-5 text-xl border-[#0F2A5C] border-2 hover:bg-gray-50"
+                  className="w-full py-5 text-xl border-[#0F2A5C] text-[#0F2A5C] border-2 hover:bg-gray-50"
                 >
                   Continue
                 </Button>
                 <div className="space-y-3 pt-4">
                   {bronzeFeatures.map((feature, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <div className="rounded-full p-1 mt-0.5 bg-green-100">
-                        <Check className="h-3 w-3 text-green-600" />
+                      <div className="rounded-full p-1 mt-0.5 bg-[#E8EDFB]">
+                        <Check className="h-3 w-3 text-[#0F2A5C]" />
                       </div>
                       <span className="text-sm text-gray-700">{feature}</span>
                     </div>
@@ -170,7 +170,7 @@ export default function PricingSection() {
           {/* Silver Card */}
           {silverIsLoading ? (
             <Card className="rounded-none rounded-tr-3xl rounded-bl-3xl">
-              <CardHeader className="text-center pb-4">
+              <CardHeader className="text-left pb-4">
                 <Skeleton className="h-6 w-3/4 mx-auto mb-2" />
                 <Skeleton className="h-10 w-1/2 mx-auto mb-2" />
                 <Skeleton className="h-4 w-2/3 mx-auto" />
@@ -186,7 +186,7 @@ export default function PricingSection() {
             </Card>
           ) : (
             <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#0F2A5C] text-white border-blue-900 transform lg:scale-110  transition-all duration-300 hover:shadow-lg">
-              <CardHeader className="text-center pb-4">
+              <CardHeader className="text-left pb-4">
                 <CardTitle className="text-xl font-semibold text-white">
                   {silver?.data?.title}
                 </CardTitle>
@@ -205,7 +205,7 @@ export default function PricingSection() {
                 <Button
                   onClick={() => handleSelectPlan("silver")}
                   variant="secondary"
-                  className="w-full py-5 text-xl bg-white text-blue-900 hover:bg-gray-100"
+                  className="w-full py-5 text-xl bg-[#02B71F] text-white hover:bg-[#26a13a]"
                 >
                   Continue
                 </Button>
@@ -213,7 +213,7 @@ export default function PricingSection() {
                   {silverFeatures.map((feature, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <div className="rounded-full p-1 mt-0.5 bg-white">
-                        <Check className="h-3 w-3 text-blue-900" />
+                        <Check className="h-3 w-3 text-[#0F2A5C]" />
                       </div>
                       <span className="text-sm text-white">{feature}</span>
                     </div>
@@ -225,7 +225,7 @@ export default function PricingSection() {
           {/* Gold Card */}
           {goldIsLoading ? (
             <Card className="rounded-none rounded-tr-3xl rounded-bl-3xl">
-              <CardHeader className="text-center pb-4">
+              <CardHeader className="text-left pb-4">
                 <Skeleton className="h-6 w-3/4 mx-auto mb-2" />
                 <Skeleton className="h-10 w-1/2 mx-auto mb-2" />
                 <Skeleton className="h-4 w-2/3 mx-auto" />
@@ -241,7 +241,7 @@ export default function PricingSection() {
             </Card>
           ) : (
             <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-white border-gray-200 transition-all duration-300 hover:shadow-lg">
-              <CardHeader className="text-center pb-4">
+              <CardHeader className="text-left pb-4">
                 <CardTitle className="text-xl font-semibold text-gray-900">
                   {gold?.data?.title}
                 </CardTitle>
@@ -260,15 +260,15 @@ export default function PricingSection() {
                 <Button
                   onClick={() => handleSelectPlan("gold")}
                   variant="outline"
-                  className="w-full py-5 text-xl border-[#0F2A5C] border-2 hover:bg-gray-50"
+                  className="w-full py-5 text-xl border-[#0F2A5C] text-[#0F2A5C] border-2 hover:bg-gray-50"
                 >
                   Continue
                 </Button>
                 <div className="space-y-3 pt-4">
                   {goldFeatures.map((feature, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <div className="rounded-full p-1 mt-0.5 bg-green-100">
-                        <Check className="h-3 w-3 text-green-600" />
+                      <div className="rounded-full p-1 mt-0.5 bg-[#E8EDFB]">
+                        <Check className="h-3 w-3 text-[#0F2A5C]" />
                       </div>
                       <span className="text-sm text-gray-700">{feature}</span>
                     </div>

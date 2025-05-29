@@ -70,10 +70,10 @@ const HowItWork = () => {
   }, [api]);
 
   return (
-    <section className="w-full min-h-screen flex items-center justify-between px-4 mt-14">
+    <section className="w-full min-h-screen flex items-center justify-between px-4" >
       <div className="container mx-auto max-w-7xl">
         <div className="mb-8">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium mb-2">
             How It Works
           </h2>
           <p className="text-lg md:text-xl">The Interactive Platform</p>
@@ -105,7 +105,7 @@ const HowItWork = () => {
                       <CardContent className="p-6 h-full flex flex-col justify-center">
                         <div className="flex flex-col justify-between h-full">
                           <div className="">
-                            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                            <h3 className="text-2xl md:text-3xl font-semibold mb-4">
                               {slide.title}
                             </h3>
                             <p className="text-lg mb-[60px]">
