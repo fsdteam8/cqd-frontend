@@ -25,9 +25,9 @@ export default function HighlightedLocations() {
   ];
 
   return (
-    <section id="location" className="w-full py-12 px-4 md:px-6 lg:px-8 ">
+    <section id="location" className="w-full  px-4 md:px-6 lg:px-8 pb-[50px] md:pb-[80px] lg:pb-[120px]">
       <div className="container mx-auto w-full">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium mb-2">
           Highlighted Locations
         </h1>
         <p className="text-lg md:text-xl my-8">

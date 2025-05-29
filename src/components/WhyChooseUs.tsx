@@ -4,12 +4,12 @@ import Link from "next/link";
 
 const WhyChooseUs = () => {
   return (
-    <section>
+    <section className="">
       <div className="container w-full mx-auto px-4 mt-10 lg:mt-0">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 min-h-[80vh]">
           {/* Left column - Text content */}
           <div className="space-y-6 max-w-4xl">
-            <h2 className="text-2xl md:text-5xl font-semibold tracking-wider">
+            <h2 className="text-2xl md:text-5xl font-medium tracking-wider">
               <span className="block lg:mb-4 mb-2">Why You Should Choose</span>
               <span className="block">CQD for Flexible Cleaning</span>
             </h2>

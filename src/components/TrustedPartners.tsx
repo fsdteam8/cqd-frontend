@@ -74,7 +74,7 @@ export default function TrustedPartners() {
   return (
     <section className="w-full py-12 px-4 md:px-6 lg:px-8">
       <div className="container mx-auto w-full">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-16">Our Trusted Partners</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium mb-16">Our Trusted Partners</h2>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-0">
           {visiblePartners.map((partner, index) => (

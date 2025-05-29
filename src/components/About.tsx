@@ -24,17 +24,19 @@ const About = () => {
           {/* Content container */}
           <div className="flex flex-col space-y-6">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-medium tracking-wider mb-2">
-              Professional CQD Cleaning Company
+              About CQD Cleaning
             </h2>
 
             <p className="text-base font-medium sm:text-base leading-[120%]">
-              Since 2012, CQD Cleaning Company has offered trusted, top-quality cleaning for homes and businesses. We’re committed to excellence and exceeding every client’s expectations—every time.
-
+              Since 2012, CQD Cleaning Company has offered trusted, top-quality
+              cleaning for homes and businesses. We’re committed to excellence
+              and exceeding every client’s expectations—every time.
             </p>
 
             <p className="text-base font-medium sm:text-base leading-[120%] mt-2">
-              At CQD Cleaning Company, our expert team and advanced tools ensure top-tier cleanliness, health, and safety—delivering spotless results you can trust every time.
-
+              At CQD Cleaning Company, our expert team and advanced tools ensure
+              top-tier cleanliness, health, and safety—delivering spotless
+              results you can trust every time.
             </p>
 
             {/* Features grid - responsive with 1 column on mobile, 2 on larger screens */}
