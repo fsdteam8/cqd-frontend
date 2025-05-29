@@ -29,7 +29,7 @@ const page = () => {
      <Review/>
      <HighlightedLocations/>
      <ContactSection/>
-     <HighlightedLocations/>
+     {/* <HighlightedLocations/> */}
     </div>
   )
 }

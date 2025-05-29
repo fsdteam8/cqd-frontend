@@ -1,63 +1,63 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { ChevronDown, Menu, X } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { useEffect, useState } from "react"
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { ChevronDown, Menu, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function TabletNavbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [isServicesOpen, setIsServicesOpen] = useState(false)
-  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const toggleServices = () => {
-    setIsServicesOpen(!isServicesOpen)
-  }
+    setIsServicesOpen(!isServicesOpen);
+  };
 
   const toggleMobileServices = () => {
-    setIsMobileServicesOpen(!isMobileServicesOpen)
-  }
+    setIsMobileServicesOpen(!isMobileServicesOpen);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
+      setScrolled(window.scrollY > 50);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Close services dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement
+      const target = event.target as HTMLElement;
       if (!target.closest(".services-dropdown") && isServicesOpen) {
-        setIsServicesOpen(false)
+        setIsServicesOpen(false);
       }
-    }
+    };
 
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [isServicesOpen])
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isServicesOpen]);
 
   return (
     <header
       className={cn(
         "sticky top-0 z-50 w-full bg-transparent transition-all duration-300",
-        scrolled ? "py-0" : "py-4 lg:py-6",
+        scrolled ? "py-0" : "py-4 lg:py-6"
       )}
     >
       <div
         className={cn(
           "transition-all duration-700 ease-in-out mx-auto px-4",
-          scrolled ? "max-w-9xl container" : "max-w-6xl",
+          scrolled ? "max-w-9xl container" : "max-w-6xl"
         )}
       >
         <div className="bg-white rounded-full shadow-lg px-4 lg:px-6 py-3 lg:py-4 transition-all duration-300">
@@ -75,10 +75,16 @@ export default function TabletNavbar() {
 
             {/* Tablet Navigation - Shows on tablet and larger screens */}
             <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-              <Link href="/" className="text-gray-900 hover:text-gray-600 transition-colors text-sm xl:text-base">
+              <Link
+                href="/"
+                className="text-gray-900 hover:text-gray-600 transition-colors text-sm xl:text-base"
+              >
                 Home
               </Link>
-              <Link href="#about" className="text-gray-900 hover:text-gray-600 transition-colors text-sm xl:text-base">
+              <Link
+                href="#about"
+                className="text-gray-900 hover:text-gray-600 transition-colors text-sm xl:text-base"
+              >
                 About Us
               </Link>
               <div className="relative services-dropdown">
@@ -89,7 +95,10 @@ export default function TabletNavbar() {
                   Services
                   <ChevronDown
                     size={14}
-                    className={cn("ml-1 transition-transform xl:w-4 xl:h-4", isServicesOpen ? "rotate-180" : "")}
+                    className={cn(
+                      "ml-1 transition-transform xl:w-4 xl:h-4",
+                      isServicesOpen ? "rotate-180" : ""
+                    )}
                   />
                 </button>
                 {isServicesOpen && (
@@ -132,7 +141,10 @@ export default function TabletNavbar() {
               >
                 Locations
               </Link>
-              <Link href="/blog" className="text-gray-900 hover:text-gray-600 transition-colors text-sm xl:text-base">
+              <Link
+                href="/blog"
+                className="text-gray-900 hover:text-gray-600 transition-colors text-sm xl:text-base"
+              >
                 Blog
               </Link>
               <Link
@@ -145,10 +157,16 @@ export default function TabletNavbar() {
 
             {/* Tablet-specific compact navigation - Shows on medium tablets */}
             <nav className="hidden md:flex lg:hidden items-center space-x-3">
-              <Link href="/" className="text-gray-900 hover:text-gray-600 transition-colors text-sm">
+              <Link
+                href="/"
+                className="text-gray-900 hover:text-gray-600 transition-colors text-sm"
+              >
                 Home
               </Link>
-              <Link href="#about" className="text-gray-900 hover:text-gray-600 transition-colors text-sm">
+              <Link
+                href="#about"
+                className="text-gray-900 hover:text-gray-600 transition-colors text-sm"
+              >
                 About
               </Link>
               <div className="relative services-dropdown">
@@ -159,7 +177,10 @@ export default function TabletNavbar() {
                   Services
                   <ChevronDown
                     size={12}
-                    className={cn("ml-1 transition-transform", isServicesOpen ? "rotate-180" : "")}
+                    className={cn(
+                      "ml-1 transition-transform",
+                      isServicesOpen ? "rotate-180" : ""
+                    )}
                   />
                 </button>
                 {isServicesOpen && (
@@ -190,28 +211,46 @@ export default function TabletNavbar() {
                   </div>
                 )}
               </div>
-              <Link href="/#pricing" className="text-gray-900 hover:text-gray-600 transition-colors text-sm">
+              <Link
+                href="/#pricing"
+                className="text-gray-900 hover:text-gray-600 transition-colors text-sm"
+              >
                 Pricing
               </Link>
-              <Link href="/#location" className="text-gray-900 hover:text-gray-600 transition-colors text-sm">
+              <Link
+                href="/#location"
+                className="text-gray-900 hover:text-gray-600 transition-colors text-sm"
+              >
                 Locations
               </Link>
-              <Link href="/blog" className="text-gray-900 hover:text-gray-600 transition-colors text-sm">
+              <Link
+                href="/blog"
+                className="text-gray-900 hover:text-gray-600 transition-colors text-sm"
+              >
                 Blog
               </Link>
-              <Link href="/contact" className="text-gray-900 hover:text-gray-600 transition-colors text-sm">
+              <Link
+                href="/contact"
+                className="text-gray-900 hover:text-gray-600 transition-colors text-sm"
+              >
                 Contact
               </Link>
             </nav>
 
             {/* CTA Button - Responsive sizing */}
-            <Button className="hidden md:block bg-[#0F2A5C] !text-white hover:bg-[#0F2A5C]/80 rounded-full text-sm lg:text-base px-4 lg:px-6 py-2 ">
-              {/* <span className="lg:hidden">Quote</span> */}
-              <span className="">Request a Quote</span>
-            </Button>
+            <Link href={"/#pricing"}>
+              <Button className="hidden md:block bg-[#0F2A5C] !text-white hover:bg-[#0F2A5C]/80 rounded-full text-sm lg:text-base px-4 lg:px-6 py-2 ">
+                {/* <span className="lg:hidden">Quote</span> */}
+                <span className="">Request a Quote</span>
+              </Button>
+            </Link>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden text-gray-900" onClick={toggleMenu} aria-label="Toggle menu">
+            <button
+              className="md:hidden text-gray-900"
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
@@ -221,7 +260,9 @@ export default function TabletNavbar() {
         <div
           className={cn(
             "md:hidden mt-2 bg-white rounded-xl shadow-md transition-all duration-300 ease-in-out",
-            isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 pointer-events-none overflow-hidden",
+            isMenuOpen
+              ? "max-h-screen opacity-100"
+              : "max-h-0 opacity-0 pointer-events-none overflow-hidden"
           )}
         >
           <nav className="flex flex-col space-y-2 p-4">
@@ -248,7 +289,10 @@ export default function TabletNavbar() {
                 <span>Services</span>
                 <ChevronDown
                   size={16}
-                  className={cn("transition-transform", isMobileServicesOpen ? "rotate-180" : "")}
+                  className={cn(
+                    "transition-transform",
+                    isMobileServicesOpen ? "rotate-180" : ""
+                  )}
                 />
               </button>
               <div
@@ -256,7 +300,7 @@ export default function TabletNavbar() {
                   "pl-4 transition-all duration-300 ease-in-out",
                   isMobileServicesOpen
                     ? "max-h-screen opacity-100 mt-2"
-                    : "max-h-0 opacity-0 pointer-events-none overflow-hidden",
+                    : "max-h-0 opacity-0 pointer-events-none overflow-hidden"
                 )}
               >
                 <Link
@@ -310,12 +354,14 @@ export default function TabletNavbar() {
             >
               Contact
             </Link>
-            <Button className="bg-[#0F2A5C] text-white hover:bg-[#0F2A5C]/80 w-full mt-3 rounded-full text-base py-3">
-              Request a Quote
-            </Button>
+            <Link href={"/#pricing"}>
+              <Button className="bg-[#0F2A5C] text-white hover:bg-[#0F2A5C]/80 w-full mt-3 rounded-full text-base py-3">
+                Request a Quote
+              </Button>
+            </Link>
           </nav>
         </div>
       </div>
     </header>
-  )
+  );
 }

@@ -45,13 +45,13 @@ export default function Footer() {
 
           <div className="grid grid-cols-2 md:flex flex-col md:flex-row gap-4 md:gap-8">
             <Link
-              href="#review"
+              href="/#review"
               className="text-white hover:text-gray-300 transition-colors"
             >
               Reviews
             </Link>
             <Link
-              href="#pricing"
+              href="/#pricing"
               className="text-white hover:text-gray-300 transition-colors"
             >
               Pricing
@@ -97,7 +97,7 @@ export default function Footer() {
 
             <div className="mt-4">
               <Link
-                href="#pricing"
+                href="/#pricing"
                 className="inline-block text-xl font-medium hover:text-gray-300 transition-colors"
               >
                 Book Now
@@ -145,9 +145,9 @@ export default function Footer() {
           <p className="!text-white">
             {currentYear} - CQD Cleaning Services. All rights reserved. Website
             Design and SEO by Smoking Rocket{" "}
-            <Link href="/privacy-policy" className="underline hover:text-white">
-              View our Privacy Policy
-            </Link>
+            {/* <Link href="/privacy-policy" className="underline hover:text-white"> */}
+            <>View our Privacy Policy</>
+            {/* </Link> */}
           </p>
         </div>
       </div>

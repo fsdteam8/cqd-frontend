@@ -147,7 +147,7 @@ export default function PricingPackage() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white">
+    <div className=" mx-auto p-6 bg-white shadow-[0_4px_10px_0_#0000001A] rounded-md border-[#E5E7EB] mt-10">
       <h1 className="text-2xl font-semibold text-gray-900 mb-6">Packages</h1>
 
       <form onSubmit={handleSubmit} className="space-y-6">

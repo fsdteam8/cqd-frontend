@@ -78,6 +78,7 @@ export default function AddBlogPage() {
   })
 
   const onSubmit = async (data: BlogFormValues) => {
+
     const formData = new FormData()
     formData.append("title", data.title)
     formData.append("details", data.details)
