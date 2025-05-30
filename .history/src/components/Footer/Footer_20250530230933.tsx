@@ -142,7 +142,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-8 text-center text-xs ">
           <p className="!text-white">
-            {currentYear} - CQD Cleaning Services. All rights reserved to CQD.
+            {currentYear} - CQD Cleaning Services. All rights reserved to CQD only.
             
             {/* </Link> */}
           </p>
