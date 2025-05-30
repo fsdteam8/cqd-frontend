@@ -65,7 +65,7 @@ export default function TabletNavbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/blue-logo.svg"
+                src="/images/logo.png"
                 alt="CQD Logo"
                 width={120}
                 height={40}

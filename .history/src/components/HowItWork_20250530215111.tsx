@@ -82,7 +82,7 @@ const HowItWork = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-2">
           <div className="relative w-full lg:max-w-none lg:w-[536px] lg:h-[656px] overflow-hidden rounded-lg">
             <Image
-              src="/images/hiw.png"
+              src="/images/about.png"
               alt="CQD Cleaning professional with cleaning equipment"
               width={536}
               height={656}

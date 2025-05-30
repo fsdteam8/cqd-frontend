@@ -149,7 +149,7 @@ export default function PricingSection() {
                 <Button
                   onClick={() => handleSelectPlan("bronze")}
                   variant="outline"
-                  className="w-full py-5 text-xl border-[#0F2A5C] text-[#0F2A5C] border-2 hover:bg-gray-200"
+                  className="w-full py-5 text-xl border-[#0F2A5C] text-[#0F2A5C] border-2 hover:bg-gray-50"
                 >
                   Continue
                 </Button>

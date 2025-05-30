@@ -4,21 +4,21 @@ import Link from "next/link";
 import Image from "next/image";
 import { Instagram, Linkedin, Twitter, MessageCircle } from "lucide-react";
 import { useState, useEffect } from "react";
-// import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Footer() {
   const [currentYear, setCurrentYear] = useState(2023);
 
-  // const { data } = useQuery({
-  //   queryKey: ["email"],
-  //   queryFn: async () => {
-  //     const res = await fetch("https://coq.scaleupdevagency.com/api/email", {
-  //       method: "GET",
-  //     });
+  const { data } = useQuery({
+    queryKey: ["email"],
+    queryFn: async () => {
+      const res = await fetch("https://coq.scaleupdevagency.com/api/email", {
+        method: "GET",
+      });
 
-  //     return res.json();
-  //   },
-  // });
+      return res.json();
+    },
+  });
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
@@ -90,7 +90,7 @@ export default function Footer() {
               href="mailto:example.email@gmail.com"
               className="text-lg md:text-3xl font-bold hover:text-gray-300 transition-colors"
             >
-            info@cqdcleaningservices.com
+            'mark@cqdcleaningservices.com
             </a>
 
             <div className="mt-4">
@@ -105,31 +105,30 @@ export default function Footer() {
 
           <div>
             <p className="text-xl mb-2 !text-white">Find Us On:</p>
-            {/* <span>2025 - CQD Cle</span> */}
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://instagram.com"
                 aria-label="Instagram"
                 className="text-white hover:text-gray-300 transition-colors"
               >
                 <Instagram className="w-6 h-6" />
               </a>
               <a
-                href="#"
+                href="https://linkedin.com"
                 aria-label="LinkedIn"
                 className="text-white hover:text-gray-300 transition-colors"
               >
                 <Linkedin className="w-6 h-6" />
               </a>
               <a
-                href="#"
+                href="https://twitter.com"
                 aria-label="Twitter"
                 className="text-white hover:text-gray-300 transition-colors"
               >
                 <Twitter className="w-6 h-6" />
               </a>
               <a
-                href="#"
+                href="https://whatsapp.com"
                 aria-label="WhatsApp"
                 className="text-white hover:text-gray-300 transition-colors"
               >
@@ -142,8 +141,8 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-8 text-center text-xs ">
           <p className="!text-white">
-            {currentYear} - CQD Cleaning Services. All rights reserved to CQD only. Website
-            Design and SEO by ScaleUp.{" "}
+            {currentYear} - CQD Cleaning Services. All rights reserved. Website
+            Design and SEO by Smoking Rocket{" "}
             {/* <Link href="/privacy-policy" className="underline hover:text-white"> */}
             <>View our Privacy Policy</>
             {/* </Link> */}

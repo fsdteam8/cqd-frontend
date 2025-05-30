@@ -129,7 +129,7 @@ export default function PricingSection() {
               </CardContent>
             </Card>
           ) : (
-            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#d9905898]  border-gray-200 transition-all duration-300 hover:shadow-lg">
+            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#d99058d0]  border-gray-200 transition-all duration-300 hover:shadow-lg">
               <CardHeader className="text-left pb-4">
                 <CardTitle className="text-xl font-semibold text-gray-900">
                   {data?.data.title}
@@ -149,7 +149,7 @@ export default function PricingSection() {
                 <Button
                   onClick={() => handleSelectPlan("bronze")}
                   variant="outline"
-                  className="w-full py-5 text-xl border-[#0F2A5C] text-[#0F2A5C] border-2 hover:bg-gray-200"
+                  className="w-full py-5 text-xl border-[#0F2A5C] text-[#0F2A5C] border-2 hover:bg-gray-50"
                 >
                   Continue
                 </Button>
@@ -213,9 +213,9 @@ export default function PricingSection() {
                   {silverFeatures.map((feature, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <div className="rounded-full p-1 mt-0.5 bg-black">
-                        <Check className="h-3 w-3 text-white" />
+                        <Check className="h-3 w-3 text" />
                       </div>
-                      <span className="text-sm text-black">{feature}</span>
+                      <span className="text-sm text-white">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -240,7 +240,7 @@ export default function PricingSection() {
               </CardContent>
             </Card>
           ) : (
-            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#ffe680b4] border-gray-200 transition-all duration-300 hover:shadow-lg">
+            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-white border-gray-200 transition-all duration-300 hover:shadow-lg">
               <CardHeader className="text-left pb-4">
                 <CardTitle className="text-xl font-semibold text-gray-900">
                   {gold?.data?.title}

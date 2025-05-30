@@ -129,7 +129,7 @@ export default function PricingSection() {
               </CardContent>
             </Card>
           ) : (
-            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#d9905898]  border-gray-200 transition-all duration-300 hover:shadow-lg">
+            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[##D99058]  border-gray-200 transition-all duration-300 hover:shadow-lg">
               <CardHeader className="text-left pb-4">
                 <CardTitle className="text-xl font-semibold text-gray-900">
                   {data?.data.title}
@@ -149,7 +149,7 @@ export default function PricingSection() {
                 <Button
                   onClick={() => handleSelectPlan("bronze")}
                   variant="outline"
-                  className="w-full py-5 text-xl border-[#0F2A5C] text-[#0F2A5C] border-2 hover:bg-gray-200"
+                  className="w-full py-5 text-xl border-[#0F2A5C] text-[#0F2A5C] border-2 hover:bg-gray-50"
                 >
                   Continue
                 </Button>
@@ -240,7 +240,7 @@ export default function PricingSection() {
               </CardContent>
             </Card>
           ) : (
-            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#ffe680b4] border-gray-200 transition-all duration-300 hover:shadow-lg">
+            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#FFE680] border-gray-200 transition-all duration-300 hover:shadow-lg">
               <CardHeader className="text-left pb-4">
                 <CardTitle className="text-xl font-semibold text-gray-900">
                   {gold?.data?.title}

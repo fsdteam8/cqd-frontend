@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const BlogCart = ({ blog }: { blog: BlogPost }) => {
   return (
-    <div className="!h-full hover:border hover:border-white hover:bg-white hover:shadow-lg hover:rounded-tr-[16px] hover:rounded-bl-[16px] transition-all duration-300 ease-in-out">
+    <div className="!h-full hover:border py- hover:border-white hover:bg-white hover:shadow-lg hover:rounded-tr-[16px] hover:rounded-bl-[16px] transition-all duration-300 ease-in-out">
       <div>
         <Image
           src={blog?.image || ""}

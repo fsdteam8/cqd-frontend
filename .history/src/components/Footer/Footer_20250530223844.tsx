@@ -108,28 +108,28 @@ export default function Footer() {
             {/* <span>2025 - CQD Cle</span> */}
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://instagram.com"
                 aria-label="Instagram"
                 className="text-white hover:text-gray-300 transition-colors"
               >
                 <Instagram className="w-6 h-6" />
               </a>
               <a
-                href="#"
+                href="https://linkedin.com"
                 aria-label="LinkedIn"
                 className="text-white hover:text-gray-300 transition-colors"
               >
                 <Linkedin className="w-6 h-6" />
               </a>
               <a
-                href="#"
+                href="https://twitter.com"
                 aria-label="Twitter"
                 className="text-white hover:text-gray-300 transition-colors"
               >
                 <Twitter className="w-6 h-6" />
               </a>
               <a
-                href="#"
+                href="https://whatsapp.com"
                 aria-label="WhatsApp"
                 className="text-white hover:text-gray-300 transition-colors"
               >

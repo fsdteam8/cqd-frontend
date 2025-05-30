@@ -115,7 +115,7 @@ const BlogContainer = () => {
           className="w-full h-full"
         >
           {blogs?.data?.map((blog, index) => (
-            <SwiperSlide key={index} className="!h-auto !md:h-full py-4">
+            <SwiperSlide key={index} className="!h-auto !md:h-full">
               <BlogCart blog={blog} />
             </SwiperSlide>
           ))}

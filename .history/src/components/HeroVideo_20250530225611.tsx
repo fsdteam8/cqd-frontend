@@ -7,10 +7,11 @@ const HeroVideo = () => {
         <video
           autoPlay
           loop
+          muted
           playsInline
           className="w-full h-full object-cover block  mx-auto"
         >
-          <source src="/hero.mp4" type="video/mp4"  />
+          <source src="/hero.mp4" type="video/mp4" mu />
           Your browser does not support the video tag.
         </video>
       </div>

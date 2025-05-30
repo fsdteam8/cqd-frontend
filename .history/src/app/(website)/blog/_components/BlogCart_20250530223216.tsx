@@ -19,14 +19,8 @@ const BlogCart = ({ blog }: { blog: BlogPost }) => {
         <h5 className="pt-[15px] text-lg md:text-xl font-medium leading-[120%] tracking-[0%] text-[consectetur]">
           {blog?.title}
         </h5>
-        <div className="pt-[15px] w-full flex items-center justify-between">
-          <p className="text-xs md:text-sm font-normal leading-[120%] tracking-[0%] text-[#0F2A5C]">
-            {new Date(blog?.created_at).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </p>
+        <div className="pt-[15px] w-full flex items-center justify-end">
+          
           <Link href={`/blog/${blog?.slug}`}><button  className="bg-[#0F2A5C] h-[26px] w-[83px] text-xs text-white font-normal tracking-[0%] leading-[120%] py-[6px] px-[11px] rounded-full ">
             Read Now
           </button></Link>
