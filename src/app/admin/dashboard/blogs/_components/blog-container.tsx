@@ -138,7 +138,7 @@ const BlogContainer = () => {
       <>
         {data?.data?.map((blog) => (
           <tr key={blog.id} className="py-[10px]">
-            <td className="w-full flex items-center justify-center py-[10px]">
+            <td className="w-full flex items-center justify-center ">
               <Image
                 src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/Blogs/${blog.image}`}
                 alt={blog.title}
@@ -203,7 +203,7 @@ const BlogContainer = () => {
   }
 
   return (
-    <div>
+    <div >
       {/* blog header */}
       <BlogHeader
         search={search}
@@ -213,7 +213,7 @@ const BlogContainer = () => {
         date={date}
         setDate={setDate}
       />
-      <div className="overflow-hidden rounded-[16px] shadow-[0_4px_10px_0_#0000001A] border border-[#E5E7EB] mt-[30px] mb-[305px]">
+      <div className="overflow-hidden rounded-[16px] shadow-[0_4px_10px_0_#0000001A] border border-[#E5E7EB] mt-[30px] mb-[200px]">
         <table className="w-full ">
           <thead className="bg-[#0E2A5C] text-white">
             <tr>

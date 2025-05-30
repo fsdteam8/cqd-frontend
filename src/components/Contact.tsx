@@ -107,7 +107,7 @@ export default function ContactSection() {
                   required
                   id="first_name"
                   placeholder="First Name"
-                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-black/80 leading-[120%] tracking-[0%]"
+                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-gray-500 leading-[120%] tracking-[0%]"
                   value={formData.first_name}
                   onChange={handleChange}
                 />
@@ -123,7 +123,7 @@ export default function ContactSection() {
                 <Input
                   id="last_name"
                   placeholder="Last Name"
-                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-black/80 leading-[120%] tracking-[0%]"
+                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-gray-500 leading-[120%] tracking-[0%]"
                   value={formData.last_name}
                   onChange={handleChange}
                 />
@@ -141,7 +141,7 @@ export default function ContactSection() {
                   id="email"
                   type="email"
                   placeholder="Email"
-                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-black/80 leading-[120%] tracking-[0%]"
+                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-gray-500 leading-[120%] tracking-[0%]"
                   value={formData.email}
                   onChange={handleChange}
                 />
@@ -158,7 +158,7 @@ export default function ContactSection() {
                   id="phone"
                   type="tel"
                   placeholder="Phone"
-                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-black/80 leading-[120%] tracking-[0%]"
+                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-gray-500 leading-[120%] tracking-[0%]"
                   value={formData.phone}
                   onChange={handleChange}
                 />
@@ -174,7 +174,7 @@ export default function ContactSection() {
                 <Input
                   id="organization"
                   placeholder="Organization"
-                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-black/80 leading-[120%] tracking-[0%]"
+                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-gray-500 leading-[120%] tracking-[0%]"
                   value={formData.organization}
                   onChange={handleChange}
                 />
@@ -191,7 +191,7 @@ export default function ContactSection() {
                   required
                   id="city"
                   placeholder="City"
-                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-black/80 leading-[120%] tracking-[0%]"
+                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-gray-500 leading-[120%] tracking-[0%]"
                   value={formData.city}
                   onChange={handleChange}
                 />
@@ -208,7 +208,7 @@ export default function ContactSection() {
                   required
                   id="help"
                   placeholder="Your message"
-                  className="w-full h-[150px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-black/80 leading-[120%] tracking-[0%]"
+                  className="w-full h-[150px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-gray-500 leading-[120%] tracking-[0%]"
                   value={formData.help}
                   onChange={handleChange}
                 />
