@@ -240,7 +240,7 @@ export default function PricingSection() {
               </CardContent>
             </Card>
           ) : (
-            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#FFE680] border-gray-200 transition-all duration-300 hover:shadow-lg">
+            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[] border-gray-200 transition-all duration-300 hover:shadow-lg">
               <CardHeader className="text-left pb-4">
                 <CardTitle className="text-xl font-semibold text-gray-900">
                   {gold?.data?.title}
