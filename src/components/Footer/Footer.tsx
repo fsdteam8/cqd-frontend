@@ -20,17 +20,15 @@ export default function Footer() {
     },
   });
 
-
-
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
   }, []);
 
   return (
     <footer className=" w-full px-4 py-8 md:px-8 lg:px-12">
-      <div className="w-full container mx-auto bg-[#0F2A5C] !text-white p-8 rounded-3xl mb-8">
+      <div className="w-full container   mx-auto bg-[#0F2A5C] !text-white p-8 rounded-3xl mb-8">
         {/* Top section with logo and navigation */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+        <div className="flex flex-col  md:flex-row justify-between  md:items-center mb-8">
           <div className="mb-6 md:mb-0">
             <Link href="/" className="inline-block">
               <Image
@@ -70,7 +68,7 @@ export default function Footer() {
             </Link>
             <Link
               href="/#pricing"
-              className="col-span-2 bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200 transition-colors md:ml-4"
+              className="col-span-2 bg-white text-black text-center px-4 py-2 rounded-full hover:bg-gray-200 transition-colors md:ml-4"
             >
               Request a Quote
             </Link>
@@ -78,15 +76,15 @@ export default function Footer() {
         </div>
 
         {/* Address and contact info */}
-        <div className="mb-8">
+        <div className="mb-8 r">
           <p className="text-sm mb-1 !text-white">
-            #### Dummy Avenue, Suite ###
+            1 Aston Court, Kingsmead Business Park, High Wycombe
           </p>
-          <p className="text-sm mb-6 !text-white">Location, CA #####, UK</p>
+          <p className="text-sm mb-6 !text-white"> Buckinghamshire, HP11 1LA</p>
         </div>
 
         {/* Bottom section with policies and social */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+        <div className="flex  flex-col md:flex-row justify-between  md:items-center">
           <div>
             <a
               href="mailto:example.email@gmail.com"
@@ -150,6 +148,7 @@ export default function Footer() {
             {/* </Link> */}
           </p>
         </div>
+
       </div>
     </footer>
   );

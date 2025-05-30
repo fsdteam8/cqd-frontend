@@ -398,8 +398,8 @@ export default function BookingsPage() {
                                 <TooltipTrigger asChild>
                                   <span className="block max-w-[200px] truncate cursor-help">{order.location}</span>
                                 </TooltipTrigger>
-                                <TooltipContent>
-                                  <p className="max-w-[300px]">{order.location}</p>
+                                <TooltipContent >
+                                  <p className="max-w-[300px] text-white">{order.location}</p>
                                 </TooltipContent>
                               </Tooltip>
                             </td>
