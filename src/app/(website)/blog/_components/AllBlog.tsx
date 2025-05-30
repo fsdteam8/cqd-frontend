@@ -20,6 +20,8 @@ const AllBlog = () => {
     (blog: BlogPost) => blog.publish === true
   );
 
+  console.log(data?.data)
+
  if (isLoading)
     return (
       <div className="container mx-auto pb-10">
