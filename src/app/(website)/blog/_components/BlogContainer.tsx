@@ -40,7 +40,7 @@ const breakpoints = {
 const BlogContainer = () => {
   const swiperRef = useRef<SwiperCore | null>(null);
 
-  const { data, error, isLoading, isError } = useQuery<BlogApiResponse>({
+  const { data: blogs, error, isLoading, isError } = useQuery<BlogApiResponse>({
     queryKey: ["blog-data"],
     queryFn: () =>
       fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog-data-front`).then(
@@ -48,11 +48,13 @@ const BlogContainer = () => {
       ),
   });
 
+
+
   // console.log(data?.data);
-  const publishedBlogs = data?.data?.filter(
+  const publishedBlogs = blogs?.data?.filter(
     (blog: BlogPost) => blog.publish === true
   );
-  // console.log(publishedBlogs);
+  // console.log(blog?.data);
 
   if (isLoading)
     return (
@@ -112,7 +114,7 @@ const BlogContainer = () => {
           spaceBetween={12}
           className="w-full h-full"
         >
-          {publishedBlogs?.map((blog, index) => (
+          {blogs?.data?.map((blog, index) => (
             <SwiperSlide key={index} className="!h-auto !md:h-full">
               <BlogCart blog={blog} />
             </SwiperSlide>

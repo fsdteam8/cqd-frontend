@@ -21,7 +21,9 @@ export const metadata = {
 export default async function Home() {
   return (
     <div className="w-full mx-auto">
-      <HeroVideo />
+    <div className="">
+        <HeroVideo />
+    </div>
       <About />
       <WhyChooseUs />
       <HowItWork />
