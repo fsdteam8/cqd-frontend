@@ -224,7 +224,7 @@ export default function LocationPage() {
               {showMap && (
                 <div className="w-full h-[300px] rounded-lg overflow-hidden">
                   <MapContainer
-                    center={markerPos || [23.8103, 90.4125]}
+                    center={markerPos || [54.5, -3.5]}
                     zoom={markerPos ? 15 : 6}
                     scrollWheelZoom={true}
                     style={{ height: "100%", width: "100%" }}

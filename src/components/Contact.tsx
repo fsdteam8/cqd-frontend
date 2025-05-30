@@ -68,7 +68,7 @@ export default function ContactSection() {
     <section className="w-full py-12 md:py-16 lg:py-20">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center text-center mb-8">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
             Request A Call Back
           </h2>
           <p className="mt-2 text-xl text-muted-foreground">Contact</p>
@@ -94,106 +94,140 @@ export default function ContactSection() {
           <div className="max-w-4xl w-full">
             <form
               onSubmit={handleSubmit}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4"
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 lg:gap-[30px] p-4"
             >
               <div className="space-y-2">
-                <Label className="" htmlFor="first_name">
+                <Label
+                  className="text-base font-medium text-[#0F2A5C] leading-[120%] tracking-[0%]"
+                  htmlFor="first_name"
+                >
                   First Name
                 </Label>
                 <Input
                   required
                   id="first_name"
                   placeholder="First Name"
-                  className="w-full"
+                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-gray-500 leading-[120%] tracking-[0%]"
                   value={formData.first_name}
                   onChange={handleChange}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="last_name">Last Name</Label>
+                <Label
+                  className="text-base font-medium text-[#0F2A5C] leading-[120%] tracking-[0%]"
+                  htmlFor="last_name"
+                >
+                  Last Name
+                </Label>
                 <Input
                   id="last_name"
                   placeholder="Last Name"
-                  className="w-full"
+                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-gray-500 leading-[120%] tracking-[0%]"
                   value={formData.last_name}
                   onChange={handleChange}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label
+                  className="text-base font-medium text-[#0F2A5C] leading-[120%] tracking-[0%]"
+                  htmlFor="email"
+                >
+                  Email
+                </Label>
                 <Input
                   required
                   id="email"
                   type="email"
                   placeholder="Email"
-                  className="w-full"
+                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-gray-500 leading-[120%] tracking-[0%]"
                   value={formData.email}
                   onChange={handleChange}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="phone">Phone</Label>
+                <Label
+                  className="text-base font-medium text-[#0F2A5C] leading-[120%] tracking-[0%]"
+                  htmlFor="phone"
+                >
+                  Phone
+                </Label>
                 <Input
-
                   id="phone"
                   type="tel"
                   placeholder="Phone"
-                  className="w-full"
+                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-gray-500 leading-[120%] tracking-[0%]"
                   value={formData.phone}
                   onChange={handleChange}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="organization">Organization</Label>
+                <Label
+                  className="text-base font-medium text-[#0F2A5C] leading-[120%] tracking-[0%]"
+                  htmlFor="organization"
+                >
+                  Organization
+                </Label>
                 <Input
                   id="organization"
                   placeholder="Organization"
-                  className="w-full"
+                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-gray-500 leading-[120%] tracking-[0%]"
                   value={formData.organization}
                   onChange={handleChange}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="city">City</Label>
+                <Label
+                  className="text-base font-medium text-[#0F2A5C] leading-[120%] tracking-[0%]"
+                  htmlFor="city"
+                >
+                  City
+                </Label>
                 <Input
                   required
                   id="city"
                   placeholder="City"
-                  className="w-full"
+                  className="w-full h-[46px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-gray-500 leading-[120%] tracking-[0%]"
                   value={formData.city}
                   onChange={handleChange}
                 />
               </div>
 
               <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="help">Message</Label>
+                <Label
+                  className="text-base font-medium text-[#0F2A5C] leading-[120%] tracking-[0%]"
+                  htmlFor="help"
+                >
+                  Message
+                </Label>
                 <Textarea
                   required
                   id="help"
                   placeholder="Your message"
-                  className="w-full min-h-[150px]"
+                  className="w-full h-[150px] rounded-tl-[15px] rounded-br-[15px] text-lg font-medium text-[#0F2A5C] placeholder:text-gray-500 leading-[120%] tracking-[0%]"
                   value={formData.help}
                   onChange={handleChange}
                 />
               </div>
 
-              <div className="md:col-span-2 mt-4">
+              <div className="md:col-span-2">
                 {isPending ? (
                   <Button
+                    size={"lg"}
                     type="submit"
-                    className="w-full bg-[#0F2A5C] text-white hover:bg-[#0F2A5C]/90"
+                    className="w-full bg-[#0F2A5C] text-white font-medium hover:bg-[#0F2A5C]/90"
                   >
                     Sending message
                   </Button>
                 ) : (
                   <Button
+                    size={"lg"}
                     type="submit"
-                    className="w-full bg-[#0F2A5C] text-white hover:bg-[#0F2A5C]/90"
+                    className="w-full bg-[#0F2A5C] text-white font-medium hover:bg-[#0F2A5C]/90"
                   >
                     Send message
                   </Button>

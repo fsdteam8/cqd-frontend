@@ -121,7 +121,7 @@ export default function Review() {
     <section id="review" className="w-full py-12 md:py-16 lg:py-20 px-4">
       <div className="container mx-auto max-w-9xl">
         <div className="text-start mb-8 md:mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight mb-4">
             What Our Clients Say
           </h2>
           <p className="text-base md:text-lg text-gray-700">
@@ -152,7 +152,7 @@ export default function Review() {
                   {[...Array(activeReview?.rating)].map((_, i) => (
                     <svg
                       key={i}
-                      className="w-5 h-5 text-yellow-500 fill-current"
+                      className="w-5 h-5 text-[#0F2A5C] fill-current"
                       viewBox="0 0 24 24"
                     >
                       <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />

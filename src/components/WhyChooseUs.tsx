@@ -4,12 +4,12 @@ import Link from "next/link";
 
 const WhyChooseUs = () => {
   return (
-    <section>
+    <section className="">
       <div className="container w-full mx-auto px-4 mt-10 lg:mt-0">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 min-h-[80vh]">
           {/* Left column - Text content */}
           <div className="space-y-6 max-w-4xl">
-            <h2 className="text-2xl md:text-5xl font-semibold tracking-wider">
+            <h2 className="text-2xl md:text-5xl font-medium tracking-wider">
               <span className="block lg:mb-4 mb-2">Why You Should Choose</span>
               <span className="block">CQD for Flexible Cleaning</span>
             </h2>
@@ -34,7 +34,7 @@ const WhyChooseUs = () => {
                 <p className="text-sm md:text-base">Happy Customers</p>
               </div>
 
-              <div className="bg-gray-100 rounded-full px-6 lg:py-4 text-center">
+              <div className="bg-gray-100 rounded-full px-6 py-4 text-center">
                 <h3 className="text-3xl md:text-4xl font-bold">1000+</h3>
                 <p className="text-sm md:text-base">Successful services</p>
               </div>
