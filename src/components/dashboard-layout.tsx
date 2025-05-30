@@ -13,7 +13,7 @@ export function DashboardLayout({
 }) {
 
   return (
-    <div className="flex h-screen overflow-hidden bg-white">
+    <div className="flex max-h-screen overflow-hidden bg-white">
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header title={title} />
