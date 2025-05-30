@@ -82,7 +82,7 @@ export default function TabletNavbar() {
                 Home
               </Link>
               <Link
-                href="#about"
+                href="/#about"
                 className="text-gray-900 hover:text-gray-600 transition-colors text-sm xl:text-base"
               >
                 About Us

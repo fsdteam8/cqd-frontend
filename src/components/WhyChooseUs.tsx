@@ -34,7 +34,7 @@ const WhyChooseUs = () => {
                 <p className="text-sm md:text-base">Happy Customers</p>
               </div>
 
-              <div className="bg-gray-100 rounded-full px-6 lg:py-4 text-center">
+              <div className="bg-gray-100 rounded-full px-6 py-4 text-center">
                 <h3 className="text-3xl md:text-4xl font-bold">1000+</h3>
                 <p className="text-sm md:text-base">Successful services</p>
               </div>
