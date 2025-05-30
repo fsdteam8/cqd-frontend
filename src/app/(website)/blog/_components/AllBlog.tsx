@@ -62,7 +62,7 @@ const AllBlog = () => {
                   {blog?.title}
                 </h5>
                 <div className="pt-[15px] w-full flex items-center justify-end">
-                  <Link href={`/blog/${blog?.slug}`}>
+                  <Link href={`/blog/${blog?.slug}`} prefetch>
                     <button className="bg-[#0F2A5C] h-[26px] w-[83px] text-xs text-white font-normal tracking-[0%] leading-[120%] py-[6px] px-[11px] rounded-full ">
                       Read Now
                     </button>
