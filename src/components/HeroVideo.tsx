@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 
 const HeroVideo = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
 
   const handlePlay = () => {
     if (videoRef.current) {
@@ -28,6 +28,8 @@ const HeroVideo = () => {
           ref={videoRef}
           loop
           playsInline
+          autoPlay
+          muted={!playing}
           className="w-full h-full object-cover block mx-auto"
           controls={playing}
         >
