@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const BlogCart = ({ blog }: { blog: BlogPost }) => {
   return (
-    <div className="!h-full hover:border hover:border-white hover:bg-white hover:shadow-lg hover:rounded-tr-[16px] hover:rounded-bl-[16px] transition-all duration-300 ease-in-out">
+    <div className="!h-full hover:border hover:border-white hover:bg-white hover:shadow-lg hover:rounded-tr-[16px] hover:rounded-bl-[16px] transition-all duration-300 ease-in-out relative">
       <div>
         <Image
           src={blog?.image || ""}
@@ -27,13 +27,16 @@ const BlogCart = ({ blog }: { blog: BlogPost }) => {
               day: "numeric",
             })}
           </p>
-          <Link href={`/blog/${blog?.slug}`}><button  className="bg-[#0F2A5C] h-[26px] w-[83px] text-xs text-white font-normal tracking-[0%] leading-[120%] py-[6px] px-[11px] rounded-full ">
-            Read Now
-          </button></Link>
+          
         </div>
+        <div className="absolute bottom-[15px] right-[15px]">
+            <Link href={`/blog/${blog?.slug}`}>
+              <button className="bg-[#0F2A5C] h-[26px] w-[83px] text-xs text-white font-normal tracking-[0%] leading-[120%] py-[6px] px-[11px] rounded-full ">
+                Read Now
+              </button>
+            </Link>
+          </div>
       </div>
-
-
     </div>
   );
 };
