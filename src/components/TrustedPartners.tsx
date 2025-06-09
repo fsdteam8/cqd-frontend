@@ -14,7 +14,7 @@ const allPartners: Partner[] = [
   { name: "Partner 2", logo: "/images/otp2.png" },
   { name: "Partner 3", logo: "/images/otp3.png" },
   { name: "Partner 4", logo: "/images/otp4.png" },
-  { name: "Partner 5", logo: "/images/otp5.png" },
+  { name: "Partner 5", logo: "/images/otp3.png" },
   { name: "Partner 6", logo: "/images/otp6.png" },
   { name: "Partner 7", logo: "/images/otp7.png" },
   { name: "Partner 8", logo: "/images/otp8.png" },
