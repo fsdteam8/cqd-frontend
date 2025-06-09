@@ -44,6 +44,8 @@ const BlogDetails = ({ params }: { params: { slug: string } }) => {
       </div>
     );
 
+
+
   return (
     <div className="container mx-auto px-4 md:px-0">
       <div className="pt-[36px] pb-[40px] md:pb-[100px] lg:pb-[160px]">
@@ -73,7 +75,7 @@ const BlogDetails = ({ params }: { params: { slug: string } }) => {
           <h4 className="text-2xl font-semibold text-[#0F2A5C] leading-normal ">
             Related Tags:
           </h4>
-          <div>{blogDetails?.tags}</div>
+          <div className="flex items-center gap-3">{typeof blogDetails.tags === "string" && JSON.parse(blogDetails.tags)?.map((tag : string) => <button className="bg-[#0F2A5C] text-white font-medium text-base py-1 px-4 rounded-full" key={tag}>{tag}</button>)}</div>
         </div>
       </div>
 

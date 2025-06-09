@@ -48,7 +48,7 @@ const AllBlog = () => {
           return (
             <div
               key={blog?.id}
-              className=" hover:bg-white hover:shadow-lg hover:rounded-tr-[16px] hover:rounded-bl-[16px] transition-all duration-300 ease-in-out"
+              className=" h-auto hover:bg-white hover:shadow-lg hover:rounded-tr-[16px] hover:rounded-bl-[16px] transition-all duration-300 ease-in-out relative"
             >
               <div>
                 <Image
@@ -59,18 +59,19 @@ const AllBlog = () => {
                   className="w-full h-[200px] object-cover rounded-t-[16px] hover:rounded-tl-none hover:rounded-tr-[16px]"
                 />
               </div>
-              <div className="px-[15px] pb-[17px]">
+              <div className="px-[15px] mb-[42px]">
                 <h5 className="pt-[15px] text-lg md:text-xl font-medium leading-[120%] tracking-[0%] text-[consectetur]">
                   {blog?.title}
                 </h5>
-                <div className="pt-[15px] w-full flex items-center justify-end">
+                
+              </div>
+              <div className="pt-[15px] w-full flex items-center justify-end absolute bottom-3 right-3">
                   <Link href={`/blog/${blog?.slug}`} prefetch>
                     <button className="bg-[#0F2A5C] h-[26px] w-[83px] text-xs text-white font-normal tracking-[0%] leading-[120%] py-[6px] px-[11px] rounded-full ">
                       Read Now
                     </button>
                   </Link>
                 </div>
-              </div>
             </div>
           );
         })}
