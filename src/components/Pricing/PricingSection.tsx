@@ -101,11 +101,11 @@ export default function PricingSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-medium text-gray-900 mb-4">
-            Subscription Plan
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Subscription Plan 
           </h1>
           <p className="text-lg text-gray-600">
-            Choose the Package that Fits Your Needs
+            Choose the Package that Fits Your Needs 
           </p>
         </div>
 
@@ -138,11 +138,11 @@ export default function PricingSection() {
                   <span className="text-4xl md:text-5xl font-bold text-gray-900">
                     £ {data?.data.price}
                   </span>
-                  <span className="text-sm ml-2 text-gray-500">(EX VAT)</span>
+                  <span className="ex VAT text-sm ml-2 text-black font-bold">(ex VAT)</span>
                 </div>
                 <p className="text-sm mt-2 text-gray-600">
                   Minimum {data?.data?.no_of_client} Clients (Cost Per Client
-                  £550.00)
+                  £550.00) <span className="text-[10px] font-bold">T&C apply</span>
                 </p>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -194,11 +194,11 @@ export default function PricingSection() {
                   <span className="text-4xl md:text-5xl font-bold text-black">
                     £ {silver?.data?.price}
                   </span>
-                  <span className="text-sm ml-2 !text-blaclk">(EX VAT)</span>
+                  <span className="ex VAT text-sm ml-2 text-black font-bold">(ex VAT)</span>
                 </div>
                 <p className="text-sm mt-2 !text-black">
                   Minimum {silver?.data?.no_of_client} Clients (Cost Per Client
-                  £533.33)
+                  £533.33) <span className="text-[10px] font-bold">T&C apply</span>
                 </p>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -249,11 +249,11 @@ export default function PricingSection() {
                   <span className="text-4xl md:text-5xl font-bold text-gray-900">
                     £{gold?.data?.price}
                   </span>
-                  <span className="text-sm ml-2 text-gray-500">(EX VAT)</span>
+                  <span className="text-sm ml-2 text-black font-bold">(ex VAT)</span>
                 </div>
                 <p className="text-sm mt-2 text-gray-600">
                   Minimum {gold?.data?.no_of_client} Clients (Cost Per Client
-                  £525.00)
+                  £525.00) <span className="text-[10px] font-bold">T&C apply</span>
                 </p>
               </CardHeader>
               <CardContent className="space-y-4">
