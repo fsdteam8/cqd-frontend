@@ -135,10 +135,10 @@ export default function PricingSection() {
                   {data?.data.title}
                 </CardTitle>
                 <div className="mt-4">
-                  <p className="text-md text-[#0F2A5C] font-medium ">
+                  <p className="text-md text-[#0F2A5C] font-medium">
                     Start just from
                   </p>
-                  <span className="text-4xl md:text-5xl font-bold text-[#0F2A5C]">
+                  <span className="text-4xl md:text-5xl font-bold text-gray-900">
                     £ {data?.data.price}
                   </span>
                   <span className="ex VAT text-sm ml-2 text-black font-bold">
@@ -203,7 +203,7 @@ export default function PricingSection() {
                   <p className="text-md text-[#0F2A5C] font-medium">
                     Start just from
                   </p>
-                  <span className="text-4xl md:text-5xl font-bold text-[#0F2A5C]">
+                  <span className="text-4xl md:text-5xl font-bold text-black">
                     £ {silver?.data?.price}
                   </span>
                   <span className="ex VAT text-sm ml-2 text-black font-bold">

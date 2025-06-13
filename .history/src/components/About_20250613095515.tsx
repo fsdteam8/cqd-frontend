@@ -42,7 +42,7 @@ const About = () => {
             {/* Features grid - responsive with 1 column on mobile, 2 on larger screens */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6">
               <div className="bg-[#F2F2F2] rounded-tr-[30px] rounded-br-[30px] rounded-bl-[30px] h-[52px] flex items-center justify-center">
-                <h3 className="font-medium">Revolutionising the Industry</h3>
+                <h3 className="font-medium">Revolutioni the Industry</h3>
               </div>
 
               <div className="bg-[#F2F2F2] rounded-tr-[30px] rounded-br-[30px] rounded-bl-[30px] h-[52px] flex items-center justify-center">

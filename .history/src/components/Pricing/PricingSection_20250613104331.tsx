@@ -131,14 +131,14 @@ export default function PricingSection() {
           ) : (
             <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#d9905898]  border-gray-200 transition-all duration-300 hover:shadow-lg">
               <CardHeader className="text-left pb-4">
-                <CardTitle className="text-xl font-semibold text-gray-900">
+                <CardTitle className="text-xl font-semibold text-gray-900 txt-">
                   {data?.data.title}
                 </CardTitle>
                 <div className="mt-4">
                   <p className="text-md text-[#0F2A5C] font-medium ">
                     Start just from
                   </p>
-                  <span className="text-4xl md:text-5xl font-bold text-[#0F2A5C]">
+                  <span className="text-4xl md:text-5xl font-bold text-gray-900">
                     £ {data?.data.price}
                   </span>
                   <span className="ex VAT text-sm ml-2 text-black font-bold">
@@ -203,7 +203,7 @@ export default function PricingSection() {
                   <p className="text-md text-[#0F2A5C] font-medium">
                     Start just from
                   </p>
-                  <span className="text-4xl md:text-5xl font-bold text-[#0F2A5C]">
+                  <span className="text-4xl md:text-5xl font-bold text-black">
                     £ {silver?.data?.price}
                   </span>
                   <span className="ex VAT text-sm ml-2 text-black font-bold">
