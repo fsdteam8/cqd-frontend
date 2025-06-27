@@ -101,9 +101,9 @@ export default function PricingSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Subscription Plan
-          </h1>
+          </h2>
           <p className="text-lg text-gray-600">
             Choose the Package that Fits Your Needs
           </p>

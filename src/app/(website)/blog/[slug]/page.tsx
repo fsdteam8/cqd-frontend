@@ -1,7 +1,3 @@
-
-
-// src/app/(website)/blog/[slug]/page.tsx
-
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BlogClientWrapper from "./BlogClientWrapper";
@@ -23,30 +19,30 @@ export async function generateMetadata({
     if (!blog) return notFound();
 
     return {
-      title: blog.meta_title || blog.title,
+      title: blog.meta_title?.slice(0, 60).replace(/<[^>]+>/g, "") || blog.title?.slice(0, 60).replace(/<[^>]+>/g, ""),
 
       description:
         blog.meta_description ||
-        blog.details?.slice(0, 150).replace(/<[^>]+>/g, ""),
+        blog.details?.slice(0, 160).replace(/<[^>]+>/g, ""),
       keywords: blog.keywords
         ? typeof blog.keywords === "string"
           ? blog.keywords.split(",").map((k) => k.trim())
           : blog.keywords
         : blog.title.split(" "),
       openGraph: {
-        title: blog.meta_title || blog.title,
+        title: blog.meta_title?.slice(0, 60).replace(/<[^>]+>/g, "") || blog.title?.slice(0, 60).replace(/<[^>]+>/g, ""),
         description:
           blog.meta_description ||
-          blog.details?.slice(0, 150).replace(/<[^>]+>/g, ""),
+          blog.details?.slice(0, 160).replace(/<[^>]+>/g, ""),
         images: [blog.image],
         type: "article",
       },
       twitter: {
         card: "summary_large_image",
-        title: blog.meta_title || blog.title,
+        title: blog.meta_title?.slice(0, 60).replace(/<[^>]+>/g, "") || blog.title?.slice(0, 60).replace(/<[^>]+>/g, ""),
         description:
           blog.meta_description ||
-          blog.details?.slice(0, 150).replace(/<[^>]+>/g, ""),
+          blog.details?.slice(0, 160).replace(/<[^>]+>/g, ""),
         images: [blog.image],
       },
     };

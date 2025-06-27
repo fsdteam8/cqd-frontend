@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const About = () => {
+  
   return (
     <section
       id="about"
@@ -23,9 +24,9 @@ const About = () => {
 
           {/* Content container */}
           <div className="flex flex-col space-y-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-medium tracking-wider mb-2">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-medium tracking-wider mb-2">
               About CQD Cleaning
-            </h2>
+            </h1>
 
             <p className="text-base font-medium sm:text-base leading-[120%]">
               Since 2012, CQD Cleaning Company has offered trusted, top-quality
