@@ -60,9 +60,9 @@ const AllBlog = () => {
                 />
               </div>
               <div className="px-[15px] mb-[42px]">
-                <h5 className="pt-[15px] text-lg md:text-xl font-medium leading-[120%] tracking-[0%] text-[consectetur]">
+                <h1 className="pt-[15px] text-lg md:text-xl font-medium leading-[120%] tracking-[0%] text-[consectetur]">
                   {blog?.title}
-                </h5>
+                </h1>
                 
               </div>
               <div className="pt-[15px] w-full flex items-center justify-end absolute bottom-3 right-3">

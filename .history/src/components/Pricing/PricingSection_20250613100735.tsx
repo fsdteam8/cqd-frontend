@@ -101,11 +101,11 @@ export default function PricingSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Subscription Plan
-          </h2>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Subscription Plan 
+          </h1>
           <p className="text-lg text-gray-600">
-            Choose the Package that Fits Your Needs
+            Choose the Package that Fits Your Needs 
           </p>
         </div>
 
@@ -135,23 +135,14 @@ export default function PricingSection() {
                   {data?.data.title}
                 </CardTitle>
                 <div className="mt-4">
-                  <p className="text-md text-[#0F2A5C] font-medium ">
-                    Start just from
-                  </p>
-                  <span className="text-4xl md:text-5xl font-bold text-[#0F2A5C]">
+                  <span className="text-4xl md:text-5xl font-bold text-gray-900">
                     £ {data?.data.price}
                   </span>
-                  <span className="ex VAT text-sm ml-2 text-black font-bold">
-                    (ex VAT)
-                  </span>
+                  <span className="ex VAT text-sm ml-2 text-black font-bold">(ex VAT)</span>
                 </div>
-
-                <p className="text-sm text-[#333] mt-1">
-                  Minimum {data?.data?.no_of_client} Clients
-                  <span className="text-xs text-[#0F2A5C] font-semibold ml-1">
-                    (Cost Per Client £550.00)
-                  </span>
-                  <span className="text-[10px] font-bold ml-2">T&C apply</span>
+                <p className="text-sm mt-2 text-gray-600">
+                  Minimum {data?.data?.no_of_client} Clients (Cost Per Client
+                  £550.00) <span className="text-[10px] font-bold">T&C apply</span>
                 </p>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -200,23 +191,14 @@ export default function PricingSection() {
                   {silver?.data?.title}
                 </CardTitle>
                 <div className="mt-4">
-                  <p className="text-md text-[#0F2A5C] font-medium">
-                    Start just from
-                  </p>
-                  <span className="text-4xl md:text-5xl font-bold text-[#0F2A5C]">
+                  <span className="text-4xl md:text-5xl font-bold text-black">
                     £ {silver?.data?.price}
                   </span>
-                  <span className="ex VAT text-sm ml-2 text-black font-bold">
-                    (ex VAT)
-                  </span>
+                  <span className="ex VAT text-sm ml-2 text-black font-bold">(ex VAT)</span>
                 </div>
-
-                <p className="text-sm text-[#333] mt-1">
-                  Minimum {silver?.data?.no_of_client} Clients
-                  <span className="text-xs text-[#0F2A5C] font-semibold ml-1">
-                    (Cost Per Client £533.33)
-                  </span>
-                  <span className="text-[10px] font-bold ml-2">T&C apply</span>
+                <p className="text-sm mt-2 !text-black">
+                  Minimum {silver?.data?.no_of_client} Clients (Cost Per Client
+                  £533.33) <span className="text-[10px] font-bold">T&C apply</span>
                 </p>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -259,33 +241,20 @@ export default function PricingSection() {
             </Card>
           ) : (
             <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#FFC300] border-gray-200 transition-all duration-300 hover:shadow-lg">
-              <CardHeader className="text-left pb-6 pt-6 px-6">
-                <CardTitle className="text-2xl font-extrabold text-[#0F2A5C] tracking-wide">
+              <CardHeader className="text-left pb-4">
+                <CardTitle className="text-xl font-semibold text-gray-900">
                   {gold?.data?.title}
                 </CardTitle>
-
-                <div className="mt-3 space-y-1">
-                  <p className="text-md text-[#0F2A5C] font-medium">
-                    Start just from
-                  </p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-4xl md:text-5xl font-extrabold text-[#0F2A5C]">
-                      £{gold?.data?.price}
-                    </span>
-                    <span className="text-sm text-black font-semibold">
-                      (ex VAT)
-                    </span>
-                  </div>
-                  <p className="text-sm text-[#333] mt-1">
-                    Minimum {gold?.data?.no_of_client} Clients
-                    <span className="text-xs text-[#0F2A5C] font-semibold ml-1">
-                      (Cost Per Client £525.00)
-                    </span>
-                    <span className="text-[10px] font-bold ml-2">
-                      T&C apply
-                    </span>
-                  </p>
+                <div className="mt-4"> 
+                  <span className="text-4xl md:text-5xl font-bold text-gray-900">
+                   Start just from £{gold?.data?.price}
+                  </span>
+                  <span className="text-sm ml-2 text-black font-bold">(ex VAT)</span>
                 </div>
+                <p className="text-sm mt-2 text-gray-600">
+                  Minimum {gold?.data?.no_of_client} Clients (Cost Per Client
+                  £525.00) <span className="text-[10px] font-bold">T&C apply</span>
+                </p>
               </CardHeader>
               <CardContent className="space-y-4">
                 <Button

@@ -101,9 +101,9 @@ export default function PricingSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Subscription Plan
-          </h2>
+          </h1>
           <p className="text-lg text-gray-600">
             Choose the Package that Fits Your Needs
           </p>
@@ -135,23 +135,17 @@ export default function PricingSection() {
                   {data?.data.title}
                 </CardTitle>
                 <div className="mt-4">
-                  <p className="text-md text-[#0F2A5C] font-medium ">
-                    Start just from
-                  </p>
-                  <span className="text-4xl md:text-5xl font-bold text-[#0F2A5C]">
+                  <span className="text-4xl md:text-5xl font-bold text-gray-900">
                     £ {data?.data.price}
                   </span>
                   <span className="ex VAT text-sm ml-2 text-black font-bold">
                     (ex VAT)
                   </span>
                 </div>
-
-                <p className="text-sm text-[#333] mt-1">
-                  Minimum {data?.data?.no_of_client} Clients
-                  <span className="text-xs text-[#0F2A5C] font-semibold ml-1">
-                    (Cost Per Client £550.00)
-                  </span>
-                  <span className="text-[10px] font-bold ml-2">T&C apply</span>
+                <p className="text-sm mt-2 text-gray-600">
+                  Minimum {data?.data?.no_of_client} Clients (Cost Per Client
+                  £550.00){" "}
+                  <span className="text-[10px] font-bold">T&C apply</span>
                 </p>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -194,32 +188,37 @@ export default function PricingSection() {
               </CardContent>
             </Card>
           ) : (
-            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#D8D8D8] text-black border-blue-900 transform lg:scale-110  transition-all duration-300 hover:shadow-lg">
-              <CardHeader className="text-left pb-4">
-                <CardTitle className="text-xl font-semibold text-black">
+            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#D8D8D8] text-black border-gray-300 transition-all duration-300 hover:shadow-xl">
+              <CardHeader className="text-left pb-6 pt-6 px-6">
+                <CardTitle className="text-2xl font-extrabold text-[#1A1A1A] tracking-wide">
                   {silver?.data?.title}
                 </CardTitle>
-                <div className="mt-4">
-                  <p className="text-md text-[#0F2A5C] font-medium">
+
+                <div className="mt-3 space-y-1">
+                  <p className="text-md text-[#1A1A1A] font-medium">
                     Start just from
                   </p>
-                  <span className="text-4xl md:text-5xl font-bold text-[#0F2A5C]">
-                    £ {silver?.data?.price}
-                  </span>
-                  <span className="ex VAT text-sm ml-2 text-black font-bold">
-                    (ex VAT)
-                  </span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl md:text-5xl font-extrabold text-[#1A1A1A]">
+                      £{silver?.data?.price}
+                    </span>
+                    <span className="text-sm text-[#333] font-semibold">
+                      (ex VAT)
+                    </span>
+                  </div>
+                  <p className="text-sm text-[#444] mt-1">
+                    Minimum {silver?.data?.no_of_client} Clients
+                    <span className="text-xs text-[#1A1A1A] font-semibold ml-1">
+                      (Cost Per Client £533.33)
+                    </span>
+                    <span className="text-[10px] font-bold ml-2">
+                      T&C apply
+                    </span>
+                  </p>
                 </div>
-
-                <p className="text-sm text-[#333] mt-1">
-                  Minimum {silver?.data?.no_of_client} Clients
-                  <span className="text-xs text-[#0F2A5C] font-semibold ml-1">
-                    (Cost Per Client £533.33)
-                  </span>
-                  <span className="text-[10px] font-bold ml-2">T&C apply</span>
-                </p>
               </CardHeader>
-              <CardContent className="space-y-4">
+
+              <CardContent className="space-y-4 px-6">
                 <Button
                   onClick={() => handleSelectPlan("silver")}
                   variant="secondary"
@@ -227,10 +226,11 @@ export default function PricingSection() {
                 >
                   Continue
                 </Button>
+
                 <div className="space-y-3 pt-4">
                   {silverFeatures.map((feature, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <div className="rounded-full p-1 mt-0.5 bg-black">
+                      <div className="rounded-full p-1 mt-0.5 bg-[#1A1A1A]">
                         <Check className="h-3 w-3 text-white" />
                       </div>
                       <span className="text-sm text-black">{feature}</span>
@@ -258,28 +258,25 @@ export default function PricingSection() {
               </CardContent>
             </Card>
           ) : (
-            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#FFC300] border-gray-200 transition-all duration-300 hover:shadow-lg">
+            <Card className="relative rounded-none rounded-tr-3xl rounded-bl-3xl bg-[#D8D8D8] text-black border-gray-300 transition-all duration-300 hover:shadow-xl">
               <CardHeader className="text-left pb-6 pt-6 px-6">
-                <CardTitle className="text-2xl font-extrabold text-[#0F2A5C] tracking-wide">
-                  {gold?.data?.title}
+                <CardTitle className="text-2xl font-extrabold text-[#1A1A1A] tracking-wide">
+                  {silver?.data?.title}
                 </CardTitle>
 
                 <div className="mt-3 space-y-1">
-                  <p className="text-md text-[#0F2A5C] font-medium">
-                    Start just from
-                  </p>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl md:text-5xl font-extrabold text-[#0F2A5C]">
-                      £{gold?.data?.price}
+                    <span className="text-4xl md:text-5xl font-extrabold text-[#1A1A1A]">
+                      £{silver?.data?.price}
                     </span>
-                    <span className="text-sm text-black font-semibold">
+                    <span className="text-sm text-[#333] font-semibold">
                       (ex VAT)
                     </span>
                   </div>
-                  <p className="text-sm text-[#333] mt-1">
-                    Minimum {gold?.data?.no_of_client} Clients
-                    <span className="text-xs text-[#0F2A5C] font-semibold ml-1">
-                      (Cost Per Client £525.00)
+                  <p className="text-sm text-[#444] mt-1">
+                    Minimum {silver?.data?.no_of_client} Clients
+                    <span className="text-xs text-[#1A1A1A] font-semibold ml-1">
+                      (Cost Per Client £533.33)
                     </span>
                     <span className="text-[10px] font-bold ml-2">
                       T&C apply
@@ -287,21 +284,23 @@ export default function PricingSection() {
                   </p>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
+
+              <CardContent className="space-y-4 px-6">
                 <Button
-                  onClick={() => handleSelectPlan("gold")}
-                  variant="outline"
-                  className="w-full py-5 text-xl border-[#0F2A5C] text-[#0F2A5C] border-2 hover:bg-gray-200"
+                  onClick={() => handleSelectPlan("silver")}
+                  variant="secondary"
+                  className="w-full py-5 text-xl bg-[#02B71F] text-white hover:bg-[#26a13a]"
                 >
                   Continue
                 </Button>
+
                 <div className="space-y-3 pt-4">
-                  {goldFeatures.map((feature, i) => (
+                  {silverFeatures.map((feature, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <div className="rounded-full p-1 mt-0.5 bg-[#E8EDFB]">
-                        <Check className="h-3 w-3 text-[#0F2A5C]" />
+                      <div className="rounded-full p-1 mt-0.5 bg-[#1A1A1A]">
+                        <Check className="h-3 w-3 text-white" />
                       </div>
-                      <span className="text-sm text-gray-700">{feature}</span>
+                      <span className="text-sm text-black">{feature}</span>
                     </div>
                   ))}
                 </div>

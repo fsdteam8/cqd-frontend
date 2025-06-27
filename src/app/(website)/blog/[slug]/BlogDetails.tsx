@@ -63,9 +63,9 @@ const BlogDetails = ({ params }: { params: { slug: string } }) => {
           <p>{moment(blogDetails.created_at).format("MMMM DD, YYYY")}</p>
           <span className="w-[38px] h-[1.5px] bg-[#656565]" />
         </div>
-        <h3 className="text-xl md:text-[22px] lg:text-2xl text-[#0F2A5C] font-semibold leading-[120%] tracking-[0%]">
+        <h1 className="text-xl md:text-[22px] lg:text-2xl text-[#0F2A5C] font-semibold leading-[120%] tracking-[0%]">
           {blogDetails.title}
-        </h3>
+        </h1>
         <p
           dangerouslySetInnerHTML={{ __html: blogDetails.details ?? "" }}
           className="text-base text-[#0F2A5C] leading-[150%] tracking-[0%] font-normal pt-3 md:pt-4"

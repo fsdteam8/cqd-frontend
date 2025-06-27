@@ -101,9 +101,9 @@ export default function PricingSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Subscription Plan
-          </h2>
+          </h1>
           <p className="text-lg text-gray-600">
             Choose the Package that Fits Your Needs
           </p>
@@ -135,24 +135,22 @@ export default function PricingSection() {
                   {data?.data.title}
                 </CardTitle>
                 <div className="mt-4">
-                  <p className="text-md text-[#0F2A5C] font-medium ">
+                  <p className="text-md text-[#0F2A5C] font-medium">
                     Start just from
                   </p>
-                  <span className="text-4xl md:text-5xl font-bold text-[#0F2A5C]">
+                  <span className="text-4xl md:text-5xl font-bold text-gray-900">
                     £ {data?.data.price}
                   </span>
                   <span className="ex VAT text-sm ml-2 text-black font-bold">
                     (ex VAT)
                   </span>
                 </div>
-
-                <p className="text-sm text-[#333] mt-1">
-                  Minimum {data?.data?.no_of_client} Clients
-                  <span className="text-xs text-[#0F2A5C] font-semibold ml-1">
-                    (Cost Per Client £550.00)
-                  </span>
-                  <span className="text-[10px] font-bold ml-2">T&C apply</span>
+                <p className="text-sm mt-2 text-gray-600">
+                  Minimum {data?.data?.no_of_client} Clients (Cost Per Client
+                  £550.00){" "}
+                  <span className="text-[10px] font-bold">T&C apply</span>
                 </p>
+                
               </CardHeader>
               <CardContent className="space-y-4">
                 <Button
@@ -203,7 +201,7 @@ export default function PricingSection() {
                   <p className="text-md text-[#0F2A5C] font-medium">
                     Start just from
                   </p>
-                  <span className="text-4xl md:text-5xl font-bold text-[#0F2A5C]">
+                  <span className="text-4xl md:text-5xl font-bold text-black">
                     £ {silver?.data?.price}
                   </span>
                   <span className="ex VAT text-sm ml-2 text-black font-bold">
