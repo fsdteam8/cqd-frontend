@@ -125,6 +125,34 @@ export default function TabletNavbar() {
                       >
                         Washroom Cleaning
                       </Link>
+                      <Link
+                        href="/public-transport-cleaning"
+                        className="block px-4 py-2.5 xl:py-3 text-gray-900 hover:bg-gray-100 transition-colors text-sm xl:text-base"
+                        onClick={() => setIsServicesOpen(false)}
+                      >
+                        Public Transport Cleaning
+                      </Link>
+                      <Link
+                        href="/private-transport-cleaning"
+                        className="block px-4 py-2.5 xl:py-3 text-gray-900 hover:bg-gray-100 transition-colors text-sm xl:text-base"
+                        onClick={() => setIsServicesOpen(false)}
+                      >
+                        Private Transport Cleaning
+                      </Link>
+                      <Link
+                        href="/marine-boat-cleaning"
+                        className="block px-4 py-2.5 xl:py-3 text-gray-900 hover:bg-gray-100 transition-colors text-sm xl:text-base"
+                        onClick={() => setIsServicesOpen(false)}
+                      >
+                        Marine & Boat Cleaning
+                      </Link>
+                      <Link
+                        href="/commercial-fleet-logistic-vehicles"
+                        className="block px-4 py-2.5 xl:py-3 text-gray-900 hover:bg-gray-100 transition-colors text-sm xl:text-base"
+                        onClick={() => setIsServicesOpen(false)}
+                      >
+                        Commercial Fleet & Logistic Vehicles
+                      </Link>
                     </div>
                   </div>
                 )}
@@ -323,6 +351,35 @@ export default function TabletNavbar() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Washroom Cleaning
+                </Link>
+
+                <Link
+                  href="/public-transport-cleaning"
+                  className="block text-gray-900 hover:text-gray-600 py-2 text-base"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Public Transport Cleaning
+                </Link>
+                <Link
+                  href="/private-transport-cleaning"
+                  className="block text-gray-900 hover:text-gray-600 py-2 text-base"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Private Transport Cleaning
+                </Link>
+                <Link
+                  href="/marine-boat-cleaning"
+                  className="block text-gray-900 hover:text-gray-600 py-2 text-base"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Marine & Boat Cleaning
+                </Link>
+                <Link
+                  href="/commercial-fleet-logistic-vehicles"
+                  className="block text-gray-900 hover:text-gray-600 py-2 text-base"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Commercial Fleet & Logistic Vehicles
                 </Link>
               </div>
             </div>
