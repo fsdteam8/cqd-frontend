@@ -13,7 +13,7 @@ const WwoPubliceTransportCleaning = () => {
               <div className="relative w-full aspect-[536/656] max-w-[536px]  overflow-hidden">
                 <Image
                   src="/images/publicTransportCleaning2.jpg"
-                  alt=" Professional Carpet Cleaning"
+                  alt="Public Transport Cleaning"
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
@@ -31,33 +31,43 @@ const WwoPubliceTransportCleaning = () => {
 
               <div className="space-y-4">
                 <p className="text-base md:text-lg text-gray-700">
-                  At CQD Cleaning Services, we provide expert carpet cleaning
-                  solutions using advanced techniques and eco-friendly products.
-                  Our thorough process removes dirt, stains, and allergens,
-                  restoring your carpets’ freshness and extending their lifespan
-                  with reliable, professional care you can trust.
+                  At CQD Cleaning Services, we specialize in professional public
+                  transport cleaning solutions, including bus cleaning, train
+                  sanitation, and fleet interior cleaning. Our experienced team
+                  uses advanced equipment and eco-friendly products to deliver
+                  high standards of hygiene and cleanliness across all vehicle
+                  interiors.
                 </p>
 
                 <p className="text-base md:text-lg text-gray-700">
-                  At CQD Cleaning Services, we provide expert carpet cleaning
-                  using advanced techniques to remove dirt, stains, and
-                  allergens, restoring freshness and extending carpet life for a
-                  healthier home.
+                  We thoroughly clean and sanitize seats, floors, handrails, and
+                  windows—removing dirt, germs, and odors to provide a safer,
+                  more comfortable environment for passengers and staff. Whether
+                  you&lsquo;re managing a municipal fleet or private transit
+                  vehicles, our reliable services help maintain vehicle
+                  appearance, meet health regulations, and improve rider
+                  experience.
+                </p>
+
+                <p className="text-base md:text-lg text-gray-700">
+                  Trust CQD Cleaning Services for efficient, scheduled, and deep
+                  cleaning solutions that support a healthier, more professional
+                  public transport environment.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
                 <div className="bg-gray-100 rounded-full py-3 px-6 text-center text-[#14213d] font-medium">
-                 Bus Cleaning Services
+                  Bus Cleaning Services
                 </div>
                 <div className="bg-gray-100 rounded-full py-3 px-6 text-center text-[#14213d] font-medium">
-                 Tram Cleaning
+                  Tram Cleaning
                 </div>
                 <div className="bg-gray-100 rounded-full py-3 px-6 text-center text-[#14213d] font-medium">
-                 Train Interior & Exterior Cleaning
+                  Train Interior & Exterior Cleaning
                 </div>
                 <div className="bg-gray-100 rounded-full py-3 px-6 text-center text-[#14213d] font-medium">
-                 Coach/Intercity Bus Deep Cleaning
+                  Coach/Intercity Bus Deep Cleaning
                 </div>
               </div>
 
@@ -86,17 +96,23 @@ const WwoPubliceTransportCleaning = () => {
 
               <div className="space-y-4">
                 <p className="text-base md:text-lg text-gray-700">
-                  At CQD Cleaning Services, we deliver expert carpet cleaning
-                  with advanced techniques and eco-friendly products. Our
-                  skilled team ensures deep, thorough cleaning that restores
-                  freshness, removes stubborn stains, and extends carpet
-                  life—providing exceptional results every time.
+                  At CQD Cleaning Services, we offer professional public
+                  transport cleaning for buses, trains, and shuttles, delivering
+                  high standards of cleanliness and hygiene across all fleet
+                  types. Our experienced team uses advanced equipment and
+                  eco-friendly products to carry out deep bus cleaning, thorough
+                  train sanitation, and complete fleet interior cleaning that
+                  targets dirt, bacteria, and odors in high-traffic areas.
                 </p>
 
                 <p className="text-base md:text-lg text-gray-700">
-                  CQD Cleaning Services delivers expert carpet cleaning with
-                  advanced techniques, reliable results, and exceptional care to
-                  restore freshness and extend your carpet’s life.
+                  From seat and floor sanitation to windows, handrails, and
+                  driver cabins, we ensure every surface is clean, fresh, and
+                  safe for passengers and staff. Whether you require scheduled
+                  cleaning or intensive deep cleans, CQD Cleaning Services
+                  provides reliable, tailored solutions that keep your public
+                  transport vehicles in top condition—ready to meet health
+                  regulations and enhance rider satisfaction.
                 </p>
               </div>
 
@@ -108,7 +124,7 @@ const WwoPubliceTransportCleaning = () => {
                   Sanitation for seats, handles, windows
                 </div>
                 <div className="bg-gray-100 rounded-full py-3 px-6 text-center text-[#14213d] font-medium">
-                 Graffiti and odor removal
+                  Graffiti and odor removal
                 </div>
                 <div className="bg-gray-100 rounded-full py-3 px-6 text-center text-[#14213d] font-medium">
                   Government-compliant eco-cleaning solutions
@@ -129,7 +145,7 @@ const WwoPubliceTransportCleaning = () => {
               <div className="relative w-full aspect-[536/656] max-w-[536px] rounded-tr-[100px] rounded-bl-[100px] overflow-hidden">
                 <Image
                   src="/images/publicTransportCleaning3.jpg"
-                  alt="Professional Carpet Cleaning"
+                  alt="Public Transport Cleaning Services"
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"

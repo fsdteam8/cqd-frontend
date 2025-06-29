@@ -13,7 +13,7 @@ const WwoMarineBoatCleaning = () => {
               <div className="relative w-full aspect-[536/656] max-w-[536px]  overflow-hidden">
                 <Image
                   src="/images/marine-boat-cleaning2.jpg"
-                  alt=" Professional Carpet Cleaning"
+                  alt="Marine and Boat Cleaning Services"
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
@@ -31,18 +31,11 @@ const WwoMarineBoatCleaning = () => {
 
               <div className="space-y-4">
                 <p className="text-base md:text-lg text-gray-700">
-                  At CQD Cleaning Services, we provide expert carpet cleaning
-                  solutions using advanced techniques and eco-friendly products.
-                  Our thorough process removes dirt, stains, and allergens,
-                  restoring your carpets’ freshness and extending their lifespan
-                  with reliable, professional care you can trust.
+                 At CQD Cleaning Services, we provide specialized marine and boat cleaning services for yachts, sailboats, commercial vessels, and personal watercraft. Our skilled team uses marine-safe, eco-friendly products and proven techniques to tackle salt buildup, mildew, stains, and grime both inside and out—preserving the beauty and longevity of your vessel.
                 </p>
 
                 <p className="text-base md:text-lg text-gray-700">
-                  At CQD Cleaning Services, we provide expert carpet cleaning
-                  using advanced techniques to remove dirt, stains, and
-                  allergens, restoring freshness and extending carpet life for a
-                  healthier home.
+                  From detailed interior cleaning to deck washing, upholstery care, and metal polishing, we tailor every service to meet the unique demands of marine environments. Whether docked or in dry storage, CQD delivers reliable, high-quality boat detailing that ensures your vessel looks pristine, performs well, and provides a clean, comfortable experience on every voyage.
                 </p>
               </div>
 
@@ -83,17 +76,11 @@ const WwoMarineBoatCleaning = () => {
 
               <div className="space-y-4">
                 <p className="text-base md:text-lg text-gray-700">
-                  At CQD Cleaning Services, we deliver expert carpet cleaning
-                  with advanced techniques and eco-friendly products. Our
-                  skilled team ensures deep, thorough cleaning that restores
-                  freshness, removes stubborn stains, and extends carpet
-                  life—providing exceptional results every time.
+                  At CQD Cleaning Services, we are committed to delivering exceptional cleaning results with a focus on quality, reliability, and environmental care. Our experienced team uses industry-leading equipment and non-toxic, eco-friendly products to ensure every job is done safely and thoroughly—no matter the size or setting.
                 </p>
 
                 <p className="text-base md:text-lg text-gray-700">
-                  CQD Cleaning Services delivers expert carpet cleaning with
-                  advanced techniques, reliable results, and exceptional care to
-                  restore freshness and extend your carpet’s life.
+                  We pride ourselves on our attention to detail, flexible scheduling, and consistent customer satisfaction. Whether it’s a home, vehicle, or commercial fleet, our cleaning solutions are tailored to meet your specific needs. With CQD, you get trusted service, professional care, and a cleaner, healthier space—every time.
                 </p>
               </div>
 
@@ -126,7 +113,7 @@ const WwoMarineBoatCleaning = () => {
               <div className="relative w-full aspect-[536/656] max-w-[536px] rounded-tr-[100px] rounded-bl-[100px] overflow-hidden">
                 <Image
                   src="/images/marine-boat-cleaning3.jpg"
-                  alt="Professional Carpet Cleaning"
+                  alt="Marine and Boat Cleaning Services"
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
