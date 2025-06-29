@@ -6,9 +6,9 @@ import WwoCommercialFleetLogistic from "@/components/WwoCommercialFleetLogistic"
 import React from "react";
 
 export const metadata = {
-  title: "Commercial Fleet & Logistic Vehicle Cleaning | CQD Services",
+  title: "Expert Cleaning for Commercial Fleet & Logistic Vehicles",
   description:
-    "Ensure your commercial fleet and logistics vehicles maintain a pristine image and hygienic standard with CQD Cleaning Services.",
+    "CQD provides expert cleaning for commercial fleets & logistic vehicles. Quick, efficient service for your business needs.",
 };
 
 const page = () => {
@@ -18,7 +18,7 @@ const page = () => {
         title="Professional Commercial Fleet & Logistic Vehicles Cleaning"
         description="Ensure your commercial fleet and logistics vehicles maintain a pristine image and hygienic standard with CQD Cleaning Services."
         backgroundImage="/images/commercial-fleet1.jpg"
-        imageAlt="Professional Commercial Fleet & Logistic Vehicles Cleaning"
+        imageAlt="commercial fleets & logistic vehicles"
       />
       <WwoCommercialFleetLogistic />
       <HighlightedLocations />

@@ -13,7 +13,7 @@ const WwoCommercialFleetLogistic = () => {
               <div className="relative w-full aspect-[536/656] max-w-[536px]  overflow-hidden">
                 <Image
                   src="/images/commercial-fleet2.jpg"
-                  alt="Professional commercial-fleet"
+                  alt="commercial fleets & logistic vehicles"
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
@@ -31,18 +31,23 @@ const WwoCommercialFleetLogistic = () => {
 
               <div className="space-y-4">
                 <p className="text-base md:text-lg text-gray-700">
-                  At CQD Cleaning Services, we provide expert carpet cleaning
-                  solutions using advanced techniques and eco-friendly products.
-                  Our thorough process removes dirt, stains, and allergens,
-                  restoring your carpets’ freshness and extending their lifespan
-                  with reliable, professional care you can trust.
+                  At CQD Cleaning Services, we provide specialized commercial
+                  fleet and logistics vehicle cleaning for trucks, vans,
+                  delivery vehicles, and heavy transport units. Our professional
+                  team uses industrial-grade equipment and eco-conscious
+                  products to remove dirt, grease, road grime, and interior
+                  contaminants—keeping your fleet clean, hygienic, and
+                  road-ready.
                 </p>
 
                 <p className="text-base md:text-lg text-gray-700">
-                  At CQD Cleaning Services, we provide expert carpet cleaning
-                  using advanced techniques to remove dirt, stains, and
-                  allergens, restoring freshness and extending carpet life for a
-                  healthier home.
+                  Whether you operate a small delivery team or a large-scale
+                  logistics fleet, we offer tailored fleet cleaning solutions
+                  including cab sanitization, cargo area detailing, and regular
+                  maintenance washes. Our services help maintain vehicle
+                  appearance, support driver health and safety, and protect your
+                  company’s image with consistent, high-quality results you can
+                  count on.
                 </p>
               </div>
 
@@ -83,17 +88,21 @@ const WwoCommercialFleetLogistic = () => {
 
               <div className="space-y-4">
                 <p className="text-base md:text-lg text-gray-700">
-                  At CQD Cleaning Services, we deliver expert carpet cleaning
-                  with advanced techniques and eco-friendly products. Our
-                  skilled team ensures deep, thorough cleaning that restores
-                  freshness, removes stubborn stains, and extends carpet
-                  life—providing exceptional results every time.
+                  At CQD Cleaning Services, we understand the unique demands of
+                  commercial fleets and logistics vehicles. Our experienced team
+                  delivers thorough, reliable cleaning using industrial-grade
+                  equipment and eco-friendly products designed to tackle tough
+                  dirt, grease, and contaminants commonly found on fleet
+                  vehicles.
                 </p>
 
                 <p className="text-base md:text-lg text-gray-700">
-                  CQD Cleaning Services delivers expert carpet cleaning with
-                  advanced techniques, reliable results, and exceptional care to
-                  restore freshness and extend your carpet’s life.
+                  We prioritize efficiency and flexibility, offering tailored
+                  cleaning schedules that minimize downtime and keep your fleet
+                  operating smoothly. With a strong commitment to quality and
+                  customer satisfaction, CQD Cleaning Services helps protect
+                  your vehicles, enhance driver safety, and maintain a
+                  professional company image every mile of the way.
                 </p>
               </div>
 
@@ -126,7 +135,7 @@ const WwoCommercialFleetLogistic = () => {
               <div className="relative w-full aspect-[536/656] max-w-[536px] rounded-tr-[100px] rounded-bl-[100px] overflow-hidden">
                 <Image
                   src="/images/commercial-fleet3.jpg"
-                  alt="Professional commercial-fleet"
+                  alt=" commercial fleets & logistic vehicles"
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
