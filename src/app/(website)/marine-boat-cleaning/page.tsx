@@ -6,9 +6,9 @@ import WwoMarineBoatCleaning from "@/components/WwoMarineBoatCleaning";
 import React from "react";
 
 export const metadata = {
-  title: "Marine & Boat Cleaning Services | CQD Cleaning Experts",
+  title: "Expert Marine and Boat Cleaning Services Near You",
   description:
-    "Keep your marine vessels spotless and seaworthy with CQD’s professional boat cleaning services. We remove salt, grime, and buildup using eco-safe methods for lasting shine and hygiene.",
+    "Trust CQD Cleaning for professional marine & boat cleaning. We remove grime, algae & salt buildup to keep your vessel spotless and shining.",
 };
 
 const page = () => {
@@ -18,7 +18,7 @@ const page = () => {
         title="Professional Marine & Boat Cleaning"
         description="Keep your marine vessels spotless and seaworthy with CQD’s professional boat cleaning services. We remove salt, grime, and buildup using eco-safe methods for lasting shine and hygiene."
         backgroundImage="/images/marine-boat-cleaning1.jpg"
-        imageAlt="Professional Marine & Boat Cleaning"
+        imageAlt="marine & boat cleaning"
       />
       <WwoMarineBoatCleaning />
       <HighlightedLocations />

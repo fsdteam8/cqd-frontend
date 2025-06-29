@@ -13,7 +13,7 @@ const WwoPrivateTransportCleaning = () => {
               <div className="relative w-full aspect-[536/656] max-w-[536px]  overflow-hidden">
                 <Image
                   src="/images/private-transport2.jpg"
-                  alt=" Professional Carpet Cleaning"
+                  alt="private transport cleaning"
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
@@ -31,18 +31,11 @@ const WwoPrivateTransportCleaning = () => {
 
               <div className="space-y-4">
                 <p className="text-base md:text-lg text-gray-700">
-                  At CQD Cleaning Services, we provide expert carpet cleaning
-                  solutions using advanced techniques and eco-friendly products.
-                  Our thorough process removes dirt, stains, and allergens,
-                  restoring your carpets’ freshness and extending their lifespan
-                  with reliable, professional care you can trust.
+                  At CQD Cleaning Services, we deliver high-quality private transport cleaning designed for executive cars, chauffeur-driven vehicles, and private fleets. Our expert team uses premium, eco-friendly products and industry-leading techniques to clean and sanitize interiors—removing dust, odors, and bacteria from seats, consoles, windows, and high-touch surfaces.
                 </p>
 
                 <p className="text-base md:text-lg text-gray-700">
-                  At CQD Cleaning Services, we provide expert carpet cleaning
-                  using advanced techniques to remove dirt, stains, and
-                  allergens, restoring freshness and extending carpet life for a
-                  healthier home.
+                  We tailor every service to meet the expectations of private vehicle owners and professional drivers, ensuring your car remains spotless, hygienic, and presentable. From regular maintenance cleans to detailed interior treatments, CQD Cleaning Services offers trusted, professional care that enhances comfort, promotes health, and upholds your vehicle’s polished image.
                 </p>
               </div>
 
@@ -83,17 +76,11 @@ const WwoPrivateTransportCleaning = () => {
 
               <div className="space-y-4">
                 <p className="text-base md:text-lg text-gray-700">
-                  At CQD Cleaning Services, we deliver expert carpet cleaning
-                  with advanced techniques and eco-friendly products. Our
-                  skilled team ensures deep, thorough cleaning that restores
-                  freshness, removes stubborn stains, and extends carpet
-                  life—providing exceptional results every time.
+                  At CQD Cleaning Services, we provide specialized private transport cleaning for chauffeur cars, limousines, corporate fleets, and rideshare vehicles. Our team uses eco-friendly products and advanced cleaning methods to remove dirt, allergens, and bacteria—delivering a spotless, hygienic interior that reflects professionalism and care. Whether it’s a luxury sedan or executive van, we tailor our private vehicle cleaning to meet your specific standards.
                 </p>
 
                 <p className="text-base md:text-lg text-gray-700">
-                  CQD Cleaning Services delivers expert carpet cleaning with
-                  advanced techniques, reliable results, and exceptional care to
-                  restore freshness and extend your carpet’s life.
+                  From upholstery and carpet care to touchpoint disinfection and window cleaning, we ensure every ride is clean, fresh, and presentable for your clients or passengers. With flexible scheduling and attention to detail, CQD Cleaning Services offers reliable fleet detailing and chauffeur car sanitation that helps maintain your brand’s image and keeps vehicles looking their best, inside and out.
                 </p>
               </div>
 
@@ -126,7 +113,7 @@ const WwoPrivateTransportCleaning = () => {
               <div className="relative w-full aspect-[536/656] max-w-[536px] rounded-tr-[100px] rounded-bl-[100px] overflow-hidden">
                 <Image
                   src="/images/private-transport3.jpg"
-                  alt="Professional Carpet Cleaning"
+                  alt="private transport cleaning"
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
