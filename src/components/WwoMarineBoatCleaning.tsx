@@ -80,7 +80,7 @@ const WwoMarineBoatCleaning = () => {
                 </p>
 
                 <p className="text-base md:text-lg text-gray-700">
-                  We pride ourselves on our attention to detail, flexible scheduling, and consistent customer satisfaction. Whether it’s a home, vehicle, or commercial fleet, our cleaning solutions are tailored to meet your specific needs. With CQD, you get trusted service, professional care, and a cleaner, healthier space—every time.
+                  We pride ourselves on our attention to detail, flexible scheduling, and consistent customer satisfaction. Whether it’s a vehicle, or commercial fleet, our cleaning solutions are tailored to meet your specific needs. With CQD, you get trusted service, professional care, and a cleaner, healthier space—every time.
                 </p>
               </div>
 
