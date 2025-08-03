@@ -82,7 +82,9 @@ export default function Footer() {
           </p>
           <p className="text-sm mb-6 !text-white"> Buckinghamshire, HP11 1LA</p>
         </div>
-
+        <p className="text-lg md:text-xl font-bold hover:text-gray-300 transition-colors">
+          09888988
+        </p>
         {/* Bottom section with policies and social */}
         <div className="flex  flex-col md:flex-row justify-between  md:items-center">
           <div>
@@ -90,8 +92,17 @@ export default function Footer() {
               href="mailto:example.email@gmail.com"
               className="text-lg md:text-3xl font-bold hover:text-gray-300 transition-colors"
             >
-            info@cqdcleaningservices.com
+              info@cqdcleaningservices.com
             </a>
+            <br />
+            <div className="mt-2">
+              <a
+                href="tel:09888988"
+                className="text-lg md:text-xl font-bold hover:text-gray-300 transition-colors "
+              >
+                09888988
+              </a>
+            </div>
 
             <div className="mt-4">
               <Link
@@ -143,11 +154,9 @@ export default function Footer() {
         <div className="mt-8 text-center text-xs ">
           <p className="!text-white">
             {currentYear} - CQD Cleaning Services. All rights reserved to CQD.
-            
             {/* </Link> */}
           </p>
         </div>
-
       </div>
     </footer>
   );

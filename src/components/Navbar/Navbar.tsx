@@ -104,7 +104,7 @@ export default function TabletNavbar() {
                 </button>
                 {isServicesOpen && (
                   <div className="absolute top-full left-0 mt-2 w-56 xl:w-96 bg-white rounded-xl shadow-lg overflow-hidden z-50">
-                    <ScrollArea className="h-auto md:h-[600px] w-[450px] rounded-md border p-4">
+                    <ScrollArea className="h-auto md:h-[550px] w-[450px] rounded-md border p-4">
                       <div className=" py-2">
                         <Link
                           href="/window-cleaning"
@@ -364,7 +364,7 @@ export default function TabletNavbar() {
                 </button>
                 {isServicesOpen && (
                   <div className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-lg overflow-hidden z-50">
-                    <ScrollArea className="h-auto md:h-[500px] w-[300px] rounded-md border p-4">
+                    <ScrollArea className="h-auto md:h-[400px] w-[300px] rounded-md border p-4">
                     <div className="py-1">
                       <Link
                         href="/window-cleaning"
@@ -857,7 +857,7 @@ export default function TabletNavbar() {
                     className="block text-gray-900 hover:text-gray-600 py-2 text-base"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    HOtel Cleaning
+                    Hotel Cleaning
                   </Link>
                 </ScrollArea>
               </div>
