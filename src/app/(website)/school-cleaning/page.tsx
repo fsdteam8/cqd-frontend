@@ -1,7 +1,8 @@
 import ContactSection from "@/components/Contact";
 import { HeroImage } from "@/components/HeroImage";
-import HighlightedLocations from "@/components/HighlightedLocations";
 import Review from "@/components/Review";
+import SchoolCleaningFaq from "@/components/SchoolCleaningFaq";
+import SchoolHighlightedLocations from "@/components/SchoolHighlightedLocations";
 import WwoSchoolCleaning from "@/components/WwoSchoolCleaning";
 import React from "react";
 
@@ -23,7 +24,8 @@ const Page = () => {
 
       <WwoSchoolCleaning />
       <Review />
-      <HighlightedLocations />
+      <SchoolHighlightedLocations />
+      <SchoolCleaningFaq/>
       <ContactSection />
     </div>
   );
