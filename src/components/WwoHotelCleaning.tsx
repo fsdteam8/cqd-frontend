@@ -39,7 +39,7 @@ const WwoHotelCleaning = () => {
                   reviews and repeat bookings.
                 </p>
 
-                <h3 className="text-lg md:text-xl text-gray-700">
+                <h3 className="text-lg md:text-xl text-gray-700 font-medium">
                   Key Benefits:
                 </h3>
                 <ul className="list-disc list-inside space-y-2 pt-4">
@@ -88,7 +88,7 @@ const WwoHotelCleaning = () => {
                   overlooked.
                 </p>
 
-                <h3 className="text-lg md:text-xl text-gray-700">
+                <h3 className="text-lg md:text-xl text-gray-700 font-medium">
                   Guest Room Cleaning:{" "}
                 </h3>
                 <ul className="list-disc list-inside space-y-2 pt-4">
@@ -119,7 +119,7 @@ const WwoHotelCleaning = () => {
                   </li>
                 </ul>
 
-                <h3 className="text-lg md:text-xl text-gray-700">
+                <h3 className="text-lg md:text-xl text-gray-700 font-medium">
                   Public Area Maintenance:
                 </h3>
                 <ul className="list-disc list-inside space-y-2 pt-4">
@@ -139,7 +139,7 @@ const WwoHotelCleaning = () => {
                   </li>
                 </ul>
 
-                <h3 className="text-lg md:text-xl text-gray-700">
+                <h3 className="text-lg md:text-xl text-gray-700 font-medium">
                   Food & Beverage Areas:
                 </h3>
                 <ul className="list-disc list-inside space-y-2 pt-4">
@@ -484,7 +484,7 @@ const WwoHotelCleaning = () => {
                   meet the specific needs of your guests.
                 </p>
 
-                <h3 className="text-lg md:text-xl text-gray-700">
+                <h3 className="text-lg md:text-xl text-gray-700 font-medium">
                   Examples Include:
                 </h3>
                 <ul className="list-disc list-inside space-y-2 pt-4">
