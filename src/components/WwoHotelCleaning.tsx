@@ -39,10 +39,10 @@ const WwoHotelCleaning = () => {
                   reviews and repeat bookings.
                 </p>
 
-                <h3 className="text-lg md:text-xl text-gray-700 font-medium">
+                <h3 className="text-lg md:text-xl text-gray-700 font-semibold">
                   Key Benefits:
                 </h3>
-                <ul className="list-disc list-inside space-y-2 pt-4">
+                <ul className="list-disc list-inside space-y-2 pt-2">
                   <li className="text-base md:text-lg font-medium text-gray-700">
                     Increased guest satisfaction and positive reviews
                   </li>
@@ -88,10 +88,10 @@ const WwoHotelCleaning = () => {
                   overlooked.
                 </p>
 
-                <h3 className="text-lg md:text-xl text-gray-700 font-medium">
+                <h3 className="text-lg md:text-xl text-gray-700 font-semibold">
                   Guest Room Cleaning:{" "}
                 </h3>
-                <ul className="list-disc list-inside space-y-2 pt-4">
+                <ul className="list-disc list-inside space-y-2 pt-2">
                   <li className="text-base md:text-lg font-medium text-gray-700">
                     Ventilate the room before starting the cleaning process.
                   </li>
@@ -119,10 +119,10 @@ const WwoHotelCleaning = () => {
                   </li>
                 </ul>
 
-                <h3 className="text-lg md:text-xl text-gray-700 font-medium">
+                <h3 className="text-lg md:text-xl text-gray-700 font-semibold">
                   Public Area Maintenance:
                 </h3>
-                <ul className="list-disc list-inside space-y-2 pt-4">
+                <ul className="list-disc list-inside space-y-2 pt-2">
                   <li className="text-base md:text-lg font-medium text-gray-700">
                     Cleaning and disinfecting lobbies, elevators, corridors, and
                     lounges.
@@ -139,10 +139,10 @@ const WwoHotelCleaning = () => {
                   </li>
                 </ul>
 
-                <h3 className="text-lg md:text-xl text-gray-700 font-medium">
+                <h3 className="text-lg md:text-xl text-gray-700 font-semibold">
                   Food & Beverage Areas:
                 </h3>
-                <ul className="list-disc list-inside space-y-2 pt-4">
+                <ul className="list-disc list-inside space-y-2 pt-2">
                   <li className="text-base md:text-lg font-medium text-gray-700">
                     Sanitizing tables, chairs, menus, and food preparation
                     surfaces.
@@ -484,10 +484,10 @@ const WwoHotelCleaning = () => {
                   meet the specific needs of your guests.
                 </p>
 
-                <h3 className="text-lg md:text-xl text-gray-700 font-medium">
+                <h3 className="text-lg md:text-xl text-gray-700 font-semibold">
                   Examples Include:
                 </h3>
-                <ul className="list-disc list-inside space-y-2 pt-4">
+                <ul className="list-disc list-inside space-y-2 pt-2">
                   <li className="text-base md:text-lg font-medium text-gray-700">
                     Allergy-sensitive room preparation with a focus on air
                     quality.
