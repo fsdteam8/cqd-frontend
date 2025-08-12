@@ -32,7 +32,7 @@ const WwoWindow = () => {
 
               <div className="space-y-4">
                 <p className="text-base md:text-lg text-gray-700">
-                  At CQD Cleaning Company, we deliver expert cleaning services
+                  At CQD Cleaning Service, we deliver expert cleaning services
                   tailored to homes and businesses. From office and industrial
                   cleaning to deep and eco-friendly residential solutions, our
                   trained team ensures spotless, affordable, and reliable
@@ -40,7 +40,7 @@ const WwoWindow = () => {
                 </p>
 
                 <p className="text-base md:text-lg text-gray-700">
-                  CQD Cleaning Company delivers expert commercial, office, deep,
+                  CQD Cleaning Service delivers expert commercial, office, deep,
                   and residential cleaning using eco-friendly products. Trust
                   our team for reliable, affordable, and spotless results.
                 </p>
