@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
+// import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -125,13 +125,16 @@ export default function Review() {
           >
             <CardContent className="p-6 md:p-8 flex flex-col md:flex-row items-center md:!px-10">
               <div className="md:w-1/3 flex justify-center  mb-6 md:mb-0">
-                <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden">
-                  <Image
+                <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden">
+                  {/* <Image
                     src={activeReview?.profile_photo_url || "/placeholder.svg"}
                     alt={activeReview?.author_name}
                     fill
                     className="object-cover"
-                  />
+                  /> */}
+                  <div className="flex items-center justify-center bg-gray-300 text-black font-bold text-xl w-full h-full rounded-full">
+                    {activeReview?.author_name?.charAt(0).toUpperCase()}
+                  </div>
                 </div>
               </div>
               <div className="md:w-2/3 text-center md:text-left">

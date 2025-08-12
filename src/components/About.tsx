@@ -29,13 +29,13 @@ const About = () => {
             </h1>
 
             <p className="text-base font-medium sm:text-base leading-[120%]">
-              Since 2012, CQD Cleaning Company has offered trusted, top-quality
+              Since 2012, CQD Cleaning Service has offered trusted, top-quality
               cleaning for homes and businesses. We’re committed to excellence
               and exceeding every client’s expectations—every time.
             </p>
 
             <p className="text-base font-medium sm:text-base leading-[120%] mt-2">
-              At CQD Cleaning Company, our expert team and advanced tools ensure
+              At CQD Cleaning Service, our expert team and advanced tools ensure
               top-tier cleanliness, health, and safety—delivering spotless
               results you can trust every time.
             </p>
