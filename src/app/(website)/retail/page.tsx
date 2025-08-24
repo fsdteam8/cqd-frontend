@@ -15,7 +15,8 @@ const Page = () => {
   return (
     <div>
       <HeroImage
-        title="Professional Retail Cleaning"
+        // title="Professional Retail Cleaning"
+        title="CQD The Top  Retail Cleaning Service Provider   In UK"
         description="Maintain a pristine and inviting retail space with our expert cleaning services tailored to enhance your customers' shopping experience."
         backgroundImage="/services/retail1.jpg"
         imageAlt="Retail Cleaning Services"

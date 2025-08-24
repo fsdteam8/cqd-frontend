@@ -144,6 +144,182 @@ const WwoGPSurgeriesCleaning = () => {
           </div>
         </div>
       </section>
+
+      {/* Keeping GP Surgeries Spotless – CQD, the UK’s Top  GP Surgery Cleaning Company Section */}
+      <section className="w-full py-12 md:py-16 lg:py-20 overflow-hidden">
+        <div className="container max-w-9xl mx-auto px-4 md:px-6">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+            {/* Left side - Image */}
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+              <div className="relative w-full aspect-[536/530] max-w-[536px] overflow-hidden">
+                <Image
+                  src="/services/gPSurgeries4.jpg"
+                  alt="Professional GP Surgeries Cleaning Services"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
+                  priority
+                  className="rounded-tl-[100px] rounded-br-[100px]"
+                />
+              </div>
+            </div>
+
+            {/* Right side - Content */}
+            <div className="w-full lg:w-1/2 flex flex-col gap-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#14213d]">
+                Keeping GP Surgeries Spotless – CQD, the UK’s Top GP Surgery
+                Cleaning Company
+              </h2>
+
+              <div className="space-y-4">
+                <p className="text-base md:text-lg text-gray-700">
+                  Maintaining a clean and sterile environment is essential for
+                  every GP surgery. Our GP Surgery Cleaning services are
+                  designed to meet strict healthcare hygiene standards, ensuring
+                  that patients and staff remain safe from germs and infections.
+                  At CQD Cleaning Services, we provide expert cleaning solutions
+                  tailored to the unique needs of GP practices, from
+                  consultation rooms and waiting areas to restrooms and
+                  reception spaces. With our hospital-grade, eco-friendly
+                  products and trained cleaning specialists, we help your
+                  surgery stay spotless, welcoming, and compliant with
+                  healthcare regulations.
+                </p>
+              </div>
+
+              <div className="mt-4">
+                <Link href={"/#pricing"}>
+                  <Button className="bg-[#14213d] hover:bg-[#233862] text-white rounded-full px-8 py-6 text-lg font-medium">
+                    Request a Quote
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What is a GP Surgery in the UK? Section */}
+      <section className="w-full py-12 md:py-16 lg:py-20 overflow-hidden">
+        <div className="container max-w-9xl mx-auto px-4 md:px-6">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+            {/* Left side - Content */}
+            <div className="w-full lg:w-1/2 flex flex-col gap-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#14213d]">
+                What is a GP Surgery in the UK?
+              </h2>
+
+              <div className="space-y-4">
+                <p className="text-base md:text-lg text-gray-700">
+                  A <strong>GP surgery</strong> in the UK is a local medical
+                  practice where patients receive primary healthcare from a{" "}
+                  <strong>General Practitioner</strong> (family doctor). These
+                  surgeries are often the first point of contact for
+                  non-emergency medical issues, offering services such as
+                  consultations, health check-ups, vaccinations, and referrals
+                  to specialists.
+                </p>
+
+                <p className="text-base md:text-lg text-gray-700">
+                  Unlike what the word “surgery” might suggest, a GP surgery is
+                  not usually a place for major operations in UK healthcare
+                  terminology, it refers to the doctor’s clinic or office. GP
+                  surgeries are typically part of the{" "}
+                  <strong>NHS (National Health Service),</strong> providing free
+                  healthcare to registered patients, and are supported by a team
+                  that may include nurses, healthcare assistants, and
+                  administrative staff.
+                </p>
+                <p className="text-base md:text-lg text-gray-700">
+                  Because they handle high volumes of patients daily and must
+                  maintain strict hygiene to prevent the spread of infections,{" "}
+                  <strong>
+                    cleanliness and sanitation in GP surgeries are essential.
+                  </strong>
+                </p>
+              </div>
+
+              <div className="mt-4">
+                <Link href={"/#pricing"}>
+                  <Button className="bg-[#14213d] hover:bg-[#233862] text-white rounded-full px-8 py-6 text-lg font-medium">
+                    Request a Quote
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right side - Image */}
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+              <div className="relative w-full aspect-[536/656] max-w-[536px] rounded-tr-[100px] rounded-bl-[100px] overflow-hidden">
+                <Image
+                  src="/services/gPSurgeries5.jpg"
+                  alt="Expert GP Surgeries Cleaning Professionals"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
+                  priority
+                  className="rounded-tr-[100px] rounded-bl-[100px]"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Why Deep Cleaning is Necessary in GP Surgeries Section */}
+      <section className="w-full py-12 md:py-16 lg:py-20 overflow-hidden">
+        <div className="container max-w-9xl mx-auto px-4 md:px-6">
+          <div className="flex flex-col gap-6 pb-1">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#14213d] text-center">
+              Why Deep Cleaning is Necessary in GP Surgeries
+            </h2>
+
+            <div className="space-y-4">
+              <p className="text-base md:text-lg text-gray-700 text-left">
+                GP surgeries welcome a large number of patients every day, many
+                of whom may be unwell or carrying infectious illnesses. This
+                constant footfall increases the risk of germs, bacteria, and
+                viruses spreading — not just between patients, but also to
+                staff. While daily cleaning tackles surface-level dirt,{" "}
+                <strong>
+                  deep cleaning goes further to eliminate hidden contaminants in
+                  hard-to-reach areas.
+                </strong>
+              </p>
+              <p className="text-base md:text-lg text-gray-700 text-left">
+                Deep cleaning in a GP surgery is essential because it:
+              </p>
+            </div>
+          </div>
+          <ul className="pt-4">
+            <li className="text-lg md:text-xl text-gray-700">
+              <strong>Prevents the spread of infections</strong> by removing
+              harmful pathogens from all surfaces, equipment, and touchpoints.
+            </li>
+            <li className="text-lg md:text-xl text-gray-700 py-3">
+              <strong>Meets strict NHS and CQC hygiene standards, </strong>{" "}
+              helping the practice remain compliant with health regulations.
+            </li>
+            <li className="text-lg md:text-xl text-gray-700">
+              <strong>Protects patients and staff </strong> by creating a safer,
+              healthier environment.
+            </li>
+            <li className="text-lg md:text-xl text-gray-700 py-3">
+              <strong>Maintains a professional appearance,</strong> reassuring
+              patients that the surgery is clean and well cared for.
+            </li>
+            <li className="text-lg md:text-xl text-gray-700">
+              <strong>Extends the lifespan of fixtures and equipment </strong>{" "}
+              by removing built-up dirt, dust, and grime.
+            </li>
+          </ul>
+          <p className="text-base md:text-lg text-gray-700 text-left pt-5">
+            In healthcare settings, cleanliness isn’t just about appearances —
+            it’s about <strong>patient safety and public health.</strong> That’s
+            why a scheduled deep cleaning programme is a crucial part of GP
+            surgery maintenance.
+          </p>
+        </div>
+      </section>
     </div>
   );
 };
