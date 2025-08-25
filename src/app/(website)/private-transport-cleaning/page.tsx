@@ -7,9 +7,9 @@ import React from "react";
 
 export const metadata = {
   title:
-    "Safe and Professional Private Transport Cleaning Solutions",
+    "Private Transport Cleaning | Expert Vehicle & Car Cleaning Services",
   description:
-    "CQD Cleaning offers professional private transport cleaning for cars, vans, and more. Keep your ride fresh and sanitized. Call us now!",
+    "Keep your private vehicles clean and hygienic with our expert private transport cleaning services. We specialize in deep cleaning, sanitization, and detailing for cars, vans, and other private transport.",
 };
 
 const Page = () => {

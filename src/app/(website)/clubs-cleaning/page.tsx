@@ -6,9 +6,9 @@ import WwoClubsCleaning from "@/components/WwoClubCleaning";
 import React from "react";
 
 export const metadata = {
-  title: "Expert Clubs Cleaning Services by CQD Professionals",
+  title: "Clubs Cleaning Services | Nightclub & Lounge Cleaning Experts",
   description:
-    "CQD provides professional cleaning services for clubs, ensuring a hygienic and inviting environment with attention to high-traffic areas and detailed sanitation.",
+    " Ensure a clean, safe, and inviting atmosphere with our professional clubs cleaning services. We specialize in nightclub, bar, and lounge cleaning to maintain hygiene and create the perfect guest experience.",
 };
 
 const Page = () => {
