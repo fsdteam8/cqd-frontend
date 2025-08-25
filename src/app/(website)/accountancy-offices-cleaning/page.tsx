@@ -6,9 +6,9 @@ import WwoAccountancyOfficeCleaning from "@/components/WwoAccountancyOfficeClean
 import React from "react";
 
 export const metadata = {
-  title: "Expert Accountancy Office Cleaning Services by CQD Professionals",
+  title: "Accountancy Office Cleaning | Expert Office & Workspace Cleaning Services",
   description:
-    "CQD offers premium cleaning services for accountancy offices, ensuring a spotless, professional environment that enhances productivity and impresses clients.",
+    "Keep your accountancy office clean, organized, and hygienic with our professional office cleaning services. We provide deep cleaning, sanitization, and maintenance for desks, workstations, restrooms, and common areas.",
 };
 
 const Page = () => {

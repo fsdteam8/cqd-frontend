@@ -6,9 +6,9 @@ import WwoCinemaCleaning from "@/components/WwoCinemaCleaning";
 import React from "react";
 
 export const metadata = {
-  title: "Expert Cinema Cleaning Services by CQD Professionals",
+  title: "Cinema Cleaning Services | Professional Theatre & Auditorium Cleaning",
   description:
-    "CQD provides specialized cinema cleaning services using eco-friendly products and detailed procedures to ensure spotless auditoriums, lobbies, and concession areas for a premium movie-going experience.",
+    " Keep your cinema spotless and welcoming with our expert cinema cleaning services. We provide deep cleaning of auditoriums, lobbies, restrooms, and concession areas to ensure hygiene.",
 };
 
 const Page = () => {
