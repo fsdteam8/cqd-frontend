@@ -6,9 +6,9 @@ import WwoPubliceTransportCleaning from "@/components/WwoPubliceTransportCleanin
 import React from "react";
 
 export const metadata = {
-  title: "Public Transport Cleaning Services for Safer Commuting Daily",
+  title: "Public Transport Cleaning Services | Safe & Hygienic Travel Environments",
   description:
-    "CQD Cleaning provides top-tier public transport cleaning services, maintaining hygiene, safety, and comfort across all transit environments.",
+    "Professional public transport cleaning services for buses, trains, trams, and stations. Ensure passenger safety, hygiene, and comfort with our expert deep cleaning and sanitization solutions.",
 };
 
 const Page = () => {

@@ -6,9 +6,9 @@ import WwoCommercialCleaning from "@/components/WwoCommercialCleaning";
 import React from "react";
 
 export const metadata = {
-  title: "Reliable Commercial Cleaning Services by CQD Experts",
+  title: "Professional Commercial Cleaning Services | Reliable Office & Business Cleaning",
   description:
-    "CQD offers comprehensive commercial cleaning solutions using eco-safe products and professional methods to keep your business environment spotless, healthy, and welcoming.",
+    "Expert professional commercial cleaning services tailored for offices, retail stores, and business facilities. Ensure a spotless, safe, and welcoming environment with our reliable cleaning solutions.",
 };
 
 const Page = () => {

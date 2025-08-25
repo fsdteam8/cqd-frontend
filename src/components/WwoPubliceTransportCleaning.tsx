@@ -31,15 +31,19 @@ const WwoPubliceTransportCleaning = () => {
 
               <div className="space-y-4">
                 <p className="text-base md:text-lg text-gray-700">
-                  At CQD Cleaning Services, we specialize in professional public
-                  transport cleaning solutions, including bus cleaning, train
-                  sanitation, and fleet interior cleaning. Our experienced team
-                  uses advanced equipment and eco-friendly products to deliver
-                  high standards of hygiene and cleanliness across all vehicle
-                  interiors.
+                  Public transport systems are used by thousands of people every
+                  day, making them a hotspot for dirt, germs, and potential
+                  infections. Keeping buses, trains, trams, and stations clean
+                  is not only about appearance but also about ensuring passenger
+                  safety and comfort. Our professional public transport cleaning
+                  services are designed to maintain high hygiene standards,
+                  improve the travel experience, and extend the life of vehicles
+                  and facilities. With specialized cleaning methods and
+                  eco-friendly products, we help create a healthier and more
+                  welcoming environment for every passenger.
                 </p>
 
-                <p className="text-base md:text-lg text-gray-700">
+                {/* <p className="text-base md:text-lg text-gray-700">
                   We thoroughly clean and sanitize seats, floors, handrails, and
                   windows—removing dirt, germs, and odors to provide a safer,
                   more comfortable environment for passengers and staff. Whether
@@ -53,7 +57,7 @@ const WwoPubliceTransportCleaning = () => {
                   Trust CQD Cleaning Services for efficient, scheduled, and deep
                   cleaning solutions that support a healthier, more professional
                   public transport environment.
-                </p>
+                </p> */}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
@@ -82,8 +86,6 @@ const WwoPubliceTransportCleaning = () => {
           </div>
         </div>
       </section>
-
-      {/* why choose us content  */}
 
       <section className="w-full py-12 md:py-16 lg:py-20 overflow-hidden">
         <div className="container max-w-9xl mx-auto px-4 md:px-6">
@@ -129,6 +131,158 @@ const WwoPubliceTransportCleaning = () => {
                 <div className="bg-gray-100 rounded-full py-3 px-6 text-center text-[#14213d] font-medium">
                   Government-compliant eco-cleaning solutions
                 </div>
+              </div>
+
+              <div className="mt-4">
+                <Link href={"/#pricing"}>
+                  <Button className="bg-[#14213d] hover:bg-[#233862] text-white rounded-full px-8 py-6 text-lg font-medium">
+                    Request a Quote
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right side - Image */}
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+              <div className="relative w-full aspect-[536/656] max-w-[536px] rounded-tr-[100px] rounded-bl-[100px] overflow-hidden">
+                <Image
+                  src="/images/publicTransportCleaning3.jpg"
+                  alt="Public Transport Cleaning Services"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
+                  priority
+                  className="rounded-tr-[100px] rounded-bl-[100px]"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full py-12 md:py-16 lg:py-20 overflow-hidden">
+        <div className="container max-w-9xl mx-auto px-4 md:px-6">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+            {/* Left side - Content */}
+            <div className="w-full lg:w-1/2 flex flex-col gap-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#14213d]">
+                Why Public Transport Cleaning is Essential
+              </h2>
+
+              <div className="space-y-4">
+                <p className="text-base md:text-lg text-gray-700">
+                  Public transport is one of the busiest shared spaces, making
+                  it a potential hotspot for bacteria, viruses, and allergens.
+                  Regular deep cleaning and sanitization help reduce the risk of
+                  infections, ensuring passengers and staff travel in a
+                  healthier and safer environment.
+                </p>
+
+                <p className="text-base md:text-lg text-gray-700">
+                  Cleanliness directly affects how passengers perceive public
+                  transport. A clean bus, train, or station not only looks
+                  inviting but also reassures travelers that their wellbeing is
+                  prioritized. This builds trust, encourages
+                </p>
+                <p className="text-base md:text-lg text-gray-700">
+                  more people to use public transport, and improves the overall
+                  reputation of the transport service.
+                </p>
+                <p className="text-base md:text-lg text-gray-700">
+                  Public transport operators must meet strict cleanliness and
+                  hygiene requirements to remain compliant with local health and
+                  safety regulations. Professional cleaning ensures vehicles and
+                  facilities
+                </p>
+              </div>
+
+              {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                <div className="bg-gray-100 rounded-full py-3 px-6 text-center text-[#14213d] font-medium">
+                  Daily or scheduled cleanings
+                </div>
+                <div className="bg-gray-100 rounded-full py-3 px-6 text-center text-[#14213d] font-medium">
+                  Sanitation for seats, handles, windows
+                </div>
+                <div className="bg-gray-100 rounded-full py-3 px-6 text-center text-[#14213d] font-medium">
+                  Graffiti and odor removal
+                </div>
+                <div className="bg-gray-100 rounded-full py-3 px-6 text-center text-[#14213d] font-medium">
+                  Government-compliant eco-cleaning solutions
+                </div>
+              </div> */}
+
+              <div className="mt-4">
+                <Link href={"/#pricing"}>
+                  <Button className="bg-[#14213d] hover:bg-[#233862] text-white rounded-full px-8 py-6 text-lg font-medium">
+                    Request a Quote
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right side - Image */}
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+              <div className="relative w-full aspect-[536/656] max-w-[536px] rounded-tr-[100px] rounded-bl-[100px] overflow-hidden">
+                <Image
+                  src="/images/publicTransportCleaning3.jpg"
+                  alt="Public Transport Cleaning Services"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 536px"
+                  priority
+                  className="rounded-tr-[100px] rounded-bl-[100px]"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="w-full py-12 md:py-16 lg:py-20 overflow-hidden">
+        <div className="container max-w-9xl mx-auto px-4 md:px-6">
+          <div className="flex flex-col gap-6 pb-1">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#14213d] text-center">
+              Our Public Transport Cleaning Services 
+            </h2>
+
+            <div className="space-y-4">
+              <p className="text-base md:text-lg text-gray-700 text-left">
+                We provide comprehensive cleaning solutions for all types of public transport vehicles. Our services are tailored to meet the specific needs of each system, ensuring both passengers and staff enjoy a safe, clean, and comfortable environment.
+              </p>
+            </div>
+          </div>
+          <ul className="pt-4">
+            <li className="text-lg md:text-xl text-gray-700">
+              <strong>Bus Cleaning Services</strong> Our bus cleaning service covers everything from daily wipe-downs to intensive deep cleans. We focus on high-touch areas such as seats, handles, windows, and floors, ensuring every bus is fresh, hygienic, and ready for passengers.
+            </li>
+            <li className="text-lg md:text-xl text-gray-700 py-3">
+              <strong>Tram Cleaning</strong>{" "}
+              Trams experience heavy foot traffic throughout the day, which can lead to dirt buildup and germ spread. Our tram cleaning includes sanitization of interiors, polishing of glass and metal surfaces, and thorough floor and seat cleaning to maintain a spotless and welcoming ride.
+            </li>
+            <li className="text-lg md:text-xl text-gray-700">
+              <strong>Train Interior & Exterior Cleaning</strong>Train Interior & Exterior Cleaning
+
+            </li>
+            <li className="text-lg md:text-xl text-gray-700 py-3">
+              <strong>Coach / Intercity Bus Deep Cleaning</strong> Long-distance coaches require a higher level of cleaning due to extended passenger use. Our deep cleaning service includes carpet vacuuming, upholstery sanitization, restroom disinfection, and detailed cleaning of air vents and luggage compartments—ensuring a comfortable and hygienic journey for all travelers.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="w-full py-12 md:py-16 lg:py-20 overflow-hidden">
+        <div className="container max-w-9xl mx-auto px-4 md:px-6">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+            {/* Left side - Content */}
+            <div className="w-full lg:w-1/2 flex flex-col gap-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#14213d]">
+               Benefits of Professional Public Transport Cleaning
+              </h2>
+
+              <div className="space-y-4">
+                <p className="text-base md:text-lg text-gray-700">
+                  Professional cleaning reduces the spread of germs and infections, creating a safer environment for both passengers and staff. Clean and fresh vehicles also improve passenger comfort and satisfaction, encouraging more people to use public transport regularly. At the same time, regular maintenance extends the lifespan of vehicles and facilities by preventing dirt, stains, and damage. Outsourcing to experts ensures cost-effective and efficient cleaning solutions, allowing transport operators to focus on smooth operations without unnecessary downtime.
+                </p>
+
               </div>
 
               <div className="mt-4">
