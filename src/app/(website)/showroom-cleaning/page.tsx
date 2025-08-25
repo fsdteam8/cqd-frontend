@@ -2,6 +2,7 @@ import ContactSection from "@/components/Contact";
 import { HeroImage } from "@/components/HeroImage";
 import HighlightedLocations from "@/components/HighlightedLocations";
 import Review from "@/components/Review";
+import ShowroomCleaningFaq from "@/components/ShowroomCleaningFaq";
 import WwoShowroomCleaning from "@/components/WwoShowroomCleaning";
 import React from "react";
 
@@ -15,13 +16,15 @@ const Page = () => {
   return (
     <div>
       <HeroImage
-        title="Professional Showroom Cleaning"
+        // title="Professional Showroom Cleaning"
+        title="Professional Showroom Cleaning Service | Book Now To Attract More Customers!"
         description="Keep your showroom pristine and inviting with our expert cleaning services, tailored to highlight your products and create a welcoming environment."
-        backgroundImage="/services/showRoomCleaning2.jpg"
+        backgroundImage="/services/showRoomCleaning1.jpg"
         imageAlt="Showroom Cleaning Services"
       />
 
       <WwoShowroomCleaning />
+      <ShowroomCleaningFaq/>
       <Review />
       <HighlightedLocations />
       <ContactSection />

@@ -15,7 +15,8 @@ const Page = () => {
   return (
     <div>
       <HeroImage
-        title="Professional Pubs and Restaurants Cleaning"
+        // title="Professional Pubs and Restaurants Cleaning"
+        title="Meet CQD The Best Pubs & Restaurants Cleaning Service Provider Across UK"
         description="Maintain a clean, safe, and inviting atmosphere with our expert cleaning services tailored specifically for pubs and restaurants."
         backgroundImage="/services/pubsCleaning2.jpg"
         imageAlt="Pubs and Restaurants Cleaning Services"

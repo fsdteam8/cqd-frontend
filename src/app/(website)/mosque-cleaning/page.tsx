@@ -2,7 +2,7 @@ import ContactSection from "@/components/Contact";
 import { HeroImage } from "@/components/HeroImage";
 import HighlightedLocations from "@/components/HighlightedLocations";
 import Review from "@/components/Review";
-import WwwOfficeCleaning from "@/components/WwwOfficeCleaning";
+import WwoMosqueCleaning from "@/components/WwoMosqueCleaning";
 import React from "react";
 
 export const metadata = {
@@ -21,7 +21,7 @@ const Page = () => {
         imageAlt="Mosque Cleaning Services"
       />
 
-      <WwwOfficeCleaning />
+      <WwoMosqueCleaning />
       <Review />
       <HighlightedLocations />
       <ContactSection />
