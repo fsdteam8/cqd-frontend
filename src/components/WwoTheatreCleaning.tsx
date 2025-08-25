@@ -146,6 +146,93 @@ const WwoMovieTheatreCleaning = () => {
           </div>
         </div>
       </section>
+      {/* CQD The Best Theatre Cleaning Service In UK Section */}
+      <section className="w-full py-8 md:py-12 lg:py-14 overflow-hidden">
+        <div className="container max-w-9xl mx-auto px-4 md:px-6">
+          <div className="space-y-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#14213d] text-center pb-3">
+              CQD The Best Theatre Cleaning Service In UK
+            </h2>
+            <p className="text-base md:text-lg text-gray-700 text-justify">
+              Ensure a spotless, comfortable, and hygienic environment for every
+              guest with our expert <strong>theatre cleaning</strong> services,
+              specifically designed for cinemas and movie theatres. At{" "}
+              <strong>CQD Cleaning Services,</strong> we specialize in
+              maintaining theatres to the highest standards of cleanliness. Our
+              trained professionals focus on every detail to create a fresh,
+              sanitary, and inviting space for your audience.
+            </p>
+
+            <p className="text-base md:text-lg text-gray-700 text-justify">
+              Our comprehensive theatre cleaning covers deep{" "}
+              <strong>
+                cleaning of seats, armrests, and cup holders, sanitation of
+                concession areas and restrooms, and floor cleaning with stain
+                removal.
+              </strong>{" "}
+              We use safe, non-toxic, and eco-friendly cleaning products to
+              maintain a healthy environment while also managing{" "}
+              <strong>odors and air quality.</strong> Every high-traffic area is
+              handled with precision, ensuring your theatre is spotless and
+              ready for every showing.
+            </p>
+            <p className="text-base md:text-lg text-gray-700 text-justify">
+              Cleanliness is crucial to a positive guest experience. That’s why
+              our services are designed to{" "}
+              <strong>
+                keep every auditorium, lobby, and restroom immaculately clean,
+                fit seamlessly with your operating schedule
+              </strong>{" "}
+              — whether pre-show, post-show, or overnight — and{" "}
+              <strong>maintain a professional, welcoming atmosphere.</strong> We
+              offer{" "}
+              <strong>
+                transparent pricing with no hidden fees and a 100% satisfaction
+                guarantee.
+              </strong>
+            </p>
+          </div>
+        </div>
+      </section>
+      {/* Why Theatre Cleaning Services Are Worth It
+ Section */}
+      <section className="w-full py-8 md:py-10 lg:py-14 overflow-hidden">
+        <div className="container max-w-9xl mx-auto px-4 md:px-6">
+          <div className="space-y-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#14213d] text-center pb-3">
+              Why Theatre Cleaning Services Are Worth It
+            </h2>
+            <p className="text-base md:text-lg text-gray-700 text-justify">
+              Investing in professional{" "}
+              <strong>theatre cleaning services</strong> is essential for any
+              cinema or entertainment venue that wants to offer a premium
+              experience. A clean, well-maintained theatre leaves a lasting
+              impression on your guests. From spotless seats and fresh-smelling
+              auditoriums to sanitized restrooms and concession areas,
+              professional cleaning ensures every visitor enjoys a safe,
+              comfortable, and inviting environment, encouraging repeat visits.
+            </p>
+
+            <p className="text-base md:text-lg text-gray-700 text-justify">
+              Theatres are high-traffic spaces where germs, bacteria, and
+              allergens can accumulate quickly. Regular professional cleaning
+              reduces these risks, protecting both your patrons and staff while
+              maintaining a healthy environment. Additionally, deep cleaning
+              helps preserve the appearance and longevity of seats, carpets,
+              floors, and other surfaces, preventing costly repairs or
+              replacements and keeping your theatre looking its best year-round.
+            </p>
+            <p className="text-base md:text-lg text-gray-700 text-justify">
+              Professional cleaners also save your staff time and effort by
+              handling the labor-intensive cleaning tasks efficiently. This
+              allows your team to focus on delivering excellent customer service
+              and smooth operations. Moreover, a consistently clean theatre
+              enhances your venue’s reputation and ensures compliance with
+              hygiene standards, reflecting professionalism to every visitor.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

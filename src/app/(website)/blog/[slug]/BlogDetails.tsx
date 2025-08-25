@@ -73,14 +73,14 @@ const BlogDetails = ({ params }: { params: { slug: string } }) => {
         <p
           dangerouslySetInnerHTML={{ __html: blogDetails?.details ?? "" }}
           className="text-base text-[#0F2A5C] leading-[150%] tracking-[0%] font-normal pt-3 md:pt-4
-    [&_h1]:text-[32px] [&_h1]:leading-[150%] [&_h1]:font-bold
-    [&_h2]:text-[24px] [&_h2]:leading-[150%] [&_h2]:font-semibold
-    [&_h3]:text-[21px] [&_h3]:leading-[150%] [&_h3]:font-medium
-    [&_h4]:text-[16px] [&_h4]:leading-[150%] [&_h4]:font-normal
-    [&_h5]:text-[13px] [&_h5]:leading-[150%] [&_h5]:font-normal
-    [&_h6]:text-[11px] [&_h6]:leading-[150%] [&_h6]:font-normal
-    [&_p]:text-base [&_p]:leading-[150%] [&_p]:font-normal"
-        />
+          [&_h1]:text-[32px] [&_h1]:leading-[150%] [&_h1]:font-bold
+          [&_h2]:text-[24px] [&_h2]:leading-[150%] [&_h2]:font-semibold
+          [&_h3]:text-[21px] [&_h3]:leading-[150%] [&_h3]:font-medium
+          [&_h4]:text-[16px] [&_h4]:leading-[150%] [&_h4]:font-normal
+          [&_h5]:text-[13px] [&_h5]:leading-[150%] [&_h5]:font-normal
+          [&_h6]:text-[11px] [&_h6]:leading-[150%] [&_h6]:font-normal
+          [&_p]:text-base [&_p]:leading-[150%] [&_p]:font-normal"
+              />
 
         <div className=" flex items-center gap-5 mt-10">
           <h4 className="text-2xl font-semibold text-[#0F2A5C] leading-normal ">
