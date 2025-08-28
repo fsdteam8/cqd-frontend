@@ -25,7 +25,7 @@ export default function HighlightedLocations() {
   ];
 
   return (
-    <section id="location" className="w-full  px-4 md:px-6 lg:px-8 pb-[50px] md:pb-[80px] lg:pb-[120px]">
+    <section id="location" className="w-full  px-4 md:px-6 lg:px-8 pb-[30px] md:pb-[60px] lg:pb-[80px]">
       <div className="container mx-auto w-full">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium mb-2">
           Highlighted Locations
@@ -34,7 +34,7 @@ export default function HighlightedLocations() {
           Expert Cleaning Services in these and Surrounding Areas!
         </p>
 
-        <div className="grid mt-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+        <div className="grid mt-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
           {locations.map((location, index) => (
             <div
               key={index}

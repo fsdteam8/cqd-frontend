@@ -70,7 +70,7 @@ const HowItWork = () => {
   }, [api]);
 
   return (
-    <section className="w-full min-h-screen flex items-center justify-between px-4 mt-10" >
+    <section className="w-full flex items-center justify-between px-4 mt-10 md:mt-14 lg:mt-24" >
       <div className="container mx-auto max-w-7xl">
         <div className="mb-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium mb-2">

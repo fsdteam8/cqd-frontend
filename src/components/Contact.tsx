@@ -65,7 +65,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="w-full py-12 md:py-16 lg:py-20">
+    <section className="w-full py-8 md:py-10 lg:py-14">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center text-center mb-8">
           <h2 className="text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">

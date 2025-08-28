@@ -79,22 +79,22 @@ const BlogContainer = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="mb-[35px] md:mb-[60px] lg:mb-[120px]">
+      <div className="mb-[25px] md:mb-[40px] lg:mb-[60px]">
         <h2 className="text-center text-[35px] md:text-[48px] lg:text-[60px] font-medium leadig-[120%] tracking-[0%] text-[#0F2A5C]">
           Blog Post
         </h2>
-        <p className="text-center text-xl md:text-[22px] lg:text-2xl font-normal leading-[120%] tracking-[0%] text-[#0F2A5C] pt-[15px]">
+        <p className="text-center text-xl md:text-[22px] lg:text-2xl font-normal leading-[120%] tracking-[0%] text-[#0F2A5C] pt-[5px]">
           Blog and News
         </p>
       </div>
-      <div className="w-full flex items-center gap-[30px] md:gap-[45px] lg:gap-[66px]">
+      <div className="w-full flex items-center gap-[6px] md:gap-[45px] lg:gap-[66px]">
         <button onClick={() => swiperRef.current?.slideNext()}>
           <Image
             src="/images/left-arrow.svg"
             alt="left-arrow"
             width={50}
             height={50}
-            className="w-[50px] h-[50px]"
+            className="w-8 md:w-[50px] h-10 md:h-[50px]"
           />
         </button>
 
@@ -127,7 +127,7 @@ const BlogContainer = () => {
             alt="right-arrow"
             width={50}
             height={50}
-            className="w-[50px] h-[50px]"
+            className="w-8 md:w-[50px] h-10 md:h-[50px]"
           />
         </button>
       </div>
