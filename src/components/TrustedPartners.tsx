@@ -72,7 +72,7 @@ export default function TrustedPartners() {
   }, [rotatePartners])
 
   return (
-    <section className="w-full py-12 px-4 md:px-6 lg:px-8">
+    <section className="w-full py-12 mt-4 md:mt-8 lg:mt-10 px-4 md:px-6 lg:px-8">
       <div className="container mx-auto w-full">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium mb-16">Our Trusted Partners</h2>
 

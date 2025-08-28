@@ -5,10 +5,12 @@ import Link from "next/link";
 const WhyChooseUs = () => {
   return (
     <section className="">
-      <div className="container w-full mx-auto px-4 mt-10 lg:mt-0">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 min-h-[80vh]">
+      <div className="container w-full mx-auto px-4 mt-10 md:mt-14 lg:mt-24">
+        {/* <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 min-h-[80vh]"> */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 gap-8 lg:gap-12">
           {/* Left column - Text content */}
-          <div className="space-y-6 max-w-4xl">
+       <div className="lg:col-span-2 xl:col-span-3">
+           <div className="space-y-6 max-w-4xl">
             <h2 className="text-2xl md:text-5xl font-medium tracking-wider">
               <span className="block lg:mb-4 mb-2">Why You Should Choose</span>
               <span className="block">CQD for Flexible Cleaning</span>
@@ -54,10 +56,12 @@ const WhyChooseUs = () => {
               </Link>
             </div>
           </div>
+       </div>
 
           {/* Right column - Images */}
-          <div className="grid grid-cols-2 gap-4 max-w-[530px]">
-            <div className="relative  w-[150px] lg:w-[250px] h-[150px] lg:h-[250px] group">
+         <div className="lg:col-span-2 xl:col-span-2">
+           <div className="grid grid-cols-2 gap-4">
+            <div className="relative  w-[150px] lg:w-[220px] xl:w-[250px] h-[150px] lg:h-[250px] group">
               <Image
                 src="/images/wcu1.png"
                 alt="Commercial Cleaning Services"
@@ -71,7 +75,7 @@ const WhyChooseUs = () => {
                 className="rounded-3xl object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               />
             </div>
-            <div className="relative w-[150px] lg:w-[250px] h-[150px] lg:h-[250px] group">
+            <div className="relative w-[150px] lg:w-[220px] xl:w-[250px] h-[150px] lg:h-[250px] group">
               <Image
                 src="/images/wcu2.png"
                 alt="Commercial Cleaning Services"
@@ -86,7 +90,7 @@ const WhyChooseUs = () => {
               />
             </div>
 
-            <div className="relative w-[150px] lg:w-[250px] h-[150px] lg:h-[250px] group">
+            <div className="relative w-[150px] lg:w-[220px] xl:w-[250px] h-[150px] lg:h-[250px] group">
               <Image
                 src="/images/wcu3.png"
                 alt="Maintaining a clean and healthy environment"
@@ -101,7 +105,7 @@ const WhyChooseUs = () => {
               />
             </div>
 
-            <div className="relative w-[150px] lg:w-[250px] h-[150px] lg:h-[250px] group">
+            <div className="relative w-[150px] lg:w-[220px] xl:w-[250px] h-[150px] lg:h-[250px] group">
               <Image
                 src="/images/wcu4.png"
                 alt="Tools for a perfect window cleaning"
@@ -116,6 +120,7 @@ const WhyChooseUs = () => {
               />
             </div>
           </div>
+         </div>
         </div>
       </div>
     </section>
