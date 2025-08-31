@@ -103,8 +103,8 @@ export default function TabletNavbar() {
                   />
                 </button>
                 {isServicesOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-56 xl:w-96 bg-white rounded-xl shadow-lg overflow-hidden z-50">
-                    <ScrollArea className="h-auto md:h-[550px] w-[450px] rounded-md border p-4">
+                  <div className="absolute top-full left-0 mt-2 w-56 xl:w-96 bg-white rounded-xl shadow-lg  z-50">
+                    <ScrollArea className="h-auto md:h-[550px] w-full rounded-md border p-4 overflow-y-visible">
                       <div className=" py-2">
                         <Link
                           href="/window-cleaning"
@@ -363,8 +363,8 @@ export default function TabletNavbar() {
                   />
                 </button>
                 {isServicesOpen && (
-                  <div className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-lg overflow-hidden z-50">
-                    <ScrollArea className="h-auto md:h-[400px] w-[300px] rounded-md border p-4">
+                  <div className="absolute top-full left-0 mt-2 w-56 xl:w-96 bg-white rounded-xl shadow-lg z-50">
+                    <ScrollArea className="h-auto md:h-[400px] w-full overflow-y-visible rounded-md border p-4">
                     <div className="py-1">
                       <Link
                         href="/window-cleaning"
@@ -657,10 +657,10 @@ export default function TabletNavbar() {
                   "pl-4 transition-all duration-300 ease-in-out",
                   isMobileServicesOpen
                     ? "max-h-screen opacity-100 mt-2"
-                    : "max-h-0 opacity-0 pointer-events-none overflow-hidden"
+                    : "max-h-0 opacity-0 pointer-events-none"
                 )}
               >
-                <ScrollArea className="h-[250px] w-full rounded-md border p-4">
+                <ScrollArea className="h-[250px] w-full rounded-md border p-4 overflow-y-visible">
                   <Link
                     href="/window-cleaning"
                     className="block text-gray-900 hover:text-gray-600 py-2 text-base"
