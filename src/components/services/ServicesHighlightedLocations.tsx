@@ -17,7 +17,7 @@ export default function ServicesHighlightedLocations({
     { name: "Maidenhead", href: "/services/commercial-cleaning/maidenhead" },
     { name: "Marlow", href: "/" },
     { name: "Luton", href: "/" },
-    { name: "High Wycombe", href: "/" },
+    { name: "High Wycombe", href: "/services/commercial-cleaning/high-wycombe" },
     { name: "Hemel Hempstead", href: "/" },
     { name: "London", href: "/" },
     { name: "Northampton", href: "/" },
