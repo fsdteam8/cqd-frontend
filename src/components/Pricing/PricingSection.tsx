@@ -97,7 +97,7 @@ export default function PricingSection() {
   };
 
   return (
-    <div id="pricing" className="min-h-screen py-8 px-4">
+    <div id="pricing" className="px-4 py-10 md:py-14 lg:py-24">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">

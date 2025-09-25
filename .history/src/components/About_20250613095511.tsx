@@ -29,7 +29,7 @@ const About = () => {
 
             <p className="text-base font-medium sm:text-base leading-[120%]">
               Since 2012, CQD Cleaning Service has offered trusted, top-quality
-              cleaning for homes and businesses. We’re committed to excellence
+              cleaning . We’re committed to excellence
               and exceeding every client’s expectations—every time.
             </p>
 
