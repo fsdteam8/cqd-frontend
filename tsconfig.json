@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/(website)/services/commercial-cleaning/high-wycombe/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/(website)/services/commercial-cleaning/high-wycombe/page.tsx"],
   "exclude": ["node_modules"]
 }
