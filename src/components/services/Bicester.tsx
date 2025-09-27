@@ -14,7 +14,7 @@ const Bicester = () => {
             </h1>
             <p className="text-base md:text-lg font-normal leading-[120%] text-primary pt-4">
               Looking for{" "}
-              <strong>trusted commercial cleaning services in Bicester?</strong>{" "}
+              trusted commercial cleaning services in Bicester?{" "}
               At CQD Cleaning Service, we provide professional, tailored
               cleaning solutions for businesses of all sizes. From daily office
               cleaning to deep cleaning, carpet care, and specialist

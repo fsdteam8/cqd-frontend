@@ -17,70 +17,50 @@ const FAQ = () => {
         <Accordion type="single" collapsible className="w-full space-y-4 mt-5">
           <AccordionItem value="schedule">
             <AccordionTrigger className="text-xl md:text-[22px] lg:text-2xl font-semibold text-[#14213d]">
-         How much does commercial cleaning in Bicester cost?
+        How much does commercial cleaning in High Wycombe cost?
             </AccordionTrigger>
             <AccordionContent className="text-base font-medium text-gray-700">
-              Pricing depends on premises size, type of cleaning, and frequency. We offer tailored, affordable packages for all businesses.
+               Our pricing depends on the size of your premises and the type of cleaning required. We offer affordable, tailored packages to suit your budget.
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="safety">
             <AccordionTrigger className="text-xl md:text-[22px] lg:text-2xl font-semibold text-[#14213d]">
-           Do you provide one-off or deep cleaning services?
+          Do you provide one-off deep cleaning services in High Wycombe?
             </AccordionTrigger>
             <AccordionContent className="text-base font-medium text-gray-700">
-               Yes, we provide both regular cleaning contracts and one-off deep cleaning services.
+               Yes, we offer both regular cleaning contracts and one-off deep cleans to suit your business needs.
 
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="customization">
             <AccordionTrigger className="text-xl md:text-[22px] lg:text-2xl font-semibold text-[#14213d]">
-              Can you clean outside business hours?
+             Can you clean outside business hours?
 
             </AccordionTrigger>
             <AccordionContent className="text-base font-medium text-gray-700">
-               Yes, we work evenings, weekends, or early mornings to avoid disruption.
+              Absolutely — we work around your schedule, offering evening, weekend, and early morning cleaning to avoid disruption.
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="pricing">
             <AccordionTrigger className="text-xl md:text-[22px] lg:text-2xl font-semibold text-[#14213d]">
-           Are your cleaning products eco-friendly and safe?
+           Do you use eco-friendly products?
             </AccordionTrigger>
             <AccordionContent className="text-base font-medium text-gray-700">
-                 Absolutely — we use non-toxic, sustainable products and modern equipment.
+               Yes, we prioritize sustainable, non-toxic cleaning solutions to protect both people and the environment.
 
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="deep-cleaning">
             <AccordionTrigger className="text-xl md:text-[22px] lg:text-2xl font-semibold text-[#14213d]">
-           What types of businesses do you serve in Bicester?
+       What types of businesses do you clean in High Wycombe?
 
             </AccordionTrigger>
             <AccordionContent className="text-base font-medium text-gray-700">
-                We clean offices, schools, nurseries, gyms, restaurants, hotels, healthcare facilities, retail shops, workshops, data centres, and more.
-
-            </AccordionContent>
-          </AccordionItem>
-           <AccordionItem value="cleaning">
-            <AccordionTrigger className="text-xl md:text-[22px] lg:text-2xl font-semibold text-[#14213d]">
-              How can I get a quote for cleaning services in Bicester?
-
-            </AccordionTrigger>
-            <AccordionContent className="text-base font-medium text-gray-700">
-                Contact us via phone, email, or our website for a free, no-obligation quote.
-
-            </AccordionContent>
-          </AccordionItem>
-           <AccordionItem value="c-cleaning">
-            <AccordionTrigger className="text-xl md:text-[22px] lg:text-2xl font-semibold text-[#14213d]">
-            Do you provide specialist cleaning services?
-
-            </AccordionTrigger>
-            <AccordionContent className="text-base font-medium text-gray-700">
-               Yes, we offer specialist cleaning for theatres, soft play areas, dental clinics, data centres, mosques, and other unique commercial spaces.
+               We serve offices, schools, gyms, restaurants, retail shops, hotels, healthcare facilities, and more.
 
             </AccordionContent>
           </AccordionItem>

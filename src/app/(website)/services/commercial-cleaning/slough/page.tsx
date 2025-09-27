@@ -14,8 +14,10 @@ const MaidenheadPage = () => {
     <div>
       <Slough />
       <ServicesHighlightedLocations
-        title="Professional Cleaning Services in Slough"
+        title="Expert Cleaning Services in Slough & Surrounding Areas "
         description="At CQD Cleaning Service, we deliver expert cleaning solutions in Slough and the wider region.
+We provide services in:
+
 "
       />
       <FAQ/>

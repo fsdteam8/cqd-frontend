@@ -13,7 +13,7 @@ const Marlow = () => {
             </h1>
             <p className="text-base md:text-lg font-normal leading-[120%] text-primary pt-4">
               Looking for{" "}
-              <strong>trusted commercial cleaning services in Marlow?</strong>{" "}
+             trusted commercial cleaning services in Marlow?{" "}
               At CQD Cleaning Service, we deliver professional and tailored
               cleaning solutions for businesses of all sizes. From daily office
               cleaning to deep cleaning, carpet care, and specialist

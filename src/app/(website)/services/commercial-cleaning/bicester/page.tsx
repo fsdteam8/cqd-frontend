@@ -15,8 +15,9 @@ const MaidenheadPage = () => {
       <Bicester />
       <ServicesHighlightedLocations
         title="Expert Cleaning Services in Bicester & Surrounding Areas"
-        description="At CQD Cleaning Service, we provide expert commercial cleaning solutions in Bicester and the surrounding towns. We serve businesses in Bicester, Northampton, Milton Keynes, High Wycombe, Watford, London, Aylesbury, Slough, Reading, Maidenhead, Bracknell, Beaconsfield, Buckinghamshire, and Berkshire. No matter the location, our team ensures high-quality, reliable cleaning services for offices, retail spaces, healthcare facilities, and other commercial properties, helping businesses maintain spotless, hygienic, and welcoming environments.
-"
+        description={
+          `At CQD Cleaning Service, we provide expert commercial cleaning solutions in Bicester and the surrounding towns. We serve businesses in Bicester, Northampton, Milton Keynes, High Wycombe, Watford, London, Aylesbury, Slough, Reading, Maidenhead, Bracknell, Beaconsfield, Buckinghamshire, and Berkshire. No matter the location, our team ensures high-quality, reliable cleaning services for offices, retail spaces, healthcare facilities, and other commercial properties, helping businesses maintain spotless, hygienic, and welcoming environments.`
+        }
       />
       <FAQ/>
     </div>
