@@ -22,13 +22,13 @@ export default function ServicesHighlightedLocations({
     { name: "London", href: "/" },
     { name: "Northampton", href: "/services/commercial-cleaning/northampton" },
     { name: "Bicester", href: "/services/commercial-cleaning/bicester" },
-    { name: "Bracknell", href: "/" },
+    { name: "Bracknell", href: "/services/commercial-cleaning/bracknell" },
     { name: "Oxford", href: "/services/commercial-cleaning/oxford" },
-    { name: "Berkshire", href: "/" },
-    { name: "Banbury", href: "/" },
-    { name: "Beaconsfield", href: "/" },
-    { name: "Reading", href: "/" },
-    { name: "Buckinghamshire", href: "/" },
+    { name: "Berkshire", href: "/services/commercial-cleaning/berkshire" },
+    { name: "Banbury", href: "/services/commercial-cleaning/banbury" },
+    { name: "Beaconsfield", href: "/services/commercial-cleaning/beaconsfield" },
+    { name: "Reading", href: "/services/commercial-cleaning/reading" },
+    { name: "Buckinghamshire", href: "/services/commercial-cleaning/buckinghamshire" },
   ];
 
   return (
