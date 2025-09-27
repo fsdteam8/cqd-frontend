@@ -16,6 +16,8 @@ const MaidenheadPage = () => {
       <ServicesHighlightedLocations
         title="Expert Cleaning Services in Luton & Surrounding Areas"
         description="At CQD Cleaning Service, we deliver expert commercial cleaning solutions in Luton and across nearby towns.
+We serve businesses in:
+
 "
       />
       <FAQ/>

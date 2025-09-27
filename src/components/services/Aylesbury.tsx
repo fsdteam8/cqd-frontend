@@ -13,7 +13,7 @@ const Aylesbury = () => {
             </h1>
             <p className="text-base md:text-lg font-normal leading-[120%] text-primary pt-4">
               Searching for{" "}
-              <strong>trusted cleaning services in Aylesbury?</strong> At CQD
+              trusted cleaning services in Aylesbury? At CQD
               Cleaning Service, we provide professional, tailored cleaning
               solutions for businesses of all sizes. From daily office cleaning
               to deep cleaning, carpet care, and specialist sanitization, our

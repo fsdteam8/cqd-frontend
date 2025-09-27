@@ -14,8 +14,10 @@ const MaidenheadPage = () => {
     <div>
       <Aylesbury/>
       <ServicesHighlightedLocations
-        title="Professional Cleaning Services in Aylesbury"
-        description="Expert Cleaning Services in Aylesbury & Surrounding Areas"
+        title="Expert Cleaning Services in Aylesbury & Surrounding Areas"
+        description="At CQD Cleaning Service, we provide expert cleaning solutions not only in Aylesbury but also across the surrounding region.
+We proudly serve businesses in:
+"
       />
      <Frequently_Asked_Questions/>
     </div>
