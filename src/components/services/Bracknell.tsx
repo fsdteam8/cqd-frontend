@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import ServicesHighlightedLocations from "./ServicesHighlightedLocations";
 
-const Beaconsfield = () => {
+const Bracknell = () => {
   return (
     <div className="container max-w-9xl mx-auto px-4 md:px-6">
         {/*Professional Cleaning Services in Bracknell section */}
@@ -232,4 +232,4 @@ const Beaconsfield = () => {
   );
 };
 
-export default Beaconsfield;
+export default Bracknell;

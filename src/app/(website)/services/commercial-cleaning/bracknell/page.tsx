@@ -1,5 +1,6 @@
 
-import Beaconsfield from "@/components/services/Beaconsfield";
+
+import Bracknell from "@/components/services/Bracknell";
 import React from "react";
 
 export const metadata = {
@@ -12,7 +13,7 @@ export const metadata = {
 const BracknellPage = () => {
   return (
     <div>
-      <Beaconsfield />
+      <Bracknell />
     </div>
   );
 };
