@@ -41,6 +41,8 @@ const About = () => {
               results you can trust every time.
             </p>
 
+            <button className="flex items-center justify-center text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium tracking-wider text-center mb-2"><span className=" border border-black/20  py-2 px-10  rounded-[10px]">Call Us : <strong>09888988</strong></span></button>
+
             {/* Features grid - responsive with 1 column on mobile, 2 on larger screens */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6">
               <div className="bg-[#F2F2F2] rounded-tr-[30px] rounded-br-[30px] rounded-bl-[30px] h-[52px] flex items-center justify-center">

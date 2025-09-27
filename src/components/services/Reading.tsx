@@ -201,7 +201,7 @@ const Reading = () => {
               restaurants, hotels, retail shops, and more.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="deep-cleaning">
+          <AccordionItem value="deep-cleaning1">
             <AccordionTrigger className="text-xl md:text-[22px] lg:text-2xl font-semibold text-[#14213d]">
               How do I get a quote for commercial cleaning in Reading?
             </AccordionTrigger>
