@@ -33,7 +33,7 @@ const Northampton = () => {
               alt="maidenhead cleaning services"
               width={700}
               height={700}
-              className="w-full h-[350px] md:h-[300px] rounded-[20px] object-cover"
+              className="w-full h-[350px] md:h-[330px] rounded-[20px] object-cover"
             />
           </div>
         </div>
@@ -49,7 +49,7 @@ const Northampton = () => {
                 alt="oxford cleaning services"
                 width={700}
                 height={700}
-                className="w-full h-[350px] md:h-[500px] rounded-[20px] object-cover"
+                className="w-full h-[350px] md:h-[470px] rounded-[20px] object-cover"
               />
             </div>
           </div>

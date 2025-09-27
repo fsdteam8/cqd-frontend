@@ -28,7 +28,8 @@ export default function ServicesHighlightedLocations({
     { name: "Banbury", href: "/services/commercial-cleaning/banbury" },
     { name: "Beaconsfield", href: "/services/commercial-cleaning/beaconsfield" },
     { name: "Reading", href: "/services/commercial-cleaning/reading" },
-    { name: "Buckinghamshire", href: "/services/commercial-cleaning/buckinghamshire" },
+    // { name: "Buckinghamshire", href: "/services/commercial-cleaning/buckinghamshire" },
+    { name: "Buckinghamshire", href: "/" },
   ];
 
   return (

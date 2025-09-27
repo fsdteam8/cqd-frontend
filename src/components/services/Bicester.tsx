@@ -32,7 +32,7 @@ const Bicester = () => {
               alt="maidenhead cleaning services"
               width={700}
               height={700}
-              className="w-full h-[350px] md:h-[300px] rounded-[20px] object-cover"
+              className="w-full h-[350px] md:h-[350px] rounded-[20px] object-cover"
             />
           </div>
         </div>
@@ -48,7 +48,7 @@ const Bicester = () => {
                 alt="oxford cleaning services"
                 width={700}
                 height={700}
-                className="w-full h-[350px] md:h-[500px] rounded-[20px] object-cover"
+                className="w-full h-[350px] md:h-[480px] rounded-[20px] object-cover"
               />
             </div>
           </div>

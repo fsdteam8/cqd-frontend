@@ -30,7 +30,7 @@ const Marlow = () => {
               alt="maidenhead cleaning services"
               width={700}
               height={700}
-              className="w-full h-[350px] md:h-[380px] rounded-[20px] object-cover"
+              className="w-full h-[350px] md:h-[340px] rounded-[20px] object-cover"
             />
           </div>
         </div>
@@ -46,7 +46,7 @@ const Marlow = () => {
                 alt="oxford cleaning services"
                 width={700}
                 height={700}
-                className="w-full h-[350px] md:h-[500px] rounded-[20px] object-cover"
+                className="w-full h-[350px] md:h-[420px] rounded-[20px] object-cover"
               />
             </div>
           </div>
