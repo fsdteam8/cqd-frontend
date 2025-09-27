@@ -28,6 +28,7 @@ export default function Review() {
   });
 
   const reviews = data?.data?.data || [];
+  
 
   useEffect(() => {
     const checkIfMobile = () => {
