@@ -237,7 +237,7 @@ const Berkshire = () => {
             
                         </AccordionContent>
                       </AccordionItem>
-                      <AccordionItem value="deep-cleaning">
+                      <AccordionItem value="deep-cleaning1">
                         <AccordionTrigger className="text-xl md:text-[22px] lg:text-2xl font-semibold text-[#14213d]">
                           How can I get a quote for cleaning services in Berkshire?
                         </AccordionTrigger>
