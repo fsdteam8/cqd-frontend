@@ -12,7 +12,7 @@ const  Watford= () => {
              Professional Cleaning Services in Watford
             </h1>
             <p className="text-base md:text-lg font-normal leading-[120%] text-primary pt-4">
-            Searching for <strong>trusted cleaning services in Watford?</strong> At CQD Cleaning Service, we provide tailored cleaning solutions for businesses of all sizes. From daily office cleaning to deep cleaning, carpet care, and specialist sanitization, our team ensures your workplace remains spotless, hygienic, and professional. Serving Watford and surrounding areas, we pride ourselves on reliability, flexibility, and customer satisfaction. Contact us today to learn how our cleaning services in Watford can help keep your business at its best.
+            Searching for trusted cleaning services in Watford? At CQD Cleaning Service, we provide tailored cleaning solutions for businesses of all sizes. From daily office cleaning to deep cleaning, carpet care, and specialist sanitization, our team ensures your workplace remains spotless, hygienic, and professional. Serving Watford and surrounding areas, we pride ourselves on reliability, flexibility, and customer satisfaction. Contact us today to learn how our cleaning services in Watford can help keep your business at its best.
             </p>
           </div>
           <div className="md:col-span-1">

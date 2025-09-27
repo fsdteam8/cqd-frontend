@@ -13,7 +13,7 @@ const HighWycombe = () => {
             </h1>
             <p className="text-base md:text-lg font-normal leading-[120%] text-primary pt-4">
               Searching for trusted{" "}
-              <strong>commercial cleaning services in High Wycombe?</strong> At
+             commercial cleaning services in High Wycombe? At
               CQD Cleaning Service, we specialize in delivering professional and
               tailored cleaning solutions for businesses of all sizes. From
               routine office cleaning to deep cleaning, carpet care, and

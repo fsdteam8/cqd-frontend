@@ -16,8 +16,11 @@ const OxfordPage = () => {
     <div>
       <Watford/>
       <ServicesHighlightedLocations
-        title="Professional Cleaning Services in Watford"
-        description="At CQD Cleaning Service, we proudly deliver professional cleaning solutions not only in Watford but also across the wider region. Whether you require office cleaning, commercial cleaning, or specialist cleaning services, our dedicated team is ready to support businesses of all sizes with reliable and affordable cleaning solutions."
+        title="Expert Cleaning Services in Watford & Surrounding Areas"
+        description="At CQD Cleaning Service, we proudly deliver professional cleaning solutions not only in Watford but also across the wider region. Whether you require office cleaning, commercial cleaning, or specialist cleaning services, our dedicated team is ready to support businesses of all sizes with reliable and affordable cleaning solutions.
+We provide expert cleaning services in the following areas:
+
+"
       />
     </div>
   );
