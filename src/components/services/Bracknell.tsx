@@ -45,7 +45,7 @@ const Bracknell = () => {
                         alt="bracknell cleaning services"
                         width={700}
                         height={700}
-                        className="w-full h-[350px] md:h-[470px] rounded-[20px] object-cover"
+                        className="w-full h-[350px] md:h-[490px] rounded-[20px] object-cover"
                       />
                     </div>
                   </div>

@@ -37,7 +37,7 @@ const  Watford= () => {
                 alt="oxford cleaning services"
                 width={700}
                 height={700}
-                className="w-full h-[350px] md:h-[500px] rounded-[20px] object-cover"
+                className="w-full h-[350px] md:h-[410px] rounded-[20px] object-cover"
               />
             </div>
           </div>
