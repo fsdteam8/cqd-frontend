@@ -19,9 +19,17 @@ const Oxford = () => {
               touch now to find out how our commercial cleaning services in
               Oxford can keep your business looking its best!
             </p>
+              {/* button  */}
+            <div className="flex items-center justify-center mt-8 md:mt-10">
+              <button className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-normal text-[#0F2A5C]">
+                <span className="font-semibold border border-black/20  py-2 px-10  rounded-[10px]">
+                  Call Us : <strong>09888988</strong>
+                </span>
+              </button>
+            </div>
           </div>
           <div className="md:col-span-1">
-            <Image src="/location/oxford1.jpg" alt="oxford cleaning services" width={700} height={700} className="w-full h-[350px] md:h-[300px] rounded-[20px] object-cover"/>
+            <Image src="/location/oxford1.jpg" alt="oxford cleaning services" width={700} height={700} className="w-full h-[350px] md:h-[375px] rounded-[20px] object-cover"/>
           </div>
         </div>
       </section>

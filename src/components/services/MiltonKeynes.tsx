@@ -22,6 +22,14 @@ const MiltonKeynes = () => {
             <p className="text-base md:text-lg font-normal leading-[120%] text-primary pt-4">
               Looking for trusted commercial cleaning services in Milton Keynes? At CQD Cleaning Service, we provide professional, tailored cleaning solutions for businesses of all sizes. From regular office cleaning to deep cleaning, carpet care, and specialist sanitization, our expert team ensures your workplace remains spotless, hygienic, and welcoming. Serving Milton Keynes and nearby areas, we focus on delivering high-quality results with reliability and customer satisfaction. Contact us today to see how our commercial cleaning services in Milton Keynes can help your business shine.
             </p>
+              {/* button  */}
+            <div className="flex items-center justify-center mt-8 md:mt-10">
+              <button className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-normal text-[#0F2A5C]">
+                <span className="font-semibold border border-black/20  py-2 px-10  rounded-[10px]">
+                  Call Us : <strong>09888988</strong>
+                </span>
+              </button>
+            </div>
           </div>
           <div className="md:col-span-1">
             <Image
@@ -29,7 +37,7 @@ const MiltonKeynes = () => {
               alt="milton keynes cleaning services"
               width={700}
               height={700}
-              className="w-full h-[350px] md:h-[300px] rounded-[20px] object-cover"
+              className="w-full h-[350px] md:h-[430px] rounded-[20px] object-cover"
             />
           </div>
         </div>

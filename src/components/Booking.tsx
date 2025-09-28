@@ -93,7 +93,7 @@ export default function BookingsPage() {
   const session = useSession()
   const token = (session.data?.user as { token: string })?.token
 
-  console.log("Session Token:", token);
+  // console.log("Session Token:", token);
 
   // Debounce search query to avoid too many API calls
   const debouncedSearchQuery = useDebounce(searchQuery, 500)

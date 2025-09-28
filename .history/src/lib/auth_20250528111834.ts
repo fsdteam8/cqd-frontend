@@ -57,7 +57,7 @@ export const authOptions: NextAuthOptions = {
           });
 
           const data = await res.json();
-          console.log("Auth API Response:", data);
+          // console.log("Auth API Response:", data);
 
           if (!res.ok || !data?.token) {
             throw new Error(data.message || "Invalid credentials");

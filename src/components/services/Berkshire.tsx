@@ -22,6 +22,14 @@ const Berkshire = () => {
                     <p className="text-base md:text-lg font-normal leading-[120%] text-primary pt-4">
                     Are you searching for trusted <strong>commercial cleaning services in Berkshire?</strong> At CQD Cleaning Service, we provide professional and tailored cleaning solutions for businesses across the county. From daily office cleaning and carpet care to window cleaning and specialist sanitization, our expert team ensures your workplace remains spotless, hygienic, and welcoming. Serving Berkshire and the surrounding areas, we are committed to delivering quality, reliability, and customer satisfaction. Contact us today to learn how our <strong>commercial cleaning services in Berkshire</strong> can keep your business looking its very best.
                     </p>
+                      {/* button  */}
+            <div className="flex items-center justify-center mt-8 md:mt-10">
+              <button className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-normal text-[#0F2A5C]">
+                <span className="font-semibold border border-black/20  py-2 px-10  rounded-[10px]">
+                  Call Us : <strong>09888988</strong>
+                </span>
+              </button>
+            </div>
                   </div>
                   <div className="md:col-span-1">
                     <Image
@@ -29,7 +37,7 @@ const Berkshire = () => {
                       alt="berkshire cleaning services"
                       width={700}
                       height={700}
-                      className="w-full h-[350px] md:h-[340px] rounded-[20px] object-cover"
+                      className="w-full h-[350px] md:h-[440px] rounded-[20px] object-cover"
                     />
                   </div>
                 </div>
