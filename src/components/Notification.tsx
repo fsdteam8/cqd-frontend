@@ -75,7 +75,7 @@ const Notification = () => {
     refetchInterval: 60 * 1000, // Refetch every minute
   })
 
-  console.log("API Response:", apiResponse?.data)
+  // console.log("API Response:", apiResponse?.data)
 
   // Mark as read mutation
   const markAsReadMutation = useMutation({

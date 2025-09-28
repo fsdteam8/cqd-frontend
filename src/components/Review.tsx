@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 // import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -27,7 +27,8 @@ export default function Review() {
       }).then((res) => res.json()),
   });
 
-  const reviews = data?.data?.data || [];
+  // const reviews = data?.data?.data || [];
+  const reviews = useMemo(() => data?.data?.data || [], [data]);
   
 
   useEffect(() => {

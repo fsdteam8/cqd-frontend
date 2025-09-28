@@ -22,6 +22,14 @@ const Oxfordshire = () => {
             <p className="text-base md:text-lg font-normal leading-[120%] text-primary pt-4">
               Are you searching for a trusted commercial cleaning service in Oxfordshire? At CQD Cleaning Service, we provide tailored cleaning solutions to keep your workplace spotless, hygienic, and professional. Whether you need regular office cleaning, deep cleaning, or specialist services, our experienced team ensures your business always makes a great impression. Serving Oxfordshire and the surrounding areas, we focus on delivering consistent quality and client satisfaction.
             </p>
+              {/* button  */}
+            <div className="flex items-center justify-center mt-8 md:mt-10">
+              <button className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-normal text-[#0F2A5C]">
+                <span className="font-semibold border border-black/20  py-2 px-10  rounded-[10px]">
+                  Call Us : <strong>09888988</strong>
+                </span>
+              </button>
+            </div>
           </div>
           <div className="md:col-span-1">
             <Image
@@ -29,7 +37,7 @@ const Oxfordshire = () => {
               alt="oxfordshire cleaning services"
               width={700}
               height={700}
-              className="w-full h-[350px] md:h-[300px] rounded-[20px] object-cover"
+              className="w-full h-[350px] md:h-[370px] rounded-[20px] object-cover"
             />
           </div>
         </div>

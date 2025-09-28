@@ -12,9 +12,17 @@ const Maidenhead = () => {
             <p className="text-base md:text-lg font-normal leading-[120%] text-primary pt-4">
           Looking for <strong>commercial cleaning services in Maidenhead?</strong> Our expert cleaning team is here to provide customized solutions for your business. From routine office cleaning to deep cleaning and one-off services, we make sure your workplace is spotless, hygienic, and welcoming. Serving Maidenhead and nearby areas, we deliver top-quality cleaning with attention to detail and customer satisfaction. Get in touch today to see how our commercial cleaning services in Maidenhead can help your business shine!
             </p>
+              {/* button  */}
+            <div className="flex items-center justify-center mt-8 md:mt-10">
+              <button className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-normal text-[#0F2A5C]">
+                <span className="font-semibold border border-black/20  py-2 px-10  rounded-[10px]">
+                  Call Us : <strong>09888988</strong>
+                </span>
+              </button>
+            </div>
           </div>
           <div className="md:col-span-1">
-            <Image src="/location/maidenhead1.jpg" alt="maidenhead cleaning services" width={700} height={700} className="w-full h-[350px] md:h-[300px] rounded-[20px] object-cover"/>
+            <Image src="/location/maidenhead1.jpg" alt="maidenhead cleaning services" width={700} height={700} className="w-full h-[350px] md:h-[400px] rounded-[20px] object-cover"/>
           </div>
         </div>
       </section>

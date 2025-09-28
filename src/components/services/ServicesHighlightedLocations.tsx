@@ -9,7 +9,7 @@ export default function ServicesHighlightedLocations({
   description?: string;
 }) {
   const locations = [
-    { name: "Oxfordshire", href: "/" },
+      { name: "Oxfordshire", href: "/services/commercial-cleaning/oxfordshire" },
     { name: "Aylesbury", href: "/services/commercial-cleaning/aylesbury" },
     { name: "Watford", href: "/services/commercial-cleaning/watford" },
     { name: "Slough", href: "/services/commercial-cleaning/slough" },
@@ -19,7 +19,7 @@ export default function ServicesHighlightedLocations({
     { name: "Luton", href: "/services/commercial-cleaning/luton" },
     { name: "High Wycombe", href: "/services/commercial-cleaning/high-wycombe" },
     { name: "Hemel Hempstead", href: "/services/commercial-cleaning/hemel-hempstead" },
-    { name: "London", href: "/" },
+    { name: "London", href: "/services/commercial-cleaning/london" },
     { name: "Northampton", href: "/services/commercial-cleaning/northampton" },
     { name: "Bicester", href: "/services/commercial-cleaning/bicester" },
     { name: "Bracknell", href: "/services/commercial-cleaning/bracknell" },
@@ -28,8 +28,7 @@ export default function ServicesHighlightedLocations({
     { name: "Banbury", href: "/services/commercial-cleaning/banbury" },
     { name: "Beaconsfield", href: "/services/commercial-cleaning/beaconsfield" },
     { name: "Reading", href: "/services/commercial-cleaning/reading" },
-    // { name: "Buckinghamshire", href: "/services/commercial-cleaning/buckinghamshire" },
-    { name: "Buckinghamshire", href: "/" },
+    { name: "Buckinghamshire", href: "/services/commercial-cleaning/buckinghamshire" },
   ];
 
   return (
