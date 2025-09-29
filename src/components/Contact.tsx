@@ -69,9 +69,8 @@ export default function ContactSection() {
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center text-center mb-8">
           <h2 className="text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
-            Request A Call Back
+            Request A Call Back <br className="block md:hidden"/> ( 09888988 )
           </h2>
-          <p className="mt-2 text-xl text-muted-foreground">Contact</p>
         </div>
 
         <div className="flex flex-col gap-4 lg:flex-row items-start justify-center">
