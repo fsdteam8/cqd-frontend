@@ -1,3 +1,4 @@
+import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,10 +9,10 @@ const About = () => {
       className="w-full flex items-center justify-center px-4 pt-8"
     >
       <div className="container  px-4 md:px-6">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+        <div className="grid grid-cols-1  lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Image container - responsive and properly sized */}
           {/* <div className="relative w-full mx-auto lg:max-w-none lg:w-[536px] lg:h-[656px] overflow-hidden rounded-lg"> */}
-          <div className="lg:col-span-1 relative w-full mx-auto lg:h-[656px] overflow-hidden rounded-lg">
+          {/* <div className="lg:col-span-1 relative w-full mx-auto lg:h-[656px] overflow-hidden rounded-lg">
             <Image
               src="/images/about.png"
               alt="Commercial Cleaning Services"
@@ -20,6 +21,17 @@ const About = () => {
               className="w-full h-full object-cover"
               priority
             />
+          </div> */}
+          <div className="lg:col-span-1 relative">
+            <div className=" sticky top-28 z-40">
+              <Image
+                src="/images/about.png"
+                alt="Commercial Cleaning Services"
+                width={536}
+                height={656}
+                className="w-full h-[370px] md:h-[600px] rounded-[20px] object-cover"
+              />
+            </div>
           </div>
 
           {/* Content container */}
@@ -33,6 +45,24 @@ const About = () => {
               cleaning . We’re committed to excellence and exceeding every
               client’s expectations—every time.
             </p>
+            <div className="w-full flex items-center justify-center">
+              <div className="w-full md:w-2/3 bg-[#0F2A5C] p-6 rounded-[10px] text-white">
+                <h5 className="text-lg md:text-xl font-medium leading-normal !text-white text-center pb-6">
+                  We don’t just clean, we make your space shine like never
+                  before
+                </h5>
+              <Link href="/contact">
+                <button type="button" className="w-full flex items-center justify-center">
+                  <span className="bg-gray-500 py-2 px-4 ">
+                    speak to our team
+                  </span>
+                  <span className="bg-black p-2">
+                    <ChevronRight />
+                  </span>
+                </button>
+              </Link>
+              </div>
+            </div>
 
             <p className="text-base font-medium sm:text-base leading-[120%] mt-2">
               At CQD Cleaning Service, our expert team and advanced tools ensure
@@ -40,7 +70,7 @@ const About = () => {
               results you can trust every time.
             </p>
             {/* button  */}
-            <div className="flex items-center justify-center py-2">
+            <div className="flex items-center justify-center mt-8 md:mt-10 pt-2">
               <button className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-normal text-[#0F2A5C]">
                 <span className="font-semibold border border-black/20  py-2 px-10  rounded-[10px]">
                   Call Us : <strong>09888988</strong>
