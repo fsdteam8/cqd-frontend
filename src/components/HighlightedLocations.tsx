@@ -52,8 +52,7 @@ export default function HighlightedLocations() {
     { name: "Berkshire", href: "/services/commercial-cleaning/berkshire" },
     { name: "Banbury", href: "/services/commercial-cleaning/banbury" },
     {
-      name: "Beaconsfield",
-      href: "beaconsfield",
+      name: "Beaconsfield", href: "/services/commercial-cleaning/beaconsfield"
     },
     { name: "Reading", href: "/services/commercial-cleaning/reading" },
     {

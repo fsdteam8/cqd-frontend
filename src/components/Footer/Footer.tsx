@@ -82,9 +82,9 @@ export default function Footer() {
           </p>
           <p className="text-sm mb-6 !text-white"> Buckinghamshire, HP11 1LA</p>
         </div>
-        <p className="text-lg md:text-xl font-bold hover:text-gray-300 transition-colors">
-          09888988
-        </p>
+        {/* <p className="text-lg md:text-xl font-bold hover:text-gray-300 transition-colors">
+          01494 911001
+        </p> */}
         {/* Bottom section with policies and social */}
         <div className="flex  flex-col md:flex-row justify-between  md:items-center">
           <div>
@@ -97,10 +97,10 @@ export default function Footer() {
             <br />
             <div className="mt-2">
               <a
-                href="tel:09888988"
-                className="text-lg md:text-xl font-bold hover:text-gray-300 transition-colors "
+                href="tel:01494 911001"
+                className="text-lg md:text-xl font-bold hover:text-gray-300 transition-colors text-white"
               >
-                09888988
+                01494 911001
               </a>
             </div>
 
