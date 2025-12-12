@@ -147,10 +147,6 @@ export default function PricingSection() {
                 </div>
 
                 <p className="text-sm text-[#333] mt-1">
-                  <span className="text-xs text-[#0F2A5C] font-semibold ml-1">
-                    (Cost Per Client £550.00)
-                  </span>
-                  <span className="text-[10px] font-bold ml-2">T&C apply</span>
                 </p>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -211,10 +207,6 @@ export default function PricingSection() {
                 </div>
 
                 <p className="text-sm text-[#333] mt-1">
-                  <span className="text-xs text-[#0F2A5C] font-semibold ml-1">
-                    (Cost Per Client £533.33)
-                  </span>
-                  <span className="text-[10px] font-bold ml-2">T&C apply</span>
                 </p>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -275,12 +267,6 @@ export default function PricingSection() {
                     </span>
                   </div>
                   <p className="text-sm text-[#333] mt-1">
-                    <span className="text-xs text-[#0F2A5C] font-semibold ml-1">
-                      (Cost Per Client £525.00)
-                    </span>
-                    <span className="text-[10px] font-bold ml-2">
-                      T&C apply
-                    </span>
                   </p>
                 </div>
               </CardHeader>
