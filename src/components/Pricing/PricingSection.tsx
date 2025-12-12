@@ -147,7 +147,6 @@ export default function PricingSection() {
                 </div>
 
                 <p className="text-sm text-[#333] mt-1">
-                  Minimum {data?.data?.no_of_client} Clients
                   <span className="text-xs text-[#0F2A5C] font-semibold ml-1">
                     (Cost Per Client £550.00)
                   </span>
@@ -212,7 +211,6 @@ export default function PricingSection() {
                 </div>
 
                 <p className="text-sm text-[#333] mt-1">
-                  Minimum {silver?.data?.no_of_client} Clients
                   <span className="text-xs text-[#0F2A5C] font-semibold ml-1">
                     (Cost Per Client £533.33)
                   </span>
@@ -277,7 +275,6 @@ export default function PricingSection() {
                     </span>
                   </div>
                   <p className="text-sm text-[#333] mt-1">
-                    Minimum {gold?.data?.no_of_client} Clients
                     <span className="text-xs text-[#0F2A5C] font-semibold ml-1">
                       (Cost Per Client £525.00)
                     </span>
