@@ -1,4 +1,4 @@
-# 🧼 CleanCo - Commercial Cleaning Service Platform
+# 🧼 CQD - Commercial Cleaning Service Platform
 
 A modern, full-stack service marketplace built with the **MERN Stack** and **Next.js**, specifically designed for commercial and specialized cleaning industries.
 
