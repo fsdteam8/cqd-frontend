@@ -911,11 +911,18 @@ export default function TabletNavbar() {
             >
               Contact
             </Link>
+              {/* Phone Button - Light Blue */}
+              <Link href="tel:01494911001">
+                <Button className=" w-full bg-sky-500 !text-white hover:bg-sky-600 rounded-full text-sm lg:text-base py-2">
+                  <span>01494 911001</span>
+                </Button>
+              </Link>
             <Link href={"/#pricing"}>
-              <Button className="bg-[#0F2A5C] text-white hover:bg-[#0F2A5C]/80 w-full mt-3 rounded-full text-base py-3">
+              <Button className="bg-green-500 hover:bg-green-600 text-white hover:bg-[#0F2A5C]/80 w-full mt-2 rounded-full text-base py-3">
                 Request a Quote
               </Button>
             </Link>
+
           </nav>
         </div>
       </div>
