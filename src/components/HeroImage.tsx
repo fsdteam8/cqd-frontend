@@ -46,6 +46,14 @@ export function HeroImage({
         <div className="relative h-full flex flex-col items-center justify-center text-center px-4 z-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold !text-white mb-4">{title}</h1>
           <p className="text-lg md:text-xl !text-white max-w-3xl">{description}</p>
+           {/* button  */}
+            <div className="flex items-center justify-center mt-8 md:mt-10 pt-2">
+             <a href="tel:01494 911001"> <button className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-normal text-white">
+                <span className="font-semibold border border-white  py-2 px-10  rounded-[10px]">
+                  Call Us : <strong>01494 911001</strong>
+                </span>
+              </button></a>
+            </div>
         </div>
       </div>
     </section>

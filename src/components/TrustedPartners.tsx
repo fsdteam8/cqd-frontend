@@ -13,24 +13,33 @@ interface Partner {
 
 // Moved outside the component to ensure stable reference
 const allPartners: Partner[] = [
-  { id: 1, name: "Partner 1", logo: "/images/otp1.png" },
-  { id: 2, name: "Partner 2", logo: "/images/otp2.png" },
-  { id: 3, name: "Partner 3", logo: "/images/otp3.png" },
-  { id: 4, name: "Partner 4", logo: "/images/otp4.png" },
-  { id: 5, name: "Partner 5", logo: "/images/otp5.jpg" },
-  { id: 6, name: "Partner 6", logo: "/images/otp6.png" },
-  { id: 7, name: "Partner 7", logo: "/images/otp7.png" },
-  { id: 8, name: "Partner 8", logo: "/images/otp8.png" },
-  { id: 9, name: "Partner 9", logo: "/images/otp9.png" },
-  { id: 10, name: "Partner 10", logo: "/images/otp10.png" },
-  { id: 11, name: "Partner 11", logo: "/images/otp11.png" },
-  { id: 12, name: "Partner 12", logo: "/images/otp12.jpg" },
-  {
-    id: 13,
-    name: "Partner 13",
-    logo: "/images/bark.png",
-    href: "https://www.bark.com/en/gb/company/cqd-cleaning-services-ltd/04VL/",
-  },
+  { id: 1, name: "Partner 1", logo: "/our-trusted/1.jpg" },
+  { id: 2, name: "Partner 2", logo: "/our-trusted/2.png" },
+  { id: 3, name: "Partner 3", logo: "/our-trusted/3.png" },
+  { id: 4, name: "Partner 4", logo: "/our-trusted/4.png" },
+  { id: 5, name: "Partner 5", logo: "/our-trusted/5.jpg" },
+
+  { id: 6, name: "Partner 6", logo: "/our-trusted/1.jpg" },
+  { id: 7, name: "Partner 7", logo: "/our-trusted/2.png" },
+  { id: 8, name: "Partner 8", logo: "/our-trusted/3.png" },
+  { id: 9, name: "Partner 9", logo: "/our-trusted/4.png" },
+  { id: 10, name: "Partner 10", logo: "/our-trusted/5.jpg" },
+  { id: 11, name: "Partner11", logo: "/our-trusted/1.jpg" },
+  { id: 12, name: "Partner 12", logo: "/our-trusted/2.png" },
+
+  // { id: 6, name: "Partner 6", logo: "/images/otp6.png" },
+  // { id: 7, name: "Partner 7", logo: "/images/otp7.png" },
+  // { id: 8, name: "Partner 8", logo: "/images/otp8.png" },
+  // { id: 9, name: "Partner 9", logo: "/images/otp9.png" },
+  // { id: 10, name: "Partner 10", logo: "/images/otp10.png" },
+  // { id: 11, name: "Partner 11", logo: "/images/otp11.png" },
+  // { id: 12, name: "Partner 12", logo: "/images/otp12.jpg" },
+  // {
+  //   id: 13,
+  //   name: "Partner 13",
+  //   logo: "/images/bark.png",
+  //   href: "https://www.bark.com/en/gb/company/cqd-cleaning-services-ltd/04VL/",
+  // },
 ];
 
 // Utility to get the next partner in the list
@@ -41,7 +50,7 @@ const getNextPartner = (currentIndex: number): Partner => {
 
 export default function TrustedPartners() {
   const [visiblePartners, setVisiblePartners] = useState<Partner[]>(
-    allPartners.slice(0, 6)
+    allPartners.slice(0, 6),
   );
   const [changeOddPositions, setChangeOddPositions] = useState(true);
   const [transitioning, setTransitioning] = useState([
@@ -66,7 +75,7 @@ export default function TrustedPartners() {
     setTimeout(() => {
       positionsToChange.forEach((pos) => {
         const currentPartnerIndex = allPartners.findIndex(
-          (p) => p.name === visiblePartners[pos].name
+          (p) => p.name === visiblePartners[pos].name,
         );
         newVisiblePartners[pos] = getNextPartner(currentPartnerIndex);
       });
@@ -165,6 +174,24 @@ export default function TrustedPartners() {
               )}
             </div>
           ))}
+        </div>
+        {/* button  */}
+        {/* <div className="flex items-center justify-center mt-8 md:mt-10 pt-2">
+             <a href="tel:01494911001"> <button className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-normal text-[#0F2A5C]">
+                <span className="font-semibold border border-black/20  py-2 px-10  rounded-[10px]">
+                  Call Us : <strong>01494 911001</strong>
+                </span>
+              </button></a>
+            </div> */}
+
+        <div className="flex items-center justify-center mt-8 md:mt-10 pt-2">
+          <a href="tel:+8801494911001">
+            <button className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-normal text-[#0F2A5C]">
+              <span className="font-semibold border border-black/20 py-2 px-10 rounded-[10px]">
+                Call Us : <strong>01494 911001</strong>
+              </span>
+            </button>
+          </a>
         </div>
       </div>
     </section>

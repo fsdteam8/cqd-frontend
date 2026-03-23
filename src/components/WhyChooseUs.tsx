@@ -27,8 +27,8 @@ const WhyChooseUs = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 py-6 ">
               <div className="bg-gray-100  rounded-full px-6 py-4 text-center">
-                <h3 className="text-3xl md:text-4xl font-bold">13</h3>
-                <p className="text-sm md:text-base">Years Experience</p>
+                <h3 className="text-3xl md:text-4xl font-bold">Over</h3>
+                <p className="text-sm md:text-base">a decade of experience</p>
               </div>
 
               <div className="bg-gray-100 rounded-full px-6 py-4 text-center">
@@ -42,7 +42,7 @@ const WhyChooseUs = () => {
               </div>
             </div>
 
-            <div className="pt-4 flex justify-center lg:justify-end">
+            {/* <div className="pt-4 flex justify-center lg:justify-end">
               <Link
                 href="/#pricing"
                 className="rounded-full px-8 py-4 h-auto text-base font-medium bg-[#0F2A5C] hover:bg-[#0F2A5C]/90 !text-white"
@@ -54,7 +54,29 @@ const WhyChooseUs = () => {
                   fill="none"
                 />
               </Link>
+            </div> */}
+
+            {/* button  */}
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6 mt-8 md:mt-10 pt-2">
+             <a href="tel:01494 911001"> <button className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-normal text-[#0F2A5C]">
+                <span className="font-semibold border border-black/20  py-2 px-10  rounded-[10px]">
+                  Call Us : <strong>01494 911001</strong>
+                </span>
+              </button></a>
+               <Link
+                href="/#pricing"
+                className="rounded-full px-8 py-2 md:py-3 lg:py-4 h-auto text-base font-medium bg-[#0F2A5C] hover:bg-[#0F2A5C]/90 !text-white"
+              >
+                Get Start
+                <ArrowRight
+                  className="ml-2 h-4 w-4  inline-block"
+                  stroke="currentColor"
+                  fill="none"
+                />
+              </Link>
             </div>
+
+
           </div>
        </div>
 
