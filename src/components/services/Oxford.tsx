@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import LocationPhoneCta from "./LocationPhoneCta";
 
 const Oxford = () => {
   return (
@@ -64,6 +65,7 @@ const Oxford = () => {
                 <li className="text-base md:text-lg font-normal leading-[120%] text-primary"><strong>Simplified Process:</strong> From the initial consultation to regular maintenance, our streamlined process makes working with us easy and hassle-free. We handle the details so you can focus on your business.</li>
             </ul>
             <p className="text-base md:text-lg font-normal leading-[120%] text-primary pt-3 md:pt-5 lg:pt-6">Choose <strong>CQD Cleaning Service</strong> for commercial cleaning that guarantees a spotless, professional environment every time.</p>
+            <LocationPhoneCta />
           </div>
         </div>
       </section>
@@ -113,6 +115,7 @@ const Oxford = () => {
                 <li className="text-base md:text-lg font-normal leading-[120%] text-primary"><strong>Workshop Space Cleaning </strong> Our workshop cleaning services in Oxford remove dirt, dust, and waste to keep your space safe and organized.</li>
                 <li className="text-base md:text-lg font-normal leading-[120%] text-primary"><strong>Hotel Cleaning  </strong>We offer hotel cleaning in Oxford, covering guest rooms, lobbies, and shared spaces for a comfortable guest experience.</li>
             </ul>
+            <LocationPhoneCta />
           </div>
           <div className="md:col-span-1 relative">
             <div className=" sticky top-28 z-40">

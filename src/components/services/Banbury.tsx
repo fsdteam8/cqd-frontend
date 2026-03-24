@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import LocationPhoneCta from "./LocationPhoneCta";
 
 const Banbury = () => {
   return (
@@ -88,6 +89,7 @@ const Banbury = () => {
                 <strong>Customer Focused  :</strong> Dedicated to exceeding client expectations.
               </li>
             </ul>
+            <LocationPhoneCta />
           </div>
         </div>
       </section>
@@ -166,6 +168,7 @@ const Banbury = () => {
                 <strong>Professional Office Cleaning </strong> – Accountancy, legal, and consultancy offices kept tidy and professional.
               </li>
             </ul>
+            <LocationPhoneCta />
           </div>
           <div className="md:col-span-1 relative">
             <div className=" sticky top-28 z-40">

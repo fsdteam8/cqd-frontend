@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import LocationPhoneCta from "./LocationPhoneCta";
 import ServicesHighlightedLocations from "./ServicesHighlightedLocations";
 
 const Buckinghamshire = () => {
@@ -84,6 +85,7 @@ const Buckinghamshire = () => {
                 <strong>Customer Satisfaction :</strong> A spotless environment that exceeds expectations.
               </li>
             </ul>
+            <LocationPhoneCta />
           </div>
         </div>
       </section>
@@ -106,6 +108,7 @@ const Buckinghamshire = () => {
              We also work with schools, nurseries, healthcare practices, and gyms, providing safe and hygienic environments tailored to their needs. Beyond that, our team delivers specialist cleaning for cinemas, theatres, event venues, industrial workshops, transport fleets, and marine vessels. Whatever your industry, CQD offers reliable, tailored solutions to keep your premises looking their very best.
 
             </p>
+            <LocationPhoneCta />
           </div>
           <div className="md:col-span-1">
             <Image
@@ -191,6 +194,7 @@ const Buckinghamshire = () => {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+        <LocationPhoneCta />
       </section>
     </div>
   );

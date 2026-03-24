@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import LocationPhoneCta from "./LocationPhoneCta";
 
 const Northampton = () => {
   return (
@@ -92,6 +93,7 @@ const Northampton = () => {
               </li>
            
             </ul>
+            <LocationPhoneCta />
           </div>
         </div>
       </section>
@@ -184,6 +186,7 @@ const Northampton = () => {
               </li>
           
             </ul>
+            <LocationPhoneCta />
           </div>
           <div className="md:col-span-1 relative">
             <div className=" sticky top-28 z-40">

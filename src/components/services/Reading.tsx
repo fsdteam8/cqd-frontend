@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import LocationPhoneCta from "./LocationPhoneCta";
 import ServicesHighlightedLocations from "./ServicesHighlightedLocations";
 
 const Reading = () => {
@@ -101,6 +102,7 @@ const Reading = () => {
                 that exceeds expectations.
               </li>
             </ul>
+            <LocationPhoneCta />
           </div>
         </div>
       </section>
@@ -136,6 +138,7 @@ const Reading = () => {
               tailored cleaning solutions that keep your business looking its
               very best.
             </p>
+            <LocationPhoneCta />
           </div>
           <div className="md:col-span-1">
             <Image
@@ -219,6 +222,7 @@ const Reading = () => {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+        <LocationPhoneCta />
       </section>
     </div>
   );

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import LocationPhoneCta from "./LocationPhoneCta";
 
 const Maidenhead = () => {
   return (
@@ -59,6 +60,7 @@ const Maidenhead = () => {
                 
             </ul>
             <p className="text-base md:text-lg font-normal leading-[120%] text-primary pt-3 md:pt-5 lg:pt-6">Choose CQD Cleaning Service for a spotless and welcoming workplace you can be proud of.</p>
+            <LocationPhoneCta />
           </div>
         </div>
       </section>
@@ -111,6 +113,7 @@ const Maidenhead = () => {
                 <li className="text-base md:text-lg font-normal leading-[120%] text-primary"><strong>Workshop Space Cleaning </strong> We deliver workshop cleaning in Maidenhead, removing dirt, dust, and waste for a safer, organized workspace.</li>
                 <li className="text-base md:text-lg font-normal leading-[120%] text-primary"><strong>Hotel Cleaning  </strong>Our hotel cleaning in Maidenhead covers guest rooms, lobbies, and shared spaces, ensuring comfort and cleanliness for guests.</li>
             </ul>
+            <LocationPhoneCta />
           </div>
           <div className="md:col-span-1 relative">
             <div className=" sticky top-28 z-40">

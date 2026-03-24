@@ -55,13 +55,13 @@ export default async function Home() {
       <div className="w-full mx-auto">
         <HeroVideo />
         <PricingSection />
+        <HighlightedLocations />
+        <Review />
+        <TrustedPartners />
         <About />
         <WhyChooseUs />
         <HowItWork />
-        <TrustedPartners />
-        <HighlightedLocations />
         <BlogContainer />
-        <Review />
         <Contact />
       </div>
     </>

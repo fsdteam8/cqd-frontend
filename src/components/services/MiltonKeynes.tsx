@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import LocationPhoneCta from "./LocationPhoneCta";
 import ServicesHighlightedLocations from "./ServicesHighlightedLocations";
 
 const MiltonKeynes = () => {
@@ -84,6 +85,7 @@ const MiltonKeynes = () => {
                 <strong>Customer Satisfaction:</strong> We go above and beyond to ensure a spotless environment.
               </li>
             </ul>
+            <LocationPhoneCta />
           </div>
         </div>
       </section>
@@ -187,6 +189,7 @@ const MiltonKeynes = () => {
                 <strong>General Commercial Cleaning</strong>  Flexible cleaning services for warehouses, factories, and all other commercial premises.
               </li>
             </ul>
+            <LocationPhoneCta />
           </div>
           <div className="md:col-span-1 relative">
             <div className=" sticky top-28 z-40">
@@ -269,6 +272,7 @@ We provide services in:"
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+        <LocationPhoneCta />
       </section>
     </div>
   );
