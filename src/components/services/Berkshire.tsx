@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import LocationPhoneCta from "./LocationPhoneCta";
 import ServicesHighlightedLocations from "./ServicesHighlightedLocations";
 
 const Berkshire = () => {
@@ -91,6 +92,7 @@ const Berkshire = () => {
                         <strong>Customer Focused  :</strong> Dedicated to ensuring client satisfaction at all times.
                       </li>
                     </ul>
+                    <LocationPhoneCta />
                   </div>
                 </div>
               </section>
@@ -163,6 +165,7 @@ const Berkshire = () => {
 </li>
       
                   </ul>
+                  <LocationPhoneCta />
                 </div>
                 <div className="md:col-span-1 relative">
                   <div className=" sticky top-28 z-40">
@@ -256,6 +259,7 @@ const Berkshire = () => {
                         </AccordionContent>
                       </AccordionItem>
                     </Accordion>
+                    <LocationPhoneCta />
                   </section>
 
       

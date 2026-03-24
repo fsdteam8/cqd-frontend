@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import ServicePhoneCta from "./ServicePhoneCta";
 
 const WwoDataCenterCleaning = () => {
   return (
@@ -47,12 +48,13 @@ const WwoDataCenterCleaning = () => {
                 </p>
               </div>
 
-              <div className="mt-4">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-4">
                 <Link href={"/#pricing"}>
                   <Button className="bg-[#14213d] hover:bg-[#233862] text-white rounded-full px-8 py-6 text-lg font-medium">
                     Request a Quote
                   </Button>
                 </Link>
+                <ServicePhoneCta />
               </div>
             </div>
           </div>
@@ -88,12 +90,13 @@ const WwoDataCenterCleaning = () => {
                 </p>
               </div>
 
-              <div className="mt-4">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-4">
                 <Link href={"/#pricing"}>
                   <Button className="bg-[#14213d] hover:bg-[#233862] text-white rounded-full px-8 py-6 text-lg font-medium">
                     Request a Quote
                   </Button>
                 </Link>
+                <ServicePhoneCta />
               </div>
             </div>
 
@@ -174,12 +177,13 @@ const WwoDataCenterCleaning = () => {
                 </div>
               </div>
 
-              <div className="mt-4">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-4">
                 <Link href={"/#pricing"}>
                   <Button className="bg-[#14213d] hover:bg-[#233862] text-white rounded-full px-8 py-6 text-lg font-medium">
                     Request a Quote
                   </Button>
                 </Link>
+                <ServicePhoneCta />
               </div>
             </div>
           </div>
@@ -229,12 +233,13 @@ const WwoDataCenterCleaning = () => {
                 </div>
               </div>
 
-              <div className="mt-4">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-4">
                 <Link href={"/#pricing"}>
                   <Button className="bg-[#14213d] hover:bg-[#233862] text-white rounded-full px-8 py-6 text-lg font-medium">
                     Request a Quote
                   </Button>
                 </Link>
+                <ServicePhoneCta />
               </div>
             </div>
 
@@ -315,6 +320,15 @@ const WwoDataCenterCleaning = () => {
             highest standards, protecting your critical infrastructure while
             keeping operations smooth and uninterrupted.
           </p>
+        </div>
+         <div className="flex items-center justify-center mt-8 md:mt-10 pt-2">
+          <a href="tel:+8801494911001">
+            <button className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-normal text-[#0F2A5C]">
+              <span className="font-semibold border border-black/20 py-2 px-10 rounded-[10px]">
+                Call Us : <strong>01494 911001</strong>
+              </span>
+            </button>
+          </a>
         </div>
       </section>
     </div>

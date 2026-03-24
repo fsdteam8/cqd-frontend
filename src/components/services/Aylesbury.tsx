@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import LocationPhoneCta from "./LocationPhoneCta";
 
 const Aylesbury = () => {
   return (
@@ -89,6 +90,7 @@ const Aylesbury = () => {
                 <strong>Customer Satisfaction:</strong> We go above and beyond to ensure a spotless environment.
               </li>
             </ul>
+            <LocationPhoneCta />
           </div>
         </div>
       </section>
@@ -179,6 +181,7 @@ const Aylesbury = () => {
               </li>
             
             </ul>
+            <LocationPhoneCta />
           </div>
           <div className="md:col-span-1 relative">
             <div className=" sticky top-28 z-40">

@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import LocationPhoneCta from "./LocationPhoneCta";
 import ServicesHighlightedLocations from "./ServicesHighlightedLocations";
 
 const Beaconsfield = () => {
@@ -102,6 +103,7 @@ const Beaconsfield = () => {
                 that exceeds expectations.
               </li>
             </ul>
+            <LocationPhoneCta />
           </div>
         </div>
       </section>
@@ -149,6 +151,7 @@ const Beaconsfield = () => {
               Whatever your industry, our cleaning team provides tailored
               solutions to keep your premises looking their very best.
             </p>
+            <LocationPhoneCta />
           </div>
           <div className="md:col-span-1">
             <Image
@@ -234,6 +237,7 @@ const Beaconsfield = () => {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+        <LocationPhoneCta />
       </section>
     </div>
   );

@@ -69,7 +69,7 @@ export default function ContactSection() {
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center text-center mb-8">
           <h2 className="text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
-            Request A Call Back <br className="block md:hidden"/> ( 01494 911001 )
+            Request A Call Back <br className="block md:hidden"/>  <a href="tel:01494 911001">( 01494 911001 )</a> 
           </h2>
         </div>
 

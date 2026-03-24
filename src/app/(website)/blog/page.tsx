@@ -23,6 +23,7 @@ const BlogPage = () => {
       </div> */}
       <div className="pt-8 md:pt-10 lg:mt-12">
         <AllBlog />
+       
       </div>
       <BlogContainer />
     </div>

@@ -891,7 +891,8 @@ export default function TabletNavbar() {
               Pricing
             </Link>
             <Link
-              href="/#locations"
+              // href="/#locations"
+              href="/#location"
               className="text-gray-900 hover:text-gray-600 py-2.5 text-base"
               onClick={() => setIsMenuOpen(false)}
             >

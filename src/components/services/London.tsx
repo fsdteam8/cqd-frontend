@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
+import LocationPhoneCta from "./LocationPhoneCta";
 import ServicesHighlightedLocations from "./ServicesHighlightedLocations";
 
 const London = () => {
@@ -101,6 +102,7 @@ const London = () => {
               Choose CQD Cleaning Service for a spotless, productive, and
               welcoming work environment in London.
             </p>
+            <LocationPhoneCta />
           </div>
         </div>
       </section>
@@ -240,6 +242,7 @@ const London = () => {
                 lobbies, and shared spaces kept pristine.
               </li>
             </ul>
+            <LocationPhoneCta />
           </div>
           <div className="md:col-span-1 relative">
             <div className=" sticky top-28 z-40">

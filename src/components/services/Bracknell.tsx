@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import LocationPhoneCta from "./LocationPhoneCta";
 import ServicesHighlightedLocations from "./ServicesHighlightedLocations";
 
 const Bracknell = () => {
@@ -86,6 +87,7 @@ const Bracknell = () => {
                         <strong>Customer Satisfaction :</strong> We go above and beyond to deliver spotless results.
                       </li>
                     </ul>
+                    <LocationPhoneCta />
                   </div>
                 </div>
               </section>
@@ -147,6 +149,7 @@ const Bracknell = () => {
 </li>
       
                   </ul>
+                  <LocationPhoneCta />
                 </div>
                 <div className="md:col-span-1 relative">
                   <div className=" sticky top-28 z-40">
@@ -233,6 +236,7 @@ const Bracknell = () => {
                         </AccordionContent>
                       </AccordionItem>
                     </Accordion>
+                    <LocationPhoneCta />
                   </section>
 
       
