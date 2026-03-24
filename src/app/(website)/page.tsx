@@ -54,11 +54,11 @@ export default async function Home() {
       <JsonLd />
       <div className="w-full mx-auto">
         <HeroVideo />
+        <PricingSection />
         <About />
         <WhyChooseUs />
         <HowItWork />
         <TrustedPartners />
-        <PricingSection />
         <HighlightedLocations />
         <BlogContainer />
         <Review />

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import ServicePhoneCta from "./ServicePhoneCta";
 
 const WwoClubsCleaning = () => {
   return (
@@ -59,12 +60,13 @@ const WwoClubsCleaning = () => {
                 </div>
               </div>
 
-              <div className="mt-4">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-4">
                 <Link href={"/#pricing"}>
                   <Button className="bg-[#14213d] hover:bg-[#233862] text-white rounded-full px-8 py-6 text-lg font-medium">
                     Request a Quote
                   </Button>
                 </Link>
+                <ServicePhoneCta />
               </div>
             </div>
           </div>
@@ -109,12 +111,13 @@ const WwoClubsCleaning = () => {
                 </div>
               </div>
 
-              <div className="mt-4">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-4">
                 <Link href={"/#pricing"}>
                   <Button className="bg-[#14213d] hover:bg-[#233862] text-white rounded-full px-8 py-6 text-lg font-medium">
                     Request a Quote
                   </Button>
                 </Link>
+                <ServicePhoneCta />
               </div>
             </div>
 
@@ -191,12 +194,13 @@ const WwoClubsCleaning = () => {
                 </div>
               </div> */}
 
-              <div className="mt-4">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-4">
                 <Link href={"/#pricing"}>
                   <Button className="bg-[#14213d] hover:bg-[#233862] text-white rounded-full px-8 py-6 text-lg font-medium">
                     Request a Quote
                   </Button>
                 </Link>
+                <ServicePhoneCta />
               </div>
             </div>
           </div>
@@ -242,12 +246,13 @@ const WwoClubsCleaning = () => {
                 </div>
               </div> */}
 
-              <div className="mt-4">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-4">
                 <Link href={"/#pricing"}>
                   <Button className="bg-[#14213d] hover:bg-[#233862] text-white rounded-full px-8 py-6 text-lg font-medium">
                     Request a Quote
                   </Button>
                 </Link>
+                <ServicePhoneCta />
               </div>
             </div>
 
