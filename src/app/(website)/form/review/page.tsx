@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 
 interface FormData {
   company_name: string;
@@ -17,10 +18,45 @@ interface FormData {
   address: string;
 }
 
+type PackageOrderPayload = FormData & {
+  submittedAt: string;
+};
+
 export default function ReviewPage() {
   const router = useRouter();
   const [formData, setFormData] = useState<FormData | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<string>("");
+
+  const getPlanDisplayName = (planId: string) => {
+    const planNames = {
+      bronze: "Bronze Package",
+      silver: "Silver Package",
+      gold: "Gold Package",
+    };
+    return planNames[planId as keyof typeof planNames] || planId;
+  };
+
+  const sendOrderEmail = async (data: PackageOrderPayload) => {
+    await emailjs.send(
+      "service_no4rym1",
+      "template_8vyoeh9",
+      {
+        first_name: data.company_name,
+        last_name: getPlanDisplayName(selectedPlan),
+        email: data.email,
+        phone: data.phone,
+        organization: "Package Order",
+        city: data.postal_code,
+        help: `Package: ${getPlanDisplayName(selectedPlan)}
+Address: ${data.address}
+Postal code: ${data.postal_code}
+Submitted at: ${new Date(data.submittedAt).toLocaleString()}`,
+      },
+      {
+        publicKey: "PpVXeg9o5K3anLxTb",
+      },
+    );
+  };
 
   useEffect(() => {
     // Load form data and selected plan
@@ -37,7 +73,7 @@ export default function ReviewPage() {
   }, []);
 
   const mutation = useMutation({
-    mutationFn: async (data: FormData) => {
+    mutationFn: async (data: PackageOrderPayload) => {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
@@ -49,17 +85,25 @@ export default function ReviewPage() {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(data),
-        }
+        },
       );
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(
-          errorData?.message || `HTTP error! status: ${response.status}`
+          errorData?.message || `HTTP error! status: ${response.status}`,
         );
       }
 
-      return response.json();
+      const result = await response.json();
+
+      try {
+        await sendOrderEmail(data);
+      } catch (error) {
+        console.error("EmailJS error:", error);
+      }
+
+      return result;
     },
     onSuccess: (data) => {
       toast.success(data.message || "Package order updated successfully!");
@@ -81,24 +125,12 @@ export default function ReviewPage() {
         submittedAt: new Date().toISOString(),
       };
 
-      console.log("Form Submission Data:", finalData);
-      mutation.mutate({
-        ...finalData,
-      });
+      mutation.mutate(finalData);
     }
   };
 
   const handleBack = () => {
     router.push("/form/location");
-  };
-
-  const getPlanDisplayName = (planId: string) => {
-    const planNames = {
-      bronze: "Bronze Package",
-      silver: "Silver Package",
-      gold: "Gold Package",
-    };
-    return planNames[planId as keyof typeof planNames] || planId;
   };
 
   if (!formData) {
@@ -176,9 +208,10 @@ export default function ReviewPage() {
               </Button>
               <Button
                 onClick={handleSubmit}
+                disabled={mutation.isPending}
                 className="flex-1 py-3 bg-blue-900 hover:bg-blue-800"
               >
-                Submit
+                {mutation.isPending ? "Submitting..." : "Submit"}
               </Button>
             </div>
           </CardContent>

@@ -71,7 +71,7 @@ export default function HighlightedLocations() {
           Highlighted Locations
         </h2>
         <p className="text-lg md:text-xl my-8">
-          Expert Cleaning Services in these and Surrounding Areas!
+          Expert Cleaning Services in these and Surrounding Areas! click locations below for more information!
         </p>
 
         <div className="grid mt-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">

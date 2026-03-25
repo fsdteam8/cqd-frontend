@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { LoginForm } from "./_components/login-form";
+import Link from "next/link";
 
 export default function LoginPage() {
   return (
@@ -17,6 +18,7 @@ export default function LoginPage() {
 
       {/* Right side - form */}
       <div className="md:col-span-1 h-full flex flex-col items-center justify-center">
+        <Link href="/">
         <Image
           src="/images/auth__logo.png"
           width={115}
@@ -24,6 +26,7 @@ export default function LoginPage() {
           alt="Logo"
           className="w-[115px] h-[40px] rounded-full"
         />
+        </Link>
         <div className="mx-auto w-full max-w-md mt-[60px]">
           {/* Logo */}
 
