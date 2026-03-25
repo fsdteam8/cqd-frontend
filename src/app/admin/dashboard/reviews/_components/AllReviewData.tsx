@@ -73,7 +73,7 @@ const AllReviewData = () => {
   };
 
   return (
-    <div className="p-10">
+    <div className="">
       <div className="border rounded-[10px] bg-white shadow-lg px-10 pb-10">
         <div className="w-full flex items-center justify-end pt-5">
           <button
