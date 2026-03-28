@@ -55,6 +55,7 @@ const BlogContainer = () => {
           },
         }
       ).then((res) => res.json()),
+      enabled: !!token
   });
 
   // Mutation to toggle publish status
