@@ -17,7 +17,7 @@ const MaidenheadPage = () => {
         title="Expert Cleaning Services in Banbury & Surrounding Areas "
         description={` CQD Cleaning Service proudly delivers cleaning solutions in Banbury and across the surrounding Oxfordshire and Buckinghamshire regions, including:`}
       />
-      <FAQ/>
+      <FAQ />
     </div>
   );
 };
