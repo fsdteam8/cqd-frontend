@@ -2,6 +2,10 @@ import Image from "next/image";
 import React from "react";
 import LocationPhoneCta from "./LocationPhoneCta";
 
+import img1 from "../../../public/location/Bicester1.jpg"
+import img2 from "../../../public/location/Bicester2.jpg"
+import img3 from "../../../public/location/Bicester3.jpg"
+
 const Banbury = () => {
   return (
     <div className="container max-w-9xl mx-auto px-4 md:px-6">
@@ -34,7 +38,8 @@ const Banbury = () => {
           </div>
           <div className="md:col-span-1">
             <Image
-              src="/location/Bicester1.jpg"
+              // src="/location/Bicester1.jpg"
+              src={img1}
               alt="maidenhead cleaning services"
               width={700}
               height={700}
@@ -50,7 +55,8 @@ const Banbury = () => {
           <div className="md:col-span-1 relative">
             <div className=" sticky top-28 z-40">
               <Image
-                src="/location/Bicester2.jpg"
+                // src="/location/Bicester2.jpg"
+                src={img2}
                 alt="oxford cleaning services"
                 width={700}
                 height={700}
@@ -173,7 +179,8 @@ const Banbury = () => {
           <div className="md:col-span-1 relative">
             <div className=" sticky top-28 z-40">
               <Image
-                src="/location/Bicester3.jpg"
+                // src="/location/Bicester3.jpg"
+                src={img3}
                 alt="oxford cleaning services"
                 width={700}
                 height={700}
