@@ -145,7 +145,7 @@ export default function EditBlogPage({ initialData }: { initialData: string }) {
   const { mutate, isPending } = useMutation({
     mutationKey: ["updateBlog", initialData],
     mutationFn: (formData: FormData) => {
-      formData.append("_method", "PUT")
+      formData.append("_method", "POST")
       return fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogsupdate/${initialData}`, {
         method: "POST", // Laravel uses POST with _method=PUT for file uploads
         headers: {
