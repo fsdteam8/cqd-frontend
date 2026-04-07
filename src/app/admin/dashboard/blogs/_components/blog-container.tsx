@@ -62,7 +62,7 @@ const BlogContainer = () => {
   const updatePublishStatus = useMutation({
     mutationFn: ({ id, publish }: { id: number; publish: number }) => {
       return fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${id}?_method=PUT`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogsupdate/${id}?_method=POST`,
         {
           method: "POST", // or PATCH depending on your backend
           headers: {
@@ -141,7 +141,7 @@ const BlogContainer = () => {
           <tr key={blog.id} className="py-[10px]">
             <td className="w-full flex items-center justify-center ">
               <Image
-                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/uploads/Blogs/${blog.image}`}
+                src={blog?.image || ""}
                 alt={blog.title}
                 width={56}
                 height={70}
