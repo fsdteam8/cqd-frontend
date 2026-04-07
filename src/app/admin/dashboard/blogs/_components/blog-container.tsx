@@ -141,7 +141,7 @@ const BlogContainer = () => {
           <tr key={blog.id} className="py-[10px]">
             <td className="w-full flex items-center justify-center ">
               <Image
-                src={blog?.image || ""}
+                src={blog?.image || "/images/no-image.jpeg"}
                 alt={blog.title}
                 width={56}
                 height={70}
