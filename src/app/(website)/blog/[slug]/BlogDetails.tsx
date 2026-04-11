@@ -6,22 +6,28 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import Image from "next/image";
 import moment from "moment";
-import { BlogApiResponse } from "../_components/BlogDataType";
 import BlogContainer from "../_components/BlogContainer";
 import TableSkeletonWrapper from "@/components/shared/TableSkeletonWrapper/TableSkeletonWrapper";
 import FrontendErrorContainer from "@/components/shared/FrontendErrorContainer/FrontendErrorContainer";
 import FrontedNotFound from "@/components/shared/NotFound/NotFoundData";
+import { BlogDetailsApiResponse } from "./single-blog-data-type";
 
 const BlogDetails = ({ params }: { params: { slug: string } }) => {
-  const { data, error, isLoading, isError } = useQuery<BlogApiResponse>({
-    queryKey: ["blog-data"],
+
+  const slug = decodeURIComponent(params?.slug || "");
+
+  const { data, error, isLoading, isError } = useQuery<BlogDetailsApiResponse>({
+    queryKey: ["single-blog-data", slug],
     queryFn: () =>
-      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog-data-front`).then(
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/single-blog/${slug}`).then(
         (res) => res.json()
       ),
   });
 
-  const blogDetails = data?.data.find((blog) => blog.slug === params.slug);
+
+  const blogDetails = data?.data ;
+
+  // const blogDetails = data?.data.find((blog) => blog.slug === params.slug);
 
   console.log(blogDetails);
 
