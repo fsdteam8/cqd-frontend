@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!} />
+      
       <head>
         {/* Google Analytics */}
         <Script
@@ -50,6 +50,8 @@ export default function RootLayout({
         <AuthProvider>
           <AppProvider>{children}</AppProvider>
         </AuthProvider>
+
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!} />
       </body>
     </html>
   );
