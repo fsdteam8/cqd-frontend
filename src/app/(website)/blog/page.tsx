@@ -2,6 +2,7 @@ import React from "react";
 import AllBlog from "./_components/AllBlog";
 
 import dynamic from 'next/dynamic'
+import { SoroEmbed } from "@/components/shared/soro/soro-embed";
 const BlogContainer = dynamic(() => import('./_components/BlogContainer'), {
   ssr: false,
 })
@@ -26,6 +27,10 @@ const BlogPage = () => {
        
       </div>
       <BlogContainer />
+
+      <div className="mt-10">
+         <SoroEmbed />
+      </div>
     </div>
   );
 };
