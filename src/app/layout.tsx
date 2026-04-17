@@ -52,6 +52,8 @@ export default function RootLayout({
         </AuthProvider>
 
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!} />
+
+       
       </body>
     </html>
   );
